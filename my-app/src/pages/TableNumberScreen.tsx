@@ -27,7 +27,7 @@ const TableNumberScreen: React.FC<TableNumberScreenProps> = () => {
                     value={tableNumber} 
                     onChange={handleTableNumberChange}
                     className="table-number-input"
-                    placeholder="Seat number"
+                    placeholder="Table number"
                 />
                 <button type="submit" className="submit-button">Submit</button>
             </form>
