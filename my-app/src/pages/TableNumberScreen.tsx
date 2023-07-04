@@ -15,12 +15,12 @@ const TableNumberScreen: React.FC<TableNumberScreenProps> = () => {
     const handleSubmit = (event: React.FormEvent) => {
         event.preventDefault();
         console.log(`Table number: ${tableNumber}`);
-        navigate('/please-wait'); // navigate to PleaseWaitScreen after submitting table number
+        navigate('/purchased-items'); 
     };
 
     return (
         <div className="table-number-container">
-            <h1 className="title">Enter your seat number</h1>
+            <h1 className="title">座席番号を入力してください</h1>
             <form onSubmit={handleSubmit}>
                 <input 
                     type="text" 
