@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './TableNumberScreen.css';
 
@@ -13,10 +13,10 @@ const TableNumberScreen: React.FC<TableNumberScreenProps> = () => {
     };
 
     const handleSubmit = (event: React.FormEvent) => {
-        event.preventDefault();
-        console.log(`Table number: ${tableNumber}`);
-        navigate('/purchased-items'); 
-    };
+    event.preventDefault();
+    navigate('/purchased-items', { state: { seatNumber: parseInt(tableNumber) } }); 
+};
+
 
     return (
         <div className="table-number-container">
