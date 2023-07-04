@@ -1,17 +1,20 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import './PaymentStartScreen.css';
 
 interface PaymentStartProps {}
 
-const PaymentStartScreen: React.FC<PaymentStartProps> = () => {
+const PaymentStart: React.FC<PaymentStartProps> = () => {
+    const navigate = useNavigate();
+
     const handleSelfRegister = () => {
         console.log("Self-register button clicked");
         // implement your functionality here
     };
 
     const handleInPerson = () => {
-        console.log("In-person button clicked");
-        // implement your functionality here
+        // Navigate to the PleaseWaitScreen
+        navigate('/please-wait');
     };
 
     return (
@@ -29,4 +32,4 @@ const PaymentStartScreen: React.FC<PaymentStartProps> = () => {
     );
 }
 
-export default PaymentStartScreen;
+export default PaymentStart;
