@@ -8,12 +8,10 @@ const PaymentStart: React.FC<PaymentStartProps> = () => {
     const navigate = useNavigate();
 
     const handleSelfRegister = () => {
-        console.log("Self-register button clicked");
-        // implement your functionality here
+        navigate('/table-number');
     };
 
     const handleInPerson = () => {
-        // Navigate to the PleaseWaitScreen
         navigate('/please-wait');
     };
 
