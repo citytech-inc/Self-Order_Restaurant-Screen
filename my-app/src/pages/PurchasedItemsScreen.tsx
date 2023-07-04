@@ -6,17 +6,17 @@ import './PurchasedItemsScreen.css';
 const PurchasedItemsScreen: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const [seatNumber, setSeatNumber] = useState(0);
+  const [tableNumber, setTableNumber] = useState(0);
 
   useEffect(() => {
-    if (location.state && location.state.seatNumber) {
-      setSeatNumber(location.state.seatNumber);
+    if (location.state && location.state.tableNumber) {
+      setTableNumber(location.state.tableNumber);
     }
   }, [location.state]);
 
-  const seatOrders = [
-        { seatNumber: 1, items: [{ name: '醤油ラーメン', price: 800 }, { name: '唐揚げ', price: 300 }, { name: '抹茶アイス', price: 200 }] },
-        { seatNumber: 2, items: [{ name: 'カレーライス', price: 700 }, { name: '日本酒', price: 500 }] }
+  const tableOrders = [
+        { tableNumber: 1, items: [{ name: '醤油ラーメン', price: 800 }, { name: '唐揚げ', price: 300 }, { name: '抹茶アイス', price: 200 }] },
+        { tableNumber: 2, items: [{ name: 'カレーライス', price: 700 }, { name: '日本酒', price: 500 }] }
     ];
 
   const handleConfirm = () => {
@@ -28,12 +28,12 @@ const PurchasedItemsScreen: React.FC = () => {
     navigate('/table-number'); 
   };
 
-  const currentOrder = seatOrders.find(order => order.seatNumber === seatNumber);
+  const currentOrder = tableOrders.find(order => order.tableNumber === tableNumber);
   const items = currentOrder ? currentOrder.items : [];
 
   return (
     <div className="purchased-items-container">
-      <h1 className="title">Seat {seatNumber} - Your Purchased Items</h1>
+      <h1 className="title">商品内容をお確かめください</h1>
             {items.map((item, index) => (
                 <div key={index} className="item">
                     <p className="item-name">{item.name}</p>

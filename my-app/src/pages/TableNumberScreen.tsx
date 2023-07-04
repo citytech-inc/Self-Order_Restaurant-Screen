@@ -14,7 +14,7 @@ const TableNumberScreen: React.FC<TableNumberScreenProps> = () => {
 
     const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    navigate('/purchased-items', { state: { seatNumber: parseInt(tableNumber) } }); 
+    navigate('/purchased-items', { state: { tableNumber: parseInt(tableNumber) } }); 
 };
 
 
