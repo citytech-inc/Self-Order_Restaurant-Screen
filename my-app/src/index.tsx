@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
+import PaymentStartScreen from './pages/PaymentStartScreen';
+import PleaseWaitScreen from './pages/PleaseWaitScreen';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(
@@ -9,7 +11,7 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <PleaseWaitScreen />
   </React.StrictMode>
 );
 

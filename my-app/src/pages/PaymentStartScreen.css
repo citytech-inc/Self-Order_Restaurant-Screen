@@ -1,0 +1,37 @@
+.payment-start-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    background-color: #f8f9fa;
+}
+
+.title {
+    margin-bottom: 50px;
+    text-align: center;
+    text-decoration: underline;
+    font-size: 2em;
+}
+
+.buttons-container {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.payment-button {
+    padding: 15px 30px;
+    font-size: 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.payment-button:hover {
+    background-color: #0056b3;
+}
