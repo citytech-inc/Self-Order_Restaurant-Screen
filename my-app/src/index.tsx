@@ -5,13 +5,18 @@ import App from './App';
 import PaymentStartScreen from './pages/PaymentStartScreen';
 import PleaseWaitScreen from './pages/PleaseWaitScreen';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter, Routes, Route} from 'react-router-dom'
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+    <Routes>
+      <Route path="/:restaurantId" element={<App />}/>
+    </Routes>
+    </BrowserRouter>
   </React.StrictMode>
 );
 
