@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate, useLocation  } from 'react-router-dom';
-import './PurchasedItemsScreen.css';
-import SettingBar from './header/Settingbar';
+import React, { useEffect, useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import "./PurchasedItemsScreen.css";
+import SettingBar from "./header/SettingBar";
 
 const PurchasedItemsScreen: React.FC = () => {
   const navigate = useNavigate();
@@ -15,19 +15,34 @@ const PurchasedItemsScreen: React.FC = () => {
   }, [location.state]);
 
   const tableOrders = [
-        { tableNumber: 1, items: [{ name: '醤油ラーメン', price: 800 }, { name: '唐揚げ', price: 300 }, { name: '抹茶アイス', price: 200 }] },
-        { tableNumber: 2, items: [{ name: 'カレーライス', price: 700 }, { name: '日本酒', price: 500 }] }
-    ];
+    {
+      tableNumber: 1,
+      items: [
+        { name: "醤油ラーメン", price: 800 },
+        { name: "唐揚げ", price: 300 },
+        { name: "抹茶アイス", price: 200 },
+      ],
+    },
+    {
+      tableNumber: 2,
+      items: [
+        { name: "カレーライス", price: 700 },
+        { name: "日本酒", price: 500 },
+      ],
+    },
+  ];
 
   const handleConfirm = () => {
     console.log("Confirm button clicked");
   };
 
   const handleReturn = () => {
-    navigate('/:restaurantId/table-number'); 
+    navigate("/:restaurantId/table-number");
   };
 
-  const currentOrder = tableOrders.find(order => order.tableNumber === tableNumber);
+  const currentOrder = tableOrders.find(
+    (order) => order.tableNumber === tableNumber,
+  );
   const items = currentOrder ? currentOrder.items : [];
 
   const totalPrice = items.reduce((total, item) => total + item.price, 0);
@@ -45,10 +60,14 @@ const PurchasedItemsScreen: React.FC = () => {
       <div className="total-price">
         <h2>合計: ¥{totalPrice}</h2>
       </div>
-      <button onClick={handleConfirm} className="confirm-button">次へ</button>
-      <button onClick={handleReturn} className="return-button">戻る</button>
+      <button onClick={handleConfirm} className="confirm-button">
+        次へ
+      </button>
+      <button onClick={handleReturn} className="return-button">
+        戻る
+      </button>
     </div>
   );
-}
+};
 
 export default PurchasedItemsScreen;

@@ -1,26 +1,26 @@
 .please-wait-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    width: 100vw;
-    background-color: #f8f9fa;
-    gap: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: #f8f9fa;
+  gap: 30px;
 }
 
 .titles-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
 }
 
 .title {
-    text-align: center;
-    font-size: 1.5em;
+  text-align: center;
+  font-size: 1.5em;
 }
 
 .bowing-illustration {
-    width: 200px; 
-    height: auto;
+  width: 200px;
+  height: auto;
 }

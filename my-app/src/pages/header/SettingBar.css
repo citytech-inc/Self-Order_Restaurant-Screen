@@ -1,0 +1,12 @@
+.settings-bar {
+  background-color: #f4f4f4;
+  padding: 10px 0;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+.settings-bar a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
