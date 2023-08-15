@@ -3,9 +3,11 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import PaymentStartScreen from './pages/PaymentStartScreen';
-import PleaseWaitScreen from './pages/PleaseWaitScreen';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter, Routes, Route} from 'react-router-dom'
+import { BrowserRouter, Router, Routes, Route} from 'react-router-dom'
+import PleaseWaitScreen from "./pages/PleaseWaitScreen";
+import PurchasedItemsScreen from "./pages/PurchasedItemsScreen";
+import TableNumberScreen from "./pages/TableNumberScreen";
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -14,7 +16,10 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
     <Routes>
-      <Route path="/:restaurantId" element={<App />}/>
+      <Route path="/:restaurantId" element={<PaymentStartScreen />} />
+      <Route path="/:restaurantId/table-number" element={<TableNumberScreen />} />
+      <Route path="/:restaurantId/please-wait" element={<PleaseWaitScreen />} />
+      <Route path="/:restaurantId/purchased-items" element={<PurchasedItemsScreen />} />
     </Routes>
     </BrowserRouter>
   </React.StrictMode>

@@ -4,7 +4,7 @@ import './PaymentStartScreen.css';
 
 interface PaymentStartProps {}
 
-const PaymentStart: React.FC<PaymentStartProps> = () => {
+const PaymentStartScreen: React.FC<PaymentStartProps> = () => {
     const navigate = useNavigate();
 
     const handleSelfRegister = () => {
@@ -30,4 +30,4 @@ const PaymentStart: React.FC<PaymentStartProps> = () => {
     );
 }
 
-export default PaymentStart;
+export default PaymentStartScreen;
