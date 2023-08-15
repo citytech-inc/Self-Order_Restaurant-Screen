@@ -23,7 +23,7 @@ const PurchasedItemsScreen: React.FC = () => {
   };
 
   const handleReturn = () => {
-    navigate('/table-number'); 
+    navigate('/:restaurantId/table-number'); 
   };
 
   const currentOrder = tableOrders.find(order => order.tableNumber === tableNumber);

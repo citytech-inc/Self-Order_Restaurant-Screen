@@ -8,11 +8,11 @@ const PaymentStartScreen: React.FC<PaymentStartProps> = () => {
     const navigate = useNavigate();
 
     const handleSelfRegister = () => {
-        navigate('/table-number');
+        navigate('/:restaurantId/table-number');
     };
 
     const handleInPerson = () => {
-        navigate('/please-wait');
+        navigate('/:restaurantId/please-wait');
     };
 
     return (
