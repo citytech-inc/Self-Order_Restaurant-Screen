@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './PaymentStartScreen.css';
+import SettingBar from './header/Settingbar';
 
 interface PaymentStartProps {}
 
@@ -17,6 +18,7 @@ const PaymentStartScreen: React.FC<PaymentStartProps> = () => {
 
     return (
         <div className="payment-start-container">
+            <SettingBar />
             <h1 className="title">お会計</h1>
             <div className="buttons-container">
                 <button className="payment-button" onClick={handleSelfRegister}>

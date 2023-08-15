@@ -8,6 +8,7 @@ import { BrowserRouter, Router, Routes, Route} from 'react-router-dom'
 import PleaseWaitScreen from "./pages/PleaseWaitScreen";
 import PurchasedItemsScreen from "./pages/PurchasedItemsScreen";
 import TableNumberScreen from "./pages/TableNumberScreen";
+import AddMenuScreen from './pages/AddMenuScreen';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -20,6 +21,7 @@ root.render(
       <Route path="/:restaurantId/table-number" element={<TableNumberScreen />} />
       <Route path="/:restaurantId/please-wait" element={<PleaseWaitScreen />} />
       <Route path="/:restaurantId/purchased-items" element={<PurchasedItemsScreen />} />
+      <Route path="/:restaurantId/add-menu" element={<AddMenuScreen />} />
     </Routes>
     </BrowserRouter>
   </React.StrictMode>

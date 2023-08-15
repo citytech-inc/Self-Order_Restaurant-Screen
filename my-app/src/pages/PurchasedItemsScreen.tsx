@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useLocation  } from 'react-router-dom';
 import './PurchasedItemsScreen.css';
+import SettingBar from './header/Settingbar';
 
 const PurchasedItemsScreen: React.FC = () => {
   const navigate = useNavigate();
@@ -33,6 +34,7 @@ const PurchasedItemsScreen: React.FC = () => {
 
   return (
     <div className="purchased-items-container">
+      <SettingBar />
       <h1 className="title">商品内容をお確かめください</h1>
       {items.map((item, index) => (
         <div key={index} className="item">

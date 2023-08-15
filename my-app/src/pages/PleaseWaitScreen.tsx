@@ -1,5 +1,6 @@
 import React from 'react';
 import './PleaseWaitScreen.css';
+import SettingBar from './header/Settingbar';
 
 interface PleaseWaitScreenProps {}
 
@@ -8,6 +9,7 @@ const PleaseWaitScreen: React.FC<PleaseWaitScreenProps> = () => {
 
     return (
         <div className="please-wait-container">
+            <SettingBar />
             <div className="titles-container">
                 <h1 className="title">しばらくお待ちください</h1>
                 <h1 className="title">Please wait for a while</h1>

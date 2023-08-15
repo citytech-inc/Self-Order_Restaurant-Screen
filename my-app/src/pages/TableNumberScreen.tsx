@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './TableNumberScreen.css';
+import SettingBar from './header/SettingBar.tsx';
 
 interface TableNumberScreenProps {}
 
@@ -20,6 +21,7 @@ const TableNumberScreen: React.FC<TableNumberScreenProps> = () => {
 
     return (
         <div className="table-number-container">
+            <SettingBar />
             <h1 className="title">座席番号を入力してください</h1>
             <form onSubmit={handleSubmit}>
                 <input 
