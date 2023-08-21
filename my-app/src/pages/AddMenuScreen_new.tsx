@@ -28,19 +28,13 @@ const AddMenuScreenNew: React.FC = () => {
     settings: [],
   });
 
-  const defaultSetting: MenuSettings = {
-    customizeType1: [],
-  };
+  const defaultSetting: MenuSettings = {};
 
   const defaultCustomization: CustomizationOption1 = {
     name: "",
     options: [],
     default: "",
   };
-
-  const [settings, setSettings] = useState<MenuSettings>({
-    customizeType1: [],
-  });
 
   const [menus, setMenus] = useState<MenuType[]>([]);
 
@@ -60,17 +54,31 @@ const AddMenuScreenNew: React.FC = () => {
     }));
   };
 
-  const addCustomizeType1 = (newCustomization: CustomizationOption1) => {
+  const addCustomizeType1 = (
+    settingIndex: number,
+    newCustomization: CustomizationOption1,
+  ) => {
     setMenu((prevMenu) => {
-      const newMenu = { ...prevMenu };
-      if (newMenu.settings.length > 0) {
-        const lastSetting = newMenu.settings[newMenu.settings.length - 1];
-        if (!lastSetting.customizeType1) {
-          lastSetting.customizeType1 = [];
-        }
-        lastSetting.customizeType1.push(newCustomization);
+      const targetSetting = prevMenu.settings[settingIndex];
+
+      if (targetSetting && !targetSetting.customizeType1) {
+        targetSetting.customizeType1 = [];
       }
-      return newMenu;
+
+      return {
+        ...prevMenu,
+        settings: prevMenu.settings.map((setting, index) =>
+          index === settingIndex
+            ? {
+                ...setting,
+                customizeType1: [
+                  ...(setting.customizeType1 || []),
+                  newCustomization,
+                ],
+              }
+            : setting,
+        ),
+      };
     });
   };
 
@@ -150,13 +158,7 @@ const AddMenuScreenNew: React.FC = () => {
         {menu.settings.map((setting, settingIndex) => (
           <div key={settingIndex}>
             詳細設定カテゴリー名:
-            <input
-              type="text"
-              placeholder="Name"
-              onChange={(e) =>
-                setSettings((prev) => ({ ...prev, name: e.target.value }))
-              }
-            />
+            <input type="text" placeholder="Name" />
             {/* Customization Type 1 */}
             {(setting.customizeType1 || []).map((type, typeIndex) => (
               <div key={`${settingIndex}-${typeIndex}`}>
@@ -290,7 +292,11 @@ const AddMenuScreenNew: React.FC = () => {
                 </button>
               </div>
             ))}
-            <button onClick={() => addCustomizeType1(defaultCustomization)}>
+            <button
+              onClick={() =>
+                addCustomizeType1(settingIndex, defaultCustomization)
+              }
+            >
               カスタマイズタイプ1を追加する
             </button>
           </div>
