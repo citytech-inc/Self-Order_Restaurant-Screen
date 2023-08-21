@@ -406,75 +406,80 @@ const AddMenuScreen: React.FC = () => {
           メニューを追加
         </button>
       </div>
-      
+
       {/* Display Menus Component */}
-<div>
-  <h2>メニュー</h2>
-  {menus.map((menuItem, index) => (
-    <div key={index}>
-      <h3>{menuItem.name}</h3>
-      <img src={menuItem.picture} alt={menuItem.name} style={{ width: "200px" }} />
-      <p>カテゴリー: {menu.category}</p>
-      <p>値段: {menuItem.price}円</p>
-      
       <div>
-        <h4>カスタマイズタイプ1</h4>
-        {menuItem.customizeType1.map((type, typeIndex) => (
-          <div key={typeIndex}>
-            <strong>{type.name}</strong>
-            <p>オプション: {type.options.join(', ')}</p>
-            <p>デフォルト: {type.default}</p>
-          </div>
-        ))}
-      </div>
-      
-      <div>
-        <h4>カスタマイズタイプ2</h4>
-        {menuItem.customizeType2.map((type, typeIndex) => (
-          <div key={typeIndex}>
-            <strong>{type.name}</strong>
-            <ul>
-              {type.options.map((option, optionIndex) => (
-                <li key={optionIndex}>
-                  {option.optionName}: {option.price}円
-                </li>
+        <h2>メニュー</h2>
+        {menus.map((menuItem, index) => (
+          <div key={index}>
+            <h3>{menuItem.name}</h3>
+            <img
+              src={menuItem.picture}
+              alt={menuItem.name}
+              style={{ width: "200px" }}
+            />
+            <p>カテゴリー: {menu.category}</p>
+            <p>値段: {menuItem.price}円</p>
+
+            <div>
+              <h4>カスタマイズタイプ1</h4>
+              {menuItem.customizeType1.map((type, typeIndex) => (
+                <div key={typeIndex}>
+                  <strong>{type.name}</strong>
+                  <p>オプション: {type.options.join(", ")}</p>
+                  <p>デフォルト: {type.default}</p>
+                </div>
               ))}
-            </ul>
-            <p>デフォルト: {type.default}</p>
+            </div>
+
+            <div>
+              <h4>カスタマイズタイプ2</h4>
+              {menuItem.customizeType2.map((type, typeIndex) => (
+                <div key={typeIndex}>
+                  <strong>{type.name}</strong>
+                  <ul>
+                    {type.options.map((option, optionIndex) => (
+                      <li key={optionIndex}>
+                        {option.optionName}: {option.price}円
+                      </li>
+                    ))}
+                  </ul>
+                  <p>デフォルト: {type.default}</p>
+                </div>
+              ))}
+            </div>
+
+            <div>
+              <h4>カスタマイズタイプ3</h4>
+              {menuItem.customizeType3.map((type, typeIndex) => (
+                <div key={typeIndex}>
+                  <strong>{type.name}</strong>
+                  <p>
+                    値段: {type.price}円/{type.measureWord}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            <button
+              onClick={() => {
+                // Edit menu logic
+              }}
+            >
+              編集
+            </button>
+            <button
+              onClick={() => {
+                const updatedMenus = [...menus];
+                updatedMenus.splice(index, 1);
+                setMenus(updatedMenus);
+              }}
+            >
+              削除
+            </button>
           </div>
         ))}
       </div>
-
-      <div>
-        <h4>カスタマイズタイプ3</h4>
-        {menuItem.customizeType3.map((type, typeIndex) => (
-          <div key={typeIndex}>
-            <strong>{type.name}</strong>
-            <p>値段: {type.price}円/{type.measureWord}</p>
-          </div>
-        ))}
-      </div>
-
-      <button
-        onClick={() => {
-          // Edit menu logic
-        }}
-      >
-        編集
-      </button>
-      <button
-        onClick={() => {
-          const updatedMenus = [...menus];
-          updatedMenus.splice(index, 1);
-          setMenus(updatedMenus);
-        }}
-      >
-        削除
-      </button>
-    </div>
-  ))}
-</div>
-
     </div>
   );
 };

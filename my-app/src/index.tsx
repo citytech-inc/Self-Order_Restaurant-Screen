@@ -9,6 +9,8 @@ import PleaseWaitScreen from "./pages/PleaseWaitScreen";
 import PurchasedItemsScreen from "./pages/PurchasedItemsScreen";
 import TableNumberScreen from "./pages/TableNumberScreen";
 import AddMenuScreen from "./pages/AddMenuScreen";
+import AddMenuScreenNew from "./pages/AddMenuScreen_new";
+import AddMenuScreenNewNew from "./pages/AddMenuScreen_new_new";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement,
@@ -30,7 +32,10 @@ root.render(
           path="/:restaurantId/purchased-items"
           element={<PurchasedItemsScreen />}
         />
-        <Route path="/:restaurantId/add-menu" element={<AddMenuScreen />} />
+        <Route
+          path="/:restaurantId/add-menu"
+          element={<AddMenuScreenNewNew />}
+        />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,
