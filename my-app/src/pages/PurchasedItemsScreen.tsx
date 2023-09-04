@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, useParams } from "react-router-dom";
 import "./PurchasedItemsScreen.css";
 import SettingBar from "./header/SettingBar";
 
@@ -18,8 +18,18 @@ interface Order {
 
 interface MenuItem {
   name: string;
-  state: string;
   price: number;
+  image: string;
+  settings: {
+    [key: string]: {
+      name: string;
+      options: {
+        [key: string]: [string, number];
+      }[];
+      default: number;
+    };
+  };
+  itemNumber: number;
 }
 
 interface Id {
@@ -44,6 +54,8 @@ const calculateTotalPriceForTable = (tableNumber: number, tableOrders: OrderData
 }*/
 
 const PurchasedItemsScreen: React.FC = () => {
+  const { restaurantId } = useParams();
+  const cleanedRestaurantId = restaurantId?.replace(":", "");
   const navigate = useNavigate();
   const location = useLocation();
   const [tableNumber, setTableNumber] = useState(0);
@@ -59,7 +71,8 @@ const PurchasedItemsScreen: React.FC = () => {
     const fetchTableOrders = async () => {
       try {
         console.log("リクエストを送信しました")
-        const response = await fetch("http://localhost:3003/api/orders");
+        console.log("cleanedRestaurantId:", cleanedRestaurantId)
+        const response = await fetch(`http://localhost:3003/api/orders/${cleanedRestaurantId}`);
         console.log("リクエストを受信しました")
         const data = await response.json();
         console.log("受信したデータ:", data)
@@ -69,7 +82,7 @@ const PurchasedItemsScreen: React.FC = () => {
       }
     };
     fetchTableOrders(); 
-  }, []);
+  }, [restaurantId]);
 
   /*{
     const tableOrders = [
@@ -94,18 +107,18 @@ const PurchasedItemsScreen: React.FC = () => {
   const handleConfirm = async() => {
     console.log("Confirm button clicked");
     try {
-      await fetch(`http://localhost:3003/api/orders/restaurantId/${tableNumber}`, {
+      await fetch(`http://localhost:3003/api/orders/${cleanedRestaurantId}/${tableNumber}`, {
         method: 'DELETE',
       });
       console.log(`テーブル番号${tableNumber}の注文情報を削除しました`);
-      navigate("/:restaurantId/table-number");
+      navigate(`/${cleanedRestaurantId}/table-number`);
     } catch(error) {
       console.log("エラー", error);
     }
   };
 
   const handleReturn = () => {
-    navigate("/:restaurantId/table-number");
+    navigate(`/${cleanedRestaurantId}/table-number`);
   };
 
   const currentOrders = tableOrders.filter(
@@ -113,14 +126,14 @@ const PurchasedItemsScreen: React.FC = () => {
   );
 
   console.log("currentOrder:", currentOrders);
-  console.log("tableOeders:", tableOrders);
+  console.log("tableOrders:", tableOrders);
   console.log("tableNumber:", tableNumber);
 
   let items: MenuItem[] = [];
   let totalPrice = 0;
 
   if (currentOrders.length > 0) {
-    items = currentOrders.flatMap((order) => order.items);
+    items = currentOrders.flatMap(order => order.items);
     totalPrice = items.reduce((total, item) => total + item.price, 0);
   }
 

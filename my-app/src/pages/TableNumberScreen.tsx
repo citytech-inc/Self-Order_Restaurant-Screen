@@ -1,11 +1,12 @@
 import React, { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import "./TableNumberScreen.css";
 import SettingBar from "./header/SettingBar";
 
 interface TableNumberScreenProps {}
 
 const TableNumberScreen: React.FC<TableNumberScreenProps> = () => {
+  const { restaurantId } = useParams();
   const [tableNumber, setTableNumber] = useState<string>("");
   const navigate = useNavigate();
 
@@ -17,7 +18,7 @@ const TableNumberScreen: React.FC<TableNumberScreenProps> = () => {
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    navigate("/:restaurantId/purchased-items", {
+    navigate(`/${restaurantId}/purchased-items`, {
       state: { tableNumber: parseInt(tableNumber) },
     });
   };

@@ -1,19 +1,23 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import "./PaymentStartScreen.css";
 import SettingBar from "./header/SettingBar";
 
-interface PaymentStartProps {}
+interface PaymentStartProps {
+}
 
 const PaymentStartScreen: React.FC<PaymentStartProps> = () => {
+  const { restaurantId } = useParams();
   const navigate = useNavigate();
 
   const handleSelfRegister = () => {
-    navigate("/:restaurantId/table-number");
+    navigate(`/${restaurantId}/table-number`);
   };
 
   const handleInPerson = () => {
-    navigate("/:restaurantId/please-wait");
+    if (restaurantId) {
+      navigate(`/${restaurantId}/please-wait`);
+    }
   };
 
   return (
