@@ -1,20 +1,39 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import PaymentStart from "./pages/PaymentStartScreen";
+// App.tsx
+import React from "react";
+import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
+import PaymentStartScreen from "./pages/PaymentStartScreen";
+import TableNumberScreen from "./pages/TableNumberScreen";
 import PleaseWaitScreen from "./pages/PleaseWaitScreen";
 import PurchasedItemsScreen from "./pages/PurchasedItemsScreen";
-import TableNumberScreen from "./pages/TableNumberScreen";
+import AddMenuScreenNewNew from "./pages/AddMenuScreen_new_new";
 
-function App() {
+const App = () => {
   return (
-    <Router>
+    <BrowserRouter>
       <Routes>
-        <Route path="/" element={<PaymentStart />} />
-        <Route path="/table-number" element={<TableNumberScreen />} />
-        <Route path="/please-wait" element={<PleaseWaitScreen />} />
-        <Route path="/purchased-items" element={<PurchasedItemsScreen />} />
+        <Route
+          path=":restaurantId"
+          element={<PaymentStartScreen />} // restaurantId のデフォルト値を指定
+        />
+        <Route
+          path=":restaurantId/table-number"
+          element={<TableNumberScreen />}
+        />
+        <Route
+          path=":restaurantId/please-wait"
+          element={<PleaseWaitScreen />}
+        />
+        <Route
+          path=":restaurantId/purchased-items"
+          element={<PurchasedItemsScreen />}
+        />
+        <Route
+          path=":restaurantId/add-menu"
+          element={<AddMenuScreenNewNew />}
+        />
       </Routes>
-    </Router>
+    </BrowserRouter>
   );
-}
+};
 
 export default App;
