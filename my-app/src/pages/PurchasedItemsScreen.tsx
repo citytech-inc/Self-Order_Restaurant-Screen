@@ -71,18 +71,20 @@ const PurchasedItemsScreen: React.FC = () => {
   useEffect(() => {
     const fetchTableOrders = async () => {
       try {
-        console.log("リクエストを送信しました")
-        console.log("cleanedRestaurantId:", cleanedRestaurantId)
-        const response = await fetch(`http://localhost:3003/api/orders/${cleanedRestaurantId}`);
-        console.log("リクエストを受信しました")
+        console.log("リクエストを送信しました");
+        console.log("cleanedRestaurantId:", cleanedRestaurantId);
+        const response = await fetch(
+          `http://localhost:3003/api/orders/${cleanedRestaurantId}`,
+        );
+        console.log("リクエストを受信しました");
         const data = await response.json();
-        console.log("受信したデータ:", data)
+        console.log("受信したデータ:", data);
         setTableOrders(data);
-      } catch(error: any) {
+      } catch (error: any) {
         console.log("エラー", error.message);
       }
     };
-    fetchTableOrders(); 
+    fetchTableOrders();
   }, [restaurantId]);
 
   /*{
@@ -105,15 +107,18 @@ const PurchasedItemsScreen: React.FC = () => {
   ];
 }*/
 
-  const handleConfirm = async() => {
+  const handleConfirm = async () => {
     console.log("Confirm button clicked");
     try {
-      await fetch(`http://localhost:3003/api/orders/${cleanedRestaurantId}/${tableNumber}`, {
-        method: 'DELETE',
-      });
+      await fetch(
+        `http://localhost:3003/api/orders/${cleanedRestaurantId}/${tableNumber}`,
+        {
+          method: "DELETE",
+        },
+      );
       console.log(`テーブル番号${tableNumber}の注文情報を削除しました`);
       navigate(`/${cleanedRestaurantId}/table-number`);
-    } catch(error) {
+    } catch (error) {
       console.log("エラー", error);
     }
   };
@@ -134,7 +139,7 @@ const PurchasedItemsScreen: React.FC = () => {
   let totalPrice = 0;
 
   if (currentOrders.length > 0) {
-    items = currentOrders.flatMap(order => order.items);
+    items = currentOrders.flatMap((order) => order.items);
     totalPrice = items.reduce((total, item) => total + item.price, 0);
   }
 

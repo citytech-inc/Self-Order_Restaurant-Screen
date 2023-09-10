@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import './OrderScreen.css';
+import React, { useState, useEffect } from "react";
+import "./OrderScreen.css";
 import { DisplayArea } from "../components/DisplayArea";
 import SettingBar from "../header/SettingBar";
 
@@ -22,12 +22,12 @@ interface Id {
 
 interface OrderData {
   items: MenuItem[];
-  ids: Id[]
+  ids: Id[];
 }
 
 function OrderScreen() {
   //const [orders, setOrders] = useState(initialOrders);
-  const[orders, setOrders] = useState<Order[]>([]);
+  const [orders, setOrders] = useState<Order[]>([]);
 
   const handleDelete = (id: string) => {
     setOrders((orders) => orders.filter((order) => order.id !== id));
@@ -35,29 +35,31 @@ function OrderScreen() {
 
   useEffect(() => {
     // WebSocketクライアントの設定
-    const webSocket = new WebSocket('ws://localhost:3004'); // WebSocketサーバーのURLを指定
+    const webSocket = new WebSocket("ws://localhost:3004"); // WebSocketサーバーのURLを指定
 
     // メッセージの受信処理
     webSocket.onmessage = (event) => {
       try {
         const orderData = JSON.parse(event.data) as OrderData;
 
-        if(orderData.ids && orderData.ids.length > 0) { 
-          const tableIdNumber = orderData.ids[0]['tableId'];
+        if (orderData.ids && orderData.ids.length > 0) {
+          const tableIdNumber = orderData.ids[0]["tableId"];
           const tableIdString = tableIdNumber.toString();
           const newOrder: Order = {
             id: tableIdString,
-            order: orderData.items.map((item: MenuItem) => item.name).join(', '),
-            type: 'main' // 注文タイプを適切に設定する必要があります
+            order: orderData.items
+              .map((item: MenuItem) => item.name)
+              .join(", "),
+            type: "main", // 注文タイプを適切に設定する必要があります
           };
 
-          console.log('受信した注文情報:', orderData);
-          console.log('新しい注文情報:', newOrder);
+          console.log("受信した注文情報:", orderData);
+          console.log("新しい注文情報:", newOrder);
 
-          setOrders(prevOrders => [...prevOrders, newOrder]);
+          setOrders((prevOrders) => [...prevOrders, newOrder]);
         }
       } catch (error) {
-        console.error('受信したメッセージのパースに失敗しました:', error);
+        console.error("受信したメッセージのパースに失敗しました:", error);
       }
     };
 
@@ -71,7 +73,7 @@ function OrderScreen() {
 
   return (
     <div className="OrderScreen">
-    <SettingBar focusButton="order" />
+      <SettingBar focusButton="order" />
       <DisplayArea
         title="メインメニュー"
         orders={orders.filter((o) => o.type === "main")}
@@ -92,7 +94,7 @@ function OrderScreen() {
         orders={orders.filter((o) => o.type === "drink")}
         onDelete={handleDelete}
       />
-      </div>
+    </div>
   );
 }
 

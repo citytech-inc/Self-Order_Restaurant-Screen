@@ -1,10 +1,9 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import "./PaymentStartScreen.css";
 import SettingBar from "../header/SettingBar";
 
-interface PaymentStartProps {
-}
+interface PaymentStartProps {}
 
 const PaymentStartScreen: React.FC<PaymentStartProps> = () => {
   const { restaurantId } = useParams();

@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import "./PleaseWaitScreen.css";
 import SettingBar from "../header/SettingBar";
 
@@ -7,7 +7,7 @@ interface PleaseWaitScreenProps {}
 const PleaseWaitScreen: React.FC<PleaseWaitScreenProps> = () => {
   const BowingImage =
     "https://i.pinimg.com/474x/19/51/1a/19511aa50124a5159b52bf6630d4d927.jpg";
-  
+
   const [focusButton, setFocusButton] = useState<string | null>(null);
 
   return (

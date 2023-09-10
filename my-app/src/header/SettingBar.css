@@ -2,17 +2,17 @@
   position: absolute;
   left: 0;
   top: 0;
-  width: 9%;  
+  width: 9%;
   height: 100vh;
-  background-color: #e6e6e6;  
+  background-color: #e6e6e6;
   display: flex;
   flex-direction: column;
   align-items: center; /* Centers items horizontally */
   justify-content: space-between;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);  /* A subtle shadow on the right to give depth */
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* A subtle shadow on the right to give depth */
 }
 
-.settings-bar .bar__button, 
+.settings-bar .bar__button,
 .settings-bar .bar__button__focus {
   display: flex;
   flex-direction: column;
@@ -22,11 +22,11 @@
   text-decoration: none;
   color: #333;
   font-weight: bold;
-  width: 100%;  
-  padding: 0px;  
-  text-align: center;  
-  border-radius: 0px;  
-  transition: background-color 0.3s;  
+  width: 100%;
+  padding: 0px;
+  text-align: center;
+  border-radius: 0px;
+  transition: background-color 0.3s;
 }
 
 .settings-bar .bar__button__focus {
@@ -36,7 +36,6 @@
   outline: none; /* Remove the default focus outline */
 }
 
-
 .settings-bar .bar__icon {
   height: 30px;
 }
@@ -44,5 +43,5 @@
 .settings-bar .bar__line {
   height: 1px;
   width: 67%;
-  background-color: #AAAAAA;
+  background-color: #aaaaaa;
 }
