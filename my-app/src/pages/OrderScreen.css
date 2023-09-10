@@ -1,0 +1,20 @@
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.OrderScreen {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  overflow: auto;
+}
+
+/* Ensure each display area takes up an equal amount of space */
+.OrderScreen > div {
+  flex-grow: 1;
+  overflow: auto;
+}

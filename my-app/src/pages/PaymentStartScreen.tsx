@@ -1,12 +1,13 @@
-import React from "react";
+import React, {useState} from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import "./PaymentStartScreen.css";
-import SettingBar from "./header/SettingBar";
+import SettingBar from "../header/SettingBar";
 
 interface PaymentStartProps {
 }
 
 const PaymentStartScreen: React.FC<PaymentStartProps> = () => {
+  const [focusButton, setFocusButton] = useState<string | null>(null);
   const { restaurantId } = useParams();
   const navigate = useNavigate();
 
@@ -22,7 +23,7 @@ const PaymentStartScreen: React.FC<PaymentStartProps> = () => {
 
   return (
     <div className="payment-start-container">
-      <SettingBar />
+      <SettingBar focusButton={focusButton} setFocusButton={setFocusButton} />
       <h1 className="title">お会計</h1>
       <div className="buttons-container">
         <button className="payment-button" onClick={handleSelfRegister}>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useLocation, useParams } from "react-router-dom";
 import "./PurchasedItemsScreen.css";
-import SettingBar from "./header/SettingBar";
+import SettingBar from "../header/SettingBar";
 
 /*{
 interface Item {
@@ -60,6 +60,7 @@ const PurchasedItemsScreen: React.FC = () => {
   const location = useLocation();
   const [tableNumber, setTableNumber] = useState(0);
   const [tableOrders, setTableOrders] = useState<OrderData[]>([]);
+  const [focusButton, setFocusButton] = useState<string | null>(null);
 
   useEffect(() => {
     if (location.state && location.state.tableNumber) {
@@ -139,7 +140,7 @@ const PurchasedItemsScreen: React.FC = () => {
 
   return (
     <div className="purchased-items-container">
-      <SettingBar />
+      <SettingBar focusButton={focusButton} setFocusButton={setFocusButton} />
       <h1 className="title">商品内容をお確かめください</h1>
       {items.map((item, index) => (
         <div key={index} className="item">

@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import "./TableNumberScreen.css";
-import SettingBar from "./header/SettingBar";
+import SettingBar from "../header/SettingBar";
 
 interface TableNumberScreenProps {}
 
@@ -9,6 +9,7 @@ const TableNumberScreen: React.FC<TableNumberScreenProps> = () => {
   const { restaurantId } = useParams();
   const [tableNumber, setTableNumber] = useState<string>("");
   const navigate = useNavigate();
+  const [focusButton, setFocusButton] = useState<string | null>(null);
 
   const handleTableNumberChange = (
     event: React.ChangeEvent<HTMLInputElement>,
@@ -25,7 +26,7 @@ const TableNumberScreen: React.FC<TableNumberScreenProps> = () => {
 
   return (
     <div className="table-number-container">
-      <SettingBar />
+      <SettingBar focusButton={focusButton} setFocusButton={setFocusButton} />
       <h1 className="title">座席番号を入力してください</h1>
       <form onSubmit={handleSubmit}>
         <input

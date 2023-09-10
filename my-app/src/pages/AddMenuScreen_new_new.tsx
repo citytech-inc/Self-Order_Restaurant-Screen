@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import SettingBar from "../header/SettingBar";
 
 const AddMenuScreenNewNew: React.FC = () => {
   type CustomizeType1 = {
@@ -43,6 +44,8 @@ const AddMenuScreenNewNew: React.FC = () => {
     price: 0,
     settings: [],
   });
+
+  const [focusButton, setFocusButton] = useState<string | null>(null);
 
   const defaultSetting: MenuSettings = {};
 
@@ -161,6 +164,8 @@ const AddMenuScreenNewNew: React.FC = () => {
 
   return (
     <div>
+      <SettingBar focusButton={focusButton} setFocusButton={setFocusButton} />
+      <div>
       <h1>メニュー設定ページ</h1>
 
       {/* MenuCategoryList Component */}
@@ -664,6 +669,7 @@ const AddMenuScreenNewNew: React.FC = () => {
         <button onClick={() => addSetting(defaultSetting)}>
           メニュー詳細カテゴリーを追加する
         </button>
+      </div>
       </div>
     </div>
   );
