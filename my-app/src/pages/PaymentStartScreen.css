@@ -4,24 +4,25 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
-  width: 100vw;
+  width: 91%;
   background-color: #f8f9fa;
+  margin-left: auto;
 }
 
-.title {
+.payment-start-container .title {
   margin-bottom: 50px;
   text-align: center;
   text-decoration: underline;
   font-size: 2em;
 }
 
-.buttons-container {
+.payment-start-container .buttons-container {
   display: flex;
   flex-direction: row;
   gap: 20px;
 }
 
-.payment-button {
+.payment-start-container .payment-button {
   padding: 15px 30px;
   font-size: 20px;
   border: none;
@@ -32,6 +33,6 @@
   transition: background-color 0.3s ease;
 }
 
-.payment-button:hover {
+.payment-start-container .payment-button:hover {
   background-color: #0056b3;
 }

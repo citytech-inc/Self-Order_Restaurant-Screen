@@ -28,7 +28,7 @@ interface OrderData {
 function OrderScreen() {
   //const [orders, setOrders] = useState(initialOrders);
   const[orders, setOrders] = useState<Order[]>([]);
-  const [focusButton, setFocusButton] = useState<string | null>(null);
+  const [focusButton, setFocusButton] = useState<string | null>("order");
 
   const handleDelete = (id: string) => {
     setOrders((orders) => orders.filter((order) => order.id !== id));
@@ -93,7 +93,7 @@ function OrderScreen() {
         orders={orders.filter((o) => o.type === "drink")}
         onDelete={handleDelete}
       />
-    </div>
+      </div>
   );
 }
 

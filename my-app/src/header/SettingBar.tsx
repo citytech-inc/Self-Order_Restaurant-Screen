@@ -14,7 +14,7 @@ function SettingBar({ focusButton, setFocusButton }: SettingBarProps) {
   return (
     <div className="settings-bar">
       <div></div>
-      <Link to="/:restaurantId/order" className={`bar__button ${focusButton === 'order' ? 'focus' : ''}`} onClick={() => setFocusButton('order')}>
+      <Link to="/:restaurantId/order" className={`bar__button ${focusButton === 'order' ? 'focus' : ''}`}>
         <FontAwesomeIcon icon={faUtensils} className="bar__icon"/>
         <div>厨房</div>
       </Link>

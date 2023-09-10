@@ -1,16 +1,10 @@
-html {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  width: 100%;
-}
-
 .OrderScreen {
   display: flex;
   flex-direction: column;
   height: 100vh;
-  width: 100vw;
+  width: 91%;
   overflow: auto;
+  margin-left: auto;
 }
 
 /* Ensure each display area takes up an equal amount of space */
