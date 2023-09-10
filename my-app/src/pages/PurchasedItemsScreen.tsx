@@ -140,7 +140,7 @@ const PurchasedItemsScreen: React.FC = () => {
 
   return (
     <div className="purchased-items-container">
-      <SettingBar focusButton={focusButton} setFocusButton={setFocusButton} />
+      <SettingBar focusButton="payment" />
       <h1 className="title">商品内容をお確かめください</h1>
       {items.map((item, index) => (
         <div key={index} className="item">

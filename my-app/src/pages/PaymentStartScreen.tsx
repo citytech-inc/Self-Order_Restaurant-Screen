@@ -7,7 +7,6 @@ interface PaymentStartProps {
 }
 
 const PaymentStartScreen: React.FC<PaymentStartProps> = () => {
-  const [focusButton, setFocusButton] = useState<string | null>(null);
   const { restaurantId } = useParams();
   const navigate = useNavigate();
 
@@ -23,7 +22,7 @@ const PaymentStartScreen: React.FC<PaymentStartProps> = () => {
 
   return (
     <div className="payment-start-container">
-      <SettingBar focusButton={focusButton} setFocusButton={setFocusButton} />
+      <SettingBar focusButton="payment" />
       <h1 className="title">お会計</h1>
       <div className="buttons-container">
         <button className="payment-button" onClick={handleSelfRegister}>

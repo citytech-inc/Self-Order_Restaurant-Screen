@@ -164,7 +164,7 @@ const AddMenuScreenNewNew: React.FC = () => {
 
   return (
     <div>
-      <SettingBar focusButton={focusButton} setFocusButton={setFocusButton} />
+      <SettingBar focusButton="menu" />
       <div>
       <h1>メニュー設定ページ</h1>
 

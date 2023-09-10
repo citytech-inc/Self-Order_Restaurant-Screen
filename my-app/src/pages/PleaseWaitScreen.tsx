@@ -12,7 +12,7 @@ const PleaseWaitScreen: React.FC<PleaseWaitScreenProps> = () => {
 
   return (
     <div className="please-wait-container">
-      <SettingBar focusButton={focusButton} setFocusButton={setFocusButton} />
+      <SettingBar focusButton="payment" />
       <div className="titles-container">
         <h1 className="title">しばらくお待ちください</h1>
         <h1 className="title">Please wait for a while</h1>

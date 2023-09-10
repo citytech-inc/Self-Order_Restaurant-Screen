@@ -12,7 +12,8 @@
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);  /* A subtle shadow on the right to give depth */
 }
 
-.settings-bar .bar__button {
+.settings-bar .bar__button, 
+.settings-bar .bar__button__focus {
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -28,9 +29,7 @@
   transition: background-color 0.3s;  
 }
 
-.settings-bar .bar__button:hover,
-.settings-bar .bar__button:focus,
-.settings-bar .bar__button:active {
+.settings-bar .bar__button__focus {
   background-color: #fffefb;
   border: 0px;
   border-radius: 0%;
