@@ -160,8 +160,8 @@ const PurchasedItemsScreen: React.FC = () => {
         <span>合計金額: {totalPrice}円 <span className="payment__tax">(税込)</span></span>
       </div>
       <div>
-        <button onClick={handleConfirm} className="confirm-button">
-        次へ
+        <button onClick={handleConfirm} className="change-button">
+        変更
       </button>
       <button onClick={handleConfirm} className="confirm-button">
         次へ
