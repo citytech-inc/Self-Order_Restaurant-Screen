@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useLocation, useParams } from "react-router-dom";
 import "./PurchasedItemsScreen.css";
-import SettingBar from "./header/SettingBar";
+import SettingBar from "../header/SettingBar";
 
 /*{
 interface Item {
@@ -60,6 +60,7 @@ const PurchasedItemsScreen: React.FC = () => {
   const location = useLocation();
   const [tableNumber, setTableNumber] = useState(0);
   const [tableOrders, setTableOrders] = useState<OrderData[]>([]);
+  const [focusButton, setFocusButton] = useState<string | null>(null);
 
   useEffect(() => {
     if (location.state && location.state.tableNumber) {
@@ -70,18 +71,20 @@ const PurchasedItemsScreen: React.FC = () => {
   useEffect(() => {
     const fetchTableOrders = async () => {
       try {
-        console.log("リクエストを送信しました")
-        console.log("cleanedRestaurantId:", cleanedRestaurantId)
-        const response = await fetch(`http://localhost:3003/api/orders/${cleanedRestaurantId}`);
-        console.log("リクエストを受信しました")
+        console.log("リクエストを送信しました");
+        console.log("cleanedRestaurantId:", cleanedRestaurantId);
+        const response = await fetch(
+          `http://localhost:3003/api/orders/${cleanedRestaurantId}`,
+        );
+        console.log("リクエストを受信しました");
         const data = await response.json();
-        console.log("受信したデータ:", data)
+        console.log("受信したデータ:", data);
         setTableOrders(data);
-      } catch(error: any) {
+      } catch (error: any) {
         console.log("エラー", error.message);
       }
     };
-    fetchTableOrders(); 
+    fetchTableOrders();
   }, [restaurantId]);
 
   /*{
@@ -104,15 +107,18 @@ const PurchasedItemsScreen: React.FC = () => {
   ];
 }*/
 
-  const handleConfirm = async() => {
+  const handleConfirm = async () => {
     console.log("Confirm button clicked");
     try {
-      await fetch(`http://localhost:3003/api/orders/${cleanedRestaurantId}/${tableNumber}`, {
-        method: 'DELETE',
-      });
+      await fetch(
+        `http://localhost:3003/api/orders/${cleanedRestaurantId}/${tableNumber}`,
+        {
+          method: "DELETE",
+        },
+      );
       console.log(`テーブル番号${tableNumber}の注文情報を削除しました`);
       navigate(`/${cleanedRestaurantId}/table-number`);
-    } catch(error) {
+    } catch (error) {
       console.log("エラー", error);
     }
   };
@@ -133,29 +139,36 @@ const PurchasedItemsScreen: React.FC = () => {
   let totalPrice = 0;
 
   if (currentOrders.length > 0) {
-    items = currentOrders.flatMap(order => order.items);
+    items = currentOrders.flatMap((order) => order.items);
     totalPrice = items.reduce((total, item) => total + item.price, 0);
   }
 
   return (
     <div className="purchased-items-container">
-      <SettingBar />
-      <h1 className="title">商品内容をお確かめください</h1>
+      <SettingBar focusButton="payment" />
+      <button onClick={handleReturn} className="return-button">
+        戻る
+      </button>
+      <h1 className="title">商品内容をお確かめください（税込）</h1>
       {items.map((item, index) => (
         <div key={index} className="item">
           <p className="item-name">{item.name}</p>
           <p className="item-price">{item.price}</p>
         </div>
       ))}
-      <div className="total-price">
-        <h2>合計: ¥{totalPrice}</h2>
+      <div className="payment__totalPrice">
+        <span>合計金額: {totalPrice}円 <span className="payment__tax">(税込)</span></span>
       </div>
+      <div>
+        <button onClick={handleConfirm} className="change-button">
+        変更
+      </button>
       <button onClick={handleConfirm} className="confirm-button">
         次へ
       </button>
-      <button onClick={handleReturn} className="return-button">
-        戻る
-      </button>
+      </div>
+      
+      
     </div>
   );
 };

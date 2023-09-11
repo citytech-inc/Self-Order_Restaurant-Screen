@@ -1,0 +1,22 @@
+.order {
+  width: 75px;
+  min-width: 70px;
+  border: 1px solid black;
+  margin: 0px;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.order > div {
+  padding-bottom: 5px;
+  display: flex;
+  justify-content: center;
+  justify-self: auto;
+}
+
+.order > button {
+  margin-top: auto;
+  margin-bottom: 5px;
+}

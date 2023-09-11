@@ -1,0 +1,14 @@
+.OrderScreen {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 91%;
+  overflow: auto;
+  margin-left: auto;
+}
+
+/* Ensure each display area takes up an equal amount of space */
+.OrderScreen > div {
+  flex-grow: 1;
+  overflow: auto;
+}
