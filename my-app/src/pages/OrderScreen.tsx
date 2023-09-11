@@ -82,7 +82,7 @@ function OrderScreen() {
     <div className="OrderScreen">
       <div className="order__button">
         <text className="order__buttonText">
-        {isChecked ? "提供待ち" : "削除済み"}
+        {isChecked ? "削除済み" : "提供待ち"}
       </text>
       <IOSStyleSwitch 
         defaultChecked={isChecked} 
