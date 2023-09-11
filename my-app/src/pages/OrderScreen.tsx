@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import "./OrderScreen.css";
 import { DisplayArea } from "../components/DisplayArea";
 import SettingBar from "../header/SettingBar";
+import IOSStyleSwitch from '../components/iOSStyleSwitch';
+
 
 interface Order {
   id: string;
@@ -28,6 +30,7 @@ interface OrderData {
 function OrderScreen() {
   //const [orders, setOrders] = useState(initialOrders);
   const [orders, setOrders] = useState<Order[]>([]);
+  const [isChecked, setIsChecked] = useState(false);
 
   const handleDelete = (id: string) => {
     setOrders((orders) => orders.filter((order) => order.id !== id));
@@ -74,10 +77,23 @@ function OrderScreen() {
   return (
     <div>
     <SettingBar focusButton="order" />
-    <div className="OrderScreen__button"></div>
+    
+    
     <div className="OrderScreen">
+      <div className="order__button">
+        <text className="order__buttonText">
+        {isChecked ? "提供待ち" : "削除済み"}
+      </text>
+      <IOSStyleSwitch 
+        defaultChecked={isChecked} 
+        onChange={(newState: boolean) => {
+          setIsChecked(newState);
+        }}
+      />
+      </div>
       
-      <DisplayArea
+      <div className="order__areas">
+        <DisplayArea
         title="メインメニュー"
         orders={orders.filter((o) => o.type === "main")}
         onDelete={handleDelete}
@@ -97,6 +113,8 @@ function OrderScreen() {
         orders={orders.filter((o) => o.type === "afterMeal")}
         onDelete={handleDelete}
       />
+      </div>
+      
     </div>
     </div>
   );
