@@ -8,14 +8,14 @@
   gap: 30px;
 }
 
-.titles-container {
+.please-wait-container .titles-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 10px;
 }
 
-.title {
+.please-wait-container .title {
   text-align: center;
   font-size: 1.5em;
 }

@@ -72,8 +72,11 @@ function OrderScreen() {
   }, []);
 
   return (
+    <div>
+    <SettingBar focusButton="order" />
+    <div className="OrderScreen__button"></div>
     <div className="OrderScreen">
-      <SettingBar focusButton="order" />
+      
       <DisplayArea
         title="メインメニュー"
         orders={orders.filter((o) => o.type === "main")}
@@ -85,15 +88,16 @@ function OrderScreen() {
         onDelete={handleDelete}
       />
       <DisplayArea
-        title="食後提供"
-        orders={orders.filter((o) => o.type === "afterMeal")}
-        onDelete={handleDelete}
-      />
-      <DisplayArea
         title="ドリンク"
         orders={orders.filter((o) => o.type === "drink")}
         onDelete={handleDelete}
       />
+      <DisplayArea
+        title="食後提供"
+        orders={orders.filter((o) => o.type === "afterMeal")}
+        onDelete={handleDelete}
+      />
+    </div>
     </div>
   );
 }

@@ -1,17 +1,27 @@
 .displayArea {
   display: flex;
+  flex-direction: column;
+  align-items: center;
   border: 1px solid black;
-  margin: 10px;
-  padding: 10px;
-  height: 100%;
+  margin: 18px;
+  height: 94%;
+  width: 10px;
+  border-radius: 15px;
+  background-color: #FFF1B7;
 }
 
 .displayArea .title {
-  writing-mode: vertical-rl;
-  text-orientation: upright;
-  margin-right: 10px;
-  border-right: 1px solid black;
-  padding-right: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.displayArea .area__line {
+  height: 1px;
+  width: 100%;
+  background-color: black;
 }
 
 .displayArea .orderContainer {
@@ -19,4 +29,6 @@
   overflow-x: scroll;
   gap: 10px;
   flex-grow: 1;
+  width: 100%;
+  background-color: #FFFEFB;
 }

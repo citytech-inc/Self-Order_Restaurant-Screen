@@ -7,9 +7,9 @@
   background-color: #e6e6e6;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centers items horizontally */
+  align-items: center; 
   justify-content: space-between;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* A subtle shadow on the right to give depth */
+  border: none;
 }
 
 .settings-bar .bar__button,

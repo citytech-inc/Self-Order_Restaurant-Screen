@@ -4,7 +4,7 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background-color: #f8f8f8;
+  background-color: #f8f8f8; /* figmaとカラー違うのは知ってるんだけど、この色よくねって思った*/
   margin-left: 9%;
   width: 91%;
 }

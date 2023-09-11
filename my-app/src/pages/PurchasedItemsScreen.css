@@ -6,10 +6,10 @@
   height: 100vh;
   margin-left: 9%;
   width: 91%;
-  background-color: #f8f8f8;
+  background-color: #FFFEFB;
 }
 
-.title {
+.please-wait-container .title {
   margin-bottom: 1rem;
   font-weight: 500;
   font-size: 26px;
@@ -18,7 +18,8 @@
 .purchased-items-container .payment__itemBox {
   height: 60%;
   width: 70%;
-  border: 0.5px solid #aaaaaa;
+  border: 1px solid #555555;
+  border-radius: 10px;
 }
 
 .purchased-items-container .payment__icon {

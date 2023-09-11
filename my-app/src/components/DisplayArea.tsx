@@ -16,6 +16,7 @@ export const DisplayArea: React.FC<DisplayAreaProps> = ({
   return (
     <div className="displayArea">
       <div className="title">{title}</div>
+      <div className="area__line"></div>
       <div className="orderContainer">
         {orders.map(({ id, order }) => (
           <OrderRectangle
