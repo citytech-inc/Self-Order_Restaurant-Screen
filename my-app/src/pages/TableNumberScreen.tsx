@@ -37,7 +37,7 @@ const TableNumberScreen: React.FC<TableNumberScreenProps> = () => {
           placeholder="Table number"
         />
         <button type="submit" className="submit-button">
-          Submit
+          次へ
         </button>
       </form>
     </div>

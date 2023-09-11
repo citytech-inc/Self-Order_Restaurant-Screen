@@ -34,7 +34,7 @@ function SettingBar({ focusButton }: SettingBarProps) {
 
       <div className="bar__line"></div>
       <Link
-        to="/:restaurantId"
+        to="/:restaurantId/table-number"
         className={
           focusButton === "payment" ? "bar__button__focus" : "bar__button"
         }
