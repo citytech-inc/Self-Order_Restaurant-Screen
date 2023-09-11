@@ -5,7 +5,7 @@ import PaymentStartScreen from "./pages/PaymentStartScreen";
 import TableNumberScreen from "./pages/TableNumberScreen";
 import PleaseWaitScreen from "./pages/PleaseWaitScreen";
 import PurchasedItemsScreen from "./pages/PurchasedItemsScreen";
-import AddMenuScreenNewNew from "./pages/AddMenuScreen_new_new";
+import AddMenuScreenNewNew from "./pages/AddMenuScreen";
 
 const App = () => {
   return (
