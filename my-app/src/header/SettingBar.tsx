@@ -9,6 +9,10 @@ import {
   faEdit,
   faCog,
 } from "@fortawesome/free-solid-svg-icons";
+import OrderIcon from "../../src/components/images/checklist_10320098.png";
+import CasherIcon from "../../src/components/images/cashier_4901369.png";
+import SalesAnalysisIcon from "../../src/components/images/bar-chart_478544.png";
+import SettingsIcon from "../../src/components/images/settings.png";
 
 type SettingBarProps = {
   focusButton: string | null;
@@ -24,7 +28,7 @@ function SettingBar({ focusButton }: SettingBarProps) {
           focusButton === "order" ? "bar__button__focus" : "bar__button"
         }
       >
-        <FontAwesomeIcon icon={faUtensils} className="bar__icon" />
+        <img src={OrderIcon} alt="Order Icon" className="bar__icon" />
         <div>厨房</div>
       </Link>
 
@@ -35,7 +39,7 @@ function SettingBar({ focusButton }: SettingBarProps) {
           focusButton === "payment" ? "bar__button__focus" : "bar__button"
         }
       >
-        <FontAwesomeIcon icon={faCashRegister} className="bar__icon" />
+        <img src={CasherIcon} alt="Casher Icon" className="bar__icon" />
         <div>会計</div>
       </Link>
       <div className="bar__line"></div>
@@ -45,7 +49,7 @@ function SettingBar({ focusButton }: SettingBarProps) {
           focusButton === "sales" ? "bar__button__focus" : "bar__button"
         }
       >
-        <FontAwesomeIcon icon={faChartLine} className="bar__icon" />
+        <img src={SalesAnalysisIcon} alt="SalesAnalysis Icon" className="bar__icon" />
         <div>売上分析</div>
       </Link>
       <div className="bar__line"></div>
@@ -64,8 +68,7 @@ function SettingBar({ focusButton }: SettingBarProps) {
         className={
           focusButton === "settings" ? "bar__button__focus" : "bar__button"
         }
-      >
-        <FontAwesomeIcon icon={faCog} className="bar__icon" />
+      ><img src={SettingsIcon} alt="Settings Icon" className="bar__icon" />
         <div>設定</div>
       </Link>
       <div></div>
