@@ -4,11 +4,25 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
+  margin-left: 9%;
+  width: 91%;
   background-color: #f8f8f8;
 }
 
 .title {
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
+  font-weight: 500;
+  font-size: 26px;
+}
+
+.purchased-items-container .payment__itemBox {
+  height: 60%;
+  width: 70%;
+  border: 0.5px solid #aaaaaa;
+}
+
+.purchased-items-container .payment__icon {
+  width: 20px;
 }
 
 .item {
@@ -29,8 +43,6 @@
 .confirm-button,
 .return-button,
 .change-button {
-  width: 98px;
-  height: 55px;
   padding: 1rem;
   font-size: 1.2rem;
   border: none;
@@ -39,27 +51,55 @@
 }
 
 .return-button {
-  margin-left: 1rem;
-  background-color: #ff0000;
+  width: 240px;
+  height: 55px;
+  background-color: #e6e6e6;
+  margin-left: 3%;      
+  margin-right: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.purchased-items-container .payment__priceArea {
+  font-weight: 500;
+  padding: 10px;
 }
 
 .purchased-items-container .payment__totalPrice {
   font-size: 30px;
-  font-weight: 500;
+  padding-left: 20px;
+  padding-right: 10px;
 }
 
 .purchased-items-container .payment__tax {
-  font-size: 20px;
+  font-size: 24px;
   font-weight: 500;
 }
 
+.purchased-items-container .payment__buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .purchased-items-container .change-button {
-background-color: #aaaaaa;
+  background-color: #d0d0d0;
   color: #222222;
   margin-right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 98px;
+  height: 55px;
 }
 
 .purchased-items-container .confirm-button {
-background-color: #ffe165;
+  background-color: #ffe165;
   color: #222222;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 98px;
+  height: 55px;
 }

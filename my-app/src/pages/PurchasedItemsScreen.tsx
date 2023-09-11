@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useLocation, useParams } from "react-router-dom";
 import "./PurchasedItemsScreen.css";
 import SettingBar from "../header/SettingBar";
+import ArrowIcon from "../../src/components/images/arrowhead-thin-outline-to-the-left.png";
 
 /*{
 interface Item {
@@ -144,31 +145,39 @@ const PurchasedItemsScreen: React.FC = () => {
   }
 
   return (
+    <div>
+    <SettingBar focusButton="payment" />
     <div className="purchased-items-container">
-      <SettingBar focusButton="payment" />
       <button onClick={handleReturn} className="return-button">
-        戻る
+        <img src={ArrowIcon} alt="Arrow Icon" className="payment__icon" />
+        QRコード番号: {tableNumber}
       </button>
       <h1 className="title">商品内容をお確かめください（税込）</h1>
-      {items.map((item, index) => (
+      <div className="payment__itemBox">
+        {items.map((item, index) => (
         <div key={index} className="item">
           <p className="item-name">{item.name}</p>
           <p className="item-price">{item.price}</p>
         </div>
       ))}
-      <div className="payment__totalPrice">
-        <span>合計金額: {totalPrice}円 <span className="payment__tax">(税込)</span></span>
       </div>
-      <div>
+      
+      <div className="payment__priceArea">
+        <span>
+          <span className="payment__tax">合計金額</span>
+          <span className="payment__totalPrice">{totalPrice}円</span>
+          <span className="payment__tax">(税込)</span>
+        </span>
+      </div>
+      <div className="payment__buttons">
         <button onClick={handleConfirm} className="change-button">
-        変更
-      </button>
-      <button onClick={handleConfirm} className="confirm-button">
-        次へ
-      </button>
+          変更
+        </button>
+        <button onClick={handleConfirm} className="confirm-button">
+          次へ
+        </button>
       </div>
-      
-      
+    </div>
     </div>
   );
 };

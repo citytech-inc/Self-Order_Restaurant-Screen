@@ -49,7 +49,11 @@ function SettingBar({ focusButton }: SettingBarProps) {
           focusButton === "sales" ? "bar__button__focus" : "bar__button"
         }
       >
-        <img src={SalesAnalysisIcon} alt="SalesAnalysis Icon" className="bar__icon" />
+        <img
+          src={SalesAnalysisIcon}
+          alt="SalesAnalysis Icon"
+          className="bar__icon"
+        />
         <div>売上分析</div>
       </Link>
       <div className="bar__line"></div>
@@ -68,7 +72,8 @@ function SettingBar({ focusButton }: SettingBarProps) {
         className={
           focusButton === "settings" ? "bar__button__focus" : "bar__button"
         }
-      ><img src={SettingsIcon} alt="Settings Icon" className="bar__icon" />
+      >
+        <img src={SettingsIcon} alt="Settings Icon" className="bar__icon" />
         <div>設定</div>
       </Link>
       <div></div>
