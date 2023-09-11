@@ -7,22 +7,41 @@
   background-color: #f8f8f8;
 }
 
-.title {
+.table-number-container .title {
   margin-bottom: 2rem;
+  font-size: 25px;
 }
 
-.table-number-input {
-  margin-bottom: 1rem;
-  padding: 1rem;
-  font-size: 1.2rem;
+.table-number-container .container__form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
-.submit-button {
+.table-number-container .table-number-input {
   padding: 1rem;
+  margin-right: 10px;
   font-size: 1.2rem;
-  background-color: #0080ff;
-  color: white;
-  border: none;
+  border: 0.5px solid #aaaaaa;
   border-radius: 5px;
-  cursor: pointer;
 }
+
+.table-number-container .submit-button {
+  width: 98px;
+  height: 55px;
+  padding: 1rem;
+  font-size: 1.2rem;
+  background-color: #ffe165;
+  color: #222222;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.table-number-input:focus {
+  outline: none; 
+}
+

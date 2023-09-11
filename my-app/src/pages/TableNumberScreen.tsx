@@ -28,7 +28,7 @@ const TableNumberScreen: React.FC<TableNumberScreenProps> = () => {
     <div className="table-number-container">
       <SettingBar focusButton="payment" />
       <h1 className="title">座席番号を入力してください</h1>
-      <form onSubmit={handleSubmit}>
+      <form className="container__form" onSubmit={handleSubmit}>
         <input
           type="text"
           value={tableNumber}

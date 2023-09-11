@@ -6,7 +6,7 @@
   height: 100%;
 }
 
-.title {
+.displayArea .title {
   writing-mode: vertical-rl;
   text-orientation: upright;
   margin-right: 10px;
@@ -14,7 +14,7 @@
   padding-right: 10px;
 }
 
-.orderContainer {
+.displayArea .orderContainer {
   display: flex;
   overflow-x: scroll;
   gap: 10px;
