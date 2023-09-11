@@ -42,3 +42,13 @@
   margin-left: 1rem;
   background-color: #ff0000;
 }
+
+.purchased-items-container .payment__totalPrice {
+  font-size: 30px;
+  font-weight: 500;
+}
+
+.purchased-items-container .payment__tax {
+  font-size: 20px;
+  font-weight: 500;
+}

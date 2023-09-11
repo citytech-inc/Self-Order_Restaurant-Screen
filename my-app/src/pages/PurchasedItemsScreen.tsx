@@ -146,22 +146,29 @@ const PurchasedItemsScreen: React.FC = () => {
   return (
     <div className="purchased-items-container">
       <SettingBar focusButton="payment" />
-      <h1 className="title">商品内容をお確かめください</h1>
+      <button onClick={handleReturn} className="return-button">
+        戻る
+      </button>
+      <h1 className="title">商品内容をお確かめください（税込）</h1>
       {items.map((item, index) => (
         <div key={index} className="item">
           <p className="item-name">{item.name}</p>
           <p className="item-price">{item.price}</p>
         </div>
       ))}
-      <div className="total-price">
-        <h2>合計: ¥{totalPrice}</h2>
+      <div className="payment__totalPrice">
+        <span>合計金額: {totalPrice}円 <span className="payment__tax">(税込)</span></span>
       </div>
+      <div>
+        <button onClick={handleConfirm} className="confirm-button">
+        次へ
+      </button>
       <button onClick={handleConfirm} className="confirm-button">
         次へ
       </button>
-      <button onClick={handleReturn} className="return-button">
-        戻る
-      </button>
+      </div>
+      
+      
     </div>
   );
 };
