@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import React, { useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import "./SettingBar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -19,11 +20,14 @@ type SettingBarProps = {
 };
 
 function SettingBar({ focusButton }: SettingBarProps) {
+  const { restaurantId } = useParams();
+  //const navigate = useNavigate();
+
   return (
     <div className="settings-bar">
       <div></div>
       <Link
-        to="/:restaurantId/order"
+        to={`/${restaurantId}/order`}
         className={
           focusButton === "order" ? "bar__button__focus" : "bar__button"
         }
@@ -34,7 +38,7 @@ function SettingBar({ focusButton }: SettingBarProps) {
 
       <div className="bar__line"></div>
       <Link
-        to="/:restaurantId/table-number"
+        to={`/${restaurantId}/table-number`}
         className={
           focusButton === "payment" ? "bar__button__focus" : "bar__button"
         }
@@ -44,7 +48,7 @@ function SettingBar({ focusButton }: SettingBarProps) {
       </Link>
       <div className="bar__line"></div>
       <Link
-        to="/:restaurantId/sales-analysis"
+        to={`/${restaurantId}/sales-analysis`}
         className={
           focusButton === "sales" ? "bar__button__focus" : "bar__button"
         }
@@ -58,7 +62,7 @@ function SettingBar({ focusButton }: SettingBarProps) {
       </Link>
       <div className="bar__line"></div>
       <Link
-        to="/:restaurantId/add-menu"
+        to={`/${restaurantId}/add-menu`}
         className={
           focusButton === "menu" ? "bar__button__focus" : "bar__button"
         }
@@ -68,7 +72,7 @@ function SettingBar({ focusButton }: SettingBarProps) {
       </Link>
       <div className="bar__line"></div>
       <Link
-        to="/:restaurantId/settings"
+        to={`/${restaurantId}/settings`}
         className={
           focusButton === "settings" ? "bar__button__focus" : "bar__button"
         }
