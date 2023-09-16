@@ -17,6 +17,7 @@ interface Order {
 }
 }*/
 
+/*{
 interface MenuItem {
   name: string;
   price: number;
@@ -41,6 +42,48 @@ interface Id {
 interface OrderData {
   items: MenuItem[];
   ids: Id[];
+}
+}*/
+
+interface MenuItem {
+  name: string;
+  price: number;
+  image: string;
+  settings: {
+    [key: string]: {
+      name: string;
+      options: {
+        [key: string]: [string, number];
+      }[];
+      default: number;
+      selected: number;
+      values: {
+        [key: string]: [string, number] ;
+      };
+      type: number;
+    };
+  };
+  itemNumber: number;
+}
+
+interface Id {
+  restaurantId: number;
+  tableId: number;
+}
+
+interface Time {
+  yearTime: number;
+  monthTime: number;
+  dayTime: number;
+  dateTime: number;
+  hourTime: number;
+  minuteTime: number;
+}
+
+interface OrderData {
+  items: MenuItem[];
+  ids: Id[];
+  timestamp: Time[];
 }
 
 /*{
@@ -79,7 +122,7 @@ const PurchasedItemsScreen: React.FC = () => {
         );
         console.log("リクエストを受信しました");
         const data = await response.json();
-        console.log("受信したデータ:", data);
+        console.log("受信したデータ:", JSON.stringify(data));
         setTableOrders(data);
       } catch (error: any) {
         console.log("エラー", error.message);
@@ -137,12 +180,84 @@ const PurchasedItemsScreen: React.FC = () => {
   console.log("tableNumber:", tableNumber);
 
   let items: MenuItem[] = [];
-  let totalPrice = 0;
+  //let totalPrice = 0;
 
-  if (currentOrders.length > 0) {
-    items = currentOrders.flatMap((order) => order.items);
-    totalPrice = items.reduce((total, item) => total + item.price, 0);
+  // 注文データを処理してトッピング情報を取得する関数
+  function extractToppingsFromOrder(orderData: OrderData): string {
+    let toppingsInfo = '';
+
+    //console.log("func-orderData.items", JSON.stringify(orderData.items));
+
+    for (const order of orderData.items) {
+      //console.log("func-order", JSON.stringify(order));
+      for (const settingsKey in order.settings) {
+        const settings = order.settings[settingsKey];
+        if (settings.options) {
+          for (const option of settings.options) {
+            if (typeof option.selected === 'number' && typeof option.type === 'number'  && option.selected !== option.default) {
+              if (option.type === 1) {
+                const value = option.values[option.selected]
+                toppingsInfo += `${value}, 0 \n`;
+              }
+              else if (option.type === 2) {
+                const value = option.values[option.selected];
+                toppingsInfo += `${value} \n`;
+              }
+              else if (option.type === 3 && typeof option.price === 'number') {
+                const name = option.name;
+                const selected = option.selected;
+                const measureWord = option.measureWord || '';
+                const price = option.price * selected;
+                toppingsInfo += `${name} × ${selected} ${measureWord} (${price})\n`;
+              }
+            }
+          }
+        }
+      }
+      toppingsInfo += '\n';
+    }
+
+    return toppingsInfo;
   }
+
+  // 注文データを処理してトッピングの合計金額を計算する関数
+  function calculateToppingsPrice(orderData: OrderData): number {
+    console.log("func");
+    let toppingsPrice = 0;
+    for (const order of orderData.items) {
+      for (const settingsKey in order.settings) {
+        const settings = order.settings[settingsKey];
+        if (settings.options) {
+          for (const option of settings.options) {
+            if (typeof option.selected === 'number' && typeof option.type === 'number' && option.selected !== option.default) {
+              if (option.type === 2) {
+                const selectedOption = option.values[option.selected];
+                if (Array.isArray(selectedOption) && typeof selectedOption[1] === 'number') {
+                  toppingsPrice += selectedOption[1];
+                }
+              } else if (option.type === 3 && typeof option.price === 'number') {
+                // オプションの価格をトッピング合計に加算
+                toppingsPrice += (option.price * option.selected);
+              }
+            }
+          }
+        }
+      }
+    }
+    return toppingsPrice;
+  }
+
+
+
+  items = currentOrders.flatMap(order => order.items).flat();
+  const totalPriceMainMenu = items.reduce((total, item) => total + item.price, 0);
+  let totalPriceSettings = 0;
+  for (const currentOrder of currentOrders) {
+    totalPriceSettings += calculateToppingsPrice(currentOrder)    
+  }
+  const totalPrice = totalPriceMainMenu + totalPriceSettings
+
+  console.log("items", items);
 
   return (
     <div>
@@ -154,10 +269,11 @@ const PurchasedItemsScreen: React.FC = () => {
       </button>
       <h1 className="title">商品内容をお確かめください（税込）</h1>
       <div className="payment__itemBox">
-        {items.map((item, index) => (
+        {currentOrders.map((item, index) => (
         <div key={index} className="item">
-          <p className="item-name">{item.name}</p>
-          <p className="item-price">{item.price}</p>
+          <p className="item-name">{item.items[0].name}</p>
+          <p className="item-settings">{extractToppingsFromOrder(item)}</p>
+          <p className="item-price">{item.items[0].price}</p>
         </div>
       ))}
       </div>
