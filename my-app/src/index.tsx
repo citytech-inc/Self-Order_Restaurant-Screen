@@ -10,6 +10,7 @@ import PurchasedItemsScreen from "./pages/PurchasedItemsScreen";
 import TableNumberScreen from "./pages/TableNumberScreen";
 import AddMenuScreen from "./pages/AddMenuScreen";
 import OrderScreen from "./pages/OrderScreen";
+import SalesAnalysis from "./pages/SalesAnalysis";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement,
@@ -34,6 +35,10 @@ root.render(
         <Route
           path=":restaurantId/add-menu"
           element={<AddMenuScreen />}
+        />
+        <Route
+          path=":restaurantId/sales-analysis"
+          element={<SalesAnalysis />}
         />
         <Route path="/:restaurantId/order" element={<OrderScreen />} />
       </Routes>
