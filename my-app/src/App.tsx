@@ -6,6 +6,7 @@ import TableNumberScreen from "./pages/TableNumberScreen";
 import PleaseWaitScreen from "./pages/PleaseWaitScreen";
 import PurchasedItemsScreen from "./pages/PurchasedItemsScreen";
 import AddMenuScreenNewNew from "./pages/AddMenuScreen";
+import SalesAnalysis from "./pages/SalesAnalysis";
 
 const App = () => {
   return (
@@ -30,6 +31,10 @@ const App = () => {
         <Route
           path=":restaurantId/add-menu"
           element={<AddMenuScreenNewNew />}
+        />
+        <Route
+          path=":restaurantId/sales-analysis"
+          element={<SalesAnalysis />}
         />
       </Routes>
     </BrowserRouter>
