@@ -3,36 +3,10 @@ import { useNavigate, useLocation, useParams } from "react-router-dom";
 import "./PurchasedItemsScreen.css";
 import SettingBar from "../header/SettingBar";
 import ArrowIcon from "../../src/components/images/arrowhead-thin-outline-to-the-left.png";
+import ConfirmPaymentPopup from "./../popups/ConfirmPaymentPopup";
+import CompletePaymentPopup from "./../popups/CompletePaymentPopup";
 
-/*{
-interface Item {
-  name: string;
-  price: number;
-}
 
-/*{
-interface Order {
-  tableNumber: number;
-  items: Item[];
-}
-}*/
-
-/*{
-interface MenuItem {
-  name: string;
-  price: number;
-  image: string;
-  settings: {
-    [key: string]: {
-      name: string;
-      options: {
-        [key: string]: [string, number];
-      }[];
-      default: number;
-    };
-  };
-  itemNumber: number;
-}
 
 interface Id {
   restaurantId: number;
@@ -43,7 +17,6 @@ interface OrderData {
   items: MenuItem[];
   ids: Id[];
 }
-}*/
 
 interface MenuItem {
   name: string;
@@ -86,17 +59,6 @@ interface OrderData {
   timestamp: Time[];
 }
 
-/*{
-//テーブルごとの合計金額を計算する関数
-const calculateTotalPriceForTable = (tableNumber: number, tableOrders: OrderData[]): number => {
-  const order = tableOrders.find((order) => order.ids[0].tableId === tableNumber);
-  if (!order) {
-    return 0;
-  }
-  return order.items.reduce((total, item) => total + item.price, 0)
-};
-}*/
-
 const PurchasedItemsScreen: React.FC = () => {
   const { restaurantId } = useParams();
   const cleanedRestaurantId = restaurantId?.replace(":", "");
@@ -105,6 +67,13 @@ const PurchasedItemsScreen: React.FC = () => {
   const [tableNumber, setTableNumber] = useState(0);
   const [tableOrders, setTableOrders] = useState<OrderData[]>([]);
   const [focusButton, setFocusButton] = useState<string | null>(null);
+  const [confirmPaymentPopup, setConfirmPaymentPopup] = useState(false);
+  const [completePaymentPopup, setCompletePaymentPopup] = useState(false);
+
+  const completePayment = () => {
+    setCompletePaymentPopup(false);
+    navigate(`/${restaurantId}/table-number`);
+  };
 
   useEffect(() => {
     if (location.state && location.state.tableNumber) {
@@ -165,6 +134,8 @@ const PurchasedItemsScreen: React.FC = () => {
     } catch (error) {
       console.log("エラー", error);
     }
+
+    setConfirmPaymentPopup(true)
   };
 
   const handleReturn = () => {
@@ -261,6 +232,21 @@ const PurchasedItemsScreen: React.FC = () => {
 
   return (
     <div>
+      {confirmPaymentPopup && (
+        <ConfirmPaymentPopup
+          function={{
+            closeConfirmPayment: setConfirmPaymentPopup,
+            openCompletePayment: setCompletePaymentPopup,
+          }}
+        />
+      )}
+      {completePaymentPopup && (
+        <CompletePaymentPopup
+          function={{
+            closeCompletePayment: completePayment,
+          }}
+        />
+      )}
     <SettingBar focusButton="payment" />
     <div className="purchased-items-container">
       <button onClick={handleReturn} className="return-button">
