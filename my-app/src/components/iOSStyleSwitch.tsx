@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
-import './iOSStyleSwitch.css';
+import React, { useState } from "react";
+import "./iOSStyleSwitch.css";
 
 interface Props {
   defaultChecked?: boolean;
   onChange?: (checked: boolean) => void;
 }
 
-const IOSStyleSwitch: React.FC<Props> = ({ defaultChecked = false, onChange }) => {
+const IOSStyleSwitch: React.FC<Props> = ({
+  defaultChecked = false,
+  onChange,
+}) => {
   const [isChecked, setIsChecked] = useState(defaultChecked);
 
   const toggleSwitch = () => {
@@ -15,7 +18,10 @@ const IOSStyleSwitch: React.FC<Props> = ({ defaultChecked = false, onChange }) =
   };
 
   return (
-    <div className={`switch ${isChecked ? 'on' : 'off'}`} onClick={toggleSwitch}>
+    <div
+      className={`switch ${isChecked ? "on" : "off"}`}
+      onClick={toggleSwitch}
+    >
       <div className="thumb" />
     </div>
   );

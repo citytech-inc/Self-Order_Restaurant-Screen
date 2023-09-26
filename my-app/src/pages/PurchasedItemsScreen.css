@@ -6,7 +6,7 @@
   height: 100vh;
   margin-left: 9%;
   width: 91%;
-  background-color: #FFFEFB;
+  background-color: #fffefb;
 }
 
 .please-wait-container .title {
@@ -55,7 +55,7 @@
   width: 240px;
   height: 55px;
   background-color: #e6e6e6;
-  margin-left: 3%;      
+  margin-left: 3%;
   margin-right: auto;
   display: flex;
   align-items: center;

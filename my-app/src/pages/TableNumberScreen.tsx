@@ -26,23 +26,22 @@ const TableNumberScreen: React.FC<TableNumberScreenProps> = () => {
 
   return (
     <div>
-    <SettingBar focusButton="payment" />
-    <div className="table-number-container">
-      
-      <h1 className="title">QRコード番号を入力してください</h1>
-      <form className="container__form" onSubmit={handleSubmit}>
-        <input
-          type="text"
-          value={tableNumber}
-          onChange={handleTableNumberChange}
-          className="table-number-input"
-          placeholder="QR number"
-        />
-        <button type="submit" className="submit-button">
-          次へ
-        </button>
-      </form>
-    </div>
+      <SettingBar focusButton="payment" />
+      <div className="table-number-container">
+        <h1 className="title">QRコード番号を入力してください</h1>
+        <form className="container__form" onSubmit={handleSubmit}>
+          <input
+            type="text"
+            value={tableNumber}
+            onChange={handleTableNumberChange}
+            className="table-number-input"
+            placeholder="QR number"
+          />
+          <button type="submit" className="submit-button">
+            次へ
+          </button>
+        </form>
+      </div>
     </div>
   );
 };

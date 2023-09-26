@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from 'react-router-dom';
+import { useParams } from "react-router-dom";
 import "./OrderScreen.css";
 import { DisplayArea } from "../components/DisplayArea";
 import SettingBar from "../header/SettingBar";
-import IOSStyleSwitch from '../components/iOSStyleSwitch';
+import IOSStyleSwitch from "../components/iOSStyleSwitch";
 
 interface Order {
   id: string;
@@ -12,6 +12,7 @@ interface Order {
   settings: string[];
   hourTime: number;
   minuteTime: number;
+  isDeleted?: boolean;
 }
 
 interface MenuItem {
@@ -49,7 +50,6 @@ interface Time {
   minuteTime: number;
 }
 
-
 interface OrderData {
   items: MenuItem[][];
   ids: Id[];
@@ -63,7 +63,11 @@ function OrderScreen() {
   const cleanedRestaurantId = restaurantId?.replace(":", "");
 
   const handleDelete = (id: string) => {
-    setOrders((orders) => orders.filter((order) => order.id !== id));
+    setOrders((prevOrders) =>
+      prevOrders.map((order) =>
+        order.id === id ? { ...order, isDeleted: !order.isDeleted } : order,
+      ),
+    );
   };
 
   useEffect(() => {
@@ -77,10 +81,12 @@ function OrderScreen() {
           const tableIdNumber = orderData.ids[0].tableId;
           const tableIdString = tableIdNumber.toString();
 
-          const currentTimeHour = orderData.timestamp[0].hourTime
-          const currentTimeMinute = orderData.timestamp[0].minuteTime
-          
-          if (orderData.ids[0].restaurantId.toString() === cleanedRestaurantId) {
+          const currentTimeHour = orderData.timestamp[0].hourTime;
+          const currentTimeMinute = orderData.timestamp[0].minuteTime;
+
+          if (
+            orderData.ids[0].restaurantId.toString() === cleanedRestaurantId
+          ) {
             const newOrders: Order[] = [];
 
             for (const item of orderData.items[0]) {
@@ -88,31 +94,45 @@ function OrderScreen() {
 
               for (const key in item.settings) {
                 const options = item.settings[key].options;
-                
-                for (const option of options){
-                  console.log("4-option.type", option.type)
+
+                for (const option of options) {
+                  console.log("4-option.type", option.type);
                   console.log("4-option", option);
 
                   //typeに分けて表示方法を変更
-                  if (typeof option.type === 'number' && typeof option.selected === 'number' && option.type === 1 && option.default !== option.selected) {
+                  if (
+                    typeof option.type === "number" &&
+                    typeof option.selected === "number" &&
+                    option.type === 1 &&
+                    option.default !== option.selected
+                  ) {
                     const value = option.values[option.selected];
                     console.log("5-1-value", value);
                     if (value) {
                       settings.push(`${option.name}: ${value}`);
                     }
-                  } else if (typeof option.type === 'number' && typeof option.selected === 'number' && option.type === 2 && option.default !== option.selected) {
+                  } else if (
+                    typeof option.type === "number" &&
+                    typeof option.selected === "number" &&
+                    option.type === 2 &&
+                    option.default !== option.selected
+                  ) {
                     const value = option.values[option.selected];
                     console.log("5-2-value", value);
-                    if (value && typeof value === 'string') {
+                    if (value && typeof value === "string") {
                       settings.push(`${option.name}: ${value}`);
                     }
-                  } else if (typeof option.type === 'number' && option.type === 3 && option.default !== option.selected) {
+                  } else if (
+                    typeof option.type === "number" &&
+                    option.type === 3 &&
+                    option.default !== option.selected
+                  ) {
                     console.log("5-3");
                     settings.push(`${option.name} × ${option.selected}`);
                   }
                 }
               }
-              console.log("settings", settings)
+              console.log("settings", settings);
               const newOrder: Order = {
                 id: tableIdString,
                 order: item.name,
@@ -127,11 +147,11 @@ function OrderScreen() {
             console.log("受信した注文データ", JSON.stringify(orderData));
             console.log("作成した注文データ", newOrders);
 
-            setOrders(prevOrders => [...prevOrders, ...newOrders]);
+            setOrders((prevOrders) => [...prevOrders, ...newOrders]);
           }
         }
       } catch (error) {
-        console.error('受信したメッセージのパースに失敗しました:', error);
+        console.error("受信したメッセージのパースに失敗しました:", error);
       }
     };
 
@@ -145,39 +165,56 @@ function OrderScreen() {
   return (
     <div>
       <SettingBar focusButton="order" />
-    
+
       <div className="OrderScreen">
         <div className="order__button">
           <text className="order__buttonText">
             {isChecked ? "削除済み" : "提供待ち"}
           </text>
-          <IOSStyleSwitch 
-            defaultChecked={isChecked} 
+          <IOSStyleSwitch
+            defaultChecked={isChecked}
             onChange={(newState: boolean) => {
               setIsChecked(newState);
             }}
           />
         </div>
-      
+
         <div className="order__areas">
           <DisplayArea
             title="メインメニュー"
-            orders={orders.filter((o) => o.type === "main")}
+            orders={orders.filter((o) =>
+              isChecked
+                ? o.isDeleted && o.type === "main"
+                : !o.isDeleted && o.type === "main",
+            )}
             onDelete={handleDelete}
           />
+
           <DisplayArea
             title="サイドメニュー"
-            orders={orders.filter((o) => o.type === "side")}
+            orders={orders.filter((o) =>
+              isChecked
+                ? o.isDeleted && o.type === "side"
+                : !o.isDeleted && o.type === "side",
+            )}
             onDelete={handleDelete}
           />
           <DisplayArea
             title="ドリンク"
-            orders={orders.filter((o) => o.type === "drink")}
+            orders={orders.filter((o) =>
+              isChecked
+                ? o.isDeleted && o.type === "drink"
+                : !o.isDeleted && o.type === "drink",
+            )}
             onDelete={handleDelete}
           />
           <DisplayArea
             title="食後提供"
-            orders={orders.filter((o) => o.type === "afterMeal")}
+            orders={orders.filter((o) =>
+              isChecked
+                ? o.isDeleted && o.type === "afterMeal"
+                : !o.isDeleted && o.type === "afterMeal",
+            )}
             onDelete={handleDelete}
           />
         </div>

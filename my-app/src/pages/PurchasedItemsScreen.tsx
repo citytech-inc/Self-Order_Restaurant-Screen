@@ -6,8 +6,6 @@ import ArrowIcon from "../../src/components/images/arrowhead-thin-outline-to-the
 import ConfirmPaymentPopup from "./../popups/ConfirmPaymentPopup";
 import CompletePaymentPopup from "./../popups/CompletePaymentPopup";
 
-
-
 interface Id {
   restaurantId: number;
   tableId: number;
@@ -31,7 +29,7 @@ interface MenuItem {
       default: number;
       selected: number;
       values: {
-        [key: string]: [string, number] ;
+        [key: string]: [string, number];
       };
       type: number;
     };
@@ -135,7 +133,7 @@ const PurchasedItemsScreen: React.FC = () => {
       console.log("エラー", error);
     }
 
-    setConfirmPaymentPopup(true)
+    setConfirmPaymentPopup(true);
   };
 
   const handleReturn = () => {
@@ -155,7 +153,7 @@ const PurchasedItemsScreen: React.FC = () => {
 
   // 注文データを処理してトッピング情報を取得する関数
   function extractToppingsFromOrder(orderData: OrderData): string {
-    let toppingsInfo = '';
+    let toppingsInfo = "";
 
     //console.log("func-orderData.items", JSON.stringify(orderData.items));
 
@@ -165,19 +163,24 @@ const PurchasedItemsScreen: React.FC = () => {
         const settings = order.settings[settingsKey];
         if (settings.options) {
           for (const option of settings.options) {
-            if (typeof option.selected === 'number' && typeof option.type === 'number'  && option.selected !== option.default) {
+            if (
+              typeof option.selected === "number" &&
+              typeof option.type === "number" &&
+              option.selected !== option.default
+            ) {
               if (option.type === 1) {
-                const value = option.values[option.selected]
+                const value = option.values[option.selected];
                 toppingsInfo += `${value}, 0 \n`;
-              }
-              else if (option.type === 2) {
+              } else if (option.type === 2) {
                 const value = option.values[option.selected];
                 toppingsInfo += `${value} \n`;
-              }
-              else if (option.type === 3 && typeof option.price === 'number') {
+              } else if (
+                option.type === 3 &&
+                typeof option.price === "number"
+              ) {
                 const name = option.name;
                 const selected = option.selected;
-                const measureWord = option.measureWord || '';
+                const measureWord = option.measureWord || "";
                 const price = option.price * selected;
                 toppingsInfo += `${name} × ${selected} ${measureWord} (${price})\n`;
               }
@@ -185,7 +188,7 @@ const PurchasedItemsScreen: React.FC = () => {
           }
         }
       }
-      toppingsInfo += '\n';
+      toppingsInfo += "\n";
     }
 
     return toppingsInfo;
@@ -200,15 +203,25 @@ const PurchasedItemsScreen: React.FC = () => {
         const settings = order.settings[settingsKey];
         if (settings.options) {
           for (const option of settings.options) {
-            if (typeof option.selected === 'number' && typeof option.type === 'number' && option.selected !== option.default) {
+            if (
+              typeof option.selected === "number" &&
+              typeof option.type === "number" &&
+              option.selected !== option.default
+            ) {
               if (option.type === 2) {
                 const selectedOption = option.values[option.selected];
-                if (Array.isArray(selectedOption) && typeof selectedOption[1] === 'number') {
+                if (
+                  Array.isArray(selectedOption) &&
+                  typeof selectedOption[1] === "number"
+                ) {
                   toppingsPrice += selectedOption[1];
                 }
-              } else if (option.type === 3 && typeof option.price === 'number') {
+              } else if (
+                option.type === 3 &&
+                typeof option.price === "number"
+              ) {
                 // オプションの価格をトッピング合計に加算
-                toppingsPrice += (option.price * option.selected);
+                toppingsPrice += option.price * option.selected;
               }
             }
           }
@@ -218,15 +231,16 @@ const PurchasedItemsScreen: React.FC = () => {
     return toppingsPrice;
   }
 
-
-
-  items = currentOrders.flatMap(order => order.items).flat();
-  const totalPriceMainMenu = items.reduce((total, item) => total + item.price, 0);
+  items = currentOrders.flatMap((order) => order.items).flat();
+  const totalPriceMainMenu = items.reduce(
+    (total, item) => total + item.price,
+    0,
+  );
   let totalPriceSettings = 0;
   for (const currentOrder of currentOrders) {
-    totalPriceSettings += calculateToppingsPrice(currentOrder)    
+    totalPriceSettings += calculateToppingsPrice(currentOrder);
   }
-  const totalPrice = totalPriceMainMenu + totalPriceSettings
+  const totalPrice = totalPriceMainMenu + totalPriceSettings;
 
   console.log("items", items);
 
@@ -247,39 +261,39 @@ const PurchasedItemsScreen: React.FC = () => {
           }}
         />
       )}
-    <SettingBar focusButton="payment" />
-    <div className="purchased-items-container">
-      <button onClick={handleReturn} className="return-button">
-        <img src={ArrowIcon} alt="Arrow Icon" className="payment__icon" />
-        QRコード番号: {tableNumber}
-      </button>
-      <h1 className="title">商品内容をお確かめください（税込）</h1>
-      <div className="payment__itemBox">
-        {currentOrders.map((item, index) => (
-        <div key={index} className="item">
-          <p className="item-name">{item.items[0].name}</p>
-          <p className="item-settings">{extractToppingsFromOrder(item)}</p>
-          <p className="item-price">{item.items[0].price}</p>
+      <SettingBar focusButton="payment" />
+      <div className="purchased-items-container">
+        <button onClick={handleReturn} className="return-button">
+          <img src={ArrowIcon} alt="Arrow Icon" className="payment__icon" />
+          QRコード番号: {tableNumber}
+        </button>
+        <h1 className="title">商品内容をお確かめください（税込）</h1>
+        <div className="payment__itemBox">
+          {currentOrders.map((item, index) => (
+            <div key={index} className="item">
+              <p className="item-name">{item.items[0].name}</p>
+              <p className="item-settings">{extractToppingsFromOrder(item)}</p>
+              <p className="item-price">{item.items[0].price}</p>
+            </div>
+          ))}
         </div>
-      ))}
+
+        <div className="payment__priceArea">
+          <span>
+            <span className="payment__tax">合計金額</span>
+            <span className="payment__totalPrice">{totalPrice}円</span>
+            <span className="payment__tax">(税込)</span>
+          </span>
+        </div>
+        <div className="payment__buttons">
+          <button onClick={handleConfirm} className="change-button">
+            変更
+          </button>
+          <button onClick={handleConfirm} className="confirm-button">
+            次へ
+          </button>
+        </div>
       </div>
-      
-      <div className="payment__priceArea">
-        <span>
-          <span className="payment__tax">合計金額</span>
-          <span className="payment__totalPrice">{totalPrice}円</span>
-          <span className="payment__tax">(税込)</span>
-        </span>
-      </div>
-      <div className="payment__buttons">
-        <button onClick={handleConfirm} className="change-button">
-          変更
-        </button>
-        <button onClick={handleConfirm} className="confirm-button">
-          次へ
-        </button>
-      </div>
-    </div>
     </div>
   );
 };

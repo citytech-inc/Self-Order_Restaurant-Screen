@@ -4,7 +4,13 @@ import "./DisplayArea.css";
 
 interface DisplayAreaProps {
   title: string;
-  orders: Array<{ id: string; order: string; settings: string[]; hourTime: number; minuteTime: number; }>;
+  orders: Array<{
+    id: string;
+    order: string;
+    settings: string[];
+    hourTime: number;
+    minuteTime: number;
+  }>;
   onDelete: (id: string) => void;
 }
 

@@ -1,7 +1,9 @@
 import React from "react";
 import "./CompletePaymentPopup";
 
-function CompletePaymentPopup(props: { function: { closeCompletePayment: (arg0: boolean) => void; }; }) {
+function CompletePaymentPopup(props: {
+  function: { closeCompletePayment: (arg0: boolean) => void };
+}) {
   const orderFunc = () => {
     props.function.closeCompletePayment(false);
   };
