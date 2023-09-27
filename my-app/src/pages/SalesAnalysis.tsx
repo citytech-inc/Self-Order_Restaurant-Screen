@@ -3,6 +3,7 @@ import { useNavigate, useLocation, useParams } from "react-router-dom";
 import "./SalesAnalysis.css";
 import SettingBar from "../header/SettingBar";
 import ArrowIcon from "../../src/components/images/arrowhead-thin-outline-to-the-left.png";
+
 import { Chart, registerables } from "chart.js"
 import { Bar } from 'react-chartjs-2';
 import DatePicker from 'react-datepicker';
@@ -41,7 +42,8 @@ const SalesAnalysis : React.FC = () => {
         }]
     }
 
-    console.log(SalesDataSet)
+  console.log(SalesDataSet);
+
 
     const Today = new Date();
     const DayName = ["日","月","火","水","木","金","土"]
@@ -51,7 +53,8 @@ const SalesAnalysis : React.FC = () => {
     const [selectedHour, setSelectedHour] = useState(14)
     const [selectedDate, setSelectedDate] = useState<Date | null>(Today);
 
-    const [displayTable, setDisplayTable] = useState(false);
+  const [displayTable, setDisplayTable] = useState(false);
+
 
     const selectedSalesSpanChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         setSelectedSalesSpan(event.target.value);
@@ -180,10 +183,13 @@ const SalesAnalysis : React.FC = () => {
                         </div>
                     </div>
                 </div>}
+
             </div>
+          )}
         </div>
-        </div>
-    )
+      </div>
+    </div>
+  );
 };
 
 export default SalesAnalysis;

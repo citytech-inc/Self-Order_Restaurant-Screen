@@ -8,7 +8,7 @@
   height: 94%;
   width: 22%;
   border-radius: 15px;
-  background-color: #FFF1B7;
+  background-color: #fff1b7;
 }
 
 .displayArea .title {
@@ -31,7 +31,7 @@
   gap: 10px;
   flex-grow: 1;
   width: 100%;
-  background-color: #FFFEFB;
+  background-color: #fffefb;
   position: relative;
   border-bottom-right-radius: 15px;
   border-bottom-left-radius: 15px;

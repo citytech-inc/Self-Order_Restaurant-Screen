@@ -7,18 +7,18 @@
   margin-left: 9%;
   padding-left: 3%;
   padding-right: 6%;
-  background-color: #FFFEFB;
+  background-color: #fffefb;
 }
 
 .OrderScreen .order__button {
-    padding: 24px;
-    font-size: 20px;
-    display: flex;
+  padding: 24px;
+  font-size: 20px;
+  display: flex;
   flex-direction: row;
 }
 
 .OrderScreen .order__buttonText {
-    padding-right: 8px;
+  padding-right: 8px;
 }
 
 .OrderScreen .order__areas {
@@ -26,7 +26,5 @@
   flex-direction: row;
   height: 100vh;
   overflow: auto;
-  background-color: #FFFEFB;
+  background-color: #fffefb;
 }
-
-
