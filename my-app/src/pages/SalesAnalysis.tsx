@@ -185,10 +185,8 @@ const SalesAnalysis : React.FC = () => {
                 </div>}
 
             </div>
-          )}
         </div>
       </div>
-    </div>
   );
 };
 
