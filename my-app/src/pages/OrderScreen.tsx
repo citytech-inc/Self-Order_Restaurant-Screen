@@ -78,7 +78,7 @@ function OrderScreen() {
         const orderData = JSON.parse(event.data) as OrderData;
 
         if (orderData.ids && orderData.ids.length > 0) {
-          const tableIdNumber = orderData.ids[0].tableId;
+          const tableIdNumber = orderData.ids[0].tableId; //これって同時に複数のテーブルから注文があったときに大丈夫なん？
           const tableIdString = tableIdNumber.toString();
 
           const currentTimeHour = orderData.timestamp[0].hourTime;
@@ -89,59 +89,63 @@ function OrderScreen() {
           ) {
             const newOrders: Order[] = [];
 
-            for (const item of orderData.items[0]) {
-              const settings: string[] = [];
+            for (let i = 0; i < orderData.items.length; i++) {
+              for (const item of orderData.items[i]) {
+                const settings: string[] = [];
 
-              for (const key in item.settings) {
-                const options = item.settings[key].options;
+                for (const key in item.settings) {
+                  const options = item.settings[key].options;
 
-                for (const option of options) {
-                  console.log("4-option.type", option.type);
-                  console.log("4-option", option);
+                  for (const option of options) {
+                    console.log("4-option.type", option.type);
+                    console.log("4-option", option);
 
-                  //typeに分けて表示方法を変更
-                  if (
-                    typeof option.type === "number" &&
-                    typeof option.selected === "number" &&
-                    option.type === 1 &&
-                    option.default !== option.selected
-                  ) {
-                    const value = option.values[option.selected];
-                    console.log("5-1-value", value);
-                    if (value) {
-                      settings.push(`${option.name}: ${value}`);
+                    //typeに分けて表示方法を変更
+                    if (
+                      typeof option.type === "number" &&
+                      typeof option.selected === "number" &&
+                      option.type === 1 &&
+                      option.default !== option.selected
+                    ) {
+                      const value = option.values[option.selected];
+                      console.log("5-1-value", value);
+                      if (value) {
+                        settings.push(`${option.name}: ${value}`);
+                      }
+                    } else if (
+                      typeof option.type === "number" &&
+                      typeof option.selected === "number" &&
+                      option.type === 2 &&
+                      option.default !== option.selected
+                    ) {
+                      const value = option.values[option.selected];
+                      console.log("5-2-value", value);
+                      if (value && typeof value === "string") {
+                        settings.push(`${option.name}: ${value}`);
+                      }
+                    } else if (
+                      typeof option.type === "number" &&
+                      option.type === 3 &&
+                      option.default !== option.selected
+                    ) {
+                      console.log("5-3");
+                      settings.push(`${option.name} × ${option.selected}`);
                     }
-                  } else if (
-                    typeof option.type === "number" &&
-                    typeof option.selected === "number" &&
-                    option.type === 2 &&
-                    option.default !== option.selected
-                  ) {
-                    const value = option.values[option.selected];
-                    console.log("5-2-value", value);
-                    if (value && typeof value === "string") {
-                      settings.push(`${option.name}: ${value}`);
-                    }
-                  } else if (
-                    typeof option.type === "number" &&
-                    option.type === 3 &&
-                    option.default !== option.selected
-                  ) {
-                    console.log("5-3");
-                    settings.push(`${option.name} × ${option.selected}`);
+
+                    
                   }
                 }
+
+                const newOrder: Order = {
+                      id: tableIdString,
+                      order: item.name,
+                      type: "main",
+                      settings: settings,
+                      hourTime: currentTimeHour,
+                      minuteTime: currentTimeMinute,
+                    };
+                    newOrders.push(newOrder);
               }
-              console.log("settings", settings);
-              const newOrder: Order = {
-                id: tableIdString,
-                order: item.name,
-                type: "main",
-                settings: settings,
-                hourTime: currentTimeHour,
-                minuteTime: currentTimeMinute,
-              };
-              newOrders.push(newOrder);
             }
 
             console.log("受信した注文データ", JSON.stringify(orderData));

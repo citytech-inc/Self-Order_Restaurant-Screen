@@ -1,216 +1,214 @@
 .sales-analysis-header {
-    height: 10vh;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    background-color: #FFFEFB;
+  height: 10vh;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: #fffefb;
 }
 .sales-analysis-header .header-select-button-1 {
-    text-align: center;
-    height:30px;
-    line-height: 30px;
-    width: 150px;
-    font-size: 18px;
-    font-weight: 600;
-    border-radius: 5px 0 0 5px;
-    border: 3px solid #C05454;
+  text-align: center;
+  height: 30px;
+  line-height: 30px;
+  width: 150px;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 5px 0 0 5px;
+  border: 3px solid #c05454;
 }
 .sales-analysis-header .header-select-button-2 {
-    text-align: center;
-    height:30px;
-    line-height: 30px;
-    width: 150px;
-    font-size: 18px;
-    font-weight: 600;
-    border-top: 3px solid #C05454;
-    border-bottom: 3px solid #C05454;
+  text-align: center;
+  height: 30px;
+  line-height: 30px;
+  width: 150px;
+  font-size: 18px;
+  font-weight: 600;
+  border-top: 3px solid #c05454;
+  border-bottom: 3px solid #c05454;
 }
 .sales-analysis-header .header-select-button-3 {
-    text-align: center;
-    height:30px;
-    line-height: 30px;
-    width: 150px;
-    font-size: 18px;
-    font-weight: 600;
-    border-radius: 0 5px 5px 0;
-    border: 3px solid #C05454;
+  text-align: center;
+  height: 30px;
+  line-height: 30px;
+  width: 150px;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 0 5px 5px 0;
+  border: 3px solid #c05454;
 }
 .sales-span {
-    width: 91%;
-    margin-left: 9%;
-    height: 26px;
-    line-height: 26px;
+  width: 91%;
+  margin-left: 9%;
+  height: 26px;
+  line-height: 26px;
 }
-.sales-span  .sales-span-select {
-    height: 26px;
-    width: 120px;
-    text-align: center;
-    font-size: 20px;
-    margin-left: 30px;
+.sales-span .sales-span-select {
+  height: 26px;
+  width: 120px;
+  text-align: center;
+  font-size: 20px;
+  margin-left: 30px;
 }
 .display-option {
-    height: 8vh;
-    width: 91%;
-    margin-left: 9%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #FFFEFB;
+  height: 8vh;
+  width: 91%;
+  margin-left: 9%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fffefb;
 }
 .display-option .display-span-option {
-    width: calc(70%);
-    padding-left: 30px;
-    display: flex;
-    flex-direction: row;
-    align-items: end;
-    justify-content: left;
-    background-color: #FFFEFB;
+  width: calc(70%);
+  padding-left: 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: end;
+  justify-content: left;
+  background-color: #fffefb;
 }
 .display-option .display-hour-select {
-    display: flex;
-    height: 36px;
-    text-align: center;
-    font-size: 24px;
-    font-weight: 600;
-    width: 150px;
-    margin-left: 10px;
+  display: flex;
+  height: 36px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+  width: 150px;
+  margin-left: 10px;
 }
 .display-option .sales-type-select {
-    display: flex;
-    height: 25px;
-    font-size: 18px;
-    font-weight: 600;
-    width: 100px;
+  display: flex;
+  height: 25px;
+  font-size: 18px;
+  font-weight: 600;
+  width: 100px;
 }
 .display-option .sales-span-text {
-    line-height: 60px;
-    height: 60px;
-    width: 100px;
-    text-align: center;
-    font-size: 20px;
+  line-height: 60px;
+  height: 60px;
+  width: 100px;
+  text-align: center;
+  font-size: 20px;
 }
 .display-option .date-and-graph {
-    width: fit-content;
-    display: flex;
-    flex-direction: row;
-    align-items: right;
-    justify-content: space-between;
+  width: fit-content;
+  display: flex;
+  flex-direction: row;
+  align-items: right;
+  justify-content: space-between;
 }
 .display-option .display-date {
-    display: flex;
-    font-size: 24px;
-    font-weight: 600;
-    width: 180px;
-    height: 30px;
+  display: flex;
+  font-size: 24px;
+  font-weight: 600;
+  width: 180px;
+  height: 30px;
 }
 .display-option .today-datetime {
-    display: flex;
-    font-size: 24px;
-    font-weight: 600;
+  display: flex;
+  font-size: 24px;
+  font-weight: 600;
 }
 .display-option .graph-option {
-    width: fit-content;
-    display: flex;
-    flex-direction: row;
-    align-items: right;
-    justify-content: space-between;
-    margin-right: 40px;
+  width: fit-content;
+  display: flex;
+  flex-direction: row;
+  align-items: right;
+  justify-content: space-between;
+  margin-right: 40px;
 }
 .display-option .graph-option-text {
-    line-height: 30px;
-    font-size: 18px;
-    margin-right: 10px;
+  line-height: 30px;
+  font-size: 18px;
+  margin-right: 10px;
 }
 .display-option .graph-option-toggle {
-    line-height: 30px;
-    height: 30px;
-    width:auto;
+  line-height: 30px;
+  height: 30px;
+  width: auto;
 }
 .display-option .toggle_input {
-    position: absolute;
-    left: 0;
-    top: 0;
-    z-index: 5;
-    opacity: 0;
-    cursor: pointer;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 5;
+  opacity: 0;
+  cursor: pointer;
 }
 .display-option .toggle_label {
-    width: 55px;
-    height: 30px;
-    background: #FFF0B4;
-    position: relative;
-    display: inline-block;
-    border-radius: 40px;
-    transition: 0.4s;
-    box-sizing: border-box;
+  width: 55px;
+  height: 30px;
+  background: #fff0b4;
+  position: relative;
+  display: inline-block;
+  border-radius: 40px;
+  transition: 0.4s;
+  box-sizing: border-box;
 }
 .display-option .toggle_label:after {
-    content: "";
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    border-radius: 100%;
-    left: 0;
-    top: 0;
-    z-index: 2;
-    background: #fff;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-    transition: 0.4s;
+  content: "";
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  background: #fff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  transition: 0.4s;
 }
 .display-option .toggle_input:checked + .toggle_label {
-    background-color: #ccc;
+  background-color: #ccc;
 }
 .display-option .toggle_input:checked + .toggle_label:after {
-    left: 25px;
+  left: 25px;
 }
 .display-option .toggle_button {
-    position: relative;
-    width: 75px;
-    height: 35px;
-    margin: auto;
+  position: relative;
+  width: 75px;
+  height: 35px;
+  margin: auto;
 }
 
 .sales-analysis-container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    height: 80vh;
-    margin-left: 9%;
-    width: 91%;
-    background-color: #FFFEFB;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+  margin-left: 9%;
+  width: 91%;
+  background-color: #fffefb;
 }
 
 .sales-analysis-container .sales-datas {
-    display: flex;
-    flex-direction: column;
-    align-items: right;
-    justify-content: space-around;
-    height: 100%;
-    width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: right;
+  justify-content: space-around;
+  height: 100%;
+  width: 40%;
 }
 
-
-
 .sales-analysis-container .sales-span {
-    margin-top: 10px;
-    margin-left: 5%;
+  margin-top: 10px;
+  margin-left: 5%;
 }
 
 .sales-analysis-container .sales-span-select {
-    height: 30px;
-    width: 120px;
-    text-align: center;
-    font-size: 20px;
+  height: 30px;
+  width: 120px;
+  text-align: center;
+  font-size: 20px;
 }
-.sales-analysis-container  .sales-type-select {
-    height: 30px;
-    width: 120px;
-    text-align: center;
-    font-size: 20px;
+.sales-analysis-container .sales-type-select {
+  height: 30px;
+  width: 120px;
+  text-align: center;
+  font-size: 20px;
 }
 .sales-analysis-container .sales-span-text {
   line-height: 60px;
@@ -221,125 +219,125 @@
 }
 
 .sales-analysis-container .sales-total {
-    height: 100px;
-    width: 380px;
-    margin-left: 5%;
-    border-radius: 15px;
+  height: 100px;
+  width: 380px;
+  margin-left: 5%;
+  border-radius: 15px;
 }
 .sales-analysis-container .sales-total * {
   margin: 0;
 }
 
 .sales-analysis-container .sales-type-text {
-    font-size: 18px;
-    line-height: 40px;
-    height: 40px;
-    vertical-align: bottom;
-    text-align: left;
-    padding-left: 30px;
-    background-color: #E6E6E6;
-    border-radius: 15px 15px 0 0;
-    border-top: solid #333333 1px;
-    border-right: solid #333333 1px;
-    border-left: solid #333333 1px;
+  font-size: 18px;
+  line-height: 40px;
+  height: 40px;
+  vertical-align: bottom;
+  text-align: left;
+  padding-left: 30px;
+  background-color: #e6e6e6;
+  border-radius: 15px 15px 0 0;
+  border-top: solid #333333 1px;
+  border-right: solid #333333 1px;
+  border-left: solid #333333 1px;
 }
 .sales-analysis-container .sales-type-price {
-    font-size: 28px;
-    line-height: 60px;
-    height: 60px;
-    font-weight: 600;
-    text-align: center;
-    border: solid #333333 1px;
-    border-radius: 0 0 15px 15px;
+  font-size: 28px;
+  line-height: 60px;
+  height: 60px;
+  font-weight: 600;
+  text-align: center;
+  border: solid #333333 1px;
+  border-radius: 0 0 15px 15px;
 }
 .sales-analysis-container .sales-menu {
-    height: 400px;
-    width: 380px;
-    border: #333333 solid 2px;
-    margin-top: 15px;
-    text-align: center;
-    margin-bottom: 30px;
-    margin-left: 5%;
-    border-radius: 15px;
+  height: 400px;
+  width: 380px;
+  border: #333333 solid 2px;
+  margin-top: 15px;
+  text-align: center;
+  margin-bottom: 30px;
+  margin-left: 5%;
+  border-radius: 15px;
 }
 .sales-analysis-container .sales-menu-headline {
-    line-height: 40px;
-    height: 40px;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: right;
-    justify-content: space-around;
+  line-height: 40px;
+  height: 40px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: right;
+  justify-content: space-around;
 }
 .sales-analysis-container .sales-menu-headline-text-1 {
-    font-size: 18px;
-    width: 60%;
-    vertical-align: bottom;
-    text-align: center;
-    background-color: #E6E6E6;
-    border-radius: 15px 0 0 0;
-    border-right: solid #AAAAAA 1px;
-    border-bottom: solid #AAAAAA 1px;
+  font-size: 18px;
+  width: 60%;
+  vertical-align: bottom;
+  text-align: center;
+  background-color: #e6e6e6;
+  border-radius: 15px 0 0 0;
+  border-right: solid #aaaaaa 1px;
+  border-bottom: solid #aaaaaa 1px;
 }
 .sales-analysis-container .sales-menu-headline-text-2 {
-    text-align: center;
-    font-size: 18px;
-    width: 15%;
-    vertical-align: bottom;
-    background-color: #E6E6E6;
-    border-right: solid #AAAAAA 1px;
-    border-bottom: solid #AAAAAA 1px;
+  text-align: center;
+  font-size: 18px;
+  width: 15%;
+  vertical-align: bottom;
+  background-color: #e6e6e6;
+  border-right: solid #aaaaaa 1px;
+  border-bottom: solid #aaaaaa 1px;
 }
 .sales-analysis-container .sales-menu-headline-text-3 {
-    font-size: 18px;
-    width: 25%;
-    vertical-align: bottom;
-    text-align: center;
-    background-color: #E6E6E6;
-    border-radius: 0 15px 0 0;
-    border-bottom: solid #AAAAAA 1px;
+  font-size: 18px;
+  width: 25%;
+  vertical-align: bottom;
+  text-align: center;
+  background-color: #e6e6e6;
+  border-radius: 0 15px 0 0;
+  border-bottom: solid #aaaaaa 1px;
 }
 .sales-analysis-container .menu-text {
-    line-height: 40px;
-    height: 40px;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: right;
-    justify-content: space-around;
+  line-height: 40px;
+  height: 40px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: right;
+  justify-content: space-around;
 }
 .sales-analysis-container .menu-name {
-    font-size: 18px;
-    width: calc(60% - 15px);
-    vertical-align: bottom;
-    text-align: left;
-    padding-left: 15px;
-    background-color: #ffffff;
-    border-bottom: solid #AAAAAA 1px;
-    border-right: solid #AAAAAA 1px;
+  font-size: 18px;
+  width: calc(60% - 15px);
+  vertical-align: bottom;
+  text-align: left;
+  padding-left: 15px;
+  background-color: #ffffff;
+  border-bottom: solid #aaaaaa 1px;
+  border-right: solid #aaaaaa 1px;
 }
 .sales-analysis-container .menu-count {
-    font-size: 18px;
-    width: calc(15% - 5px);
-    vertical-align: bottom;
-    text-align: right;
-    padding-right: 5px;
-    background-color: #ffffff;
-    border-bottom: solid #AAAAAA 1px;
-    border-right: solid #AAAAAA 1px;
+  font-size: 18px;
+  width: calc(15% - 5px);
+  vertical-align: bottom;
+  text-align: right;
+  padding-right: 5px;
+  background-color: #ffffff;
+  border-bottom: solid #aaaaaa 1px;
+  border-right: solid #aaaaaa 1px;
 }
 .sales-analysis-container .menu-price {
-    font-size: 18px;
-    width: calc(25% - 5px);
-    vertical-align: bottom;
-    text-align: right;
-    padding-right: 5px;
-    background-color: #ffffff;
-    border-bottom: solid #AAAAAA 1px;
+  font-size: 18px;
+  width: calc(25% - 5px);
+  vertical-align: bottom;
+  text-align: right;
+  padding-right: 5px;
+  background-color: #ffffff;
+  border-bottom: solid #aaaaaa 1px;
 }
 .sales-analysis-container .graph-and-calendar {
-    height: 100%;
-    width: 60%;
+  height: 100%;
+  width: 60%;
 }
 .sales-analysis-container .headline {
   display: flex;
@@ -364,18 +362,18 @@
   margin-right: 20px;
 }
 
-.sales-analysis-container  .graph-option-toggle {
-    line-height: 35px;
-    height: 35px;
-    width:auto;
+.sales-analysis-container .graph-option-toggle {
+  line-height: 35px;
+  height: 35px;
+  width: auto;
 }
 .sales-analysis-container .toggle_input {
-    position: absolute;
-    left: 0;
-    top: 0;
-    z-index: 5;
-    opacity: 0;
-    cursor: pointer;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 5;
+  opacity: 0;
+  cursor: pointer;
 }
 .sales-analysis-container .toggle_label {
   width: 75px;
