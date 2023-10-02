@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./OrderRectangle.css";
 
 interface OrderProps {
@@ -18,7 +18,25 @@ export const OrderRectangle: React.FC<OrderProps> = ({
   minuteTime,
   onDelete,
 }) => {
+  const [deleteOrderPopup, setDeleteOrderPopup] = useState(false);
+
+  const toggleDeleteOrderPopup = () => {
+    setDeleteOrderPopup(!deleteOrderPopup);
+  };
+
   return (
+    <>
+    {deleteOrderPopup && (
+        <DeleteOrderPopup
+          function={{
+            closeConfirmOrder: setConfirmOrderPopup,
+            openCompleteOrder: setCompleteOrderPopup,
+            order: order,
+          }}
+          state={state}
+          cartItems={state.cartItems}
+        />
+      )}
     <div className="orderRectangle">
       <div className="orderInfo">
         <div className="orderText">{order}</div>
@@ -33,14 +51,15 @@ export const OrderRectangle: React.FC<OrderProps> = ({
         )}
       </div>
       
-      <button className="deleteButton" onClick={onDelete}>
+      <button className="deleteButton" onClick={() => {toggleDeleteOrderPopup(); onDelete();}}>
         削除
       </button>
       <div className="bottomPart">
-  <div className="time">{hourTime}:{minuteTime}</div>
-  <div className="tableId">{id}</div>
-</div>
-      
+        <div className="time">{hourTime}:{minuteTime}</div>
+        <div className="tableId">{id}</div>
+      </div>
+      {/* Add conditional rendering for your delete confirmation popup here based on deleteOrderPopup state */}
     </div>
+    </>
   );
 };
