@@ -45,6 +45,12 @@
 .orderRectangle .bottomPart {
   display: flex;
   flex-direction: row;
+  padding-top: 10px;
+}
+
+.orderRectangle .deteleBotton {
+  width: 100%;
+  height: 100%;
 }
 
 .orderRectangle .tableId {

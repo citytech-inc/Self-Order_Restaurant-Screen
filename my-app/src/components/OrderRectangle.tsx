@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate, useLocation, useParams } from "react-router-dom";
 import "./OrderRectangle.css";
+import ConfirmDeleteOrderPopup from "./../popups/ConfirmDeleteOrderPopup";
+import CompleteDeleteOrderPopup from "./../popups/CompleteDeleteOrderPopup";
+
 
 interface OrderProps {
   id: string;
@@ -18,11 +22,18 @@ export const OrderRectangle: React.FC<OrderProps> = ({
   minuteTime,
   onDelete,
 }) => {
+  const { restaurantId } = useParams();
+  const navigate = useNavigate();
   const [confirmDeleteOrderPopup, setConfirmDeleteOrderPopup] = useState(false);
   const [completeDeleteOrderPopup, setCompleteDeleteOrderPopup] = useState(false);
 
   const toggleDeleteOrderPopup = () => {
-    setConfirmDeleteOrderPopup(!confirmDeleteOrderPopup);
+    setConfirmDeleteOrderPopup(true);
+  };
+
+  const completeDeleteOrder = () => {
+    setCompleteDeleteOrderPopup(false);
+    onDelete();
   };
 
   return (
@@ -30,12 +41,9 @@ export const OrderRectangle: React.FC<OrderProps> = ({
     {confirmDeleteOrderPopup && (
         <ConfirmDeleteOrderPopup
           function={{
-            closeConfirmOrder: setConfirmDeleteOrderPopup,
-            openCompleteOrder: setCompleteDeleteOrderPopup,
-            order: order,
+            closeConfirmDeleteOrder: setConfirmDeleteOrderPopup,
+            openCompleteDeleteOrder: setCompleteDeleteOrderPopup,
           }}
-          state={state}
-          cartItems={state.cartItems}
         />
       )}
       {completeDeleteOrderPopup && (
@@ -45,7 +53,7 @@ export const OrderRectangle: React.FC<OrderProps> = ({
           }}
         />
       )}
-    <div className="orderRectangle">
+    <div className="orderRectangle" onClick={() => {toggleDeleteOrderPopup();}}>
       <div className="orderInfo">
         <div className="orderText">{order}</div>
         {settings && (
@@ -58,15 +66,11 @@ export const OrderRectangle: React.FC<OrderProps> = ({
           </div>
         )}
       </div>
-      
-      <button className="deleteButton" onClick={() => {toggleDeleteOrderPopup(); onDelete();}}>
-        削除
-      </button>
+     
       <div className="bottomPart">
         <div className="time">{hourTime}:{minuteTime}</div>
         <div className="tableId">{id}</div>
       </div>
-      {/* Add conditional rendering for your delete confirmation popup here based on deleteOrderPopup state */}
     </div>
     </>
   );
