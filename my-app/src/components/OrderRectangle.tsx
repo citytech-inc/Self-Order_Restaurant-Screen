@@ -18,23 +18,31 @@ export const OrderRectangle: React.FC<OrderProps> = ({
   minuteTime,
   onDelete,
 }) => {
-  const [deleteOrderPopup, setDeleteOrderPopup] = useState(false);
+  const [confirmDeleteOrderPopup, setConfirmDeleteOrderPopup] = useState(false);
+  const [completeDeleteOrderPopup, setCompleteDeleteOrderPopup] = useState(false);
 
   const toggleDeleteOrderPopup = () => {
-    setDeleteOrderPopup(!deleteOrderPopup);
+    setConfirmDeleteOrderPopup(!confirmDeleteOrderPopup);
   };
 
   return (
     <>
-    {deleteOrderPopup && (
-        <DeleteOrderPopup
+    {confirmDeleteOrderPopup && (
+        <ConfirmDeleteOrderPopup
           function={{
-            closeConfirmOrder: setConfirmOrderPopup,
-            openCompleteOrder: setCompleteOrderPopup,
+            closeConfirmOrder: setConfirmDeleteOrderPopup,
+            openCompleteOrder: setCompleteDeleteOrderPopup,
             order: order,
           }}
           state={state}
           cartItems={state.cartItems}
+        />
+      )}
+      {completeDeleteOrderPopup && (
+        <CompleteDeleteOrderPopup
+          function={{
+            closeCompleteDeleteOrder: completeDeleteOrder,
+          }}
         />
       )}
     <div className="orderRectangle">
