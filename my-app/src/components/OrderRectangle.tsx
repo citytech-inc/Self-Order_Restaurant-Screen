@@ -4,7 +4,6 @@ import "./OrderRectangle.css";
 import ConfirmDeleteOrderPopup from "./../popups/ConfirmDeleteOrderPopup";
 import CompleteDeleteOrderPopup from "./../popups/CompleteDeleteOrderPopup";
 
-
 interface OrderProps {
   id: string;
   order: string;
@@ -25,7 +24,8 @@ export const OrderRectangle: React.FC<OrderProps> = ({
   const { restaurantId } = useParams();
   const navigate = useNavigate();
   const [confirmDeleteOrderPopup, setConfirmDeleteOrderPopup] = useState(false);
-  const [completeDeleteOrderPopup, setCompleteDeleteOrderPopup] = useState(false);
+  const [completeDeleteOrderPopup, setCompleteDeleteOrderPopup] =
+    useState(false);
 
   const toggleDeleteOrderPopup = () => {
     setConfirmDeleteOrderPopup(true);
@@ -38,7 +38,7 @@ export const OrderRectangle: React.FC<OrderProps> = ({
 
   return (
     <>
-    {confirmDeleteOrderPopup && (
+      {confirmDeleteOrderPopup && (
         <ConfirmDeleteOrderPopup
           function={{
             closeConfirmDeleteOrder: setConfirmDeleteOrderPopup,
@@ -53,25 +53,32 @@ export const OrderRectangle: React.FC<OrderProps> = ({
           }}
         />
       )}
-    <div className="orderRectangle" onClick={() => {toggleDeleteOrderPopup();}}>
-      <div className="orderInfo">
-        <div className="orderText">{order}</div>
-        {settings && (
-          <div className="settings">
-            {settings.map((setting, index) => (
-              <div key={index} className="setting">
-                {setting}
-              </div>
-            ))}
+      <div
+        className="orderRectangle"
+        onClick={() => {
+          toggleDeleteOrderPopup();
+        }}
+      >
+        <div className="orderInfo">
+          <div className="orderText">{order}</div>
+          {settings && (
+            <div className="settings">
+              {settings.map((setting, index) => (
+                <div key={index} className="setting">
+                  {setting}
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+
+        <div className="bottomPart">
+          <div className="time">
+            {hourTime}:{minuteTime}
           </div>
-        )}
+          <div className="tableId">{id}</div>
+        </div>
       </div>
-     
-      <div className="bottomPart">
-        <div className="time">{hourTime}:{minuteTime}</div>
-        <div className="tableId">{id}</div>
-      </div>
-    </div>
     </>
   );
 };

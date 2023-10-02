@@ -23,7 +23,7 @@ interface MenuItem {
     [key: string]: {
       name: string;
       options: {
-        [key: string]: [string, number,  any[]];
+        [key: string]: [string, number, any[]];
       }[];
       default: number;
       selected: number;
@@ -128,20 +128,18 @@ function OrderScreen() {
                       console.log("5-3");
                       settings.push(`${option.name} × ${option.selected}`);
                     }
-
-                    
                   }
                 }
 
                 const newOrder: Order = {
-                      id: tableIdString,
-                      order: item.name,
-                      type: "main",
-                      settings: settings,
-                      hourTime: currentTimeHour,
-                      minuteTime: currentTimeMinute,
-                    };
-                    newOrders.push(newOrder);
+                  id: tableIdString,
+                  order: item.name,
+                  type: "main",
+                  settings: settings,
+                  hourTime: currentTimeHour,
+                  minuteTime: currentTimeMinute,
+                };
+                newOrders.push(newOrder);
               }
             }
 
