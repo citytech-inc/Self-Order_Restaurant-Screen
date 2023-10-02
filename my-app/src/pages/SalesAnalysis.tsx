@@ -4,11 +4,12 @@ import "./SalesAnalysis.css";
 import SettingBar from "../header/SettingBar";
 import ArrowIcon from "../../src/components/images/arrowhead-thin-outline-to-the-left.png";
 
-import { Chart, registerables } from "chart.js"
-import { Bar } from 'react-chartjs-2';
-import DatePicker from 'react-datepicker';
-import { format } from 'date-fns';
+import { Chart, registerables } from "chart.js";
+import { Bar } from "react-chartjs-2";
+import DatePicker from "react-datepicker";
+import { format } from "date-fns";
 import "react-datepicker/dist/react-datepicker.css";
+
 
 Chart.register(...registerables)
 const SalesAnalysis : React.FC = () => {
@@ -66,7 +67,6 @@ const SalesAnalysis : React.FC = () => {
         dateList.push(settingDate)
     }
     const [selectedWeek, setSelectedWeek] = useState<Date[]>(dateList);
-
 
     const [displayTable, setDisplayTable] = useState(false);
 
@@ -155,12 +155,17 @@ const SalesAnalysis : React.FC = () => {
                 color:selectedAnalysisType==="客数分析" ? "#FFFFFF" : "#C05454"
             }}>客数分析</div>
         </div>
-        <div className="sales-span">
-            <select className="sales-span-select" value={selectedSalesSpan} onChange={selectedSalesSpanChange}>
-                {SalesSpanOption.map((value, index) => (
-                    <option value={value}>{value}</option>
-                ))}
-            </select>
+        <div
+          className="header-select-button-2"
+          onClick={() => setSelectedAnalysisType("商品別売上")}
+          style={{
+            backgroundColor:
+              selectedAnalysisType === "商品別売上" ? "#C05454" : "#FFFFFF",
+            color:
+              selectedAnalysisType === "商品別売上" ? "#FFFFFF" : "#C05454",
+          }}
+        >
+          商品別分析
         </div>
         <div className="display-option">
             <div className="display-span-option">
@@ -230,6 +235,14 @@ const SalesAnalysis : React.FC = () => {
                     <label htmlFor="toggle" className="toggle_label"/>
                 </div>
             </div>
+            {SalesByMenu.map((data, index) => (
+              <div className="menu-text">
+                <div className="menu-name">{data.name}</div>
+                <div className="menu-count">{data.count}</div>
+                <div className="menu-price">{data.price}円</div>
+              </div>
+            ))}
+          </div>
         </div>
         <div className="sales-analysis-container">
             <div className="sales-datas">
@@ -251,6 +264,31 @@ const SalesAnalysis : React.FC = () => {
                         </div>
                     ))}
                 </div>
+              </div>
+              <div className="table-col">
+                <div className="table-hour-col">
+                  {Object.keys(SalesPerHour).map(
+                    (key, index) =>
+                      index >= Object.keys(SalesPerHour).length / 2 && (
+                        <div className="table-text">{key}</div>
+                      ),
+                  )}
+                  {Object.keys(SalesPerHour).length % 2 === 1 && (
+                    <div className="table-text">　</div>
+                  )}
+                </div>
+                <div className="table-sales-col">
+                  {Object.values(SalesPerHour).map(
+                    (value, index) =>
+                      index >= Object.keys(SalesPerHour).length / 2 && (
+                        <div className="table-text">¥ {value.sales}</div>
+                      ),
+                  )}
+                  {Object.keys(SalesPerHour).length % 2 === 1 && (
+                    <div className="table-text">　</div>
+                  )}
+                </div>
+              </div>
             </div>
             <div className="graph-and-calendar">
                 {!displayTable ? 
@@ -312,6 +350,7 @@ const SalesAnalysis : React.FC = () => {
             </div>
         </div>
       </div>
+    </div>
   );
 };
 
