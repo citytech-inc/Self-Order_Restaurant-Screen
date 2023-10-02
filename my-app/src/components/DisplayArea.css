@@ -35,4 +35,7 @@
   position: relative;
   border-bottom-right-radius: 15px;
   border-bottom-left-radius: 15px;
+
+  flex-direction: column; 
+  align-items: left;
 }

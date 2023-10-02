@@ -32,13 +32,15 @@ export const OrderRectangle: React.FC<OrderProps> = ({
           </div>
         )}
       </div>
-      <div className="tableId">{id}</div>
-      <div className="time">
-        {hourTime}:{minuteTime}
-      </div>
+      
       <button className="deleteButton" onClick={onDelete}>
         削除
       </button>
+      <div className="bottomPart">
+  <div className="time">{hourTime}:{minuteTime}</div>
+  <div className="tableId">{id}</div>
+</div>
+      
     </div>
   );
 };

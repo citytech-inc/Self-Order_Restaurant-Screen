@@ -23,13 +23,10 @@ interface MenuItem {
     [key: string]: {
       name: string;
       options: {
-        [key: string]: [string, number];
+        [key: string]: [string, number,  any[]];
       }[];
       default: number;
       selected: number;
-      values: {
-        [key: string]: [string, number];
-      };
       type: number;
     };
   };
@@ -120,8 +117,8 @@ function OrderScreen() {
                     ) {
                       const value = option.values[option.selected];
                       console.log("5-2-value", value);
-                      if (value && typeof value === "string") {
-                        settings.push(`${option.name}: ${value}`);
+                      if (value && Array.isArray(value)) {
+                        settings.push(`${option.name}: ${value[0]}`);
                       }
                     } else if (
                       typeof option.type === "number" &&

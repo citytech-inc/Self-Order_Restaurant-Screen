@@ -20,3 +20,34 @@
   margin-top: auto;
   margin-bottom: 5px;
 }
+
+.orderRectangle {
+  margin: 8px;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border: 1px solid #111111;
+  border-radius: 5px;
+}
+
+.orderRectangle .orderText {
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.orderRectangle .settings {
+  font-weight: 500;
+  font-size: 14px;
+  padding-left: 5px;
+}
+
+.orderRectangle .bottomPart {
+  display: flex;
+  flex-direction: row;
+}
+
+.orderRectangle .tableId {
+  text-align: right;
+  width: 100%; /* or another width, depending on your layout needs */
+}
