@@ -19,6 +19,7 @@ interface OrderData {
 interface MenuItem {
   name: string;
   price: number;
+  sellingPrice: number;
   image: string;
   settings: {
     [key: string]: {
@@ -161,9 +162,10 @@ const PurchasedItemsScreen: React.FC = () => {
       //console.log("func-order", JSON.stringify(order));
       for (const settingsKey in order.settings) {
         const settings = order.settings[settingsKey];
-        if (settings.options) {
+        if (settings && settings.options) {
           for (const option of settings.options) {
             if (
+              option &&
               typeof option.selected === "number" &&
               typeof option.type === "number" &&
               option.selected !== option.default
@@ -201,9 +203,10 @@ const PurchasedItemsScreen: React.FC = () => {
     for (const order of orderData.items) {
       for (const settingsKey in order.settings) {
         const settings = order.settings[settingsKey];
-        if (settings.options) {
+        if (settings && settings.options) {
           for (const option of settings.options) {
             if (
+              option &&
               typeof option.selected === "number" &&
               typeof option.type === "number" &&
               option.selected !== option.default
@@ -233,14 +236,14 @@ const PurchasedItemsScreen: React.FC = () => {
 
   items = currentOrders.flatMap((order) => order.items).flat();
   const totalPriceMainMenu = items.reduce(
-    (total, item) => total + item.price,
+    (total, item) => total + item.sellingPrice,
     0,
   );
   let totalPriceSettings = 0;
   for (const currentOrder of currentOrders) {
     totalPriceSettings += calculateToppingsPrice(currentOrder);
   }
-  const totalPrice = totalPriceMainMenu + totalPriceSettings;
+  const totalPrice = Math.round(totalPriceMainMenu + totalPriceSettings);
 
   console.log("items", items);
 
@@ -273,7 +276,7 @@ const PurchasedItemsScreen: React.FC = () => {
             <div key={index} className="item">
               <p className="item-name">{item.items[0].name}</p>
               <p className="item-settings">{extractToppingsFromOrder(item)}</p>
-              <p className="item-price">{item.items[0].price}</p>
+              <p className="item-price">{item.items[0].sellingPrice}</p>
             </div>
           ))}
         </div>
