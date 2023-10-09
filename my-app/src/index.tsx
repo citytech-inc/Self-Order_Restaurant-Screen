@@ -19,7 +19,7 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path=":restaurantId" element={<PaymentStartScreen />} />
+        <Route path=":restaurantId" element={<TableNumberScreen />} />
         <Route
           path=":restaurantId/table-number"
           element={<TableNumberScreen />}
