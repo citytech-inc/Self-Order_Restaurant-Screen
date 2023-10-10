@@ -8,18 +8,74 @@ interface Props {
 }
 
 const DateComponent: React.FC<Props> = () => {
-  const [selectedDate, setSelectedDate] = useState<Date>(new Date());
-  const [selectedHour, setSelectedHour] = useState<string>('0');
-  const [selectedYear, setSelectedYear] = useState<number>(2023);
-  const [selectedMonth, setSelectedMonth] = useState<number>(1);
-  const [selectedDay, setSelectedDay] = useState<string>('Monday');
-  const [selectedSalesType, setSelectedSalesType] = useState<string>('Type1');
-  const [selectedSalesSpan, setSelectedSalesSpan] = useState<string>('時間帯別');
 
-  const SelectedHourOption = Array.from({ length: 24 }, (_, i) => i); // Example data
-  const YearMonthList = { 2023: Array.from({ length: 12 }, (_, i) => i + 1) }; // Example data
-  const DayName = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']; // Example data
-  const SalesTypeOption = ['Type1', 'Type2', 'Type3']; // Example data
+  const SalesSpanOption = ["時間帯別", "日別", "月別", "曜日別"];
+  const SalesTypeOption = ["総売上", "純売上", "粗利益", "営業利益"];
+
+  const SelectedHourOption = [
+    8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23,
+  ];
+  const salesDetailData = {
+    純売上: 19800,
+    "純売上(税別)": 18000,
+    消費税: 1800,
+    総売上: 18000,
+    値引き: 0,
+    原価: 4500,
+    粗利益: 13500,
+    販売費: 11500,
+    営業利益: 2000,
+    客数: 22,
+    価格変動: 2.5,
+  };
+
+  const startDate = [2021, 10, 1];
+  const Today = new Date();
+  const DayName = ["日", "月", "火", "水", "木", "金", "土"];
+  const YearMonthList: { [key: string]: number[] } = Object();
+  for (
+    let i = startDate;
+    i[0] < Number(format(Today, "yyyy")) ||
+    (i[0] === Number(format(Today, "yyyy")) &&
+      i[1] <= Number(format(Today, "MM")));
+
+  ) {
+    if (Object.keys(YearMonthList).includes(String(i[0]))) {
+      YearMonthList[String(i[0])].push(i[1]);
+    } else {
+      YearMonthList[String(i[0])] = [i[1]];
+    }
+    if (i[1] !== 12) {
+      i[1]++;
+    } else {
+      i[0]++;
+      i[1] = 1;
+    }
+  }
+  const [selectedSalesSpan, setSelectedSalesSpan] = useState("時間帯別");
+  const [selectedSalesType, setSelectedSalesType] = useState("総売上");
+  const [selectedAnalysisType, setSelectedAnalysisType] = useState("通常売上");
+  const [selectedHour, setSelectedHour] = useState(14);
+  const [selectedDate, setSelectedDate] = useState<Date>(Today);
+  const [selectedYear, setSelectedYear] = useState<Number>(
+    Number(format(Today, "yyyy")),
+  );
+  const [selectedMonth, setSelectedMonth] = useState<Number>(
+    Number(format(Today, "MM")),
+  );
+  const [selectedDay, setSelectedDay] = useState<String>(
+    DayName[Number(format(Today, "e"))],
+  );
+  const dateList: Date[] = [];
+
+
+  for (let i = 1; i < 8; i++) {
+    const settingDate: Date = new Date(Today);
+    settingDate.setDate(Today.getDate() - Number(format(Today, "e")) + i);
+    dateList.push(settingDate);
+  }
+  const [selectedWeek, setSelectedWeek] = useState<Date[]>(dateList);
+
 
   const handleDateChange = (date: Date) => {
     setSelectedDate(date);
@@ -42,8 +98,6 @@ const DateComponent: React.FC<Props> = () => {
     // Implement your custom date highlight function here
     return '';
   };
-
-  const selectedWeek = [new Date()]; // Example data, replace with your actual data
 
   return (
     <div className="display-span-option">

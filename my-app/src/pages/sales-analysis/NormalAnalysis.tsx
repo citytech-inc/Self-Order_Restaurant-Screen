@@ -61,7 +61,6 @@ const SalesAnalysis: React.FC = () => {
     i[0] < Number(format(Today, "yyyy")) ||
     (i[0] === Number(format(Today, "yyyy")) &&
       i[1] <= Number(format(Today, "MM")));
-
   ) {
     if (Object.keys(YearMonthList).includes(String(i[0]))) {
       YearMonthList[String(i[0])].push(i[1]);
