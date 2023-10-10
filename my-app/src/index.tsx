@@ -10,7 +10,9 @@ import PurchasedItemsScreen from "./pages/PurchasedItemsScreen";
 import TableNumberScreen from "./pages/TableNumberScreen";
 import AddMenuScreen from "./pages/AddMenuScreen";
 import OrderScreen from "./pages/OrderScreen";
-import SalesAnalysis from "./pages/SalesAnalysis";
+import NormalAnalysis from "./pages/sales-analysis/NormalAnalysis";
+import MenuAnalysis from "./pages/sales-analysis/MenuAnalysis";
+import CustomerAnalysis from "./pages/sales-analysis/CustomerAnalysis";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement,
@@ -35,7 +37,15 @@ root.render(
         <Route path=":restaurantId/add-menu" element={<AddMenuScreen />} />
         <Route
           path=":restaurantId/sales-analysis"
-          element={<SalesAnalysis />}
+          element={<NormalAnalysis />}
+        />
+        <Route
+          path=":restaurantId/sales-analysis/menu"
+          element={<MenuAnalysis />}
+        />
+        <Route
+          path=":restaurantId/sales-analysis/customer"
+          element={<CustomerAnalysis />}
         />
         <Route path="/:restaurantId/order" element={<OrderScreen />} />
       </Routes>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useLocation, useParams } from "react-router-dom";
-import "./SalesAnalysis.css";
+import "./../SalesAnalysis.css";
 import SettingBar from "../../header/SettingBar";
 import ArrowIcon from "../../src/components/images/arrowhead-thin-outline-to-the-left.png";
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useLocation, useParams } from "react-router-dom";
-import "./SalesAnalysis.css";
+import "./../SalesAnalysis.css";
 import SettingBar from "../../header/SettingBar";
 import ArrowIcon from "../../src/components/images/arrowhead-thin-outline-to-the-left.png";
 
@@ -17,7 +17,8 @@ import { format } from "date-fns";
 import "react-datepicker/dist/react-datepicker.css";
 
 Chart.register(...registerables);
-const SalesAnalysis: React.FC = () => {
+
+const NormalAnalysis: React.FC = () => {
   const SalesSpanOption = ["時間帯別", "日別", "月別", "曜日別"];
   const SalesTypeOption = ["総売上", "純売上", "粗利益", "営業利益"];
   const SalesByMenu: { [key: string]: string | number }[] = [
@@ -205,4 +206,4 @@ const SalesAnalysis: React.FC = () => {
   );
 };
 
-export default SalesAnalysis;
+export default NormalAnalysis;
