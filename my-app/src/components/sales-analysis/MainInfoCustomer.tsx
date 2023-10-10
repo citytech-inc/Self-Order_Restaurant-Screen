@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 type SalesByMenuData = {
   name: string;
@@ -16,7 +16,11 @@ type MainInfoCustomerComponentProps = {
   SalesPerHour: SalesPerHourData;
 };
 
-const MainInfoCustomerComponent: React.FC<MainInfoCustomerComponentProps> = ({ selectedSalesType, SalesByMenu, SalesPerHour }) => (
+const MainInfoCustomerComponent: React.FC<MainInfoCustomerComponentProps> = ({
+  selectedSalesType,
+  SalesByMenu,
+  SalesPerHour,
+}) => (
   <div className="sales-analysis-container">
     <div className="sales-datas">
       <div className="sales-total">
@@ -33,37 +37,35 @@ const MainInfoCustomerComponent: React.FC<MainInfoCustomerComponentProps> = ({ s
           <div key={index} className="menu-text">
             <div className="menu-name">{data.name}</div>
             <div className="menu-count">{data.count.toLocaleString()}</div>
-            <div className="menu-price">
-              {data.price.toLocaleString()}円
-            </div>
+            <div className="menu-price">{data.price.toLocaleString()}円</div>
           </div>
         ))}
       </div>
     </div>
     <div className="table-col">
-          <div className="table-hour-col">
-            {Object.keys(SalesPerHour).map(
-              (key, index) =>
-                index >= Object.keys(SalesPerHour).length / 2 && (
-                  <div className="table-text">{key}</div>
-                ),
-            )}
-            {Object.keys(SalesPerHour).length % 2 === 1 && (
-              <div className="table-text">　</div>
-            )}
-          </div>
-          <div className="table-sales-col">
-            {Object.values(SalesPerHour).map(
-              (value, index) =>
-                index >= Object.keys(SalesPerHour).length / 2 && (
-                  <div className="table-text">¥ {value.sales}</div>
-                ),
-            )}
-            {Object.keys(SalesPerHour).length % 2 === 1 && (
-              <div className="table-text">　</div>
-            )}
-          </div>
-        </div>
+      <div className="table-hour-col">
+        {Object.keys(SalesPerHour).map(
+          (key, index) =>
+            index >= Object.keys(SalesPerHour).length / 2 && (
+              <div className="table-text">{key}</div>
+            ),
+        )}
+        {Object.keys(SalesPerHour).length % 2 === 1 && (
+          <div className="table-text">　</div>
+        )}
+      </div>
+      <div className="table-sales-col">
+        {Object.values(SalesPerHour).map(
+          (value, index) =>
+            index >= Object.keys(SalesPerHour).length / 2 && (
+              <div className="table-text">¥ {value.sales}</div>
+            ),
+        )}
+        {Object.keys(SalesPerHour).length % 2 === 1 && (
+          <div className="table-text">　</div>
+        )}
+      </div>
+    </div>
   </div>
 );
 

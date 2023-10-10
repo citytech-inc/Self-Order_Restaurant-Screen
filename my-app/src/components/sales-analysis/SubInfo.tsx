@@ -18,7 +18,9 @@ type SubInfoComponentProps = {
   SubInfoComponentData: SubInfoComponentData;
 };
 
-const SubInfoComponent: React.FC<SubInfoComponentProps> = ({ SubInfoComponentData }) => (
+const SubInfoComponent: React.FC<SubInfoComponentProps> = ({
+  SubInfoComponentData,
+}) => (
   <div className="sales-detail-data">
     <div className="sales-detail-col">
       <div className="row-1">

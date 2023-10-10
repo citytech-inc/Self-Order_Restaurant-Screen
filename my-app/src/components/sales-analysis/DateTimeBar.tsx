@@ -3,9 +3,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { format } from "date-fns"; // Ensure you have date-fns installed for date formatting
 
-interface Props {
-  
-}
+interface Props {}
 
 const DateTimeComponent: React.FC<Props> = () => {
   const SalesSpanOption = ["時間帯別", "日別", "月別", "曜日別"];
@@ -41,7 +39,7 @@ const DateTimeComponent: React.FC<Props> = () => {
   const [selectedSalesSpan, setSelectedSalesSpan] = useState("時間帯別");
   const [selectedSalesType, setSelectedSalesType] = useState("総売上");
   const [selectedAnalysisType, setSelectedAnalysisType] = useState("通常売上");
-  const [selectedHour, setSelectedHour] = useState('14');
+  const [selectedHour, setSelectedHour] = useState("14");
   const [selectedDate, setSelectedDate] = useState<Date>(Today);
   const [selectedYear, setSelectedYear] = useState<Number>(
     Number(format(Today, "yyyy")),

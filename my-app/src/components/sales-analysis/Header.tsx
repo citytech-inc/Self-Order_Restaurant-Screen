@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate, useParams } from "react-router-dom";
 
-
 type HeaderComponentProps = {
   focusButton: string | null;
 };
@@ -12,13 +11,11 @@ function HeaderComponent({ focusButton }: HeaderComponentProps) {
 
   return (
     <div className="sales-analysis-header">
-      
       <Link
         className="header-select-button-1"
         to={`/${restaurantId}/sales-analysis`}
         style={{
-          backgroundColor:
-            focusButton === "通常分析" ? "#C05454" : "#FFFFFF",
+          backgroundColor: focusButton === "通常分析" ? "#C05454" : "#FFFFFF",
           color: focusButton === "通常分析" ? "#FFFFFF" : "#C05454",
         }}
       >
@@ -28,8 +25,7 @@ function HeaderComponent({ focusButton }: HeaderComponentProps) {
         className="header-select-button-2"
         to={`/${restaurantId}/sales-analysis/menu`}
         style={{
-          backgroundColor:
-            focusButton === "商品別分析" ? "#C05454" : "#FFFFFF",
+          backgroundColor: focusButton === "商品別分析" ? "#C05454" : "#FFFFFF",
           color: focusButton === "商品別分析" ? "#FFFFFF" : "#C05454",
         }}
       >
@@ -39,8 +35,7 @@ function HeaderComponent({ focusButton }: HeaderComponentProps) {
         className="header-select-button-3"
         to={`/${restaurantId}/sales-analysis/customer`}
         style={{
-          backgroundColor:
-            focusButton === "客数分析" ? "#C05454" : "#FFFFFF",
+          backgroundColor: focusButton === "客数分析" ? "#C05454" : "#FFFFFF",
           color: focusButton === "客数分析" ? "#FFFFFF" : "#C05454",
         }}
       >
@@ -48,6 +43,6 @@ function HeaderComponent({ focusButton }: HeaderComponentProps) {
       </Link>
     </div>
   );
-};
+}
 
 export default HeaderComponent;
