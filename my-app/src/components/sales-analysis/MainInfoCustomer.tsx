@@ -10,13 +10,13 @@ type SalesPerHourData = {
   [key: string]: { sales: number };
 };
 
-type MainInfoComponentProps = {
+type MainInfoCustomerComponentProps = {
   selectedSalesType: string;
   SalesByMenu: SalesByMenuData[];
   SalesPerHour: SalesPerHourData;
 };
 
-const MainInfoComponent: React.FC<MainInfoComponentProps> = ({ selectedSalesType, SalesByMenu, SalesPerHour }) => (
+const MainInfoCustomerComponent: React.FC<MainInfoCustomerComponentProps> = ({ selectedSalesType, SalesByMenu, SalesPerHour }) => (
   <div className="sales-analysis-container">
     <div className="sales-datas">
       <div className="sales-total">
@@ -67,4 +67,4 @@ const MainInfoComponent: React.FC<MainInfoComponentProps> = ({ selectedSalesType
   </div>
 );
 
-export default MainInfoComponent;
+export default MainInfoCustomerComponent;

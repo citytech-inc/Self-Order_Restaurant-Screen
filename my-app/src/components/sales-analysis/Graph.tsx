@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import { Bar } from "react-chartjs-2";
 
 interface SalesPerHourType {
@@ -21,7 +21,7 @@ const GraphComponent: React.FC<Props> = () => {
     1: { sales: 150 },
     //... more data
   };
-  
+
   const SalesDataSet = {}; // Replace this with actual dataset for the bar graph
   const options = {}; // Replace this with actual options for the bar graph
 
@@ -45,123 +45,119 @@ const GraphComponent: React.FC<Props> = () => {
         </div>
       ) : (
         <div className="sales-per-hour-table-area">
-            <div className="table-col">
-              <div className="table-hour-col">
-                {Object.keys(SalesPerHour).map(
-                  (key, index) =>
-                    index < Object.keys(SalesPerHour).length / 2 && (
-                      <div
-                        className="table-text"
-                        style={{
-                          height:
-                            String(
-                              100 / (Object.keys(SalesPerHour).length / 2),
-                            ) + "%",
-                          backgroundColor:
-                            Number(key) === selectedHour
-                              ? "#FFF0B4"
-                              : "rgba(0,0,0,0)",
-                        }}
-                      >
-                        {key}時
-                      </div>
-                    ),
-                )}
-              </div>
-              <div className="table-sales-col">
-                {Object.keys(SalesPerHour).map(
-                  (key, index) =>
-                    index < Object.keys(SalesPerHour).length / 2 && (
-                      <div
-                        className="table-text"
-                        style={{
-                          height:
-                            String(
-                              100 / (Object.keys(SalesPerHour).length / 2),
-                            ) + "%",
-                          backgroundColor:
-                            Number(key) === selectedHour
-                              ? "#FFF0B4"
-                              : "rgba(0,0,0,0)",
-                        }}
-                      >
-                        {SalesPerHour[Number(key)].sales.toLocaleString()}円
-                      </div>
-                    ),
-                )}
-              </div>
+          <div className="table-col">
+            <div className="table-hour-col">
+              {Object.keys(SalesPerHour).map(
+                (key, index) =>
+                  index < Object.keys(SalesPerHour).length / 2 && (
+                    <div
+                      className="table-text"
+                      style={{
+                        height:
+                          String(100 / (Object.keys(SalesPerHour).length / 2)) +
+                          "%",
+                        backgroundColor:
+                          Number(key) === selectedHour
+                            ? "#FFF0B4"
+                            : "rgba(0,0,0,0)",
+                      }}
+                    >
+                      {key}時
+                    </div>
+                  ),
+              )}
             </div>
-            <div className="table-col">
-              <div className="table-hour-col">
-                {Object.keys(SalesPerHour).map(
-                  (key, index) =>
-                    index >= Object.keys(SalesPerHour).length / 2 && (
-                      <div
-                        className="table-text"
-                        style={{
-                          height:
-                            String(
-                              100 / (Object.keys(SalesPerHour).length / 2),
-                            ) + "%",
-                          backgroundColor:
-                            Number(key) === selectedHour
-                              ? "#FFF0B4"
-                              : "rgba(0,0,0,0)",
-                        }}
-                      >
-                        {key}時
-                      </div>
-                    ),
-                )}
-                {Object.keys(SalesPerHour).length % 2 === 1 && (
-                  <div
-                    className="table-text"
-                    style={{
-                      height:
-                        String(100 / (Object.keys(SalesPerHour).length / 2)) +
-                        "%",
-                    }}
-                  >
-                    　
-                  </div>
-                )}
-              </div>
-              <div className="table-sales-col">
-                {Object.keys(SalesPerHour).map(
-                  (key, index) =>
-                    index >= Object.keys(SalesPerHour).length / 2 && (
-                      <div
-                        className="table-text"
-                        style={{
-                          height:
-                            String(
-                              100 / (Object.keys(SalesPerHour).length / 2),
-                            ) + "%",
-                          backgroundColor:
-                            Number(key) === selectedHour
-                              ? "#FFF0B4"
-                              : "rgba(0,0,0,0)",
-                        }}
-                      >
-                        {SalesPerHour[Number(key)].sales.toLocaleString()}円
-                      </div>
-                    ),
-                )}
-                {Object.keys(SalesPerHour).length % 2 === 1 && (
-                  <div
-                    className="table-text"
-                    style={{
-                      height:
-                        String(100 / (Object.keys(SalesPerHour).length / 2)) +
-                        "%",
-                    }}
-                  >
-                    　
-                  </div>
-                )}
-              </div>
+            <div className="table-sales-col">
+              {Object.keys(SalesPerHour).map(
+                (key, index) =>
+                  index < Object.keys(SalesPerHour).length / 2 && (
+                    <div
+                      className="table-text"
+                      style={{
+                        height:
+                          String(100 / (Object.keys(SalesPerHour).length / 2)) +
+                          "%",
+                        backgroundColor:
+                          Number(key) === selectedHour
+                            ? "#FFF0B4"
+                            : "rgba(0,0,0,0)",
+                      }}
+                    >
+                      {SalesPerHour[Number(key)].sales.toLocaleString()}円
+                    </div>
+                  ),
+              )}
             </div>
           </div>
+          <div className="table-col">
+            <div className="table-hour-col">
+              {Object.keys(SalesPerHour).map(
+                (key, index) =>
+                  index >= Object.keys(SalesPerHour).length / 2 && (
+                    <div
+                      className="table-text"
+                      style={{
+                        height:
+                          String(100 / (Object.keys(SalesPerHour).length / 2)) +
+                          "%",
+                        backgroundColor:
+                          Number(key) === selectedHour
+                            ? "#FFF0B4"
+                            : "rgba(0,0,0,0)",
+                      }}
+                    >
+                      {key}時
+                    </div>
+                  ),
+              )}
+              {Object.keys(SalesPerHour).length % 2 === 1 && (
+                <div
+                  className="table-text"
+                  style={{
+                    height:
+                      String(100 / (Object.keys(SalesPerHour).length / 2)) +
+                      "%",
+                  }}
+                >
+                  　
+                </div>
+              )}
+            </div>
+            <div className="table-sales-col">
+              {Object.keys(SalesPerHour).map(
+                (key, index) =>
+                  index >= Object.keys(SalesPerHour).length / 2 && (
+                    <div
+                      className="table-text"
+                      style={{
+                        height:
+                          String(100 / (Object.keys(SalesPerHour).length / 2)) +
+                          "%",
+                        backgroundColor:
+                          Number(key) === selectedHour
+                            ? "#FFF0B4"
+                            : "rgba(0,0,0,0)",
+                      }}
+                    >
+                      {SalesPerHour[Number(key)].sales.toLocaleString()}円
+                    </div>
+                  ),
+              )}
+              {Object.keys(SalesPerHour).length % 2 === 1 && (
+                <div
+                  className="table-text"
+                  style={{
+                    height:
+                      String(100 / (Object.keys(SalesPerHour).length / 2)) +
+                      "%",
+                  }}
+                >
+                  　
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
       )}
     </div>
   );

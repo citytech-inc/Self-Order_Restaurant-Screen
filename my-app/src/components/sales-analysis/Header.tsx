@@ -1,43 +1,53 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
-const SalesAnalysisHeader: React.FC = () => {
-  // Declare a piece of state to hold the selected analysis type
-  const [selectedAnalysisType, setSelectedAnalysisType] = useState<string>('');
+
+type HeaderComponentProps = {
+  focusButton: string | null;
+};
+
+function HeaderComponent({ focusButton }: HeaderComponentProps) {
+  const { restaurantId } = useParams();
 
   return (
     <div className="sales-analysis-header">
-      <div
+      
+      <Link
         className="header-select-button-1"
-        onClick={() => setSelectedAnalysisType("通常売上")}
+        to={`/${restaurantId}/sales-analysis`}
         style={{
-          backgroundColor: selectedAnalysisType === "通常売上" ? "#C05454" : "#FFFFFF",
-          color: selectedAnalysisType === "通常売上" ? "#FFFFFF" : "#C05454",
+          backgroundColor:
+            focusButton === "通常分析" ? "#C05454" : "#FFFFFF",
+          color: focusButton === "通常分析" ? "#FFFFFF" : "#C05454",
         }}
       >
         通常分析
-      </div>
-      <div
+      </Link>
+      <Link
         className="header-select-button-2"
-        onClick={() => setSelectedAnalysisType("商品別売上")}
+        to={`/${restaurantId}/sales-analysis/menu`}
         style={{
-          backgroundColor: selectedAnalysisType === "商品別売上" ? "#C05454" : "#FFFFFF",
-          color: selectedAnalysisType === "商品別売上" ? "#FFFFFF" : "#C05454",
+          backgroundColor:
+            focusButton === "商品別分析" ? "#C05454" : "#FFFFFF",
+          color: focusButton === "商品別分析" ? "#FFFFFF" : "#C05454",
         }}
       >
         商品別分析
-      </div>
-      <div
+      </Link>
+      <Link
         className="header-select-button-3"
-        onClick={() => setSelectedAnalysisType("客数分析")}
+        to={`/${restaurantId}/sales-analysis/customer`}
         style={{
-          backgroundColor: selectedAnalysisType === "客数分析" ? "#C05454" : "#FFFFFF",
-          color: selectedAnalysisType === "客数分析" ? "#FFFFFF" : "#C05454",
+          backgroundColor:
+            focusButton === "客数分析" ? "#C05454" : "#FFFFFF",
+          color: focusButton === "客数分析" ? "#FFFFFF" : "#C05454",
         }}
       >
         客数分析
-      </div>
+      </Link>
     </div>
   );
 };
 
-export default SalesAnalysisHeader;
+export default HeaderComponent;
