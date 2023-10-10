@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import "./OrderScreen.css";
-import { DisplayArea } from "../components/DisplayArea";
+import { DisplayArea } from "../components/order-screen/DisplayArea";
 import SettingBar from "../header/SettingBar";
-import IOSStyleSwitch from "../components/iOSStyleSwitch";
+import IOSStyleSwitch from "../components/order-screen/iOSStyleSwitch";
 
 interface Order {
   id: string;
