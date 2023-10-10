@@ -1,13 +1,13 @@
 import React from 'react';
 
 type SalesByMenuData = {
-  name: string;
-  count: number;
-  price: number;
+  [key: string]: string | number;
 };
 
 type SalesPerHourData = {
-  [key: string]: { sales: number };
+    [key: number]: {
+        [key: string]: string | number;
+    };
 };
 
 type MainInfoComponentProps = {

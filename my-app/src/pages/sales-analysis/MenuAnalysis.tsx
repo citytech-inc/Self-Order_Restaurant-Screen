@@ -193,9 +193,9 @@ const SalesAnalysis: React.FC = () => {
         <SettingBar focusButton="sales" />
         <HeaderComponent focusButton="商品別分析"/>
         <DateTimeComponent />
-        <MainInfoComponent />
+        <MainInfoComponent selectedSalesType={selectedSalesType} SalesByMenu={SalesByMenu} SalesPerHour={SalesPerHour}/>
         <GraphComponent />
-        <SubInfoComponent />
+        <SubInfoComponent SubInfoComponentData={salesDetailData} />
       </div>
     </div>
   );

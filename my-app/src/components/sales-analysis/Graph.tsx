@@ -3,6 +3,7 @@ import { Bar } from "react-chartjs-2";
 
 interface SalesPerHourType {
   [key: number]: {
+    priceClass: string;
     sales: number;
   };
 }
@@ -13,17 +14,65 @@ interface Props {
 
 const GraphComponent: React.FC<Props> = () => {
   const [displayTable, setDisplayTable] = useState<boolean>(false);
-  const [selectedHour, setSelectedHour] = useState<number>(0);
+  const [selectedHour, setSelectedHour] = useState(14);
 
-  const SalesPerHour: SalesPerHourType = {
-    // Replace this with actual sales per hour data
-    0: { sales: 100 },
-    1: { sales: 150 },
-    //... more data
+  const SalesPerHour: { [key: number]: { [key: string]: number | string } } = {
+    9: { sales: 1000, priceClass: "normal" },
+    10: { sales: 2000, priceClass: "normal" },
+    11: { sales: 3000, priceClass: "normal" },
+    12: { sales: 12000, priceClass: "crowded" },
+    13: { sales: 15000, priceClass: "crowded" },
+    14: { sales: 20000, priceClass: "normal" },
+    15: { sales: 2000, priceClass: "normal" },
+    16: { sales: 2000, priceClass: "normal" },
+    17: { sales: 2000, priceClass: "normal" },
+    18: { sales: 2000, priceClass: "crowded" },
+    19: { sales: 2000, priceClass: "crowded" },
+    20: { sales: 2000, priceClass: "crowded" },
+    21: { sales: 2000, priceClass: "normal" },
+    22: { sales: 2000, priceClass: "normal" },
+    23: { sales: 2000, priceClass: "normal" },
   };
 
-  const SalesDataSet = {}; // Replace this with actual dataset for the bar graph
-  const options = {}; // Replace this with actual options for the bar graph
+  const SalesDataSet = {
+    labels: Object.keys(SalesPerHour),
+    datasets: [
+      {
+        data: Object.values(SalesPerHour).map((value, index) => value.sales),
+        backgroundColor: Object.keys(SalesPerHour).map((key, index) =>
+          Number(key) === selectedHour
+            ? "rgba(255, 240, 180, 1)"
+            : SalesPerHour[Number(key)].priceClass === "normal"
+            ? "rgba(217, 217, 217, 1)"
+            : "rgba(153, 153, 153, 1)",
+        ),
+        borderRadius: 5,
+      },
+    ],
+  };
+
+  const options: {} = {
+    plugins: {
+      legend: {
+        display: false, // データセットのラベルを非表示にする
+      },
+    },
+    scales: {
+      x: {
+        position: "bottom",
+        grid: {
+          display: false, // X軸のグリッドラインを非表示にする
+        },
+      },
+      y: {
+        position: "right",
+        ticks: {
+          stepSize: 10000, // メモリの間隔を指定します
+        },
+      },
+    },
+    responsive: true,
+  };
 
   return (
     <div className="graph-option">
