@@ -208,8 +208,7 @@
 }
 .sales-analysis-container .bar-graph {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+  height: 400px;
 }
 .sales-analysis-container .headline {
   display: flex;
