@@ -1,6 +1,6 @@
 .sales-detail-data {
-  height: 250px;
-  width: calc(90% + 20px);
+  height: 40%;
+  width: 100%;
   border: #333333 solid 1px;
   border-radius: 10px;
   display: flex;
@@ -8,7 +8,6 @@
   align-items: center;
   justify-content: center;
   margin-top: 20px;
-  margin-bottom: 20px;
 }
 .sales-detail-data .sales-detail-col {
   height: 100%;

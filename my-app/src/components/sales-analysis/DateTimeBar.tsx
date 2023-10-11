@@ -133,15 +133,18 @@ const DateTimeComponent: React.FC<Props> = () => {
         ) : selectedSalesSpan === "日別" ? (
           <>
             <div className="display-week-select">
-              {format(selectedDate, "M月")}第
-              {Math.floor(
-                (selectedDate.getDate() -
-                  Number(format(selectedDate, "e")) +
-                  5) /
-                  7,
-              ) + 1}
-              週
+              {format(selectedDate, "M月") +
+                "第" +
+                (Math.floor(
+                  (selectedDate.getDate() -
+                    Number(format(selectedDate, "e")) +
+                    5) /
+                    7,
+                ) +
+                  1) +
+                "週"}
             </div>
+
             <DatePicker
               selected={selectedDate}
               onChange={handleDateChange}
