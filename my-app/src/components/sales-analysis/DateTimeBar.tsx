@@ -4,9 +4,11 @@ import "./DateTimeBar.css";
 import "react-datepicker/dist/react-datepicker.css";
 import { format } from "date-fns"; // Ensure you have date-fns installed for date formatting
 
-interface Props {}
+interface Props {
+  onSalesTypeChange?: (selectedSalesType: string) => void; 
+}
 
-const DateTimeComponent: React.FC<Props> = () => {
+const DateTimeComponent: React.FC<Props> = ({ onSalesTypeChange }) => {
   const SalesSpanOption = ["時間帯別", "日別", "月別", "曜日別"];
   const SalesTypeOption = ["総売上", "純売上", "粗利益", "営業利益"];
 
@@ -60,6 +62,13 @@ const DateTimeComponent: React.FC<Props> = () => {
   }
   const [selectedWeek, setSelectedWeek] = useState<Date[]>(dateList);
 
+  const selectedSalesTypeChange = (e: ChangeEvent<HTMLSelectElement>) => {
+    setSelectedSalesType(e.target.value);
+    if (onSalesTypeChange) {
+      onSalesTypeChange(e.target.value); 
+    }
+  };
+
   const selectedSalesSpanChange = (
     event: React.ChangeEvent<HTMLSelectElement>,
   ) => {
@@ -72,10 +81,6 @@ const DateTimeComponent: React.FC<Props> = () => {
 
   const selectedHourChange = (e: ChangeEvent<HTMLSelectElement>) => {
     setSelectedHour(e.target.value);
-  };
-
-  const selectedSalesTypeChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    setSelectedSalesType(e.target.value);
   };
 
   const highlightCustomDates = (date: Date | null) => {

@@ -147,6 +147,10 @@ const NormalAnalysis: React.FC = () => {
 
   console.log(YearMonthList);
 
+  const handleSalesTypeChange = (selectedSalesType: string) => {
+    setSelectedSalesType(selectedSalesType);
+  };
+
   const selectedSalesSpanChange = (
     event: React.ChangeEvent<HTMLSelectElement>,
   ) => {
@@ -195,7 +199,7 @@ const NormalAnalysis: React.FC = () => {
         <HeaderComponent focusButton="通常分析" />
         <div className="analysis-area">
           <div>
-            <DateTimeComponent />
+            <DateTimeComponent onSalesTypeChange={handleSalesTypeChange}/>
             <MainInfoComponent
               selectedSalesType={selectedSalesType}
               SalesByMenu={SalesByMenu}
