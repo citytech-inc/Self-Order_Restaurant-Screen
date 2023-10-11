@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useLocation, useParams } from "react-router-dom";
-import "./../SalesAnalysis.css";
+import "./SalesAnalysis.css";
 import SettingBar from "../../header/SettingBar";
 import ArrowIcon from "../../src/components/images/arrowhead-thin-outline-to-the-left.png";
 
@@ -193,14 +193,20 @@ const NormalAnalysis: React.FC = () => {
       <div>
         <SettingBar focusButton="sales" />
         <HeaderComponent focusButton="通常分析" />
-        <DateTimeComponent />
-        <MainInfoComponent
-          selectedSalesType={selectedSalesType}
-          SalesByMenu={SalesByMenu}
-          SalesPerHour={SalesPerHour}
-        />
-        <GraphComponent />
-        <SubInfoComponent SubInfoComponentData={salesDetailData} />
+        <div className="analysis-area">
+          <div>
+            <DateTimeComponent />
+            <MainInfoComponent
+              selectedSalesType={selectedSalesType}
+              SalesByMenu={SalesByMenu}
+              SalesPerHour={SalesPerHour}
+            />
+          </div>
+          <div>
+            <GraphComponent />
+            <SubInfoComponent SubInfoComponentData={salesDetailData} />
+          </div>
+        </div>
       </div>
     </div>
   );

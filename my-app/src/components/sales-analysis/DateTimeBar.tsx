@@ -1,5 +1,6 @@
 import React, { useState, ChangeEvent } from "react";
 import DatePicker from "react-datepicker";
+import "./DateTimeBar.css";
 import "react-datepicker/dist/react-datepicker.css";
 import { format } from "date-fns"; // Ensure you have date-fns installed for date formatting
 
@@ -89,6 +90,7 @@ const DateTimeComponent: React.FC<Props> = () => {
   };
 
   return (
+    <div className="display-option">
     <div className="display-span-option">
       {selectedSalesSpan === "時間帯別" ? (
         <>
@@ -177,6 +179,7 @@ const DateTimeComponent: React.FC<Props> = () => {
           <option value={value}>{value}</option>
         ))}
       </select>
+    </div>
     </div>
   );
 };

@@ -42,30 +42,6 @@ const MainInfoCustomerComponent: React.FC<MainInfoCustomerComponentProps> = ({
         ))}
       </div>
     </div>
-    <div className="table-col">
-      <div className="table-hour-col">
-        {Object.keys(SalesPerHour).map(
-          (key, index) =>
-            index >= Object.keys(SalesPerHour).length / 2 && (
-              <div className="table-text">{key}</div>
-            ),
-        )}
-        {Object.keys(SalesPerHour).length % 2 === 1 && (
-          <div className="table-text">　</div>
-        )}
-      </div>
-      <div className="table-sales-col">
-        {Object.values(SalesPerHour).map(
-          (value, index) =>
-            index >= Object.keys(SalesPerHour).length / 2 && (
-              <div className="table-text">¥ {value.sales}</div>
-            ),
-        )}
-        {Object.keys(SalesPerHour).length % 2 === 1 && (
-          <div className="table-text">　</div>
-        )}
-      </div>
-    </div>
   </div>
 );
 
