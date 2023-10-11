@@ -1,0 +1,67 @@
+.sales-detail-data {
+  height: 40%;
+  width: 100%;
+  border: #333333 solid 1px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+.sales-detail-data .sales-detail-col {
+  height: 100%;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.sales-detail-data .row-1 {
+  height: 11.1111111%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid #aaaaaa;
+}
+.sales-detail-data .row-2 {
+  height: 11.1111111%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid #cccccc;
+}
+.sales-detail-data .row-3 {
+  height: 11.1111111%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid #aaaaaa;
+  border-left: 1px solid #aaaaaa;
+}
+.sales-detail-data .row-name {
+  height: 100%;
+  width: calc(50% - 1px);
+  text-align: center;
+  border-right: 1px solid #cccccc;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center; /* テキストを縦方向に中央揃え */
+}
+.sales-detail-data .row-item {
+  height: 100%;
+  width: 50%;
+  text-align: right;
+  margin-right: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: right;
+}

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation, useParams } from "react-router-dom";
 import "./OrderRectangle.css";
-import ConfirmDeleteOrderPopup from "./../popups/ConfirmDeleteOrderPopup";
-import CompleteDeleteOrderPopup from "./../popups/CompleteDeleteOrderPopup";
+import ConfirmDeleteOrderPopup from "../../popups/ConfirmDeleteOrderPopup";
+import CompleteDeleteOrderPopup from "../../popups/CompleteDeleteOrderPopup";
 
 interface OrderProps {
   id: string;

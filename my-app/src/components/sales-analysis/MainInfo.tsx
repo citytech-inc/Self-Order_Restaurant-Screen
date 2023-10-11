@@ -1,0 +1,48 @@
+import React from "react";
+
+type SalesByMenuData = {
+  [key: string]: string | number;
+};
+
+type SalesPerHourData = {
+  [key: number]: {
+    [key: string]: string | number;
+  };
+};
+
+type MainInfoComponentProps = {
+  selectedSalesType: string;
+  SalesByMenu: SalesByMenuData[];
+  SalesPerHour: SalesPerHourData;
+};
+
+const MainInfoComponent: React.FC<MainInfoComponentProps> = ({
+  selectedSalesType,
+  SalesByMenu,
+  SalesPerHour,
+}) => (
+  <div className="sales-analysis-container">
+    <div className="sales-datas">
+      <div className="sales-total">
+        <p className="sales-type-text">{selectedSalesType}</p>
+        <p className="sales-type-price">¥ 18,000</p>
+      </div>
+      <div className="sales-menu">
+        <div className="sales-menu-headline">
+          <div className="sales-menu-headline-text-1">商品名</div>
+          <div className="sales-menu-headline-text-2">個数</div>
+          <div className="sales-menu-headline-text-3">金額</div>
+        </div>
+        {SalesByMenu.map((data, index) => (
+          <div key={index} className="menu-text">
+            <div className="menu-name">{data.name}</div>
+            <div className="menu-count">{data.count.toLocaleString()}</div>
+            <div className="menu-price">{data.price.toLocaleString()}円</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+);
+
+export default MainInfoComponent;
