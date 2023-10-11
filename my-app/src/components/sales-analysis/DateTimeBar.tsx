@@ -5,7 +5,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { format } from "date-fns"; // Ensure you have date-fns installed for date formatting
 
 interface Props {
-  onSalesTypeChange?: (selectedSalesType: string) => void; 
+  onSalesTypeChange?: (selectedSalesType: string) => void;
 }
 
 const DateTimeComponent: React.FC<Props> = ({ onSalesTypeChange }) => {
@@ -65,7 +65,7 @@ const DateTimeComponent: React.FC<Props> = ({ onSalesTypeChange }) => {
   const selectedSalesTypeChange = (e: ChangeEvent<HTMLSelectElement>) => {
     setSelectedSalesType(e.target.value);
     if (onSalesTypeChange) {
-      onSalesTypeChange(e.target.value); 
+      onSalesTypeChange(e.target.value);
     }
   };
 
