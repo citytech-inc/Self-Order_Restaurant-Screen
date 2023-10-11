@@ -60,6 +60,12 @@ const DateTimeComponent: React.FC<Props> = () => {
   }
   const [selectedWeek, setSelectedWeek] = useState<Date[]>(dateList);
 
+  const selectedSalesSpanChange = (
+    event: React.ChangeEvent<HTMLSelectElement>,
+  ) => {
+    setSelectedSalesSpan(event.target.value);
+  };
+
   const handleDateChange = (date: Date) => {
     setSelectedDate(date);
   };
@@ -91,95 +97,108 @@ const DateTimeComponent: React.FC<Props> = () => {
 
   return (
     <div className="display-option">
-    <div className="display-span-option">
-      {selectedSalesSpan === "時間帯別" ? (
-        <>
-          <DatePicker
-            selected={selectedDate}
-            onChange={handleDateChange}
-            dateFormat={customDateFormat(selectedDate)} // 日付の表示形式を指定
-            placeholderText="日付を選択" // プレースホルダーテキスト
-            className="display-date"
-          />
-          <select
-            className="display-hour-select"
-            value={selectedHour}
-            onChange={selectedHourChange}
-          >
-            {SelectedHourOption.map((value, index) => (
-              <option value={value}>
-                {value}時〜{value + 1}時
-              </option>
-            ))}
-          </select>
-        </>
-      ) : selectedSalesSpan === "日別" ? (
-        <>
-          <div className="display-week-select">
-            {format(selectedDate, "M月")}第
-            {Math.floor(
-              (selectedDate.getDate() - Number(format(selectedDate, "e")) + 5) /
-                7,
-            ) + 1}
-            週
-          </div>
-          <DatePicker
-            selected={selectedDate}
-            onChange={handleDateChange}
-            dateFormat={customDateFormat(selectedDate)} // 日付の表示形式を指定
-            placeholderText="日付を選択" // プレースホルダーテキスト
-            className="display-date"
-            highlightDates={selectedWeek}
-            dayClassName={highlightCustomDates}
-          />
-        </>
-      ) : selectedSalesSpan === "月別" ? (
-        <>
-          <select
-            className="display-year-select"
-            value={String(selectedYear)}
-            onChange={(e) => setSelectedYear(Number(e.target.value))}
-          >
-            {Object.keys(YearMonthList).map((key, index) => (
-              <option value={key}>{key}年</option>
-            ))}
-          </select>
-          <select
-            className="display-month-select"
-            value={String(selectedMonth)}
-            onChange={(e) => setSelectedMonth(Number(e.target.value))}
-          >
-            {YearMonthList[String(selectedYear)].map((value, index) => (
-              <option value={value}>{value}月</option>
-            ))}
-          </select>
-        </>
-      ) : (
-        <>
-          <select
-            className="display-day-select"
-            value={String(selectedDay)}
-            onChange={(e) => setSelectedDay(e.target.value)}
-          >
-            {DayName.map((value, index) => (
-              <option value={value}>{value}曜日</option>
-            ))}
-          </select>
-        </>
-      )}
-      <div style={{ fontSize: "16px", width: "30px", textAlign: "center" }}>
-        の
+      <div>
+        <select
+          className="sales-type-select"
+          value={selectedSalesSpan}
+          onChange={selectedSalesSpanChange}
+        >
+          {SalesSpanOption.map((value, index) => (
+            <option value={value}>{value}</option>
+          ))}
+        </select>
       </div>
-      <select
-        className="sales-type-select"
-        value={selectedSalesType}
-        onChange={selectedSalesTypeChange}
-      >
-        {SalesTypeOption.map((value, index) => (
-          <option value={value}>{value}</option>
-        ))}
-      </select>
-    </div>
+      <div className="display-span-option">
+        {selectedSalesSpan === "時間帯別" ? (
+          <>
+            <DatePicker
+              selected={selectedDate}
+              onChange={handleDateChange}
+              dateFormat={customDateFormat(selectedDate)} // 日付の表示形式を指定
+              placeholderText="日付を選択" // プレースホルダーテキスト
+              className="display-date"
+            />
+            <select
+              className="display-hour-select"
+              value={selectedHour}
+              onChange={selectedHourChange}
+            >
+              {SelectedHourOption.map((value, index) => (
+                <option value={value}>
+                  {value}時〜{value + 1}時
+                </option>
+              ))}
+            </select>
+          </>
+        ) : selectedSalesSpan === "日別" ? (
+          <>
+            <div className="display-week-select">
+              {format(selectedDate, "M月")}第
+              {Math.floor(
+                (selectedDate.getDate() -
+                  Number(format(selectedDate, "e")) +
+                  5) /
+                  7,
+              ) + 1}
+              週
+            </div>
+            <DatePicker
+              selected={selectedDate}
+              onChange={handleDateChange}
+              dateFormat={customDateFormat(selectedDate)} // 日付の表示形式を指定
+              placeholderText="日付を選択" // プレースホルダーテキスト
+              className="display-date"
+              highlightDates={selectedWeek}
+              dayClassName={highlightCustomDates}
+            />
+          </>
+        ) : selectedSalesSpan === "月別" ? (
+          <>
+            <select
+              className="display-year-select"
+              value={String(selectedYear)}
+              onChange={(e) => setSelectedYear(Number(e.target.value))}
+            >
+              {Object.keys(YearMonthList).map((key, index) => (
+                <option value={key}>{key}年</option>
+              ))}
+            </select>
+            <select
+              className="display-month-select"
+              value={String(selectedMonth)}
+              onChange={(e) => setSelectedMonth(Number(e.target.value))}
+            >
+              {YearMonthList[String(selectedYear)].map((value, index) => (
+                <option value={value}>{value}月</option>
+              ))}
+            </select>
+          </>
+        ) : (
+          <>
+            <select
+              className="display-day-select"
+              value={String(selectedDay)}
+              onChange={(e) => setSelectedDay(e.target.value)}
+            >
+              {DayName.map((value, index) => (
+                <option value={value}>{value}曜日</option>
+              ))}
+            </select>
+          </>
+        )}
+        <div style={{ fontSize: "16px", width: "30px", textAlign: "center" }}>
+          の
+        </div>
+        <select
+          className="sales-type-select"
+          value={selectedSalesType}
+          onChange={selectedSalesTypeChange}
+        >
+          {SalesTypeOption.map((value, index) => (
+            <option value={value}>{value}</option>
+          ))}
+        </select>
+      </div>
     </div>
   );
 };

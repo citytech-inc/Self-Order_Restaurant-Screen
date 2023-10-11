@@ -1,15 +1,15 @@
 .display-option {
   height: 8vh;
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: left;
   background-color: #fffefb;
+  padding-left: 5%;
 }
 
 .display-option .display-span-option {
+    padding-top: 10px;
   width: calc(70%);
-  padding-left: 30px;
   display: flex;
   flex-direction: row;
   align-items: end;
