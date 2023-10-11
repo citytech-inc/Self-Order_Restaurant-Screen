@@ -202,7 +202,7 @@ const NormalAnalysis: React.FC = () => {
               SalesPerHour={SalesPerHour}
             />
           </div>
-          <div>
+          <div className="analysis-area__right">
             <GraphComponent />
             <SubInfoComponent SubInfoComponentData={salesDetailData} />
           </div>

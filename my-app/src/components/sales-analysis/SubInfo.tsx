@@ -1,4 +1,5 @@
 import React from "react";
+import "./SubInfo.css";
 
 type SubInfoComponentData = {
   純売上: number;

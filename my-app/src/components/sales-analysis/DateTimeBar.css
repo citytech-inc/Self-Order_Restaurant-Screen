@@ -8,7 +8,7 @@
 }
 
 .display-option .display-span-option {
-    padding-top: 10px;
+  padding-top: 10px;
   width: calc(70%);
   display: flex;
   flex-direction: row;
