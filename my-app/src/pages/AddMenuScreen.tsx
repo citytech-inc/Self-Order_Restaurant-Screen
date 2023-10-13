@@ -163,28 +163,30 @@ const AddMenuScreen: React.FC = () => {
         {/* MenuCategoryList Component */}
         <div>
           <h2>メニューカテゴリー</h2>
-          {menuCategoryList.map((category, index) => (
-            <div key={index}>
-              {category}
-              <button
-                onClick={() => {
-                  const updatedCategories = [...menuCategoryList];
-                  updatedCategories.splice(index, 1);
-                  setMenuCategoryList(updatedCategories);
-                }}
-              >
-                削除
-              </button>
-            </div>
-          ))}
-          <input
-            type="text"
-            placeholder="Add new category"
-            value={inputValue} // Control the input with state
-            onChange={(e) => setInputValue(e.target.value)}
-          />
-          <button onClick={handleAddCategory}>追加</button>{" "}
-          {/* New button to add category */}
+          <div>
+            {menuCategoryList.map((category, index) => (
+              <div key={index}>
+                {category}
+                <button
+                  onClick={() => {
+                    const updatedCategories = [...menuCategoryList];
+                    updatedCategories.splice(index, 1);
+                    setMenuCategoryList(updatedCategories);
+                  }}
+                >
+                  削除
+                </button>
+              </div>
+            ))}
+            <input
+              type="text"
+              placeholder="Add new category"
+              value={inputValue} // Control the input with state
+              onChange={(e) => setInputValue(e.target.value)}
+            />
+            <button onClick={handleAddCategory}>追加</button>{" "}
+            {/* New button to add category */}
+          </div>
         </div>
 
         {/* Menu Form Component */}
