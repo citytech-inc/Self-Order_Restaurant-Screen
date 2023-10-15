@@ -1,8 +1,23 @@
-.input-section {
+.byNumber__container {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  width: 200px; /* Adjust as needed */
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.byNumber__container .box {
+    display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 4px;
+}
+
+.byNumber__container .box__text {
+    min-width: 160px;
+}
+
+.byNumber__container .box__input {
+    width: 150px;
 }
 
 .input-label {

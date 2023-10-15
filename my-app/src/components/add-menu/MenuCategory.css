@@ -10,7 +10,7 @@
 }
 
 .category-button {
-  background-color: #ffd700;
+  background-color: #fff4c6;
   border: none;
   border-radius: 20px;
   padding: 10px 20px;
@@ -20,9 +20,9 @@
 }
 
 .category-button:hover {
-  background-color: #ffc000;
+  background-color: #fff4c6;
 }
 
 .category-button:active {
-  background-color: #ffa500;
+  background-color: #fff4c6;
 }

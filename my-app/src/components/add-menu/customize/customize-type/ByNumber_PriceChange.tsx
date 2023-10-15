@@ -7,39 +7,48 @@ const ByNumber_PriceChange: React.FC = () => {
   const [price, setPrice] = useState("");
 
   return (
-    <div className="input-section">
-      <label className="input-label">個数上限</label>
-      <select
-        value={quantity}
-        onChange={(e) => setQuantity(Number(e.target.value))}
-      >
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="3">4</option>
-        <option value="3">5</option>
-        <option value="3">6</option>
-        <option value="3">7</option>
-        <option value="3">8</option>
-        <option value="3">9</option>
-        <option value="3">10</option>
-        {/* ... Add more options as needed */}
-      </select>
+    <div className="byNumber__container">
+      <div className="box">
+        <div className="box__text">個数上限</div>
+        <select
+          className="box__select"
+          value={quantity}
+          onChange={(e) => setQuantity(Number(e.target.value))}
+        >
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+          {/* ... Add more options as needed */}
+        </select>
+      </div>
+      <div className="box">
+        <div className="box__text">単位</div>
+        <input
+          className="box__input"
+          type="text"
+          placeholder="単位（枚など）を入力"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+        />
+      </div>
 
-      <label className="input-label">単位</label>
-      <input
-        type="text"
-        placeholder="単位（個、枚など）を入力"
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-      />
-      <label className="input-label">値段</label>
-      <input
-        type="text"
-        placeholder="¥"
-        value={price}
-        onChange={(e) => setPrice(e.target.value)}
-      />
+      <div className="box">
+        <div className="box__text">値段</div>
+        <input
+          className="box__input"
+          type="text"
+          placeholder="Price"
+          value={price}
+          onChange={(e) => setPrice(e.target.value)}
+        />
+      </div>
     </div>
   );
 };
