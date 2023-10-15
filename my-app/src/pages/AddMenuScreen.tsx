@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import SettingBar from "../header/SettingBar";
 import "./AddMenuScreen.css";
 
-const AddMenuScreen: React.FC = () => {
+const AddMenuScreenOld: React.FC = () => {
   type CustomizeType1 = {
     type: "Type1";
     name: string;
@@ -684,4 +684,4 @@ const AddMenuScreen: React.FC = () => {
   );
 };
 
-export default AddMenuScreen;
+export default AddMenuScreenOld;

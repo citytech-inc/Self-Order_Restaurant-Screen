@@ -1,9 +1,15 @@
 .section-container {
   display: flex;
   flex-direction: column;
+  padding-left: 12%;
+}
+
+.section-box {
+  display: flex;
+  flex-direction: row;
   gap: 10px;
-  width: 300px; /* Adjust as needed */
   align-items: center;
+  align-items: left;
 }
 
 .section-title {

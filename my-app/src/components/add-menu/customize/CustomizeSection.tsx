@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import "./CustomizeSection.css";
+import Customize from "./Customize";
 
 const SectionComponent: React.FC<{ onDelete: () => void }> = ({ onDelete }) => {
   const [sectionValue, setSectionValue] = useState("");
 
   return (
-    <div className="section-container">
+    <div className="section-box">
       <div className="section-title">セクション名</div>
       <input
         type="text"
@@ -34,10 +35,12 @@ const CustomizeSection: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className="section-container">
+      <div>カスタマイズ設定</div>
       {sections.map((_, index) => (
         <SectionComponent key={index} onDelete={() => handleDelete(index)} />
       ))}
+      <Customize />
       <button onClick={handleAdd}>セクションを追加</button>
     </div>
   );

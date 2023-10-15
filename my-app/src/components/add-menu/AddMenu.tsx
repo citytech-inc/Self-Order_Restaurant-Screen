@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, SetStateAction, Dispatch } from "react";
 import CustomizeSection from "./customize/CustomizeSection";
+import "./AddMenu.css";
 
 type CustomizeType1 = {
   type: "Type1";
@@ -35,9 +36,11 @@ type MenuType = {
   settings: MenuSettings[];
 };
 
-const [menuCategoryList, setMenuCategoryList] = useState<string[]>([]);
+type AddMenuProps = {
+  menuCategoryList: string[];
+};
 
-const AddMenu: React.FC = () => {
+const AddMenu: React.FC<AddMenuProps> = ({ menuCategoryList }) => {
   const [menu, setMenu] = useState<MenuType>({
     category: "",
     name: "",
@@ -47,45 +50,70 @@ const AddMenu: React.FC = () => {
   });
 
   return (
-    <div>
+    <div className="add-menu__container">
       <h2>メニューを追加</h2>
-      カテゴリー:
-      <select
-        value={menu.category}
-        onChange={(e) =>
-          setMenu((prev) => ({ ...prev, category: e.target.value }))
-        }
-      >
-        {menuCategoryList.map((category) => (
-          <option key={category} value={category}>
-            {category}
-          </option>
-        ))}
-      </select>
-      名前:
-      <input
-        type="text"
-        placeholder="Menu Name"
-        onChange={(e) => setMenu((prev) => ({ ...prev, name: e.target.value }))}
-      />
-      写真:
-      <input
-        type="text"
-        placeholder="Picture Link"
-        onChange={(e) =>
-          setMenu((prev) => ({ ...prev, picture: e.target.value }))
-        }
-      />
-      値段:
-      <input
-        type="number"
-        placeholder="Price"
-        onChange={(e) => {
-          const newPrice = parseFloat(e.target.value);
-          setMenu((prev) => ({ ...prev, price: newPrice }));
-        }}
-      />
-      <CustomizeSection />
+      <div className="box">
+        <div className="box__text">名前</div>
+        <input
+          className="name__input"
+          type="text"
+          placeholder="Menu Name"
+          onChange={(e) =>
+            setMenu((prev) => ({ ...prev, name: e.target.value }))
+          }
+        />
+      </div>
+      <div className="box">
+        <div className="box__text">カテゴリー</div>
+        <select
+          value={menu.category}
+          onChange={(e) =>
+            setMenu((prev) => ({ ...prev, category: e.target.value }))
+          }
+        >
+          {menuCategoryList.map((category) => (
+            <option key={category} value={category}>
+              {category}
+            </option>
+          ))}
+        </select>
+      </div>
+      <div className="box">
+        <div className="box__text">値段</div>
+        <input
+          type="number"
+          placeholder="Price"
+          onChange={(e) => {
+            const newPrice = parseFloat(e.target.value);
+            setMenu((prev) => ({ ...prev, price: newPrice }));
+          }}
+        />
+      </div>
+      <div className="box">
+        <div className="box__text">画像</div>
+        <input
+          type="text"
+          placeholder="Picture Link"
+          onChange={(e) =>
+            setMenu((prev) => ({ ...prev, picture: e.target.value }))
+          }
+        />
+      </div>
+      <div className="box">
+        <div className="box__text">カスタマイズ</div>
+        <select
+          value={menu.category}
+          onChange={(e) =>
+            setMenu((prev) => ({ ...prev, category: e.target.value }))
+          }
+        >
+          {menuCategoryList.map((category) => (
+            <option key={category} value={category}>
+              {category}
+            </option>
+          ))}
+        </select>
+      </div>
     </div>
   );
 };
