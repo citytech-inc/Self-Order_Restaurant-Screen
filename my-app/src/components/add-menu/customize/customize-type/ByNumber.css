@@ -1,23 +1,25 @@
 .input-section {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: 200px; /* Adjust as needed */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 200px; /* Adjust as needed */
 }
 
 .input-label {
-    font-weight: bold;
-    margin-bottom: 5px;
+  font-weight: bold;
+  margin-bottom: 5px;
 }
 
-input, select {
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    outline: none;
-    font-size: 14px;
+input,
+select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  font-size: 14px;
 }
 
-input:focus, select:focus {
-    border-color: #666;
+input:focus,
+select:focus {
+  border-color: #666;
 }

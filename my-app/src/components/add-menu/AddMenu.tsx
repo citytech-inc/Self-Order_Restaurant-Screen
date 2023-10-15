@@ -1,41 +1,39 @@
-import React, { useState } from 'react';
-import CustomizeSection from "./CustomizeSection";
+import React, { useState } from "react";
+import CustomizeSection from "./customize/CustomizeSection";
 
 type CustomizeType1 = {
-    type: "Type1";
-    name: string;
-    options: string[];
-    default: string;
-  };
+  type: "Type1";
+  name: string;
+  options: string[];
+  default: string;
+};
 
-  type CustomizeType2 = {
-    type: "Type2";
-    name: string;
-    options: Array<{ optionName: string; price: number }>;
-    default: string;
-  };
+type CustomizeType2 = {
+  type: "Type2";
+  name: string;
+  options: Array<{ optionName: string; price: number }>;
+  default: string;
+};
 
-  type CustomizeType3 = {
-    type: "Type3";
-    name: string;
-    price: number;
-    measureWord: string;
-    default: string;
-  };
+type CustomizeType3 = {
+  type: "Type3";
+  name: string;
+  price: number;
+  measureWord: string;
+  default: string;
+};
 
 type MenuSettings = {
-    customizations?: (CustomizeType1 | CustomizeType2 | CustomizeType3)[];
-  };
+  customizations?: (CustomizeType1 | CustomizeType2 | CustomizeType3)[];
+};
 
 type MenuType = {
-    category: string;
-    name: string;
-    picture: string;
-    price: number;
-    settings: MenuSettings[];
-  };
-
-
+  category: string;
+  name: string;
+  picture: string;
+  price: number;
+  settings: MenuSettings[];
+};
 
 const [menuCategoryList, setMenuCategoryList] = useState<string[]>([]);
 
@@ -68,9 +66,7 @@ const AddMenu: React.FC = () => {
       <input
         type="text"
         placeholder="Menu Name"
-        onChange={(e) =>
-          setMenu((prev) => ({ ...prev, name: e.target.value }))
-        }
+        onChange={(e) => setMenu((prev) => ({ ...prev, name: e.target.value }))}
       />
       写真:
       <input

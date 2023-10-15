@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const FromList_NoPriceChange: React.FC = () => {
   const [options, setOptions] = useState<string[]>([]);
@@ -14,7 +14,9 @@ const FromList_NoPriceChange: React.FC = () => {
     setOptions(updatedOptions);
   };
 
-  const handleDropdownChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+  const handleDropdownChange = (
+    event: React.ChangeEvent<HTMLSelectElement>,
+  ) => {
     setDropdownValue(event.target.value);
   };
 
@@ -49,6 +51,6 @@ const FromList_NoPriceChange: React.FC = () => {
       </div>
     </div>
   );
-}
+};
 
 export default FromList_NoPriceChange;

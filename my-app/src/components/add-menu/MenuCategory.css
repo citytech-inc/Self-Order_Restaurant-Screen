@@ -1,0 +1,29 @@
+.category-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.category-header {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.category-button {
+  background-color: #ffd700;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  margin: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.category-button:hover {
+  background-color: #ffc000;
+}
+
+.category-button:active {
+  background-color: #ffa500;
+}
