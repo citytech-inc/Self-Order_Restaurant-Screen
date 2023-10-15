@@ -3,6 +3,7 @@ import AddMenu from "../../components/add-menu/AddMenu";
 import MenuCategory from "../../components/add-menu/MenuCategory";
 import CustomizeSection from "../../components/add-menu/customize/CustomizeSection";
 import SettingBar from "../../header/SettingBar";
+import "./AddMenuScreen.css";
 
 const AddMenuScreen: React.FC = () => {
   const [menuCategoryList, setMenuCategoryList] = useState<string[]>([

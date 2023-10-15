@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   align-items: left;
-  padding-left: 12%;
 }
 
 .add-menu__container .box {
@@ -16,5 +15,4 @@
 }
 
 .add-menu__container .name__input {
-    max-width: 300px;
 }
