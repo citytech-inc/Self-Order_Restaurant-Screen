@@ -1,5 +1,5 @@
 import React, { useState, SetStateAction, Dispatch } from "react";
-import CustomizeSection from "./customize/CustomizeSection";
+import CustomizeSection from "./CustomizeSection";
 import "./AddMenu.css";
 
 type CustomizeType1 = {
@@ -38,9 +38,15 @@ type MenuType = {
 
 type AddMenuProps = {
   menuCategoryList: string[];
+  customize: string;
+  setCustomize: Dispatch<SetStateAction<string>>;
 };
 
-const AddMenu: React.FC<AddMenuProps> = ({ menuCategoryList }) => {
+const AddMenu: React.FC<AddMenuProps> = ({
+  menuCategoryList,
+  customize,
+  setCustomize,
+}) => {
   const [menu, setMenu] = useState<MenuType>({
     category: "",
     name: "",
@@ -55,7 +61,7 @@ const AddMenu: React.FC<AddMenuProps> = ({ menuCategoryList }) => {
       <div className="box">
         <div className="box__text">名前</div>
         <input
-          className="name__input"
+          className="input__name"
           type="text"
           placeholder="Menu Name"
           onChange={(e) =>
@@ -66,6 +72,7 @@ const AddMenu: React.FC<AddMenuProps> = ({ menuCategoryList }) => {
       <div className="box">
         <div className="box__text">カテゴリー</div>
         <select
+          className="select"
           value={menu.category}
           onChange={(e) =>
             setMenu((prev) => ({ ...prev, category: e.target.value }))
@@ -81,6 +88,7 @@ const AddMenu: React.FC<AddMenuProps> = ({ menuCategoryList }) => {
       <div className="box">
         <div className="box__text">値段</div>
         <input
+          className="input__price"
           type="number"
           placeholder="Price"
           onChange={(e) => {
@@ -92,6 +100,7 @@ const AddMenu: React.FC<AddMenuProps> = ({ menuCategoryList }) => {
       <div className="box">
         <div className="box__text">画像</div>
         <input
+          className="input__picture"
           type="text"
           placeholder="Picture Link"
           onChange={(e) =>
@@ -102,16 +111,12 @@ const AddMenu: React.FC<AddMenuProps> = ({ menuCategoryList }) => {
       <div className="box">
         <div className="box__text">カスタマイズ</div>
         <select
-          value={menu.category}
-          onChange={(e) =>
-            setMenu((prev) => ({ ...prev, category: e.target.value }))
-          }
+          className="select"
+          value={customize}
+          onChange={(e) => setCustomize(e.target.value)}
         >
-          {menuCategoryList.map((category) => (
-            <option key={category} value={category}>
-              {category}
-            </option>
-          ))}
+          <option value="あり">あり</option>
+          <option value="なし">なし</option>
         </select>
       </div>
     </div>

@@ -1,0 +1,62 @@
+.section-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.section-box {
+  display: flex;
+  flex-direction: row;
+  max-height: 40px;
+  justify-content: left;
+  padding-bottom: 5px;
+  padding-top: 5px;
+}
+
+.section-container .section-title {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 10px;
+  width: 120px;
+}
+
+input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  font-size: 14px;
+  width: 100%;
+}
+
+.add-button {
+  padding: 5px;
+  background-color: #f5f5f5;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  margin: 5px;
+}
+
+.add-button:hover {
+  background-color: #e0e0e0;
+}
+
+.section-container .input__name {
+  height: 12px;
+  max-width: 55%;
+  margin-right: 3%;
+}
+
+.section-container .delete-button {
+  margin-right: 0%;
+  height: 30px;
+  border-radius: 5px;
+  border-color: #e0e0e0;
+}
+
+.section-container .add-button {
+  height: 40px;
+  border-radius: 5px;
+  border-color: #e0e0e0;
+}

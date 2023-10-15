@@ -1,17 +1,19 @@
 import React, { useState } from "react";
 import AddMenu from "../../components/add-menu/AddMenu";
 import MenuCategory from "../../components/add-menu/MenuCategory";
-import CustomizeSection from "../../components/add-menu/customize/CustomizeSection";
+import CustomizeSection from "../../components/add-menu/CustomizeSection";
 import SettingBar from "../../header/SettingBar";
 import "./AddMenuScreen.css";
 
 const AddMenuScreen: React.FC = () => {
   const [menuCategoryList, setMenuCategoryList] = useState<string[]>([
-    "ジーメン",
+    "ラーメン",
     "セットメニュー",
-    "餃子焼",
+    "飲み物",
     "デザート",
   ]);
+
+  const [customize, setCustomize] = useState<string>("なし");
 
   return (
     <div>
@@ -21,8 +23,12 @@ const AddMenuScreen: React.FC = () => {
           menuCategoryList={menuCategoryList}
           setMenuCategoryList={setMenuCategoryList}
         />
-        <AddMenu menuCategoryList={menuCategoryList} />
-        <CustomizeSection />
+        <AddMenu
+          menuCategoryList={menuCategoryList}
+          customize={customize}
+          setCustomize={setCustomize}
+        />
+        {customize === "あり" && <CustomizeSection />}
       </div>
     </div>
   );

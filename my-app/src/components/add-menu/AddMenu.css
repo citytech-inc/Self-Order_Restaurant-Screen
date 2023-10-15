@@ -7,12 +7,26 @@
 .add-menu__container .box {
   display: flex;
   flex-direction: row;
-  padding: 3px;
+  padding: 4px;
 }
 
 .add-menu__container .box__text {
   min-width: 120px;
 }
 
-.add-menu__container .name__input {
+.add-menu__container .input__name {
+  height: 12px;
+}
+
+.add-menu__container .input__price {
+  height: 12px;
+  max-width: 112px;
+}
+
+.add-menu__container .input__picture {
+  height: 12px;
+}
+
+.add-menu__container .select {
+  padding: 5px;
 }

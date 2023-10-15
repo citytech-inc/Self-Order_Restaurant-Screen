@@ -3,47 +3,51 @@ import FromList_PriceChange from "./customize-type/FromList_PriceChange";
 import FromList_NoPriceChange from "./customize-type/FromList_NoPriceChange";
 import ByNumber_PriceChange from "./customize-type/ByNumber_PriceChange";
 import ByNumber_NoPriceChange from "./customize-type/ByNumber_NoPriceChange";
+import "./Customize.css";
 
 const Customize: React.FC = () => {
-  const [isAddClicked, setIsAddClicked] = useState(false);
-  const [option, setOption] = useState<string>("");
-  const [priceChange, setPriceChange] = useState<string>("");
+  const [customizations, setCustomizations] = useState<
+    { option: string; priceChange: string }[]
+  >([]);
+
+  const addCustomization = () => {
+    setCustomizations([...customizations, { option: "", priceChange: "" }]);
+  };
 
   return (
-    <div>
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          border: "1px solid black",
-          padding: "10px",
-        }}
-      >
-        <div>カスタマイズを追加</div>
-        {!isAddClicked && (
-          <button onClick={() => setIsAddClicked(true)}>+</button>
-        )}
-      </div>
-
-      {isAddClicked && (
-        <div>
-          <label>カスタマイズ名 </label>
+    <div className="customize__container">
+      {customizations.map((customization, index) => (
+        <div key={index}>
+            <div className="box">
+                <div className="box__text">カスタマイズ名 </div>
           <input type="text" placeholder="カスタマイズ名を入力してください" />
+            </div>
 
-          <div>
-            <label>オプション選択方式: </label>
-            <select value={option} onChange={(e) => setOption(e.target.value)}>
+          <div className="box">
+            <div className="box__text">オプション選択方式</div>
+            <select
+              value={customization.option}
+              onChange={(e) => {
+                const newCustomizations = [...customizations];
+                newCustomizations[index].option = e.target.value;
+                setCustomizations(newCustomizations);
+              }}
+            >
               <option value="">--選択してください--</option>
               <option value="fromList">候補から選択</option>
               <option value="byNumber">個数で選択</option>
             </select>
           </div>
 
-          <div>
-            <label>価格変更: </label>
+          <div className="box">
+            <div className="box__text">価格変更</div>
             <select
-              value={priceChange}
-              onChange={(e) => setPriceChange(e.target.value)}
+              value={customization.priceChange}
+              onChange={(e) => {
+                const newCustomizations = [...customizations];
+                newCustomizations[index].priceChange = e.target.value;
+                setCustomizations(newCustomizations);
+              }}
             >
               <option value="">--選択してください--</option>
               <option value="yes">あり</option>
@@ -51,20 +55,21 @@ const Customize: React.FC = () => {
             </select>
           </div>
 
-          {option === "fromList" && priceChange === "yes" && (
-            <FromList_PriceChange />
-          )}
-          {option === "fromList" && priceChange === "no" && (
-            <FromList_NoPriceChange />
-          )}
-          {option === "ByNumber" && priceChange === "yes" && (
-            <ByNumber_PriceChange />
-          )}
-          {option === "ByNumber" && priceChange === "no" && (
-            <ByNumber_NoPriceChange />
-          )}
+          {customization.option === "fromList" &&
+            customization.priceChange === "yes" && <FromList_PriceChange />}
+          {customization.option === "fromList" &&
+            customization.priceChange === "no" && <FromList_NoPriceChange />}
+          {customization.option === "byNumber" &&
+            customization.priceChange === "yes" && <ByNumber_PriceChange />}
+          {customization.option === "byNumber" &&
+            customization.priceChange === "no" && <ByNumber_NoPriceChange />}
         </div>
-      )}
+      ))}
+
+      <div className="add-customization">
+        <div className="text">カスタマイズを追加</div>
+        <button className="button" onClick={addCustomization}>+</button>
+      </div>
     </div>
   );
 };

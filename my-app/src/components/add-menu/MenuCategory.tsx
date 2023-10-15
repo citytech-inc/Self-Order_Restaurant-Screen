@@ -20,7 +20,7 @@ const MenuCategory: React.FC<AddMenuProps> = ({
 
   return (
     <div className="category-container">
-      <div className="category-header">メニューカテゴリー</div>
+      <h2>メニューカテゴリー</h2>
       <div>
         {menuCategoryList.map((category, index) => (
           <button key={index} className="category-button">
@@ -36,6 +36,3 @@ const MenuCategory: React.FC<AddMenuProps> = ({
 };
 
 export default MenuCategory;
-function setMenuCategoryList(newCategories: any[]) {
-  throw new Error("Function not implemented.");
-}
