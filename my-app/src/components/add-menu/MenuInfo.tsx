@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import CustomizeSection from "./CustomizeSection";
 
 type CustomizeType1 = {
     type: "Type1";
@@ -88,6 +89,7 @@ const AddMenu: React.FC = () => {
           setMenu((prev) => ({ ...prev, price: newPrice }));
         }}
       />
+      <CustomizeSection />
     </div>
   );
 };

@@ -1,0 +1,36 @@
+.options-section {
+  margin: 20px;
+}
+
+.option-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.option-group input[type="text"] {
+  flex: 1;
+  padding: 5px 10px;
+  margin-right: 10px;
+}
+
+.add-option {
+  background-color: #ffe082;
+  border: none;
+  padding: 10px 20px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.dropdown-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dropdown-section select {
+  padding: 5px 10px;
+  margin-left: 10px;
+}

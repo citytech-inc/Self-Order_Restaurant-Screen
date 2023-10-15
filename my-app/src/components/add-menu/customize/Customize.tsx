@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
+import FromList_PriceChange from './customize-type/FromList_PriceChange';
+import FromList_NoPriceChange from './customize-type/FromList_NoPriceChange';
+import ByNumber_PriceChange from './customize-type/ByNumber_PriceChange';
+import ByNumber_NoPriceChange from './customize-type/ByNumber_NoPriceChange';
 
-const CustomizationComponent: React.FC = () => {
+const Customize: React.FC = () => {
     const [isAddClicked, setIsAddClicked] = useState(false);
     const [option, setOption] = useState<string>("");
     const [priceChange, setPriceChange] = useState<string>("");
@@ -14,7 +18,8 @@ const CustomizationComponent: React.FC = () => {
 
             {isAddClicked && (
                 <div>
-                    <input type="text" placeholder="Customize name..." />
+                    <label>カスタマイズ名 </label>
+                    <input type="text" placeholder="カスタマイズ名を入力してください" />
                     
                     <div>
                         <label>オプション選択方式: </label>
@@ -25,7 +30,7 @@ const CustomizationComponent: React.FC = () => {
                         </select>
                     </div>
 
-                    {option === "fromList" && (
+                   
                         <div>
                             <label>価格変更: </label>
                             <select value={priceChange} onChange={(e) => setPriceChange(e.target.value)}>
@@ -34,12 +39,18 @@ const CustomizationComponent: React.FC = () => {
                                 <option value="no">なし</option>
                             </select>
                         </div>
-                    )}
 
-                    {priceChange && (
-                        <div>
-                            {/* Render your customization settings based on the user's selections here. */}
-                        </div>
+                    {option === "fromList" && priceChange === "yes" && (
+                        <FromList_PriceChange />
+                    )}
+                    {option === "fromList" && priceChange === "no" && (
+                        <FromList_NoPriceChange />
+                    )}
+                    {option === "ByNumber" && priceChange === "yes" &&(
+                        <ByNumber_PriceChange />
+                    )}
+                    {option === "ByNumber" && priceChange === "no" &&(
+                        <ByNumber_NoPriceChange />
                     )}
                 </div>
             )}
@@ -47,4 +58,4 @@ const CustomizationComponent: React.FC = () => {
     );
 }
 
-export default CustomizationComponent;
+export default Customize;
