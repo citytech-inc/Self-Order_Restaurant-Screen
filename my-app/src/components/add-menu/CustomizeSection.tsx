@@ -44,7 +44,9 @@ const CustomizeSection: React.FC = () => {
           <Customize key={index} />
         </>
       ))}
-      <button className="add-button" onClick={handleAdd}>セクションを追加</button>
+      <button className="add-button" onClick={handleAdd}>
+        セクションを追加
+      </button>
     </div>
   );
 };

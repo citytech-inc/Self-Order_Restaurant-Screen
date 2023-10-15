@@ -18,10 +18,10 @@ const Customize: React.FC = () => {
     <div className="customize__container">
       {customizations.map((customization, index) => (
         <div key={index}>
-            <div className="box">
-                <div className="box__text">カスタマイズ名 </div>
-          <input type="text" placeholder="カスタマイズ名を入力してください" />
-            </div>
+          <div className="box">
+            <div className="box__text">カスタマイズ名 </div>
+            <input type="text" placeholder="カスタマイズ名を入力してください" />
+          </div>
 
           <div className="box">
             <div className="box__text">オプション選択方式</div>
@@ -68,7 +68,9 @@ const Customize: React.FC = () => {
 
       <div className="add-customization">
         <div className="text">カスタマイズを追加</div>
-        <button className="button" onClick={addCustomization}>+</button>
+        <button className="button" onClick={addCustomization}>
+          +
+        </button>
       </div>
     </div>
   );
