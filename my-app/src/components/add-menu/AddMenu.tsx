@@ -109,6 +109,17 @@ const AddMenu: React.FC<AddMenuProps> = ({
         />
       </div>
       <div className="box">
+        <div className="box__text">商品説明</div>
+        <input
+          className="input__description"
+          type="text"
+          placeholder="商品説明を入力してください。"
+          onChange={(e) =>
+            setMenu((prev) => ({ ...prev, name: e.target.value }))
+          }
+        />
+      </div>
+      <div className="box">
         <div className="box__text">カスタマイズ</div>
         <select
           className="select"
