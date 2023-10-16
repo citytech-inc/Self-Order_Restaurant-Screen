@@ -5,7 +5,7 @@ import PaymentStartScreen from "./pages/PaymentStartScreen";
 import TableNumberScreen from "./pages/TableNumberScreen";
 import PleaseWaitScreen from "./pages/PleaseWaitScreen";
 import PurchasedItemsScreen from "./pages/PurchasedItemsScreen";
-import AddMenuScreenNewNew from "./pages/AddMenuScreen";
+import AddMenuScreen from "./pages/menu/AddMenuScreen";
 import SalesAnalysis from "./pages/SalesAnalysis";
 
 const App = () => {
@@ -30,7 +30,7 @@ const App = () => {
         />
         <Route
           path=":restaurantId/add-menu"
-          element={<AddMenuScreenNewNew />}
+          element={<AddMenuScreen />}
         />
         <Route
           path=":restaurantId/sales-analysis"
