@@ -6,9 +6,9 @@ import ArrowIcon from "../../src/components/images/arrowhead-thin-outline-to-the
 
 import DateTimeComponent from "../../components/sales-analysis/DateTimeBar";
 import GraphComponent from "../../components/sales-analysis/Graph";
+import SubGraphComponent from "../../components/sales-analysis/SubGraph";
 import HeaderComponent from "../../components/sales-analysis/Header";
 import MainInfoComponent from "../../components/sales-analysis/MainInfo";
-import SubInfoComponent from "../../components/sales-analysis/SubInfo";
 
 import { Chart, registerables } from "chart.js";
 import { Bar } from "react-chartjs-2";
@@ -17,7 +17,8 @@ import { format } from "date-fns";
 import "react-datepicker/dist/react-datepicker.css";
 
 Chart.register(...registerables);
-const SalesAnalysis: React.FC = () => {
+
+const NormalAnalysis: React.FC = () => {
   const SalesSpanOption = ["時間帯別", "日別", "月別", "曜日別"];
   const SalesTypeOption = ["総売上", "純売上", "粗利益", "営業利益"];
   const SalesByMenu: { [key: string]: string | number }[] = [
@@ -62,6 +63,9 @@ const SalesAnalysis: React.FC = () => {
   const Today = new Date();
   const DayName = ["日", "月", "火", "水", "木", "金", "土"];
   const YearMonthList: { [key: string]: number[] } = Object();
+  const [displayTable, setDisplayTable] = useState<boolean>(false);
+  const [displaySubTable, setDisplaySubTable] = useState<boolean>(false);
+
   for (
     let i = startDate;
     i[0] < Number(format(Today, "yyyy")) ||
@@ -103,8 +107,6 @@ const SalesAnalysis: React.FC = () => {
   }
   const [selectedWeek, setSelectedWeek] = useState<Date[]>(dateList);
 
-  const [displayTable, setDisplayTable] = useState(false);
-
   const SalesDataSet = {
     labels: Object.keys(SalesPerHour),
     datasets: [
@@ -145,6 +147,10 @@ const SalesAnalysis: React.FC = () => {
   };
 
   console.log(YearMonthList);
+
+  const handleSalesTypeChange = (selectedSalesType: string) => {
+    setSelectedSalesType(selectedSalesType);
+  };
 
   const selectedSalesSpanChange = (
     event: React.ChangeEvent<HTMLSelectElement>,
@@ -192,9 +198,9 @@ const SalesAnalysis: React.FC = () => {
       <div>
         <SettingBar focusButton="sales" />
         <HeaderComponent focusButton="客数分析" />
+        <DateTimeComponent onSalesTypeChange={handleSalesTypeChange} />
         <div className="analysis-area">
-          <div>
-            <DateTimeComponent />
+          <div className="analysis-area__left">
             <MainInfoComponent
               selectedSalesType={selectedSalesType}
               SalesByMenu={SalesByMenu}
@@ -202,8 +208,8 @@ const SalesAnalysis: React.FC = () => {
             />
           </div>
           <div className="analysis-area__right">
-            <GraphComponent />
-            <SubInfoComponent SubInfoComponentData={salesDetailData} />
+            <GraphComponent displayTable={displayTable} setDisplayTable={setDisplayTable}/>
+            <SubGraphComponent displayTable={displaySubTable} setDisplayTable={setDisplaySubTable}/>
           </div>
         </div>
       </div>
@@ -211,4 +217,4 @@ const SalesAnalysis: React.FC = () => {
   );
 };
 
-export default SalesAnalysis;
+export default NormalAnalysis;

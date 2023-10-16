@@ -10,7 +10,9 @@ interface SalesPerHourType {
 }
 
 interface Props {
-  // Define any props if needed
+  displayTable: boolean;
+  setDisplayTable: React.Dispatch<React.SetStateAction<boolean>>;
+  // ... other props if needed
 }
 
 const GraphComponent: React.FC<Props> = () => {
@@ -81,13 +83,13 @@ const GraphComponent: React.FC<Props> = () => {
         <div className="graph-option-text">グラフ表示</div>
         <div className="graph-option-toggle">
           <input
-            id="toggle"
+            id="toggle__sub"
             className="toggle_input"
             type="checkbox"
             checked={subDisplayTable}
             onChange={() => setSubDisplayTable((prevState) => !prevState)}
           />
-          <label htmlFor="toggle" className="toggle_label" />
+          <label htmlFor="toggle__sub" className="toggle_label" />
         </div>
       </div>
       <div>

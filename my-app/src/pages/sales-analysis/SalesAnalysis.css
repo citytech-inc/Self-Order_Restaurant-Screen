@@ -231,6 +231,10 @@
   margin-left: 9%;
 }
 
+.menu-table {
+  padding: 10px;
+}
+
 .analysis-area__left {
   padding-left: 2%;
   max-width: 40%;

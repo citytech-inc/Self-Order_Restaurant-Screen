@@ -147,15 +147,16 @@
 }
 .mainInfo__container .sales-per-hour-graph-area {
   position: relative;
-  height: 300px;
-  width: 90%;
+  height: 500px;
+  width: 100%;
   border: #333333 solid 1px;
   border-radius: 10px;
   padding: 5px 10px;
 }
 .mainInfo__container .bar-graph {
   position: absolute;
-  height: 400px;
+  min-width: 100%;
+  margin: 0;
 }
 .mainInfo__container .headline {
   display: flex;
