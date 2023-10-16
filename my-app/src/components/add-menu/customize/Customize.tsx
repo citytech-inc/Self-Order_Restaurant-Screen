@@ -14,6 +14,12 @@ const Customize: React.FC = () => {
     setCustomizations([...customizations, { option: "", priceChange: "" }]);
   };
 
+  const deleteCustomization = (index: number) => {
+    const newCustomizations = [...customizations];
+    newCustomizations.splice(index, 1);
+    setCustomizations(newCustomizations);
+  };
+
   return (
     <div className="customize__container">
       {customizations.map((customization, index) => (
@@ -63,6 +69,11 @@ const Customize: React.FC = () => {
             customization.priceChange === "yes" && <ByNumber_PriceChange />}
           {customization.option === "byNumber" &&
             customization.priceChange === "no" && <ByNumber_NoPriceChange />}
+
+            <div className="delete-area">
+                <button className="delete-button" onClick={() => deleteCustomization(index)}>カスタマイズを削除</button>
+            </div>
+        
         </div>
       ))}
 

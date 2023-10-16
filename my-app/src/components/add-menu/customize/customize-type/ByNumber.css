@@ -1,23 +1,22 @@
 .byNumber__container {
   display: flex;
   flex-direction: column;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding: 20px;
 }
 
 .byNumber__container .box {
-    display: flex;
+  display: flex;
   flex-direction: row;
   align-items: center;
   padding: 4px;
 }
 
 .byNumber__container .box__text {
-    min-width: 160px;
+  min-width: 160px;
 }
 
 .byNumber__container .box__input {
-    width: 150px;
+  width: 150px;
 }
 
 .input-label {

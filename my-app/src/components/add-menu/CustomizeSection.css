@@ -52,7 +52,7 @@ input {
   margin-right: 0%;
   height: 30px;
   border-radius: 5px;
-  border-color: #e0e0e0;
+  border: 0.5px solid #aaaaaa;
 }
 
 .section-container .add-button {

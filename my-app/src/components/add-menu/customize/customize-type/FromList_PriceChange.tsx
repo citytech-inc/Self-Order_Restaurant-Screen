@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import "./FromList.css";
 
 const FromList_PriceChange: React.FC = () => {
-  const [options, setOptions] = useState<string[]>([]);
+  const [options, setOptions] = useState<string[]>([""]);
   const [dropdownValue, setDropdownValue] = useState<string>("");
 
   const addOption = () => {
@@ -14,6 +15,12 @@ const FromList_PriceChange: React.FC = () => {
     setOptions(updatedOptions);
   };
 
+  const deleteOption = (index: number) => {
+    const updatedOptions = [...options];
+    updatedOptions.splice(index, 1); // Remove the option at the specified index
+    setOptions(updatedOptions);
+  };
+
   const handleDropdownChange = (
     event: React.ChangeEvent<HTMLSelectElement>,
   ) => {
@@ -21,17 +28,22 @@ const FromList_PriceChange: React.FC = () => {
   };
 
   return (
-    <div className="options-section">
+    <div className="options__container">
+      <div className="titles">
+        <div className="title">オプション</div>
+        <div className="title">値段</div>
+      </div>
       {options.map((option, index) => (
         <div className="option-group" key={index}>
           <input
+            className="input"
             type="text"
             placeholder={`オプション ${index + 1}`}
             value={option}
             onChange={(e) => updateOption(index, e.target.value)}
           />
-          <input type="text" placeholder="¥" />
-          <button>削除</button>
+          <input className="input" type="text" placeholder="¥" />
+          <button onClick={() => deleteOption(index)}>削除</button>
         </div>
       ))}
 

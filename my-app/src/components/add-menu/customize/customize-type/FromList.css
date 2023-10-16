@@ -1,12 +1,25 @@
-.options-section {
-  margin: 20px;
+.options__container {
+  padding: 20px;
 }
 
-.option-group {
+.options__container .titles {
   display: flex;
+  flex-direction: row;
+}
+
+.options__container .title {
+  width: 176px;
+  padding-left: 4px;
+}
+.options__container .option-group {
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  margin-bottom: 10px;
+  justify-content: left;
+  padding: 4px;
+}
+
+.options__container .input {
+  width: 150px;
 }
 
 .option-group input[type="text"] {
@@ -16,18 +29,21 @@
 }
 
 .add-option {
-  background-color: #ffe082;
+  background-color: #fff4c6;
   border: none;
-  padding: 10px 20px;
+  padding: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-top: 10px;
   margin-bottom: 20px;
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: 20px;
 }
 
 .dropdown-section {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: left;
 }
 
 .dropdown-section select {
