@@ -11,6 +11,13 @@ interface Props {
 const DateTimeComponent: React.FC<Props> = ({ onSalesTypeChange }) => {
   const SalesSpanOption = ["時間帯別", "日別", "月別", "曜日別"];
   const SalesTypeOption = ["総売上", "純売上", "粗利益", "営業利益"];
+  const MenuCategoryOption = [
+    "すべて",
+    "ラーメン",
+    "セットメニュー",
+    "ドリンク",
+  ];
+  const MenuOption = ["すべて", "醤油ラーメン", "塩ラーメン", "味噌ラーメン"];
 
   const SelectedHourOption = [
     8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23,
@@ -41,7 +48,8 @@ const DateTimeComponent: React.FC<Props> = ({ onSalesTypeChange }) => {
   }
   const [selectedSalesSpan, setSelectedSalesSpan] = useState("時間帯別");
   const [selectedSalesType, setSelectedSalesType] = useState("総売上");
-  const [selectedAnalysisType, setSelectedAnalysisType] = useState("通常売上");
+  const [selectedCategoryType, setSelectedCategoryType] = useState("すべて");
+  const [selectedMenuType, setSelectedMenuType] = useState("すべて");
   const [selectedHour, setSelectedHour] = useState("14");
   const [selectedDate, setSelectedDate] = useState<Date>(Today);
   const [selectedYear, setSelectedYear] = useState<Number>(
@@ -67,6 +75,14 @@ const DateTimeComponent: React.FC<Props> = ({ onSalesTypeChange }) => {
     if (onSalesTypeChange) {
       onSalesTypeChange(e.target.value);
     }
+  };
+
+  const selectedCategoryTypeChange = (e: ChangeEvent<HTMLSelectElement>) => {
+    setSelectedCategoryType(e.target.value);
+  };
+
+  const selectedMenuTypeChange = (e: ChangeEvent<HTMLSelectElement>) => {
+    setSelectedMenuType(e.target.value);
   };
 
   const selectedSalesSpanChange = (
@@ -194,6 +210,33 @@ const DateTimeComponent: React.FC<Props> = ({ onSalesTypeChange }) => {
             </select>
           </>
         )}
+        <div style={{ fontSize: "16px", width: "30px", textAlign: "center" }}>
+          の
+        </div>
+        <select
+          className="sales-type-select"
+          value={selectedCategoryType}
+          onChange={selectedCategoryTypeChange}
+        >
+          {MenuCategoryOption.map((value, index) => (
+            <option value={value}>{value}</option>
+          ))}
+        </select>
+        {selectedCategoryType !== "すべて" && (
+          <select
+            className="sales-type-select"
+            style={{ marginLeft: "8px" }}
+            value={selectedMenuType}
+            onChange={selectedMenuTypeChange}
+          >
+            {MenuOption.map((value, index) => (
+              <option key={index} value={value}>
+                {value}
+              </option>
+            ))}
+          </select>
+        )}
+
         <div style={{ fontSize: "16px", width: "30px", textAlign: "center" }}>
           の
         </div>

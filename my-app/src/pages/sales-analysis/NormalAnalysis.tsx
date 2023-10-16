@@ -6,6 +6,7 @@ import ArrowIcon from "../../src/components/images/arrowhead-thin-outline-to-the
 
 import DateTimeComponent from "../../components/sales-analysis/DateTimeBar";
 import GraphComponent from "../../components/sales-analysis/Graph";
+import SubGraphComponent from "../../components/sales-analysis/SubGraph";
 import HeaderComponent from "../../components/sales-analysis/Header";
 import MainInfoComponent from "../../components/sales-analysis/MainInfo";
 import SubInfoComponent from "../../components/sales-analysis/SubInfo";
@@ -197,9 +198,9 @@ const NormalAnalysis: React.FC = () => {
       <div>
         <SettingBar focusButton="sales" />
         <HeaderComponent focusButton="通常分析" />
+        <DateTimeComponent onSalesTypeChange={handleSalesTypeChange} />
         <div className="analysis-area">
-          <div>
-            <DateTimeComponent onSalesTypeChange={handleSalesTypeChange} />
+          <div className="analysis-area__left">
             <MainInfoComponent
               selectedSalesType={selectedSalesType}
               SalesByMenu={SalesByMenu}
@@ -208,7 +209,7 @@ const NormalAnalysis: React.FC = () => {
           </div>
           <div className="analysis-area__right">
             <GraphComponent />
-            <SubInfoComponent SubInfoComponentData={salesDetailData} />
+            <SubGraphComponent />
           </div>
         </div>
       </div>

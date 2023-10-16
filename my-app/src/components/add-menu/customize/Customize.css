@@ -18,17 +18,17 @@
 }
 
 .customize__container .delete-area {
-    display: flex;
-    justify-content: right;
-    padding: 4px;
+  display: flex;
+  justify-content: right;
+  padding: 4px;
 }
 
 .customize__container .delete-button {
-    display: flex;
-    justify-content: right;
-    align-items: center;
-    margin: 4px;
-    border: 0.5px solid #aaaaaa;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  margin: 4px;
+  border: 0.5px solid #aaaaaa;
 }
 
 .customize__container .text {
