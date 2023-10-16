@@ -17,12 +17,7 @@ const AddMenuScreen: React.FC = () => {
 
   const resetScreen = () => {
     // Resetting the state to initial values
-    setMenuCategoryList([
-      "ラーメン",
-      "セットメニュー",
-      "飲み物",
-      "デザート",
-    ]);
+    setMenuCategoryList(["ラーメン", "セットメニュー", "飲み物", "デザート"]);
     setCustomize("なし");
   };
 
@@ -41,8 +36,10 @@ const AddMenuScreen: React.FC = () => {
         />
         {customize === "あり" && <CustomizeSection />}
         <div className="add-menu__area">
-        <button className="add-menu__button" onClick={resetScreen}>商品を登録</button>
-      </div>
+          <button className="add-menu__button" onClick={resetScreen}>
+            商品を登録
+          </button>
+        </div>
       </div>
     </div>
   );

@@ -210,7 +210,46 @@ const DateTimeComponent: React.FC<Props> = ({ onSalesTypeChange }) => {
             </select>
           </>
         )}
+        <div style={{ fontSize: "16px", width: "30px", textAlign: "center" }}>
+          の
         </div>
+        <select
+          className="sales-type-select"
+          value={selectedCategoryType}
+          onChange={selectedCategoryTypeChange}
+        >
+          {MenuCategoryOption.map((value, index) => (
+            <option value={value}>{value}</option>
+          ))}
+        </select>
+        {selectedCategoryType !== "すべて" && (
+          <select
+            className="sales-type-select"
+            style={{ marginLeft: "8px" }}
+            value={selectedMenuType}
+            onChange={selectedMenuTypeChange}
+          >
+            {MenuOption.map((value, index) => (
+              <option key={index} value={value}>
+                {value}
+              </option>
+            ))}
+          </select>
+        )}
+
+        <div style={{ fontSize: "16px", width: "30px", textAlign: "center" }}>
+          の
+        </div>
+        <select
+          className="sales-type-select"
+          value={selectedSalesType}
+          onChange={selectedSalesTypeChange}
+        >
+          {SalesTypeOption.map((value, index) => (
+            <option value={value}>{value}</option>
+          ))}
+        </select>
+      </div>
     </div>
   );
 };

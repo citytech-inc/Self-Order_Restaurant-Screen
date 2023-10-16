@@ -1,14 +1,23 @@
 .display-option {
-  height: 8vh;
+  height: 9vh;
   display: flex;
   flex-direction: column;
   justify-content: left;
   background-color: #fffefb;
-  padding-left: 5%;
+  padding-left: 11%;
+}
+
+.display-option .display-date {
+  display: flex;
+  height: 40px;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 0px;
 }
 
 .display-option .display-span-option {
-  padding-top: 10px;
+  padding-top: 5px;
   display: flex;
   flex-direction: row;
   align-items: end;
@@ -17,63 +26,70 @@
 }
 .display-option .display-hour-select {
   display: flex;
-  height: 36px;
+  height: 34px;
   text-align: center;
-  font-size: 24px;
-  font-weight: 600;
+  font-size: 15px;
+  font-weight: 500;
   width: 150px;
   margin-left: 10px;
+  padding: 3px;
 }
 
 .display-option .display-week-select {
   height: 34px;
   text-align: left;
-  font-size: 24px;
-  font-weight: 600;
+  font-size: 15px;
+  font-weight: 500;
   width: 150px;
   margin-right: 10px;
   border: 1px #777 solid;
+  padding: 3px;
 }
 .display-option .display-year-select {
   height: 34px;
   text-align: left;
-  font-size: 24px;
-  font-weight: 600;
+  font-size: 15px;
+  font-weight: 500;
   width: 120px;
   margin-right: 10px;
   border: 1px #777 solid;
+  padding: 3px;
 }
 .display-option .display-month-select {
   height: 34px;
   text-align: left;
-  font-size: 24px;
-  font-weight: 600;
+  font-size: 15px;
+  font-weight: 500;
   width: 80px;
   margin-right: 10px;
   border: 1px #777 solid;
+  padding: 3px;
 }
 .display-option .display-day-select {
   height: 34px;
   text-align: left;
-  font-size: 24px;
-  font-weight: 600;
+  font-size: 15px;
+  font-weight: 500;
   width: 120px;
   margin-right: 10px;
   border: 1px #777 solid;
+  padding: 3px;
 }
 .display-option .sales-type-select {
   background-color: #fff0b4;
   display: flex;
-  height: 25px;
-  font-size: 18px;
+  height: 34px;
+  font-size: 15px;
   width: 100px;
+  padding: 3px;
 }
 .display-option .sales-span-text {
   line-height: 60px;
   height: 60px;
   width: 100px;
   text-align: center;
-  font-size: 20px;
+  font-size: 15px;
+  padding: 3px;
 }
 .display-option .date-and-graph {
   width: fit-content;
@@ -84,15 +100,15 @@
 }
 .display-option .display-date {
   display: flex;
-  font-size: 24px;
-  font-weight: 600;
+  font-size: 15px;
+  font-weight: 500;
   width: 180px;
   height: 30px;
 }
 .display-option .today-datetime {
   display: flex;
-  font-size: 24px;
-  font-weight: 600;
+  font-size: 15px;
+  font-weight: 500;
 }
 .display-option .graph-option {
   width: fit-content;

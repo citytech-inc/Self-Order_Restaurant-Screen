@@ -70,10 +70,14 @@ const Customize: React.FC = () => {
           {customization.option === "byNumber" &&
             customization.priceChange === "no" && <ByNumber_NoPriceChange />}
 
-            <div className="delete-area">
-                <button className="delete-button" onClick={() => deleteCustomization(index)}>カスタマイズを削除</button>
-            </div>
-        
+          <div className="delete-area">
+            <button
+              className="delete-button"
+              onClick={() => deleteCustomization(index)}
+            >
+              カスタマイズを削除
+            </button>
+          </div>
         </div>
       ))}
 

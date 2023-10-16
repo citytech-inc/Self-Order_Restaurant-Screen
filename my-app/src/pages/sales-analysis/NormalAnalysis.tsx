@@ -4,11 +4,11 @@ import "./SalesAnalysis.css";
 import SettingBar from "../../header/SettingBar";
 import ArrowIcon from "../../src/components/images/arrowhead-thin-outline-to-the-left.png";
 
-import DateTimeComponent from "../../components/sales-analysis/DateTimeBar";
+import DateTimeComponent from "../../components/sales-analysis/DateTimeBarNormal";
 import GraphComponent from "../../components/sales-analysis/Graph";
+import SubGraphComponent from "../../components/sales-analysis/SubGraph";
 import HeaderComponent from "../../components/sales-analysis/Header";
 import MainInfoComponent from "../../components/sales-analysis/MainInfo";
-import SubInfoComponent from "../../components/sales-analysis/SubInfo";
 
 import { Chart, registerables } from "chart.js";
 import { Bar } from "react-chartjs-2";
@@ -63,6 +63,9 @@ const NormalAnalysis: React.FC = () => {
   const Today = new Date();
   const DayName = ["日", "月", "火", "水", "木", "金", "土"];
   const YearMonthList: { [key: string]: number[] } = Object();
+  const [displayTable, setDisplayTable] = useState<boolean>(false);
+  const [displaySubTable, setDisplaySubTable] = useState<boolean>(false);
+
   for (
     let i = startDate;
     i[0] < Number(format(Today, "yyyy")) ||
@@ -103,8 +106,6 @@ const NormalAnalysis: React.FC = () => {
     dateList.push(settingDate);
   }
   const [selectedWeek, setSelectedWeek] = useState<Date[]>(dateList);
-
-  const [displayTable, setDisplayTable] = useState(false);
 
   const SalesDataSet = {
     labels: Object.keys(SalesPerHour),
@@ -197,9 +198,9 @@ const NormalAnalysis: React.FC = () => {
       <div>
         <SettingBar focusButton="sales" />
         <HeaderComponent focusButton="通常分析" />
+        <DateTimeComponent onSalesTypeChange={handleSalesTypeChange} />
         <div className="analysis-area">
-          <div>
-            <DateTimeComponent onSalesTypeChange={handleSalesTypeChange} />
+          <div className="analysis-area__left">
             <MainInfoComponent
               selectedSalesType={selectedSalesType}
               SalesByMenu={SalesByMenu}
@@ -207,8 +208,8 @@ const NormalAnalysis: React.FC = () => {
             />
           </div>
           <div className="analysis-area__right">
-            <GraphComponent />
-            <SubInfoComponent SubInfoComponentData={salesDetailData} />
+            <GraphComponent displayTable={displayTable} setDisplayTable={setDisplayTable}/>
+            <SubGraphComponent displayTable={displaySubTable} setDisplayTable={setDisplaySubTable}/>
           </div>
         </div>
       </div>
