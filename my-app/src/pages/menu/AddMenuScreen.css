@@ -2,3 +2,23 @@
   margin-right: 35%;
   padding-left: 12%;
 }
+
+.menu__container .add-menu__area {
+    display: flex;
+    justify-content: right;
+    padding: 4px;
+    padding-bottom: 20px;
+}
+
+.menu__container .add-menu__button {
+    display: flex;
+    justify-content: right;
+    background-color: #fff4c6;
+    align-items: center;
+    margin: 4px;
+    padding: 10px;
+    padding-right: 20px;
+    padding-left: 20px;
+    border-radius: 50px;
+    border: 0.5px solid #aaaaaa;
+}

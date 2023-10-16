@@ -8,6 +8,7 @@
   flex-direction: row;
   max-height: 40px;
   justify-content: left;
+  align-items: center;
   padding-bottom: 5px;
   padding-top: 5px;
 }
@@ -15,7 +16,6 @@
 .section-container .section-title {
   font-size: 16px;
   font-weight: 500;
-  margin-bottom: 10px;
   width: 120px;
 }
 
@@ -45,7 +45,7 @@ input {
 .section-container .input__name {
   height: 12px;
   max-width: 55%;
-  margin-right: 3%;
+  margin-right: 2%;
 }
 
 .section-container .delete-button {
