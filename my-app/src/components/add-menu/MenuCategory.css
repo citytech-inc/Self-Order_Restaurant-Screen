@@ -1,0 +1,28 @@
+.category-container {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+}
+
+.category-header {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.category-button {
+  background-color: #fff4c6;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  margin: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.category-button:hover {
+  background-color: #fff4c6;
+}
+
+.category-button:active {
+  background-color: #fff4c6;
+}

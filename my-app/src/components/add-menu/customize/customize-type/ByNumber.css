@@ -1,0 +1,39 @@
+.byNumber__container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.byNumber__container .box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 4px;
+}
+
+.byNumber__container .box__text {
+  min-width: 160px;
+}
+
+.byNumber__container .box__input {
+  width: 150px;
+}
+
+.input-label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+input,
+select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  font-size: 14px;
+}
+
+input:focus,
+select:focus {
+  border-color: #666;
+}

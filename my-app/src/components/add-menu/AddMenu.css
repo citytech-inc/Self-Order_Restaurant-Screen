@@ -1,0 +1,22 @@
+.add-menu__container {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+}
+
+.add-menu__container .box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 4px;
+}
+
+.add-menu__container .box__text {
+  min-width: 120px;
+}
+
+
+.add-menu__container .input__price {
+  max-width: 120px;
+}
+
