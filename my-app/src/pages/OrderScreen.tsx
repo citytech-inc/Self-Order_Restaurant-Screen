@@ -53,18 +53,30 @@ interface OrderData {
   timestamp: Time[];
 }
 
+// ローカルストレージへの保存と取得関数
+const saveOrdersToLocalStorage = (orders: Order[]) => {
+  localStorage.setItem('orders', JSON.stringify(orders));
+}
+
+const getOrdersFromLocalStorage = (): Order[] => {
+  const storedOrders = localStorage.getItem('orders');
+  return storedOrders ? JSON.parse(storedOrders) : [];
+}
+
 function OrderScreen() {
-  const [orders, setOrders] = useState<Order[]>([]);
+  const [orders, setOrders] = useState<Order[]>(getOrdersFromLocalStorage());
   const [isChecked, setIsChecked] = useState(false);
   const { restaurantId } = useParams();
   const cleanedRestaurantId = restaurantId?.replace(":", "");
 
   const handleDelete = (id: string) => {
-    setOrders((prevOrders) =>
-      prevOrders.map((order) =>
+    setOrders((prevOrders) => {
+      const updatedOrders = prevOrders.map((order) =>
         order.id === id ? { ...order, isDeleted: !order.isDeleted } : order,
-      ),
-    );
+      );
+      saveOrdersToLocalStorage(updatedOrders);
+      return updatedOrders;
+    });
   };
 
   useEffect(() => {
@@ -146,7 +158,11 @@ function OrderScreen() {
             console.log("受信した注文データ", JSON.stringify(orderData));
             console.log("作成した注文データ", newOrders);
 
-            setOrders((prevOrders) => [...prevOrders, ...newOrders]);
+            setOrders((prevOrders) => {
+              const updatedOrders = [...prevOrders, ...newOrders];
+              saveOrdersToLocalStorage(updatedOrders);
+              return updatedOrders;
+            });
           }
         }
       } catch (error) {
