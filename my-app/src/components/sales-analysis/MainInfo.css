@@ -189,25 +189,24 @@
   width: 100%;
 }
 
-
 .table-container {
-    border: 1px solid #ccc;
-    padding: 5px;
-    margin: 5px 0;
-    width: calc(100% - 10px);
+  border: 1px solid #ccc;
+  padding: 5px;
+  margin: 5px 0;
+  width: calc(100% - 10px);
 }
 
 table {
-    width: 100%;
-    border-collapse: collapse;
+  width: 100%;
+  border-collapse: collapse;
 }
 
 td {
-    border-bottom: 1px solid #e5e5e5;
-    padding: 0px;
-    text-align: left;
+  border-bottom: 1px solid #e5e5e5;
+  padding: 0px;
+  text-align: left;
 }
 
 h3 {
-    margin: 0px;
+  margin: 0px;
 }

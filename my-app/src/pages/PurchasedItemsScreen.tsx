@@ -7,7 +7,7 @@ import ConfirmPaymentPopup from "./../popups/ConfirmPaymentPopup";
 import CompletePaymentPopup from "./../popups/CompletePaymentPopup";
 
 // 分析用の関数のimport (最終的には移動させる)
-import sendPostRequest from "../functions/analysisFunction"
+import sendPostRequest from "../functions/analysisFunction";
 
 interface Id {
   restaurantId: number;
@@ -79,10 +79,13 @@ const PurchasedItemsScreen: React.FC = () => {
 
   // 分析用の関数の仕様 (最終的には移動させる)
   useEffect(() => {
-    sendPostRequest([0, 1694821920000, 1695196740000 ,2694835660000], restaurantId) // 第一引数はtimestampの配列
-    .then((result) => {
-      console.log(result)
-    })
+    sendPostRequest(
+      [0, 1694821920000, 1695196740000, 2694835660000],
+      restaurantId,
+    ) // 第一引数はtimestampの配列
+      .then((result) => {
+        console.log(result);
+      });
   });
 
   useEffect(() => {
