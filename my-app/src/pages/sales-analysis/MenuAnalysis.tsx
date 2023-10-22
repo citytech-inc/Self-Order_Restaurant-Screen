@@ -13,7 +13,6 @@ import MainInfoComponent from "../../components/sales-analysis/MainInfo";
 import { Chart, registerables } from "chart.js";
 import { Bar } from "react-chartjs-2";
 import DatePicker from "react-datepicker";
-import { format } from "date-fns";
 import "react-datepicker/dist/react-datepicker.css";
 import MenuTable from "../../components/sales-analysis/MenuTable";
 
@@ -67,18 +66,18 @@ const NormalAnalysis: React.FC = () => {
   const [displayTable, setDisplayTable] = useState<boolean>(false);
   const [displaySubTable, setDisplaySubTable] = useState<boolean>(false);
 
-  for (
-    let i = startDate;
-    i[0] < Number(format(Today, "yyyy")) ||
-    (i[0] === Number(format(Today, "yyyy")) &&
-      i[1] <= Number(format(Today, "MM")));
+  let currentYear = new Date().getFullYear();
+  let currentMonth = new Date().getMonth() + 1; // Remember, JavaScript months are 0-indexed
 
-  ) {
+  let i = [...startDate];
+
+  while (i[0] < currentYear || (i[0] === currentYear && i[1] <= currentMonth)) {
     if (Object.keys(YearMonthList).includes(String(i[0]))) {
       YearMonthList[String(i[0])].push(i[1]);
     } else {
       YearMonthList[String(i[0])] = [i[1]];
     }
+
     if (i[1] !== 12) {
       i[1]++;
     } else {
@@ -86,26 +85,34 @@ const NormalAnalysis: React.FC = () => {
       i[1] = 1;
     }
   }
+
   const [selectedSalesSpan, setSelectedSalesSpan] = useState("時間帯別");
   const [selectedSalesType, setSelectedSalesType] = useState("総売上");
   const [selectedAnalysisType, setSelectedAnalysisType] = useState("通常売上");
   const [selectedHour, setSelectedHour] = useState(14);
   const [selectedDate, setSelectedDate] = useState<Date>(Today);
-  const [selectedYear, setSelectedYear] = useState<Number>(
-    Number(format(Today, "yyyy")),
-  );
+  const today = new Date();
+
+  const [selectedYear, setSelectedYear] = useState<Number>(today.getFullYear());
   const [selectedMonth, setSelectedMonth] = useState<Number>(
-    Number(format(Today, "MM")),
-  );
+    today.getMonth() + 1,
+  ); // JavaScript months are 0-indexed
   const [selectedDay, setSelectedDay] = useState<String>(
-    DayName[Number(format(Today, "e"))],
-  );
+    DayName[today.getDay() === 0 ? 6 : today.getDay() - 1],
+  ); // getDay() returns 0 for Sunday and 6 for Saturday, assuming DayName starts from Monday
+
   const dateList: Date[] = [];
   for (let i = 1; i < 8; i++) {
     const settingDate: Date = new Date(Today);
-    settingDate.setDate(Today.getDate() - Number(format(Today, "e")) + i);
+
+    // Adjust for Monday start (Make Monday as 1 and Sunday as 7)
+    const dayOfWeek = Today.getDay();
+    const adjustedDayOfWeek = dayOfWeek === 0 ? 7 : dayOfWeek;
+
+    settingDate.setDate(Today.getDate() - adjustedDayOfWeek + i);
     dateList.push(settingDate);
   }
+
   const [selectedWeek, setSelectedWeek] = useState<Date[]>(dateList);
 
   const SalesDataSet = {
@@ -171,10 +178,16 @@ const NormalAnalysis: React.FC = () => {
     if (date) {
       const dateList: Date[] = [];
       for (let i = 1; i < 8; i++) {
-        const settingDate: Date = new Date(date);
-        settingDate.setDate(date.getDate() - Number(format(date, "e")) + i);
+        const settingDate: Date = new Date(Today);
+
+        // Adjust for Monday start (Make Monday as 1 and Sunday as 7)
+        const dayOfWeek = Today.getDay();
+        const adjustedDayOfWeek = dayOfWeek === 0 ? 7 : dayOfWeek;
+
+        settingDate.setDate(Today.getDate() - adjustedDayOfWeek + i);
         dateList.push(settingDate);
       }
+
       setSelectedWeek(dateList);
     }
   };
@@ -188,12 +201,18 @@ const NormalAnalysis: React.FC = () => {
   };
   const customDateFormat = (date: Date | null) => {
     if (date) {
-      return `${format(date, "M月dd日")} (${
-        DayName[Number(format(date, "e"))]
-      })`;
+      const month = date.getMonth() + 1; // JavaScript months are 0-indexed
+      const day = date.getDate();
+
+      // Adjust for Monday start (Make Monday as 1 and Sunday as 7)
+      const dayOfWeek = date.getDay();
+      const adjustedDayOfWeek = dayOfWeek === 0 ? 6 : dayOfWeek - 1;
+
+      return `${month}月${day}日 (${DayName[adjustedDayOfWeek]})`;
     }
     return "";
   };
+
   return (
     <div>
       <div>

@@ -55,13 +55,13 @@ interface OrderData {
 
 // ローカルストレージへの保存と取得関数
 const saveOrdersToLocalStorage = (orders: Order[]) => {
-  localStorage.setItem('orders', JSON.stringify(orders));
-}
+  localStorage.setItem("orders", JSON.stringify(orders));
+};
 
 const getOrdersFromLocalStorage = (): Order[] => {
-  const storedOrders = localStorage.getItem('orders');
+  const storedOrders = localStorage.getItem("orders");
   return storedOrders ? JSON.parse(storedOrders) : [];
-}
+};
 
 function OrderScreen() {
   const [orders, setOrders] = useState<Order[]>(getOrdersFromLocalStorage());

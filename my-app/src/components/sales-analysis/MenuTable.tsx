@@ -1,5 +1,5 @@
-import React from 'react';
-import './MenuTable.css';
+import React from "react";
+import "./MenuTable.css";
 
 type Product = {
   name: string;
@@ -13,11 +13,35 @@ type Product = {
   costPrice: number;
   grossProfit: number;
   ABC: string;
-}
+};
 
 const products: Product[] = [
-  { name: "醤油ラーメン", category: "ラーメン", price: 800, percentage: 34.85, numSales: 2053, numReturned: 4, netSales: 1642400, totalSales: 1494584, costPrice: 373646, grossProfit: 1120938, ABC: "A" },
-  { name: "塩ラーメン", category: "ラーメン", price: 800, percentage: 29.44, numSales: 1734, numReturned: 0, netSales: 1387200, totalSales: 1262352, costPrice: 315588, grossProfit: 946764, ABC: "A" },
+  {
+    name: "醤油ラーメン",
+    category: "ラーメン",
+    price: 800,
+    percentage: 34.85,
+    numSales: 2053,
+    numReturned: 4,
+    netSales: 1642400,
+    totalSales: 1494584,
+    costPrice: 373646,
+    grossProfit: 1120938,
+    ABC: "A",
+  },
+  {
+    name: "塩ラーメン",
+    category: "ラーメン",
+    price: 800,
+    percentage: 29.44,
+    numSales: 1734,
+    numReturned: 0,
+    netSales: 1387200,
+    totalSales: 1262352,
+    costPrice: 315588,
+    grossProfit: 946764,
+    ABC: "A",
+  },
   // ... add other rows here
 ];
 
@@ -58,6 +82,6 @@ const MenuTable: React.FC = () => {
       </tbody>
     </table>
   );
-}
+};
 
 export default MenuTable;
