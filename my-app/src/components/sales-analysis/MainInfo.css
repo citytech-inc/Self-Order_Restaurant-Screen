@@ -28,34 +28,70 @@
 .mainInfo__container .sales-total {
   height: 100px;
   width: 100%;
-  border-radius: 15px;
-  margin: 20px 0;
+  border-radius: 10px;
+  margin: 8px 0px;
 }
+
+.mainInfo__container .sales-total-half {
+  width: 100%;
+  border-radius: 10px;
+  margin: 0px 0px;
+}
+
+.mainInfo__container .sales-total-flex {
+  height: 100px;
+  width: 100%;
+  border-radius: 10px;
+  margin: 8px 0;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
 .mainInfo__container .sales-total * {
+  margin: 0;
+}
+
+.mainInfo__container .sales-total-flex * {
   margin: 0;
 }
 
 .mainInfo__container .sales-type-text {
   font-size: 18px;
-  line-height: 40px;
-  height: 40px;
+  line-height: 36px;
+  height: 36px;
   vertical-align: bottom;
   text-align: left;
-  padding-left: 30px;
+  padding-left: 20px;
   background-color: #fff0b4;
-  border-radius: 15px 15px 0 0;
+  border-radius: 10px 10px 0 0;
   border-top: solid #333333 1px;
   border-right: solid #333333 1px;
   border-left: solid #333333 1px;
 }
+
+.mainInfo__container .sales-type-text-gray {
+  font-size: 18px;
+  line-height: 36px;
+  height: 36px;
+  vertical-align: bottom;
+  text-align: left;
+  padding-left: 20px;
+  background-color: #e6e6e6;
+  border-radius: 10px 10px 0 0;
+  border-top: solid #333333 1px;
+  border-right: solid #333333 1px;
+  border-left: solid #333333 1px;
+}
+
 .mainInfo__container .sales-type-price {
   font-size: 28px;
-  line-height: 60px;
-  height: 60px;
+  line-height: 54px;
+  height: 54px;
   font-weight: 600;
   text-align: center;
   border: solid #333333 1px;
-  border-radius: 0 0 15px 15px;
+  border-radius: 0 0 10px 10px;
 }
 .mainInfo__container .sales-menu {
   height: 460px;
@@ -65,7 +101,7 @@
   text-align: center;
   margin-top: 20px;
   margin-bottom: 20px;
-  border-radius: 15px;
+  border-radius: 10px;
 }
 .mainInfo__container .sales-menu-headline {
   line-height: 40px;
@@ -82,7 +118,7 @@
   vertical-align: bottom;
   text-align: center;
   background-color: #e6e6e6;
-  border-radius: 15px 0 0 0;
+  border-radius: 10px 0 0 0;
   border-bottom: solid #aaaaaa 1px;
 }
 .mainInfo__container .sales-menu-headline-text-2 {
@@ -99,7 +135,7 @@
   vertical-align: bottom;
   text-align: center;
   background-color: #e6e6e6;
-  border-radius: 0 15px 0 0;
+  border-radius: 0 10px 0 0;
   border-bottom: solid #aaaaaa 1px;
 }
 .mainInfo__container .menu-text {

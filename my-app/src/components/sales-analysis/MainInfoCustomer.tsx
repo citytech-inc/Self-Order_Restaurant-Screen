@@ -1,4 +1,5 @@
 import React from "react";
+import "./MainInfo.css";
 
 type SalesByMenuData = {
   name: string;
@@ -12,34 +13,50 @@ type SalesPerHourData = {
 
 type MainInfoCustomerComponentProps = {
   selectedSalesType: string;
-  SalesByMenu: SalesByMenuData[];
-  SalesPerHour: SalesPerHourData;
 };
 
 const MainInfoCustomerComponent: React.FC<MainInfoCustomerComponentProps> = ({
   selectedSalesType,
-  SalesByMenu,
-  SalesPerHour,
 }) => (
-  <div className="sales-analysis-container">
+  <div className="mainInfo__container">
     <div className="sales-datas">
       <div className="sales-total">
-        <p className="sales-type-text">{selectedSalesType}</p>
-        <p className="sales-type-price">¥ 18,000</p>
+        <p className="sales-type-text">客数</p>
+        <p className="sales-type-price">2886人</p>
       </div>
-      <div className="sales-menu">
-        <div className="sales-menu-headline">
-          <div className="sales-menu-headline-text-1">商品名</div>
-          <div className="sales-menu-headline-text-2">個数</div>
-          <div className="sales-menu-headline-text-3">金額</div>
+      <div className="sales-total-flex">
+        <div className="sales-total-half">
+          <p className="sales-type-text-gray">新規</p>
+          <p className="sales-type-price">
+            <div>2000人</div>
+          </p>
         </div>
-        {SalesByMenu.map((data, index) => (
-          <div key={index} className="menu-text">
-            <div className="menu-name">{data.name}</div>
-            <div className="menu-count">{data.count.toLocaleString()}</div>
-            <div className="menu-price">{data.price.toLocaleString()}円</div>
-          </div>
-        ))}
+        <div className="sales-total-half">
+          <p className="sales-type-text-gray">リピーター</p>
+          <p className="sales-type-price">886人</p>
+        </div>
+      </div>
+      <div className="sales-total">
+        <p className="sales-type-text-gray">客単価</p>
+        <p className="sales-type-price">¥ 814.3</p>
+      </div>
+      <div className="sales-total">
+        <p className="sales-type-text-gray">平均滞在時間</p>
+        <p className="sales-type-price">48.2分</p>
+      </div>
+      <div className="sales-total-flex">
+        <div className="sales-total-half">
+          <p className="sales-type-text-gray">平均来店人数</p>
+          <p className="sales-type-price">2.2人</p>
+        </div>
+        <div className="sales-total-half">
+          <p className="sales-type-text-gray">1人あたりの購入点数</p>
+          <p className="sales-type-price">2.1個</p>
+        </div>
+      </div>
+      <div className="sales-total">
+        <p className="sales-type-text-gray">総売上</p>
+        <p className="sales-type-price">¥ 2,350,000</p>
       </div>
     </div>
   </div>
