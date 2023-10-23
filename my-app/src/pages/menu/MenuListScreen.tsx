@@ -10,14 +10,14 @@ const MenuListScreen: React.FC = () => {
   const menuData = [
     {
       menuName: "醤油ラーメン",
-      category: "メイン",
+      category: "ラーメン",
       price: "¥800",
       code: "¥198",
       groups: "Aコース",
     },
     {
       menuName: "塩ラーメン",
-      category: "メイン",
+      category: "ラーメン",
       price: "¥120",
       code: "¥32",
       groups: "なし",
