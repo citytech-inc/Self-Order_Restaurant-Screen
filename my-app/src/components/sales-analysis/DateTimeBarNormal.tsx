@@ -25,6 +25,10 @@ const DateTimeComponent: React.FC<Props> = ({ onSalesTypeChange }) => {
   const startDate = [2021, 10, 1];
   const Today = new Date();
   const DayName = ["日", "月", "火", "水", "木", "金", "土"];
+
+  const [dayStartDate, setDayStartDate] = useState<Date | null>(new Date());
+  const [dayEndDate, setDayEndDate] = useState<Date | null>(new Date());
+
   const YearMonthList: { [key: string]: number[] } = Object();
   let currentYear = new Date().getFullYear();
   let currentMonth = new Date().getMonth() + 1; // Remember, JavaScript months are 0-indexed
@@ -211,6 +215,23 @@ const DateTimeComponent: React.FC<Props> = ({ onSalesTypeChange }) => {
           </>
         ) : (
           <>
+            <div className="date-picker-container">
+              <DatePicker
+                selected={dayStartDate}
+                onChange={(date) => setDayStartDate(date)}
+                dateFormat="yyyy年MM月"
+                showMonthYearPicker
+                className="display-date"
+              />
+              <div>〜</div>
+              <DatePicker
+                selected={dayEndDate}
+                onChange={(date) => setDayEndDate(date)}
+                dateFormat="yyyy年MM月"
+                showMonthYearPicker
+                className="display-date"
+              />
+            </div>
             <select
               className="display-day-select"
               value={String(selectedDay)}

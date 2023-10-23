@@ -72,6 +72,7 @@
   font-weight: 500;
   width: 120px;
   margin-right: 10px;
+  margin-left: 10px;
   border: 1px #777 solid;
   padding: 3px;
 }
@@ -170,4 +171,10 @@
   width: 75px;
   height: 35px;
   margin: auto;
+}
+
+.display-option .date-picker-container {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
 }
