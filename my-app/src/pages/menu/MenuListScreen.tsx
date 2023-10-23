@@ -5,8 +5,8 @@ import "./MenuListScreen.css";
 const MenuListScreen: React.FC = () => {
 
   const menuData = [
-    { menuName: '通常ランダ', category: 'メイン', price: '¥800', code: '¥198', groups: 'Aコース' },
-    { menuName: '特ランダ', category: 'メイン', price: '¥120', code: '¥32', groups: 'なし' },
+    { menuName: '醤油ラーメン', category: 'メイン', price: '¥800', code: '¥198', groups: 'Aコース' },
+    { menuName: '塩ラーメン', category: 'メイン', price: '¥120', code: '¥32', groups: 'なし' },
     // ... add other menu items here
   ];
 
@@ -14,6 +14,7 @@ const MenuListScreen: React.FC = () => {
     <div>
       <SettingBar focusButton="menu" />
       <div className="menu__container">
+        <div>商品一覧</div>
         <table>
           <thead>
             <tr>
@@ -21,7 +22,7 @@ const MenuListScreen: React.FC = () => {
               <th>カテゴリー</th>
               <th>単価</th>
               <th>原価</th>
-              <th>食べ放題区分</th>
+              <th>食べ放題</th>
               <th>? ? ?</th>
             </tr>
           </thead>

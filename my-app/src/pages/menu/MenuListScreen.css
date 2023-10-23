@@ -1,8 +1,8 @@
 .menu__container {
     margin: 20px;
-    border: 1px solid #e0e0e0;
     border-radius: 5px;
     overflow: auto;
+    margin-left: 9%;
 }
 
 table {
