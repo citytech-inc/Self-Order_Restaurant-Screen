@@ -35,7 +35,9 @@ const MenuListScreen: React.FC = () => {
       <div className="menuList__container">
         <div className="menuList__header">
           <h2>商品一覧</h2>
-          <button className="add-menu__button" onClick={navigateToAddMenu}>商品を追加</button>
+          <button className="add-menu__button" onClick={navigateToAddMenu}>
+            商品を追加
+          </button>
         </div>
         <table>
           <thead>

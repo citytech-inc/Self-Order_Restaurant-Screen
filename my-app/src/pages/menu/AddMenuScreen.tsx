@@ -4,8 +4,12 @@ import MenuCategory from "../../components/menu/MenuCategory";
 import CustomizeSection from "../../components/menu/CustomizeSection";
 import SettingBar from "../../header/SettingBar";
 import "./AddMenuScreen.css";
+import { useNavigate, useParams } from "react-router-dom";
 
 const AddMenuScreen: React.FC = () => {
+  const { restaurantId } = useParams();
+  const navigate = useNavigate();
+
   const [menuCategoryList, setMenuCategoryList] = useState<string[]>([
     "ラーメン",
     "セットメニュー",
@@ -19,6 +23,7 @@ const AddMenuScreen: React.FC = () => {
     // Resetting the state to initial values
     setMenuCategoryList(["ラーメン", "セットメニュー", "飲み物", "デザート"]);
     setCustomize("なし");
+    navigate(`/${restaurantId}/menu-list`);
   };
 
   return (
