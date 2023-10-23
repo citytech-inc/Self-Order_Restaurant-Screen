@@ -1,20 +1,42 @@
 import React, { useState } from "react";
 import SettingBar from "../../header/SettingBar";
 import "./MenuListScreen.css";
+import { useNavigate, useParams } from "react-router-dom";
 
 const MenuListScreen: React.FC = () => {
+  const { restaurantId } = useParams();
+  const navigate = useNavigate();
 
   const menuData = [
-    { menuName: '醤油ラーメン', category: 'メイン', price: '¥800', code: '¥198', groups: 'Aコース' },
-    { menuName: '塩ラーメン', category: 'メイン', price: '¥120', code: '¥32', groups: 'なし' },
+    {
+      menuName: "醤油ラーメン",
+      category: "メイン",
+      price: "¥800",
+      code: "¥198",
+      groups: "Aコース",
+    },
+    {
+      menuName: "塩ラーメン",
+      category: "メイン",
+      price: "¥120",
+      code: "¥32",
+      groups: "なし",
+    },
     // ... add other menu items here
   ];
+
+  const navigateToAddMenu = () => {
+    navigate(`/${restaurantId}/add-menu`);
+  };
 
   return (
     <div>
       <SettingBar focusButton="menu" />
-      <div className="menu__container">
-        <div>商品一覧</div>
+      <div className="menuList__container">
+        <div className="menuList__header">
+          <h2>商品一覧</h2>
+          <button className="add-menu__button" onClick={navigateToAddMenu}>商品を追加</button>
+        </div>
         <table>
           <thead>
             <tr>

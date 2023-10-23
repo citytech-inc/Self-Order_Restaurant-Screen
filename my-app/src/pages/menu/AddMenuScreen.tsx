@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import AddMenu from "../../components/add-menu/AddMenu";
-import MenuCategory from "../../components/add-menu/MenuCategory";
-import CustomizeSection from "../../components/add-menu/CustomizeSection";
+import AddMenu from "../../components/menu/AddMenu";
+import MenuCategory from "../../components/menu/MenuCategory";
+import CustomizeSection from "../../components/menu/CustomizeSection";
 import SettingBar from "../../header/SettingBar";
 import "./AddMenuScreen.css";
 

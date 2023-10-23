@@ -1,28 +1,46 @@
-.menu__container {
-    margin: 20px;
-    border-radius: 5px;
-    overflow: auto;
-    margin-left: 9%;
+.menuList__container {
+  padding-right: 2%;
+  padding-top: 2%;
+  border-radius: 5px;
+  overflow: auto;
+  padding-left: 11%;
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
+.menuList__container .menuList__header {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
 }
 
-thead {
-    background-color: #f5f5f5;
+.menuList__container .add-menu__button {
+  background-color: #fff4c6;
+  align-items: center;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  padding: 10px;
+  padding-right: 20px;
+  padding-left: 20px;
+  border-radius: 50px;
+  border: 0.5px solid #aaaaaa;
+}
+.menuList__container table {
+  width: 100%;
+  border-collapse: collapse;
 }
 
-th, td {
-    padding: 15px;
-    text-align: left;
-    border-bottom: 1px solid #e0e0e0;
+.menuList__container thead {
+  background-color: #f5f5f5;
 }
 
-tr:hover {
-    background-color: #f5f9fc;
+.menuList__container th,
+.menuList__container td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.menuList__container tr:hover {
+  background-color: #f5f9fc;
 }
 
 /* You can also add more specific styles or utility classes as needed */

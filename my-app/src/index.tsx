@@ -36,6 +36,7 @@ root.render(
           element={<PurchasedItemsScreen />}
         />
         <Route path=":restaurantId/menu-list" element={<MenuListScreen />} />
+        <Route path=":restaurantId/add-menu" element={<AddMenuScreen />} />
         <Route
           path=":restaurantId/sales-analysis"
           element={<NormalAnalysis />}
