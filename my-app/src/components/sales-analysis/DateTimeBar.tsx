@@ -30,6 +30,9 @@ const DateTimeComponent: React.FC<Props> = ({ onSalesTypeChange }) => {
   const DayName = ["日", "月", "火", "水", "木", "金", "土"];
   const YearMonthList: { [key: string]: number[] } = Object();
 
+  const [dayStartDate, setDayStartDate] = useState<Date | null>(new Date());
+  const [dayEndDate, setDayEndDate] = useState<Date | null>(new Date());
+
   const i = [...startDate];
 
   while (i[0] < currentYear || (i[0] === currentYear && i[1] <= currentMonth)) {
@@ -208,6 +211,25 @@ const DateTimeComponent: React.FC<Props> = ({ onSalesTypeChange }) => {
           </>
         ) : (
           <>
+            <div className="date-picker-container">
+              <DatePicker
+                selected={dayStartDate}
+                onChange={(date) => setDayStartDate(date)}
+                dateFormat="yyyy年MM月"
+                showMonthYearPicker
+                className="display-date"
+              />
+              <div>〜</div>
+              <DatePicker
+                selected={dayEndDate}
+                onChange={(date) => setDayEndDate(date)}
+                dateFormat="yyyy年MM月"
+                showMonthYearPicker
+                className="display-date"
+              />
+            </div>
+
+            {/* Existing <select> for day selection */}
             <select
               className="display-day-select"
               value={String(selectedDay)}
