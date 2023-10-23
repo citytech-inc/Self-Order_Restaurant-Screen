@@ -62,7 +62,7 @@ function SettingBar({ focusButton }: SettingBarProps) {
       </Link>
       <div className="bar__line"></div>
       <Link
-        to={`/${restaurantId}/add-menu`}
+        to={`/${restaurantId}/menu-list`}
         className={
           focusButton === "menu" ? "bar__button__focus" : "bar__button"
         }

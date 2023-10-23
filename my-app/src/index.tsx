@@ -13,6 +13,7 @@ import OrderScreen from "./pages/OrderScreen";
 import NormalAnalysis from "./pages/sales-analysis/NormalAnalysis";
 import MenuAnalysis from "./pages/sales-analysis/MenuAnalysis";
 import CustomerAnalysis from "./pages/sales-analysis/CustomerAnalysis";
+import MenuListScreen from "./pages/menu/MenuListScreen";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement,
@@ -34,7 +35,7 @@ root.render(
           path=":restaurantId/purchased-items"
           element={<PurchasedItemsScreen />}
         />
-        <Route path=":restaurantId/add-menu" element={<AddMenuScreen />} />
+        <Route path=":restaurantId/menu-list" element={<MenuListScreen />} />
         <Route
           path=":restaurantId/sales-analysis"
           element={<NormalAnalysis />}
