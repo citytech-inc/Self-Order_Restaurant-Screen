@@ -6,7 +6,8 @@ import TableNumberScreen from "./pages/TableNumberScreen";
 import PleaseWaitScreen from "./pages/PleaseWaitScreen";
 import PurchasedItemsScreen from "./pages/PurchasedItemsScreen";
 import AddMenuScreen from "./pages/menu/AddMenuScreen";
-import SalesAnalysis from "./pages/SalesAnalysis";
+import MenuListScreen from "./pages/menu/MenuListScreen";
+import SalesAnalysis from "./pages/sales-analysis/NormalAnalysis";
 
 const App = () => {
   return (
@@ -28,6 +29,7 @@ const App = () => {
           path=":restaurantId/purchased-items"
           element={<PurchasedItemsScreen />}
         />
+        <Route path=":restaurantId/menu-list" element={<MenuListScreen />} />
         <Route path=":restaurantId/add-menu" element={<AddMenuScreen />} />
         <Route
           path=":restaurantId/sales-analysis"
