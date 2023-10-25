@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import axios from "axios";
 import AddMenu from "../../components/menu/AddMenu";
 import MenuCategory from "../../components/menu/MenuCategory";
 import CustomizeSection from "../../components/menu/CustomizeSection";
 import SettingBar from "../../header/SettingBar";
 import "./AddMenuScreen.css";
 import { useNavigate, useParams } from "react-router-dom";
+import { MenuType } from "../../components/menu/AddMenu";
 
 const AddMenuScreen: React.FC = () => {
   const { restaurantId } = useParams();
@@ -16,6 +18,26 @@ const AddMenuScreen: React.FC = () => {
     "飲み物",
     "デザート",
   ]);
+
+  const [menu, setMenu] = useState<MenuType>({
+    category: menuCategoryList[0],
+    name: "",
+    picture: "",
+    price: 0,
+    settings: [],
+  });
+
+  const sendToBackend = async () => {
+    try {
+      const response = await axios.post("http://localhost:3003/api/menu", menu); 
+      if (response.status === 200) {
+        console.log("Menu data sent successfully!", JSON.stringify(menu));
+        resetScreen();  
+      }
+    } catch (error) {
+      console.error("Failed to send menu data:", error);
+    }
+  };
 
   const [customize, setCustomize] = useState<string>("なし");
 
@@ -38,10 +60,11 @@ const AddMenuScreen: React.FC = () => {
           menuCategoryList={menuCategoryList}
           customize={customize}
           setCustomize={setCustomize}
+          menu={menu}
+          setMenu={setMenu}
         />
-        {customize === "あり" && <CustomizeSection />}
         <div className="add-menu__area">
-          <button className="add-menu__button" onClick={resetScreen}>
+          <button className="add-menu__button" onClick={sendToBackend}>
             商品を登録
           </button>
         </div>

@@ -4,11 +4,17 @@ import FromList_NoPriceChange from "./customize-type/FromList_NoPriceChange";
 import ByNumber_PriceChange from "./customize-type/ByNumber_PriceChange";
 import ByNumber_NoPriceChange from "./customize-type/ByNumber_NoPriceChange";
 import "./Customize.css";
+import { MenuSettings } from "../AddMenu";
 
-const Customize: React.FC = () => {
+type CustomizeProps = {
+  settings: MenuSettings;
+  setSettings: (settings: MenuSettings) => void;
+};
+
+const Customize: React.FC<CustomizeProps> = ({ settings, setSettings }) => {
   const [customizations, setCustomizations] = useState<
     { option: string; priceChange: string }[]
-  >([]);
+  >(settings.customizations || []);
 
   const addCustomization = () => {
     setCustomizations([...customizations, { option: "", priceChange: "" }]);
@@ -17,6 +23,14 @@ const Customize: React.FC = () => {
   const deleteCustomization = (index: number) => {
     const newCustomizations = [...customizations];
     newCustomizations.splice(index, 1);
+    setCustomizations(newCustomizations);
+  };
+
+  const updateSettings = (newCustomizations: { option: string; priceChange: string }[]) => {
+    setSettings({
+      ...settings,
+      customizations: newCustomizations,
+    });
     setCustomizations(newCustomizations);
   };
 

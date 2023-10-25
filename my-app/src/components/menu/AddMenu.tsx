@@ -24,11 +24,11 @@ type CustomizeType3 = {
   default: string;
 };
 
-type MenuSettings = {
+export type MenuSettings = {
   customizations?: (CustomizeType1 | CustomizeType2 | CustomizeType3)[];
 };
 
-type MenuType = {
+export type MenuType = {
   category: string;
   name: string;
   picture: string;
@@ -40,20 +40,17 @@ type AddMenuProps = {
   menuCategoryList: string[];
   customize: string;
   setCustomize: Dispatch<SetStateAction<string>>;
+  menu: MenuType;
+  setMenu: Dispatch<SetStateAction<MenuType>>;
 };
 
 const AddMenu: React.FC<AddMenuProps> = ({
   menuCategoryList,
   customize,
   setCustomize,
+  menu,
+  setMenu
 }) => {
-  const [menu, setMenu] = useState<MenuType>({
-    category: "",
-    name: "",
-    picture: "",
-    price: 0,
-    settings: [],
-  });
 
   return (
     <div className="add-menu__container">
@@ -130,6 +127,12 @@ const AddMenu: React.FC<AddMenuProps> = ({
           <option value="なし">なし</option>
         </select>
       </div>
+      {customize === "あり" && (
+      <CustomizeSection 
+        settings={menu.settings} 
+        setSettings={(updateSettings) => setMenu(prev => ({...prev, settings: updateSettings}))} 
+      />
+    )}
     </div>
   );
 };
