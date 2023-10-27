@@ -214,7 +214,7 @@ const DateTimeComponent: React.FC<Props> = ({ onSalesTypeChange }) => {
             <div className="date-picker-container">
               <DatePicker
                 selected={dayStartDate}
-                onChange={(date) => setDayStartDate(date)}
+                onChange={(date:any) => setDayStartDate(date)}
                 dateFormat="yyyy年MM月"
                 showMonthYearPicker
                 className="display-date"
@@ -222,7 +222,7 @@ const DateTimeComponent: React.FC<Props> = ({ onSalesTypeChange }) => {
               <div>〜</div>
               <DatePicker
                 selected={dayEndDate}
-                onChange={(date) => setDayEndDate(date)}
+                onChange={(date:any) => setDayEndDate(date)}
                 dateFormat="yyyy年MM月"
                 showMonthYearPicker
                 className="display-date"
