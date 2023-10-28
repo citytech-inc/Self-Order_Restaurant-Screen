@@ -85,10 +85,7 @@ const CustomizeSection: React.FC<CustomizeSectionProps> = ({
     onUpdateSettings(newSettings);
   };
 
-  const handleUpdateTypes = (
-    updatedTypes: Type[],
-    sectionIndex: number,
-  ) => {
+  const handleUpdateTypes = (updatedTypes: Type[], sectionIndex: number) => {
     const newSettings = { ...settings };
     if (newSettings[sectionIndex]) {
       newSettings[sectionIndex].customizationTypes = updatedTypes;
@@ -111,7 +108,9 @@ const CustomizeSection: React.FC<CustomizeSectionProps> = ({
           />
           <Customize
             types={settings[index]?.customizationTypes}
-            onUpdateTypes={(updatedTypes) => handleUpdateTypes(updatedTypes, index)}
+            onUpdateTypes={(updatedTypes) =>
+              handleUpdateTypes(updatedTypes, index)
+            }
           />
         </>
       ))}

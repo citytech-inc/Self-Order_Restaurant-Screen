@@ -8,7 +8,9 @@ import { CustomizationTypes } from "../AddMenu";
 
 type CustomizeProps = {
   types: CustomizationTypes[];
-  onUpdateTypes: (updatedTypes: MappedCustomizeType<CustomizationOption>[]) => void;
+  onUpdateTypes: (
+    updatedTypes: MappedCustomizeType<CustomizationOption>[],
+  ) => void;
 };
 
 type CustomizationOption = {
@@ -38,54 +40,83 @@ type CustomizeType3 = {
   default: string;
 };
 
-type MappedCustomizeType<T extends CustomizationOption> = 
-  T extends { option: "fromList"; priceChange: "no"; }
-    ? CustomizeType1
-    : T extends { option: "fromList"; priceChange: "yes"; }
-    ? CustomizeType2
-    : T extends { option: "byNumber"; priceChange: "no"; }
-    ? CustomizeType3
-    : any;
-
+type MappedCustomizeType<T extends CustomizationOption> = T extends {
+  option: "fromList";
+  priceChange: "no";
+}
+  ? CustomizeType1
+  : T extends { option: "fromList"; priceChange: "yes" }
+  ? CustomizeType2
+  : T extends { option: "byNumber"; priceChange: "no" }
+  ? CustomizeType3
+  : any;
 
 const Customize: React.FC<CustomizeProps> = ({ types, onUpdateTypes }) => {
-
   const determineCustomizeType = (
     option: string,
-    priceChange: string
+    priceChange: string,
+    currentName: string,
   ): MappedCustomizeType<CustomizationOption> => {
     if (option === "fromList" && priceChange === "no") {
-      return { type: "Type1", name: "", options: [], default: "" };
+      return { type: "Type1", name: currentName, options: [], default: "" };
     } else if (option === "fromList" && priceChange === "yes") {
-      return { type: "Type2", name: "", options: [], default: "" };
+      return { type: "Type2", name: currentName, options: [], default: "" };
     } else if (option === "byNumber" && priceChange === "no") {
-      return { type: "Type3", name: "", price: 0, measureWord: "", default: "" };
+      return {
+        type: "Type3",
+        name: currentName,
+        price: 0,
+        measureWord: "",
+        default: "",
+      };
     } else {
       return {} as any;
     }
   };
 
-  const [customizationTypes, setCustomizationTypes] = useState<MappedCustomizeType<CustomizationOption>[]>(
-    types ? (types as MappedCustomizeType<CustomizationOption>[]) : []
-  );
+  const [customizationTypes, setCustomizationTypes] = useState<
+    MappedCustomizeType<CustomizationOption>[]
+  >(types ? (types as MappedCustomizeType<CustomizationOption>[]) : []);
 
   const [customizations, setCustomizations] = useState<
     { option: string; priceChange: string }[]
   >([]);
 
-  const updateCustomizations = (index: number, field: keyof CustomizationOption, value: string) => {
+  const updateCustomizations = (
+    index: number,
+    field: keyof CustomizationOption,
+    value: string,
+  ) => {
     const newCustomizations = [...customizations];
     newCustomizations[index][field] = value;
     setCustomizations(newCustomizations);
 
+    const currentName = customizationTypes[index]
+      ? customizationTypes[index].name
+      : "";
     const newCustomizationTypes = [...customizationTypes];
-    newCustomizationTypes[index] = determineCustomizeType(newCustomizations[index].option, newCustomizations[index].priceChange);
+    newCustomizationTypes[index] = determineCustomizeType(
+      newCustomizations[index].option,
+      newCustomizations[index].priceChange,
+      currentName,
+    );
     setCustomizationTypes(newCustomizationTypes);
+  };
+
+  const updateCustomizationName = (index: number, name: string) => {
+    const newCustomizationTypes = [...customizationTypes];
+    if (newCustomizationTypes[index]) {
+      newCustomizationTypes[index].name = name;
+      setCustomizationTypes(newCustomizationTypes);
+    }
   };
 
   const addCustomization = () => {
     setCustomizations([...customizations, { option: "", priceChange: "" }]);
-    setCustomizationTypes([...customizationTypes, {} as MappedCustomizeType<CustomizationOption>]); 
+    setCustomizationTypes([
+      ...customizationTypes,
+      {} as MappedCustomizeType<CustomizationOption>,
+    ]);
   };
 
   const deleteCustomization = (index: number) => {
@@ -102,21 +133,26 @@ const Customize: React.FC<CustomizeProps> = ({ types, onUpdateTypes }) => {
     onUpdateTypes(customizationTypes);
   }, [customizationTypes, onUpdateTypes]);
 
-
   return (
     <div className="customize__container">
       {customizations.map((customization, index) => (
         <div key={index}>
           <div className="box">
             <div className="box__text">カスタマイズ名 </div>
-            <input type="text" placeholder="カスタマイズ名を入力してください" />
+            <input
+              type="text"
+              placeholder="カスタマイズ名を入力してください"
+              onChange={(e) => updateCustomizationName(index, e.target.value)}
+            />
           </div>
 
           <div className="box">
             <div className="box__text">オプション選択方式</div>
             <select
               value={customization.option}
-              onChange={(e) => updateCustomizations(index, 'option', e.target.value)}
+              onChange={(e) =>
+                updateCustomizations(index, "option", e.target.value)
+              }
             >
               <option value="">--選択してください--</option>
               <option value="fromList">候補から選択</option>
@@ -128,7 +164,9 @@ const Customize: React.FC<CustomizeProps> = ({ types, onUpdateTypes }) => {
             <div className="box__text">価格変更</div>
             <select
               value={customization.priceChange}
-              onChange={(e) => updateCustomizations(index, 'priceChange', e.target.value)}
+              onChange={(e) =>
+                updateCustomizations(index, "priceChange", e.target.value)
+              }
             >
               <option value="">--選択してください--</option>
               <option value="yes">あり</option>
