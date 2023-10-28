@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./CustomizeSection.css";
 import Customize from "./customize/Customize";
-import { MenuSettings } from "./AddMenu";
+import { CustomizationTypes } from "./AddMenu";
 
 type CustomizeSectionProps = {
   settings: {
@@ -10,14 +10,26 @@ type CustomizeSectionProps = {
       options: {
         [key: string]: [string, number];
       }[];
-      default: number;
-      selected: number;
     };
   };
+  onUpdateSettings: (updatedSettings: CustomizationTypes) => void;
 };
 
-const SectionComponent: React.FC<{ onDelete: () => void }> = ({ onDelete }) => {
+type Option = {
+  [key: string]: [string, number];
+};
+
+const SectionComponent: React.FC<{
+  onDelete: () => void;
+  onSectionNameUpdate: (value: string, index: number) => void;
+  index: number;
+}> = ({ onDelete, onSectionNameUpdate, index }) => {
   const [sectionValue, setSectionValue] = useState("");
+
+  const handleSectionNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSectionValue(e.target.value);
+    onSectionNameUpdate(e.target.value, index);
+  };
 
   return (
     <div className="section-box">
@@ -27,7 +39,7 @@ const SectionComponent: React.FC<{ onDelete: () => void }> = ({ onDelete }) => {
         type="text"
         placeholder="詳細情報"
         value={sectionValue}
-        onChange={(e) => setSectionValue(e.target.value)}
+        onChange={handleSectionNameChange}
       />
       <button className="delete-button" onClick={onDelete}>
         セクションを削除
@@ -36,17 +48,54 @@ const SectionComponent: React.FC<{ onDelete: () => void }> = ({ onDelete }) => {
   );
 };
 
-const CustomizeSection: React.FC<CustomizeSectionProps> = ({ settings }) => {
+const CustomizeSection: React.FC<CustomizeSectionProps> = ({
+  settings: initialSettings,
+  onUpdateSettings,
+}) => {
   const [sections, setSections] = useState([{}]);
+  const [settings, setLocalSettings] = useState(initialSettings);
 
   const handleDelete = (index: number) => {
     const newSections = [...sections];
     newSections.splice(index, 1);
     setSections(newSections);
+
+    const newSettings = { ...settings };
+    delete newSettings[index];
+    setLocalSettings(newSettings);
+    onUpdateSettings(newSettings);
   };
 
   const handleAdd = () => {
     setSections([...sections, {}]);
+  };
+
+  const handleSectionNameUpdate = (value: string, index: number) => {
+    const newSettings = { ...settings };
+    if (newSettings[index]) {
+      newSettings[index].name = value;
+    } else {
+      newSettings[index] = {
+        name: value,
+        options: [],
+      };
+    }
+
+    setLocalSettings(newSettings);
+    onUpdateSettings(newSettings);
+  };
+
+  const handleUpdateTypes = (
+    updatedOptions: Option[],
+    sectionIndex: number,
+  ) => {
+    const newSettings = { ...settings };
+    if (newSettings[sectionIndex]) {
+      newSettings[sectionIndex].options = updatedOptions;
+    }
+
+    setLocalSettings(newSettings);
+    onUpdateSettings(newSettings);
   };
 
   return (
@@ -54,9 +103,15 @@ const CustomizeSection: React.FC<CustomizeSectionProps> = ({ settings }) => {
       <h3>カスタマイズ設定</h3>
       {sections.map((_, index) => (
         <>
-          <SectionComponent key={index} onDelete={() => handleDelete(index)} />
-          <Customize 
-            section={settings[index]?.options}
+          <SectionComponent
+            key={index}
+            onDelete={() => handleDelete(index)}
+            onSectionNameUpdate={handleSectionNameUpdate}
+            index={index}
+          />
+          <Customize
+            types={settings[index]?.options}
+            onUpdateTypes={(updatedTypes) => handleUpdateTypes(updatedTypes, index)}
           />
         </>
       ))}

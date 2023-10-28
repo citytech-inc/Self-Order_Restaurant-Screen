@@ -24,8 +24,8 @@ type CustomizeType3 = {
   default: string;
 };
 
-export type MenuSettings = {
-  customizations?: (CustomizeType1 | CustomizeType2 | CustomizeType3)[];
+export type CustomizationTypes = {
+  customizationTypes?: (CustomizeType1 | CustomizeType2 | CustomizeType3)[];
 };
 
 export type MenuType = {
@@ -58,8 +58,11 @@ const AddMenu: React.FC<AddMenuProps> = ({
   customize,
   setCustomize,
   menu,
-  setMenu
+  setMenu,
 }) => {
+  const handleUpdateSettings = (updatedSettings: any) => {
+    setMenu((prev) => ({ ...prev, settings: updatedSettings }));
+  };
 
   return (
     <div className="add-menu__container">
@@ -130,17 +133,24 @@ const AddMenu: React.FC<AddMenuProps> = ({
         <select
           className="select"
           value={customize}
-          onChange={(e) => setCustomize(e.target.value)}
+          onChange={(e) => {
+            if (e.target.value === "あり") {
+              setMenu((prev) => ({ ...prev, settings: prev.settings }));
+            }
+            setCustomize(e.target.value);
+          }}
         >
           <option value="あり">あり</option>
           <option value="なし">なし</option>
         </select>
       </div>
+
       {customize === "あり" && (
-      <CustomizeSection 
-        settings={menu.settings} 
-      />
-    )}
+        <CustomizeSection
+          settings={menu.settings}
+          onUpdateSettings={handleUpdateSettings}
+        />
+      )}
     </div>
   );
 };
