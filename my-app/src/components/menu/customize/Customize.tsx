@@ -41,6 +41,7 @@ type CustomizeType3 = {
   default: string;
 };
 
+//CustomizeType4及びそれ関連の挙動を追加する
 type MappedCustomizeType<T extends CustomizationOption> = T extends {
   option: "fromList";
   priceChange: "no";
@@ -58,8 +59,8 @@ const Customize: React.FC<CustomizeProps> = ({ types, onUpdateTypes }) => {
     priceChange: string,
     currentName: string,
   ): MappedCustomizeType<CustomizationOption> => {
-    console.log("Inside function, Current Name:", currentName);
 
+    //ここのoptions, defaultの値をcustomize-typeのフォルダ内のファイルから受け取って、updateCustomizationsらへんをうまくいじって同期させればいい
     if (option === "fromList" && priceChange === "no") {
       return { type: "Type1", name: currentName, options: [], default: "" };
     } else if (option === "fromList" && priceChange === "yes") {
