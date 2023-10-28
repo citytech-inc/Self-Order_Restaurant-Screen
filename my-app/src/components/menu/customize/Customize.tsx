@@ -16,6 +16,7 @@ type CustomizeProps = {
 type CustomizationOption = {
   option: "fromList" | "byNumber";
   priceChange: "yes" | "no";
+  name: string;
 };
 
 type CustomizeType1 = {
@@ -57,6 +58,8 @@ const Customize: React.FC<CustomizeProps> = ({ types, onUpdateTypes }) => {
     priceChange: string,
     currentName: string,
   ): MappedCustomizeType<CustomizationOption> => {
+    console.log("Inside function, Current Name:", currentName);
+
     if (option === "fromList" && priceChange === "no") {
       return { type: "Type1", name: currentName, options: [], default: "" };
     } else if (option === "fromList" && priceChange === "yes") {
@@ -79,7 +82,7 @@ const Customize: React.FC<CustomizeProps> = ({ types, onUpdateTypes }) => {
   >(types ? (types as MappedCustomizeType<CustomizationOption>[]) : []);
 
   const [customizations, setCustomizations] = useState<
-    { option: string; priceChange: string }[]
+    { option: string; priceChange: string; name: string }[]
   >([]);
 
   const updateCustomizations = (
@@ -87,32 +90,26 @@ const Customize: React.FC<CustomizeProps> = ({ types, onUpdateTypes }) => {
     field: keyof CustomizationOption,
     value: string,
   ) => {
+    // Update the customizations array
     const newCustomizations = [...customizations];
     newCustomizations[index][field] = value;
     setCustomizations(newCustomizations);
 
-    const currentName = customizationTypes[index]
-      ? customizationTypes[index].name
-      : "";
+    // Update the customization types array based on the new customizations and the current name
     const newCustomizationTypes = [...customizationTypes];
     newCustomizationTypes[index] = determineCustomizeType(
       newCustomizations[index].option,
       newCustomizations[index].priceChange,
-      currentName,
+      newCustomizations[index].name,
     );
     setCustomizationTypes(newCustomizationTypes);
   };
 
-  const updateCustomizationName = (index: number, name: string) => {
-    const newCustomizationTypes = [...customizationTypes];
-    if (newCustomizationTypes[index]) {
-      newCustomizationTypes[index].name = name;
-      setCustomizationTypes(newCustomizationTypes);
-    }
-  };
-
   const addCustomization = () => {
-    setCustomizations([...customizations, { option: "", priceChange: "" }]);
+    setCustomizations([
+      ...customizations,
+      { option: "", priceChange: "", name: "" },
+    ]);
     setCustomizationTypes([
       ...customizationTypes,
       {} as MappedCustomizeType<CustomizationOption>,
@@ -142,7 +139,9 @@ const Customize: React.FC<CustomizeProps> = ({ types, onUpdateTypes }) => {
             <input
               type="text"
               placeholder="カスタマイズ名を入力してください"
-              onChange={(e) => updateCustomizationName(index, e.target.value)}
+              onChange={(e) =>
+                updateCustomizations(index, "name", e.target.value)
+              }
             />
           </div>
 
