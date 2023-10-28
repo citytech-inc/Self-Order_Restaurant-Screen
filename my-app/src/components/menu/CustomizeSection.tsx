@@ -7,7 +7,7 @@ type CustomizeSectionProps = {
   settings: {
     [key: string]: {
       name: string;
-      options: {
+      customizationTypes: {
         [key: string]: [string, number];
       }[];
     };
@@ -15,7 +15,7 @@ type CustomizeSectionProps = {
   onUpdateSettings: (updatedSettings: CustomizationTypes) => void;
 };
 
-type Option = {
+type Type = {
   [key: string]: [string, number];
 };
 
@@ -77,7 +77,7 @@ const CustomizeSection: React.FC<CustomizeSectionProps> = ({
     } else {
       newSettings[index] = {
         name: value,
-        options: [],
+        customizationTypes: [],
       };
     }
 
@@ -86,12 +86,12 @@ const CustomizeSection: React.FC<CustomizeSectionProps> = ({
   };
 
   const handleUpdateTypes = (
-    updatedOptions: Option[],
+    updatedTypes: Type[],
     sectionIndex: number,
   ) => {
     const newSettings = { ...settings };
     if (newSettings[sectionIndex]) {
-      newSettings[sectionIndex].options = updatedOptions;
+      newSettings[sectionIndex].customizationTypes = updatedTypes;
     }
 
     setLocalSettings(newSettings);
@@ -110,7 +110,7 @@ const CustomizeSection: React.FC<CustomizeSectionProps> = ({
             index={index}
           />
           <Customize
-            types={settings[index]?.options}
+            types={settings[index]?.customizationTypes}
             onUpdateTypes={(updatedTypes) => handleUpdateTypes(updatedTypes, index)}
           />
         </>

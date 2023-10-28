@@ -36,11 +36,9 @@ export type MenuType = {
   settings: {
     [key: string]: {
       name: string;
-      options: {
+      customizationTypes: {
         [key: string]: [string, number];
       }[];
-      default: number;
-      selected: number;
     };
   };
 };
