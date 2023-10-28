@@ -36,12 +36,18 @@ type CustomizeType2 = {
 type CustomizeType3 = {
   type: "Type3";
   name: string;
+  measureWord: string;
+  default: string;
+};
+
+type CustomizeType4 = {
+  type: "Type3";
+  name: string;
   price: number;
   measureWord: string;
   default: string;
 };
 
-//CustomizeType4及びそれ関連の挙動を追加する
 type MappedCustomizeType<T extends CustomizationOption> = T extends {
   option: "fromList";
   priceChange: "no";
@@ -51,6 +57,8 @@ type MappedCustomizeType<T extends CustomizationOption> = T extends {
   ? CustomizeType2
   : T extends { option: "byNumber"; priceChange: "no" }
   ? CustomizeType3
+  : T extends { option: "byNumber"; priceChange: "yes" }
+  ? CustomizeType4
   : any;
 
 const Customize: React.FC<CustomizeProps> = ({ types, onUpdateTypes }) => {
@@ -59,8 +67,7 @@ const Customize: React.FC<CustomizeProps> = ({ types, onUpdateTypes }) => {
     priceChange: string,
     currentName: string,
   ): MappedCustomizeType<CustomizationOption> => {
-
-    //ここのoptions, defaultの値をcustomize-typeのフォルダ内のファイルから受け取って、updateCustomizationsらへんをうまくいじって同期させればいい
+    //ここのoptions, default, measureWord, priceの値をcustomize-typeのフォルダ内のファイルから受け取って、updateCustomizationsらへんをうまくいじって同期させればいい
     if (option === "fromList" && priceChange === "no") {
       return { type: "Type1", name: currentName, options: [], default: "" };
     } else if (option === "fromList" && priceChange === "yes") {
@@ -68,6 +75,13 @@ const Customize: React.FC<CustomizeProps> = ({ types, onUpdateTypes }) => {
     } else if (option === "byNumber" && priceChange === "no") {
       return {
         type: "Type3",
+        name: currentName,
+        measureWord: "",
+        default: "",
+      };
+    } else if (option === "byNumber" && priceChange === "yes") {
+      return {
+        type: "Type4",
         name: currentName,
         price: 0,
         measureWord: "",
