@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
-import AddMenu from "../../components/menu/AddMenu";
+import AddMenu, { MenuType } from "../../components/menu/AddMenu";
 import MenuCategory from "../../components/menu/MenuCategory";
 import CustomizeSection from "../../components/menu/CustomizeSection";
 import SettingBar from "../../header/SettingBar";
 import "./AddMenuScreen.css";
 import { useNavigate, useParams } from "react-router-dom";
-import { MenuType } from "../../components/menu/AddMenu";
 
 const AddMenuScreen: React.FC = () => {
   const { restaurantId } = useParams();
@@ -24,7 +23,7 @@ const AddMenuScreen: React.FC = () => {
     name: "",
     picture: "",
     price: 0,
-    settings: [],
+    settings: {},
   });
 
   const sendToBackend = async () => {

@@ -4,8 +4,16 @@ import Customize from "./customize/Customize";
 import { MenuSettings } from "./AddMenu";
 
 type CustomizeSectionProps = {
-  settings: MenuSettings[];
-  setSettings: (settings: MenuSettings[]) => void;
+  settings: {
+    [key: string]: {
+      name: string;
+      options: {
+        [key: string]: [string, number];
+      }[];
+      default: number;
+      selected: number;
+    };
+  };
 };
 
 const SectionComponent: React.FC<{ onDelete: () => void }> = ({ onDelete }) => {
@@ -28,7 +36,7 @@ const SectionComponent: React.FC<{ onDelete: () => void }> = ({ onDelete }) => {
   );
 };
 
-const CustomizeSection: React.FC<CustomizeSectionProps> = ({ settings, setSettings }) => {
+const CustomizeSection: React.FC<CustomizeSectionProps> = ({ settings }) => {
   const [sections, setSections] = useState([{}]);
 
   const handleDelete = (index: number) => {
@@ -48,8 +56,7 @@ const CustomizeSection: React.FC<CustomizeSectionProps> = ({ settings, setSettin
         <>
           <SectionComponent key={index} onDelete={() => handleDelete(index)} />
           <Customize 
-            settings={settings}
-            setSettings={setSettings}
+            section={settings[index]?.options}
           />
         </>
       ))}

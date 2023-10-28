@@ -7,18 +7,60 @@ import "./Customize.css";
 import { MenuSettings } from "../AddMenu";
 
 type CustomizeProps = {
-  settings: MenuSettings;
-  setSettings: (settings: MenuSettings) => void;
+  section: MenuSettings[];
 };
 
-const Customize: React.FC<CustomizeProps> = ({ settings, setSettings }) => {
-  const [customizations, setCustomizations] = useState<
-    { option: string; priceChange: string }[]
-  >(settings.customizations || []);
+type CustomizationOption = {
+  option: "fromList" | "byNumber";
+  priceChange: "yes" | "no";
+};
+
+type CustomizeType1 = {
+  type: "Type1";
+  name: string;
+  options: string[];
+  default: string;
+};
+
+type CustomizeType2 = {
+  type: "Type2";
+  name: string;
+  options: Array<{ optionName: string; price: number }>;
+  default: string;
+};
+
+type CustomizeType3 = {
+  type: "Type3";
+  name: string;
+  price: number;
+  measureWord: string;
+  default: string;
+};
+
+type MappedCustomizeType<T extends CustomizationOption> = 
+  T extends { option: "fromList"; priceChange: "no"; }
+    ? CustomizeType1
+    : T extends { option: "fromList"; priceChange: "yes"; }
+    ? CustomizeType2
+    : T extends { option: "byNumber"; priceChange: "no"; }
+    ? CustomizeType3
+    : any;
+
+
+const Customize: React.FC<CustomizeProps> = ({ section }) => {
+
+  const [customizations, setCustomizations] = useState<MappedCustomizeType<CustomizationOption>[]>(
+  section ? (section as MappedCustomizeType<CustomizationOption>[]) : []
+);
+
+
+
 
   const addCustomization = () => {
-    setCustomizations([...customizations, { option: "", priceChange: "" }]);
-  };
+  setCustomizations([...customizations, { option: "", priceChange: "" } as MappedCustomizeType<CustomizationOption>]);
+};
+
+
 
   const deleteCustomization = (index: number) => {
     const newCustomizations = [...customizations];
@@ -26,17 +68,9 @@ const Customize: React.FC<CustomizeProps> = ({ settings, setSettings }) => {
     setCustomizations(newCustomizations);
   };
 
-  const updateSettings = (newCustomizations: { option: string; priceChange: string }[]) => {
-    setSettings({
-      ...settings,
-      customizations: newCustomizations,
-    });
-    setCustomizations(newCustomizations);
-  };
-
   return (
     <div className="customize__container">
-      {customizations.map((customization, index) => (
+      {customizations?.map((customization, index) => (
         <div key={index}>
           <div className="box">
             <div className="box__text">カスタマイズ名 </div>

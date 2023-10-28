@@ -33,7 +33,16 @@ export type MenuType = {
   name: string;
   picture: string;
   price: number;
-  settings: MenuSettings[];
+  settings: {
+    [key: string]: {
+      name: string;
+      options: {
+        [key: string]: [string, number];
+      }[];
+      default: number;
+      selected: number;
+    };
+  };
 };
 
 type AddMenuProps = {
@@ -130,7 +139,6 @@ const AddMenu: React.FC<AddMenuProps> = ({
       {customize === "あり" && (
       <CustomizeSection 
         settings={menu.settings} 
-        setSettings={(updateSettings) => setMenu(prev => ({...prev, settings: updateSettings}))} 
       />
     )}
     </div>
