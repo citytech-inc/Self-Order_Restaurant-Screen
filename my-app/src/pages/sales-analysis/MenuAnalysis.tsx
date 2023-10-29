@@ -4,7 +4,7 @@ import "./SalesAnalysis.css";
 import SettingBar from "../../header/SettingBar";
 import ArrowIcon from "../../src/components/images/arrowhead-thin-outline-to-the-left.png";
 
-import DateTimeComponent from "../../components/sales-analysis/DateTimeBarCopy";
+import DateTimeComponent from "../../components/sales-analysis/DateTimeBar";
 import GraphComponent from "../../components/sales-analysis/Graph";
 import SubGraphComponent from "../../components/sales-analysis/SubGraph";
 import HeaderComponent from "../../components/sales-analysis/Header";

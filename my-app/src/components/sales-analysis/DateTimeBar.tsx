@@ -9,14 +9,7 @@ interface Props {
 
 const DateTimeComponent: React.FC<Props> = ({ onSalesTypeChange }) => {
   const SalesSpanOption = ["時間帯別", "日別", "月別", "曜日別"];
-  const SalesTypeOption = ["総売上", "純売上", "粗利益", "営業利益"];
-  const MenuCategoryOption = [
-    "すべて",
-    "ラーメン",
-    "セットメニュー",
-    "ドリンク",
-  ];
-  const MenuOption = ["すべて", "醤油ラーメン", "塩ラーメン", "味噌ラーメン"];
+
 
   const SelectedHourOption = [
     8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23,
@@ -26,7 +19,6 @@ const DateTimeComponent: React.FC<Props> = ({ onSalesTypeChange }) => {
   const Today = new Date();
   const currentYear = new Date().getFullYear();
   const currentMonth = new Date().getMonth() + 1;
-  const currentDay = new Date().getDate();
   const DayName = ["日", "月", "火", "水", "木", "金", "土"];
   const YearMonthList: { [key: string]: number[] } = Object();
 
@@ -51,9 +43,6 @@ const DateTimeComponent: React.FC<Props> = ({ onSalesTypeChange }) => {
   }
 
   const [selectedSalesSpan, setSelectedSalesSpan] = useState("時間帯別");
-  const [selectedSalesType, setSelectedSalesType] = useState("総売上");
-  const [selectedCategoryType, setSelectedCategoryType] = useState("すべて");
-  const [selectedMenuType, setSelectedMenuType] = useState("すべて");
   const [selectedHour, setSelectedHour] = useState("14");
   const [selectedDate, setSelectedDate] = useState<Date>(Today);
   const today = new Date();
@@ -79,20 +68,6 @@ const DateTimeComponent: React.FC<Props> = ({ onSalesTypeChange }) => {
 
   const [selectedWeek, setSelectedWeek] = useState<Date[]>(dateList);
 
-  const selectedSalesTypeChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    setSelectedSalesType(e.target.value);
-    if (onSalesTypeChange) {
-      onSalesTypeChange(e.target.value);
-    }
-  };
-
-  const selectedCategoryTypeChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    setSelectedCategoryType(e.target.value);
-  };
-
-  const selectedMenuTypeChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    setSelectedMenuType(e.target.value);
-  };
 
   const selectedSalesSpanChange = (
     event: React.ChangeEvent<HTMLSelectElement>,
