@@ -1,13 +1,19 @@
-import React, { useState, ChangeEvent } from "react";
+import React, { useState, useEffect, ChangeEvent } from "react";
+import {  useParams } from "react-router-dom";
 import DatePicker from "react-datepicker";
 import "./DateTimeBar.css";
 import "react-datepicker/dist/react-datepicker.css";
 
+// 分析用の関数のimport (最終的には移動させる)
+import sendPostRequest from "../../functions/analysisFunction";
+
 interface Props {
   onSalesTypeChange?: (selectedSalesType: string) => void;
+  setSalesPerHour?: (salesPerHour: { [key: number]: { [key: string]: number | string } }) => void
 }
 
-const DateTimeComponent: React.FC<Props> = ({ onSalesTypeChange }) => {
+const DateTimeComponent: React.FC<Props> = ({ onSalesTypeChange, setSalesPerHour }) => {
+  const { restaurantId } = useParams();
   const SalesSpanOption = ["時間帯別", "日別", "月別", "曜日別"];
   const SalesTypeOption = ["総売上", "純売上", "粗利益", "営業利益"];
   const MenuCategoryOption = [
@@ -66,6 +72,30 @@ const DateTimeComponent: React.FC<Props> = ({ onSalesTypeChange }) => {
     DayName[today.getDay() === 0 ? 6 : today.getDay() - 1],
   ); // getDay() returns 0 for Sunday and 6 for Saturday, assuming DayName starts from Monday
 
+  // 分析用の関数の仕様 (最終的には移動させる)
+  useEffect(() => {
+    const timestampList:number[] = []
+    for(let hour = 9; hour <= 24; hour ++) {
+      let newDate = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), selectedDate.getDate(), hour, 0);
+      timestampList.push(newDate.getTime());
+    }
+    console.log(timestampList)
+    sendPostRequest(
+      timestampList,
+      restaurantId,
+    ) // 第一引数はtimestampの配列
+      .then((result:{[key: string]: number|number[]}) => {
+        const salesPerHours: {[key:number]:{ [key: string] : number|string}} = {}
+        if (Array.isArray(result.eachSellingPrice)) {
+          for(let i = 0; i < result.eachSellingPrice.length; i++){
+            salesPerHours[i+9] = { sales: result.eachSellingPrice[i], priceClass: 1}
+          }
+        }
+        if(setSalesPerHour) {
+          setSalesPerHour(salesPerHours)
+        }
+      });
+  },[selectedDate, restaurantId]);
   const dateList: Date[] = [];
 
   for (let i = 1; i < 8; i++) {

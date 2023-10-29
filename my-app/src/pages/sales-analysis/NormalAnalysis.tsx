@@ -25,23 +25,24 @@ const NormalAnalysis: React.FC = () => {
     { name: "醤油ラーメン", count: 9, price: 8100 },
     { name: "醤油ラーメン", count: 9, price: 8100 },
   ];
-  const SalesPerHour: { [key: number]: { [key: string]: number | string } } = {
-    9: { sales: 1000, priceClass: "normal" },
-    10: { sales: 2000, priceClass: "normal" },
-    11: { sales: 3000, priceClass: "normal" },
-    12: { sales: 12000, priceClass: "crowded" },
-    13: { sales: 15000, priceClass: "crowded" },
-    14: { sales: 20000, priceClass: "normal" },
-    15: { sales: 2000, priceClass: "normal" },
-    16: { sales: 2000, priceClass: "normal" },
-    17: { sales: 2000, priceClass: "normal" },
-    18: { sales: 2000, priceClass: "crowded" },
-    19: { sales: 2000, priceClass: "crowded" },
-    20: { sales: 2000, priceClass: "crowded" },
-    21: { sales: 2000, priceClass: "normal" },
-    22: { sales: 2000, priceClass: "normal" },
-    23: { sales: 2000, priceClass: "normal" },
-  };
+  // priceClassはダイナミックプライシングを行っていた割合を表す
+  const [SalesPerHour, setSalesPerHour] = useState<{ [key: number]: { [key: string]: number | string } }>({
+    9: { sales: 1000, priceClass: 0.8 },
+    10: { sales: 2000, priceClass: 0.8 },
+    11: { sales: 3000, priceClass: 0.8 },
+    12: { sales: 12000, priceClass: 0.8 },
+    13: { sales: 15000, priceClass: 0.5 },
+    14: { sales: 20000, priceClass: 0.5 },
+    15: { sales: 2000, priceClass: 0.5 },
+    16: { sales: 2000, priceClass: 0 },
+    17: { sales: 2000, priceClass: 0.9 },
+    18: { sales: 2000, priceClass: 1 },
+    19: { sales: 2000, priceClass: 1 },
+    20: { sales: 2000, priceClass: 0 },
+    21: { sales: 2000, priceClass: 1 },
+    22: { sales: 2000, priceClass: 0.2 },
+    23: { sales: 2000, priceClass: 0 },
+  });
   const SelectedHourOption = [
     8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23,
   ];
@@ -217,7 +218,10 @@ const NormalAnalysis: React.FC = () => {
       <div>
         <SettingBar focusButton="sales" />
         <HeaderComponent focusButton="通常分析" />
-        <DateTimeComponent onSalesTypeChange={handleSalesTypeChange} />
+        <DateTimeComponent 
+          onSalesTypeChange={handleSalesTypeChange}
+          setSalesPerHour={setSalesPerHour}
+        />
         <div className="analysis-area">
           <div className="analysis-area__left">
             <MainInfoComponent
@@ -230,6 +234,7 @@ const NormalAnalysis: React.FC = () => {
             <GraphComponent
               displayTable={displayTable}
               setDisplayTable={setDisplayTable}
+              SalesPerHour={SalesPerHour}
             />
             <SubGraphComponent
               displayTable={displaySubTable}

@@ -226,6 +226,7 @@ const NormalAnalysis: React.FC = () => {
             <GraphComponent
               displayTable={displayTable}
               setDisplayTable={setDisplayTable}
+              SalesPerHour={SalesPerHour}
             />
             <SubGraphComponent
               displayTable={displaySubTable}
