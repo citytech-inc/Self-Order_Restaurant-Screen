@@ -1,5 +1,7 @@
 import React from "react";
 import "./MenuTable.css";
+import "../images/filter_3839020.png";
+ 
 
 type Product = {
   name: string;

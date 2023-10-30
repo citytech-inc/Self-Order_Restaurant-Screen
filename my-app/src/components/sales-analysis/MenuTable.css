@@ -1,27 +1,32 @@
 .product-table {
   width: 100%;
   border-collapse: collapse;
+  text-align: middle;
 }
 
 .product-table th,
 .product-table td {
   border: 1px solid #AAAAAA;
-  padding: 8px;
+  padding: 1px;
+  text-align: middle;
 }
 
 .product-table th {
   background-color: #FFF0B4;
-  text-align: left;
+  text-align: middle;
 }
 
 .product-table tr:nth-child(even) {
   background-color: #FFFFFF;
+  text-align: middle;
 }
 
 .product-table tr:hover {
-  background-color: #AAAAAA;
+  background-color: #FFFFFF;
+  text-align: middle;
 }
 
 .product-table{
   margin-top: 20px;
+  text-align: middle;
 }

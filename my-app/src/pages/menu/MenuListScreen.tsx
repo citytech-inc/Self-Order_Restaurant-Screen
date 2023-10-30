@@ -9,7 +9,7 @@ const MenuListScreen: React.FC = () => {
 
   const menuData = [
     {
-      menuName: "醤油ラーメン",
+      menuName:  "醤油ラーメン",
       category: "ラーメン",
       price: "¥800",
       code: "¥198",
@@ -69,8 +69,8 @@ const MenuListScreen: React.FC = () => {
               <th>単価</th>
               <th>原価</th>
               <th>食べ放題</th>
-              <th>? ? ?</th>
-            </tr>
+              <th>?        ?        ?</th>
+            </tr>   
           </thead>
           <tbody>
             {menuData.map((item, index) => (
