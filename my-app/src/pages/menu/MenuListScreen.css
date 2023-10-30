@@ -21,7 +21,7 @@
   padding-right: 20px;
   padding-left: 20px;
   border-radius: 50px;
-  border: 0.5px solid #aaaaaa;
+  border: 0.5px solid #AAAAAA;
 }
 .menuList__container table {
   width: 100%;
@@ -29,7 +29,7 @@
 }
 
 .menuList__container thead {
-  background-color: #f5f5f5;
+  background-color: #fff4c6;
 }
 
 .menuList__container th,
@@ -40,7 +40,7 @@
 }
 
 .menuList__container tr:hover {
-  background-color: #f5f9fc;
+  background-color: #FFFFFF;
 }
-
+f5f9fc
 /* You can also add more specific styles or utility classes as needed */

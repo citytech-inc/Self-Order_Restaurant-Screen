@@ -22,6 +22,28 @@ const MenuListScreen: React.FC = () => {
       code: "¥32",
       groups: "なし",
     },
+    
+    {
+      menuName: "味噌ラーメン",
+    category: "メイン",
+    price: "¥800",
+    code: "¥195",
+    groups: "Aコース",
+  },
+  {
+    menuName: "半ライス",
+  category: "サイド",
+  price: "¥120",
+  code: "¥32",
+  groups: "なし",
+},
+{
+  menuName: "烏龍茶",
+    category: "ドリンク",
+    price: "¥100",
+    code: "¥24",
+    groups: "Aコース、Bコース",
+  },
     // ... add other menu items here
   ];
 
