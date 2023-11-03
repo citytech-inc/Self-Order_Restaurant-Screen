@@ -1,7 +1,13 @@
 import React from "react";
 import "./MenuTable.css";
-import "../images/filter_3839020.png";
+import  sortingIcon from '../../src/components/images/filter_3839020.png';
  
+// 画像をインポート
+
+function MyComponent() {
+  return <img src={sortingIcon} alt="sorting tab" />;
+}
+
 
 type Product = {
   name: string;
@@ -123,4 +129,3 @@ const MenuTable: React.FC = () => {
   );
 };
 
-export default MenuTable;
