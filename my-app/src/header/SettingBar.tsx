@@ -14,6 +14,7 @@ import OrderIcon from "../../src/components/images/checklist_10320098.png";
 import CasherIcon from "../../src/components/images/cashier_4901369.png";
 import SalesAnalysisIcon from "../../src/components/images/bar-chart_478544.png";
 import SettingsIcon from "../../src/components/images/settings.png";
+import MenuIcon from "../../src/components/images/menu.png";
 
 type SettingBarProps = {
   focusButton: string | null;
@@ -67,8 +68,8 @@ function SettingBar({ focusButton }: SettingBarProps) {
           focusButton === "menu" ? "bar__button__focus" : "bar__button"
         }
       >
-        <FontAwesomeIcon icon={faEdit} className="bar__icon" />
-        <div>メニュー編集</div>
+        <img src={MenuIcon} alt="Menu Icon" className="bar__icon" />
+        <div>商品一覧</div>
       </Link>
       <div className="bar__line"></div>
       <Link
