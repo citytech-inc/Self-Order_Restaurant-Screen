@@ -1,9 +1,9 @@
 .display-option {
-  height: 9vh;
+  height: 11vh;
   display: flex;
   flex-direction: column;
   justify-content: left;
-  background-color: #fffefb;
+  background-color: #aaaaaa;
   padding-left: 11%;
 }
 
@@ -24,48 +24,51 @@
   justify-content: left;
   background-color: #fffefb;
 }
-.display-option .display-hour-select {
+.display-option .display-hour-select { /*時間帯別*/
   display: flex;
-  height: 34px;
+  height: 30px;
   text-align: center;
   font-size: 15px;
   font-weight: 500;
   width: 150px;
   margin-left: 10px;
+  border: 1px #ccc solid;
   padding: 3px;
 }
 
-.display-option .display-week-select {
-  height: 34px;
-  text-align: left;
+.display-option .display-week-select { /*日別*/
+  height: 27px;
+  text-align: center;
   font-size: 15px;
   font-weight: 500;
-  width: 150px;
+  width: 120px;
   margin-right: 10px;
-  border: 1px #777 solid;
+  border: 1px #ccc solid;
+  border-radius: 5px;
   padding: 3px;
+  padding-bottom: 0px;
 }
-.display-option .display-year-select {
+.display-option .display-year-select { /*月別*/
   height: 34px;
   text-align: left;
   font-size: 15px;
   font-weight: 500;
   width: 120px;
   margin-right: 10px;
-  border: 1px #777 solid;
+  border: 1px #ccc solid;
   padding: 3px;
 }
-.display-option .display-month-select {
+.display-option .display-month-select {/*月別*/
   height: 34px;
   text-align: left;
   font-size: 15px;
   font-weight: 500;
   width: 80px;
   margin-right: 10px;
-  border: 1px #777 solid;
+  border: 1px #ccc solid;
   padding: 3px;
 }
-.display-option .display-day-select {
+.display-option .display-day-select { /*曜日別*/
   height: 34px;
   text-align: left;
   font-size: 15px;
@@ -73,7 +76,7 @@
   width: 120px;
   margin-right: 10px;
   margin-left: 10px;
-  border: 1px #777 solid;
+  border: 1px #ccc solid;
   padding: 3px;
 }
 .display-option .sales-type-select {
