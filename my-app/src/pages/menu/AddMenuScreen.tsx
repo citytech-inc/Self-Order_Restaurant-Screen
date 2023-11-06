@@ -27,6 +27,7 @@ const AddMenuScreen: React.FC = () => {
   });
 
   const sendToBackend = async () => {
+    //フロントだけで動作を確認したいときは商品を登録のところのonClickをsendToBackendからresetScreenに変更
     try {
       const response = await axios.post("http://localhost:3003/api/menu", menu);
       if (response.status === 200) {
@@ -42,7 +43,7 @@ const AddMenuScreen: React.FC = () => {
 
   const resetScreen = () => {
     // Resetting the state to initial values
-    console.log(menu);
+    console.log(JSON.stringify(menu));
     setMenuCategoryList(["ラーメン", "セットメニュー", "飲み物", "デザート"]);
     setCustomize("なし");
     navigate(`/${restaurantId}/menu-list`);
@@ -64,7 +65,7 @@ const AddMenuScreen: React.FC = () => {
           setMenu={setMenu}
         />
         <div className="add-menu__area">
-          <button className="add-menu__button" onClick={resetScreen}>
+          <button className="add-menu__button" onClick={sendToBackend}> 
             商品を登録
           </button>
         </div>

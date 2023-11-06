@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import FromList_PriceChange from "./customize-type/FromList_PriceChange";
 import FromList_NoPriceChange from "./customize-type/FromList_NoPriceChange";
 import ByNumber_PriceChange from "./customize-type/ByNumber_PriceChange";
@@ -41,7 +41,7 @@ type CustomizeType3 = {
 };
 
 type CustomizeType4 = {
-  type: "Type3";
+  type: "Type4";
   name: string;
   price: number;
   measureWord: string;
@@ -62,6 +62,8 @@ type MappedCustomizeType<T extends CustomizationOption> = T extends {
   : any;
 
 const Customize: React.FC<CustomizeProps> = ({ types, onUpdateTypes }) => {
+  const prevTypesRef = useRef(types);
+
   const determineCustomizeType = (
     option: string,
     priceChange: string,
@@ -141,9 +143,89 @@ const Customize: React.FC<CustomizeProps> = ({ types, onUpdateTypes }) => {
     setCustomizationTypes(newCustomizationTypes);
   };
 
+  const handleUpdateFromListNoPriceChange = (
+    index: number,
+    updateOptions: string[],
+    newDefaultOption: string,
+  ) => {
+    // `Type1`オブジェクトの更新
+    const newCustomizationTypes = [...customizationTypes];
+    if (newCustomizationTypes[index].type === "Type1") {
+      newCustomizationTypes[index] = {
+        ...newCustomizationTypes[index],
+        options: updateOptions,
+        default: newDefaultOption,
+      }
+      setCustomizationTypes(newCustomizationTypes);
+    }
+  }
+
+  const handleUpdateFromListPriceChange = (
+    index: number,
+    updatedOptions: Array<{ optionName: string; price: number }>,
+    newDefaultOption: string,
+  ) => {
+    // `Type2` オブジェクトを更新します
+    const newCustomizationTypes = [...customizationTypes];
+    if (newCustomizationTypes[index].type === "Type2") {
+      newCustomizationTypes[index] = {
+        ...newCustomizationTypes[index],
+        options: updatedOptions, // オプションと価格のペアの配列を直接使用します
+        default: newDefaultOption,
+      };
+      setCustomizationTypes(newCustomizationTypes);
+    }
+  };
+
+  const handleUpdateByNumberNoPriceChange = (
+    index: number,
+    updatedMeasureWord: string,
+    newDefaultOption: number,
+  ) => {
+    //Type3
+    const newCustomizationTypes = [...customizationTypes];
+    if (newCustomizationTypes[index].type === "Type3") {
+      newCustomizationTypes[index] = {
+        ...newCustomizationTypes[index],
+        measureWord: updatedMeasureWord,
+        default: newDefaultOption,
+      }
+      setCustomizationTypes(newCustomizationTypes);
+    }
+  };
+
+  const handleUpdateByNumberPriceChange = (
+    index: number,
+    updatedMeasureWord: string,
+    updatedPrice: number,
+    newDefaultOption: number,
+  ) => {
+    // Type4
+    const newCustomizationTypes = [...customizationTypes];
+    if (newCustomizationTypes[index].type === "Type4") {
+      newCustomizationTypes[index] = {
+        ...newCustomizationTypes[index],
+        measureWord: updatedMeasureWord,
+        price: updatedPrice,
+        default: newDefaultOption,
+      }
+      setCustomizationTypes(newCustomizationTypes);
+    }
+  };
+
+  /*{
   useEffect(() => {
     onUpdateTypes(customizationTypes);
   }, [customizationTypes, onUpdateTypes]);
+}*/
+
+  useEffect(() => {
+    // 前回のpropsと異なる場合のみonUpdateTypesを実行
+    if (JSON.stringify(customizationTypes) !== JSON.stringify(prevTypesRef.current)) {
+      onUpdateTypes(customizationTypes);
+      prevTypesRef.current = customizationTypes; // 更新後の値を記録
+    }
+  }, [customizationTypes, onUpdateTypes]); 
 
   return (
     <div className="customize__container">
@@ -189,13 +271,37 @@ const Customize: React.FC<CustomizeProps> = ({ types, onUpdateTypes }) => {
           </div>
 
           {customization.option === "fromList" &&
-            customization.priceChange === "yes" && <FromList_PriceChange />}
+            customization.priceChange === "yes" && (
+              <FromList_PriceChange
+                onUpdate={(updatedOptions, newDefaultOption) =>
+                  handleUpdateFromListPriceChange(index, updatedOptions, newDefaultOption)
+                }
+              />
+          )}
           {customization.option === "fromList" &&
-            customization.priceChange === "no" && <FromList_NoPriceChange />}
+            customization.priceChange === "no" && (
+              <FromList_NoPriceChange
+                onUpdate={(updatedOptions, newDefaultOption) =>
+                  handleUpdateFromListNoPriceChange(index, updatedOptions, newDefaultOption)
+                }
+              />
+            )}
           {customization.option === "byNumber" &&
-            customization.priceChange === "yes" && <ByNumber_PriceChange />}
+            customization.priceChange === "yes" && (
+              <ByNumber_PriceChange 
+                onUpdate={(updatedMeasureWord, updatedPrice, newDefaultOption) =>
+                  handleUpdateByNumberPriceChange(index, updatedMeasureWord, updatedPrice, newDefaultOption)
+                }
+              />
+            )}  
           {customization.option === "byNumber" &&
-            customization.priceChange === "no" && <ByNumber_NoPriceChange />}
+            customization.priceChange === "no" && (
+              <ByNumber_NoPriceChange
+                onUpdate={(updatedMeasureWord, newDefaultOption) =>
+                  handleUpdateByNumberNoPriceChange(index, updatedMeasureWord, newDefaultOption)
+                }
+              />
+            )}
 
           <div className="delete-area">
             <button
