@@ -14,7 +14,6 @@ import NormalAnalysis from "./pages/sales-analysis/NormalAnalysis";
 import MenuAnalysis from "./pages/sales-analysis/MenuAnalysis";
 import CustomerAnalysis from "./pages/sales-analysis/CustomerAnalysis";
 import MenuListScreen from "./pages/menu/MenuListScreen";
-import { initializeApp } from "firebase/app";
 
 // Firebaseの設定
 const firebaseConfig = {
@@ -29,7 +28,6 @@ const firebaseConfig = {
 };
 
 // Firebaseを初期化
-initializeApp(firebaseConfig);
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement,
