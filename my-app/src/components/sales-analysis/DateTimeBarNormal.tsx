@@ -170,16 +170,8 @@ const DateTimeComponent: React.FC<Props> = ({ onSalesTypeChange }) => {
         ) : selectedSalesSpan === "日別" ? (
           <>
             <div className="display-week-select">
-              {`${selectedDate.getMonth() + 1}月第${
-                Math.floor(
-                  (selectedDate.getDate() -
-                    (selectedDate.getDay() === 0
-                      ? 7
-                      : selectedDate.getDay() - 1) +
-                    5) /
-                    7,
-                ) + 1
-              }週`}
+              {`${selectedDate.getMonth() + 1}/${selectedDate.getDate()} ー 
+                ${(new Date(selectedDate.getTime() + (6 * 24 * 60 * 60 * 1000))).getMonth() + 1}/${(new Date(selectedDate.getTime() + (6 * 24 * 60 * 60 * 1000))).getDate()}`}
             </div>
 
             <DatePicker
@@ -246,15 +238,18 @@ const DateTimeComponent: React.FC<Props> = ({ onSalesTypeChange }) => {
         <div style={{ fontSize: "16px", width: "30px", textAlign: "center" }}>
           の
         </div>
-        <select
-          className="sales-type-select"
-          value={selectedCategoryType}
-          onChange={selectedCategoryTypeChange}
-        >
-          {MenuCategoryOption.map((value, index) => (
-            <option value={value}>{value}</option>
-          ))}
-        </select>
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+          <div className="new-sales-type-select">カテゴリー</div>
+          <select
+            className="sales-type-select2"
+            value={selectedCategoryType}
+            onChange={selectedCategoryTypeChange}
+          >
+            {MenuCategoryOption.map((value, index) => (
+              <option value={value}>{value}</option>
+            ))}
+          </select>
+        </div>
         {selectedCategoryType !== "すべて" && (
           <select
             className="sales-type-select"
