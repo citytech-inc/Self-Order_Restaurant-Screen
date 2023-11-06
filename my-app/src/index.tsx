@@ -8,6 +8,7 @@ import { BrowserRouter, Router, Routes, Route } from "react-router-dom";
 import PleaseWaitScreen from "./pages/PleaseWaitScreen";
 import PurchasedItemsScreen from "./pages/PurchasedItemsScreen";
 import TableNumberScreen from "./pages/TableNumberScreen";
+import Settings from "./pages/Settings";
 import AddMenuScreen from "./pages/menu/AddMenuScreen";
 import OrderScreen from "./pages/OrderScreen";
 import NormalAnalysis from "./pages/sales-analysis/NormalAnalysis";
@@ -42,6 +43,10 @@ root.render(
         <Route
           path=":restaurantId/table-number"
           element={<TableNumberScreen />}
+        />
+        <Route
+          path=":restaurantId/settings"
+          element={<Settings />}
         />
         <Route
           path=":restaurantId/please-wait"

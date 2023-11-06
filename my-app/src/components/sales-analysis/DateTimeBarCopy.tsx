@@ -43,6 +43,7 @@ const DateTimeComponent: React.FC<Props> = ({ onSalesTypeChange }) => {
   }
 
   const [selectedSalesSpan, setSelectedSalesSpan] = useState("時間帯別");
+
   const [selectedHour, setSelectedHour] = useState("14");
   const [selectedDate, setSelectedDate] = useState<Date>(Today);
   const today = new Date();
@@ -67,6 +68,7 @@ const DateTimeComponent: React.FC<Props> = ({ onSalesTypeChange }) => {
   }
 
   const [selectedWeek, setSelectedWeek] = useState<Date[]>(dateList);
+
 
 
   const selectedSalesSpanChange = (
@@ -189,7 +191,7 @@ const DateTimeComponent: React.FC<Props> = ({ onSalesTypeChange }) => {
             <div className="date-picker-container">
               <DatePicker
                 selected={dayStartDate}
-                onChange={(date) => setDayStartDate(date)}
+                onChange={(date:any) => setDayStartDate(date)}
                 dateFormat="yyyy年MM月"
                 showMonthYearPicker
                 className="display-date"
@@ -197,7 +199,7 @@ const DateTimeComponent: React.FC<Props> = ({ onSalesTypeChange }) => {
               <div>〜</div>
               <DatePicker
                 selected={dayEndDate}
-                onChange={(date) => setDayEndDate(date)}
+                onChange={(date:any) => setDayEndDate(date)}
                 dateFormat="yyyy年MM月"
                 showMonthYearPicker
                 className="display-date"
