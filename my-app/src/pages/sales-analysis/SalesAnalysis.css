@@ -7,7 +7,7 @@
   justify-content: center;
   background-color: #fffefb;
 }
-.sales-analysis-header .header-select-button-1 {
+.sales-analysis-header .header-select-button-left {
   text-align: center;
   height: 30px;
   line-height: 30px;
@@ -15,19 +15,18 @@
   font-size: 18px;
   font-weight: 600;
   border-radius: 5px 0 0 5px;
-  border: 3px solid #c05454;
+  box-shadow : 0 0 0 3px #c05454;
 }
-.sales-analysis-header .header-select-button-2 {
+.sales-analysis-header .header-select-button-middle {
   text-align: center;
   height: 30px;
   line-height: 30px;
   width: 150px;
   font-size: 18px;
   font-weight: 600;
-  border-top: 3px solid #c05454;
-  border-bottom: 3px solid #c05454;
+  box-shadow : 0 0 0 3px #c05454;
 }
-.sales-analysis-header .header-select-button-3 {
+.sales-analysis-header .header-select-button-right {
   text-align: center;
   height: 30px;
   line-height: 30px;
@@ -35,7 +34,7 @@
   font-size: 18px;
   font-weight: 600;
   border-radius: 0 5px 5px 0;
-  border: 3px solid #c05454;
+  box-shadow : 0 0 0 3px #c05454;
 }
 .sales-span {
   width: 91%;
