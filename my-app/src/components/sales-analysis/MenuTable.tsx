@@ -1,5 +1,9 @@
 import React from "react";
 import "./MenuTable.css";
+import sortedIcon from '../../src/components/images/filter_3839020.png';
+
+// 画像を使用する
+console.log(sortedIcon); // これは画像へのパスを出力します
 
 type Product = {
   name: string;
