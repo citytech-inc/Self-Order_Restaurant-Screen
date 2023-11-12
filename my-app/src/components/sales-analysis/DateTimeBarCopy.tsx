@@ -43,6 +43,7 @@ const DateTimeComponent: React.FC<Props> = ({ onSalesTypeChange }) => {
   }
 
   const [selectedSalesSpan, setSelectedSalesSpan] = useState("時間帯別");
+
   const [selectedHour, setSelectedHour] = useState("14");
   const [selectedDate, setSelectedDate] = useState<Date>(Today);
   const today = new Date();
@@ -67,6 +68,7 @@ const DateTimeComponent: React.FC<Props> = ({ onSalesTypeChange }) => {
   }
 
   const [selectedWeek, setSelectedWeek] = useState<Date[]>(dateList);
+
 
 
   const selectedSalesSpanChange = (
