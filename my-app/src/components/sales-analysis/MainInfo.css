@@ -35,7 +35,7 @@
 .mainInfo__container .sales-total-half {
   width: 100%;
   border-radius: 10px;
-  margin: 0px 0px;
+  margin: 0px;
 }
 
 .mainInfo__container .sales-total-flex {
@@ -71,25 +71,50 @@
 }
 
 .mainInfo__container .sales-type-text-gray {
-  font-size: 18px;
-  line-height: 36px;
-  height: 36px;
+  font-size: 13px;
+  line-height: 25px;
+  height: 25px;
   vertical-align: bottom;
   text-align: left;
-  padding-left: 20px;
+  padding-left: 10px;
   background-color: #e6e6e6;
   border-radius: 10px 10px 0 0;
-  border-top: solid #333333 1px;
-  border-right: solid #333333 1px;
-  border-left: solid #333333 1px;
+  border-top: solid #ccc 1px;
+  border-right: solid #ccc 1px;
+  border-left: solid #ccc 1px;
 }
 
 .mainInfo__container .sales-type-price { /*総売り上げの値*/
+  width: 55%;
   font-size: 32px;
   line-height: 50px;
   height: 50px;
   font-weight: 600;
   text-align: center;
+  padding-right: 10px;
+  border: solid #ccc 1px;
+  border-left: none;
+  border-radius: 0 0 10px 0;
+}
+.mainInfo__container .sales-type-price0 { /*総売り上げの値*/
+  width: 45%;
+  color: #333333;
+  font-size: 20px;
+  line-height: 38px;
+  height: 50px;
+  font-weight: 300;
+  text-align: right;
+  padding-right: 10px;
+  border: solid #ccc 1px;
+  border-radius: 0 0 0 10px;
+}
+.mainInfo__container .sales-type-price-customer { /*総売り上げの値*/
+  font-size: 23px;
+  line-height: 45px;
+  height: 45px;
+  font-weight: 500;
+  text-align: center;
+  padding-right: 10px;
   border: solid #ccc 1px;
   border-radius: 0 0 10px 10px;
 }

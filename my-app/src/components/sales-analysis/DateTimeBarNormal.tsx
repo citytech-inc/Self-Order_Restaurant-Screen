@@ -2,6 +2,7 @@ import React, { useState, ChangeEvent } from "react";
 import DatePicker from "react-datepicker";
 import "./DateTimeBar.css";
 import "react-datepicker/dist/react-datepicker.css";
+import CalendarIcon from "../images/calendar_2278049.png"
 
 interface Props {
   onSalesTypeChange?: (selectedSalesType: string) => void;
@@ -170,8 +171,9 @@ const DateTimeComponent: React.FC<Props> = ({ onSalesTypeChange }) => {
         ) : selectedSalesSpan === "日別" ? (
           <>
             <div className="display-week-select">
-              {`${selectedDate.getMonth() + 1}/${selectedDate.getDate()} ー 
-                ${(new Date(selectedDate.getTime() + (6 * 24 * 60 * 60 * 1000))).getMonth() + 1}/${(new Date(selectedDate.getTime() + (6 * 24 * 60 * 60 * 1000))).getDate()}`}
+            <img src={CalendarIcon} alt="Calendar Icon" style={{ width: '18px', height: '18px', lineHeight: '18px', marginRight: '5px' , paddingTop: '0%', textAlign: 'center'}} />
+            {`${selectedDate.getMonth() + 1}/${selectedDate.getDate()} ー 
+              ${(new Date(selectedDate.getTime() + (6 * 24 * 60 * 60 * 1000))).getMonth() + 1}/${(new Date(selectedDate.getTime() + (6 * 24 * 60 * 60 * 1000))).getDate()}`}
             </div>
 
             <DatePicker
