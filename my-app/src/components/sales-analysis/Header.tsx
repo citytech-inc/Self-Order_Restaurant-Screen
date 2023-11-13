@@ -12,7 +12,7 @@ function HeaderComponent({ focusButton }: HeaderComponentProps) {
   return (
     <div className="sales-analysis-header">
       <Link
-        className="header-select-button-left"
+        className="header-select-button select-button-left"
         to={`/${restaurantId}/sales-analysis`}
         style={{
           backgroundColor: focusButton === "通常分析" ? "#C05454" : "#FFFFFF",
@@ -22,7 +22,7 @@ function HeaderComponent({ focusButton }: HeaderComponentProps) {
         通常分析
       </Link>
       <Link
-        className="header-select-button-middle"
+        className="header-select-button"
         to={`/${restaurantId}/sales-analysis/menu`}
         style={{
           backgroundColor: focusButton === "商品別分析" ? "#C05454" : "#FFFFFF",
@@ -32,7 +32,7 @@ function HeaderComponent({ focusButton }: HeaderComponentProps) {
         商品別分析
       </Link>
       <Link
-        className="header-select-button-middle"
+        className="header-select-button"
         to={`/${restaurantId}/sales-analysis/customer`}
         style={{
           backgroundColor: focusButton === "客数分析" ? "#C05454" : "#FFFFFF",
@@ -42,7 +42,7 @@ function HeaderComponent({ focusButton }: HeaderComponentProps) {
         客数分析
       </Link>
       <Link
-        className="header-select-button-right"
+        className="header-select-button select-button-right"
         to={`/${restaurantId}/sales-analysis/ai`}
         style={{
           backgroundColor: focusButton === "AI分析" ? "#C05454" : "#FFFFFF",

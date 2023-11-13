@@ -1,3 +1,5 @@
+@use "../../colors" as *;
+
 .sales-analysis-header {
   height: 8vh;
   width: 100%;
@@ -7,35 +9,35 @@
   justify-content: center;
   background-color: #fffefb;
 }
-.sales-analysis-header .header-select-button-left {
+
+.sales-analysis-header .header-select-button {
   text-align: center;
   height: 30px;
   line-height: 30px;
-  width: 150px;
-  font-size: 18px;
+  width: 125px;
+  font-size: 14px;
   font-weight: 600;
+  box-shadow : 0 0 0 2px $theme-red;
+}
+
+.sales-analysis-header .select-button-left {
   border-radius: 5px 0 0 5px;
-  box-shadow : 0 0 0 3px #c05454;
 }
-.sales-analysis-header .header-select-button-middle {
-  text-align: center;
-  height: 30px;
-  line-height: 30px;
-  width: 150px;
-  font-size: 18px;
-  font-weight: 600;
-  box-shadow : 0 0 0 3px #c05454;
-}
-.sales-analysis-header .header-select-button-right {
-  text-align: center;
-  height: 30px;
-  line-height: 30px;
-  width: 150px;
-  font-size: 18px;
-  font-weight: 600;
+
+.sales-analysis-header .select-button-right {
   border-radius: 0 5px 5px 0;
-  box-shadow : 0 0 0 3px #c05454;
 }
+
+.sales-analysis-header .sub-header-select-button {
+  text-align: center;
+  height: 24px;
+  line-height: 24px;
+  width: 98px;
+  font-size: 11px;
+  font-weight: 600;
+  box-shadow : 0 0 0 2px $theme-red;
+}
+
 .sales-span {
   width: 91%;
   margin-left: 9%;
@@ -43,7 +45,7 @@
   line-height: 26px;
 }
 .sales-span .sales-span-select {
-  background-color: #fff0b4;
+  background-color: $theme-yellow;
   height: 26px;
   width: 120px;
   text-align: center;
@@ -94,7 +96,7 @@
   vertical-align: bottom;
   text-align: left;
   padding-left: 30px;
-  background-color: #fff0b4;
+  background-color: $theme-yellow;
   border-radius: 15px 15px 0 0;
   border-top: solid #333333 1px;
   border-right: solid #333333 1px;
