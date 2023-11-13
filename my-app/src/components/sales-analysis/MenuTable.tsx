@@ -87,7 +87,6 @@ const products: Product[] = [
 
 const MenuTable: React.FC = () => {
   return (
-    
     <table className="product-table">
       <thead>
         <tr>

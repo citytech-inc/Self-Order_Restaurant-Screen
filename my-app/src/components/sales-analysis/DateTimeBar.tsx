@@ -2,6 +2,7 @@ import React, { useState, ChangeEvent } from "react";
 import DatePicker from "react-datepicker";
 import "./DateTimeBar.css";
 import "react-datepicker/dist/react-datepicker.css";
+import sortedIcon from '../images/filter_3839020.png';
 
 interface Props {
   onSalesTypeChange?: (selectedSalesType: string) => void;
@@ -145,7 +146,7 @@ const DateTimeComponent: React.FC<Props> = ({ onSalesTypeChange }) => {
       </div>
       <div className="display-span-option">
         {selectedSalesSpan === "時間帯別" ? (
-          <>
+          <div>
             <DatePicker
               selected={selectedDate}
               onChange={handleDateChange}
@@ -164,9 +165,9 @@ const DateTimeComponent: React.FC<Props> = ({ onSalesTypeChange }) => {
                 </option>
               ))}
             </select>
-          </>
+          </div>
         ) : selectedSalesSpan === "日別" ? (
-          <>
+          <div>
             <div className="display-week-select">
               {`${selectedDate.getMonth() + 1}月第${
                 Math.floor(
@@ -187,9 +188,9 @@ const DateTimeComponent: React.FC<Props> = ({ onSalesTypeChange }) => {
               highlightDates={selectedWeek}
               dayClassName={highlightCustomDates}
             />
-          </>
+          </div>
         ) : selectedSalesSpan === "月別" ? (
-          <>
+          <div>
             <select
               className="display-year-select"
               value={String(selectedYear)}
@@ -208,9 +209,9 @@ const DateTimeComponent: React.FC<Props> = ({ onSalesTypeChange }) => {
                 <option value={value}>{value}月</option>
               ))}
             </select>
-          </>
+          </div>
         ) : (
-          <>
+          <div>
             <div className="date-picker-container">
               <DatePicker
                 selected={dayStartDate}
@@ -239,8 +240,11 @@ const DateTimeComponent: React.FC<Props> = ({ onSalesTypeChange }) => {
                 <option value={value}>{value}曜日</option>
               ))}
             </select>
-          </>
+          </div>
         )}
+        <div className="sorted-icon-area">
+          <img className="sorted-icon" src={sortedIcon} alt="並び替えアイコン" />
+        </div>
       </div>
     </div>
   );
