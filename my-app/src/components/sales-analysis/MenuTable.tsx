@@ -87,6 +87,7 @@ const products: Product[] = [
 
 const MenuTable: React.FC = () => {
   return (
+    
     <table className="product-table">
       <thead>
         <tr>
@@ -124,4 +125,13 @@ const MenuTable: React.FC = () => {
   );
 };
 
+export const ImageDemo: React.FC = () => {
+  return (
+    <div>
+      <h1>画像デモ</h1>
+      <img src={sortedIcon} alt="並び替えアイコン" />
+    </div>
+  );
+}
+  
 export default MenuTable;
