@@ -4,12 +4,28 @@ import "./SalesAnalysis.scss";
 import SettingBar from "../../header/SettingBar";
 import HeaderComponent from "../../components/sales-analysis/Header";
 
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
+
 const AIAnalysis: React.FC = () => {
   const { restaurantId } = useParams();
   const [focused, setFocused] = useState("チャット");
   const changeFocusedButton = (buttonName: string) => {
     setFocused(buttonName);
   }
+
+  const pdfDownloadHandler = (elementId: string, fileName: string) => {
+    const target = document.getElementById(elementId);
+    if (target === null) return;
+
+    html2canvas(target, { scale: 2.5 }).then((canvas) => {
+      const imgData = canvas.toDataURL('image/svg', 1.0);
+      let pdf = new jsPDF();
+      pdf.addImage(imgData, 'SVG', 5, 10, canvas.width / 18, canvas.height / 18);
+      pdf.save(`${fileName}.pdf`);
+    });
+  };
+
   return (
     <div>
       <div>
