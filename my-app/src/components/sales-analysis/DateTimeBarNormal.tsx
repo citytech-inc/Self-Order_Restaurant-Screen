@@ -72,7 +72,7 @@ const DateTimeComponent: React.FC<Props> = ({ onSalesTypeChange, setSalesPerHour
     DayName[today.getDay() === 0 ? 6 : today.getDay() - 1],
   ); // getDay() returns 0 for Sunday and 6 for Saturday, assuming DayName starts from Monday
 
-  // 分析用の関数の仕様 (最終的には移動させる)
+  // 分析用の関数の使用
   useEffect(() => {
     const timestampList:number[] = []
     for(let hour = 9; hour <= 24; hour ++) {
@@ -86,9 +86,9 @@ const DateTimeComponent: React.FC<Props> = ({ onSalesTypeChange, setSalesPerHour
     ) // 第一引数はtimestampの配列
       .then((result:{[key: string]: number|number[]}) => {
         const salesPerHours: {[key:number]:{ [key: string] : number|string}} = {}
-        if (Array.isArray(result.eachSellingPrice)) {
+        if (Array.isArray(result.eachSellingPrice) && Array.isArray(result.eachDiscountNumMean)) {
           for(let i = 0; i < result.eachSellingPrice.length; i++){
-            salesPerHours[i+9] = { sales: result.eachSellingPrice[i], priceClass: 1}
+            salesPerHours[i+9] = { sales: result.eachSellingPrice[i], priceClass: result.eachDiscountNumMean[i]}
           }
         }
         if(setSalesPerHour) {

@@ -1,6 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { Bar } from "react-chartjs-2";
 import "./Graph.css";
+
+// 分析用の関数のimport (最終的には移動させる)
+import sendPostRequest from "../../functions/analysisFunction";
 
 interface SalesPerHourType {
   [key: number]: {
@@ -16,36 +20,39 @@ interface Props {
 }
 
 const GraphComponent: React.FC<Props> = () => {
+  const { restaurantId } = useParams();
   const [subDisplayTable, setSubDisplayTable] = useState<boolean>(false);
   const [selectedHour, setSelectedHour] = useState(14);
+  const [selectedDate, setSelectedDate] = useState(new Date());
 
-  const SalesPerHour: { [key: number]: { [key: string]: number | string } } = {
-    9: { sales: 1000, priceClass: "normal" },
-    10: { sales: 2000, priceClass: "normal" },
-    11: { sales: 3000, priceClass: "normal" },
-    12: { sales: 12000, priceClass: "crowded" },
-    13: { sales: 15000, priceClass: "crowded" },
-    14: { sales: 20000, priceClass: "normal" },
-    15: { sales: 2000, priceClass: "normal" },
-    16: { sales: 2000, priceClass: "normal" },
-    17: { sales: 2000, priceClass: "normal" },
-    18: { sales: 2000, priceClass: "crowded" },
-    19: { sales: 2000, priceClass: "crowded" },
-    20: { sales: 2000, priceClass: "crowded" },
-    21: { sales: 2000, priceClass: "normal" },
-    22: { sales: 2000, priceClass: "normal" },
-    23: { sales: 2000, priceClass: "normal" },
-  };
+  const [SalesPerHour, setSalesPerHour] = useState<{ [key: number]: { sales: number, priceClass: number } }>({
+    9: { sales: 1000, priceClass: 1 },
+    10: { sales: 2000, priceClass: 1 },
+    11: { sales: 3000, priceClass: 3 },
+    12: { sales: 12000, priceClass: 1 },
+    13: { sales: 15000, priceClass: 3 },
+    14: { sales: 20000, priceClass: 3 },
+    15: { sales: 2000, priceClass: 1 },
+    16: { sales: 2000, priceClass: 3 },
+    17: { sales: 2000, priceClass: 1},
+    18: { sales: 2000, priceClass: 3 },
+    19: { sales: 2000, priceClass: 3 },
+    20: { sales: 2000, priceClass: 3 },
+    21: { sales: 2000, priceClass: 1 },
+    22: { sales: 2000, priceClass: 1 },
+    23: { sales: 2000, priceClass: 1 },
+  });
 
+  console.log(Object.values(SalesPerHour))
   const SalesDataSet = {
     labels: Object.keys(SalesPerHour),
     datasets: [
       {
-        data: Object.values(SalesPerHour).map((value, index) => value.sales),
+        data: Object.keys(SalesPerHour).map((key) => SalesPerHour[Number(key)].sales),
         backgroundColor: Object.keys(SalesPerHour).map((key, index) =>
           Number(key) === selectedHour
             ? "rgba(255, 240, 180, 1)"
-            : SalesPerHour[Number(key)].priceClass === "normal"
+            : SalesPerHour[Number(key)].priceClass > 2
             ? "rgba(217, 217, 217, 1)"
             : "rgba(153, 153, 153, 1)",
         ),
@@ -76,6 +83,31 @@ const GraphComponent: React.FC<Props> = () => {
     },
     responsive: true,
   };
+
+  // 分析用の関数の使用
+  useEffect(() => {
+    const timestampList:number[] = []
+    for(let hour = 9; hour <= 24; hour ++) {
+      let newDate = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), selectedDate.getDate(), hour, 0);
+      timestampList.push(newDate.getTime());
+    }
+    console.log(timestampList)
+    sendPostRequest(
+      timestampList,
+      restaurantId,
+    ) // 第一引数はtimestampの配列
+      .then((result:{[key: string]: number|number[]}) => {
+        const salesPerHours: {[key:number]:{ sales: number, priceClass: number }} = {}
+        if (Array.isArray(result.eachSellingPrice) && Array.isArray(result.eachDiscountNumMean)) {
+          for(let i = 0; i < result.eachSellingPrice.length; i++){
+            salesPerHours[i+9] = { sales: result.eachSellingPrice[i], priceClass: result.eachDiscountNumMean[i]}
+          }
+        }
+        if(setSalesPerHour) {
+          setSalesPerHour(salesPerHours)
+        }
+      });
+  },[selectedDate, restaurantId]);
 
   return (
     <div className="graph-option">
