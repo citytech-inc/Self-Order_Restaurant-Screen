@@ -204,7 +204,7 @@ function OrderScreen() {
             )}
             onDelete={handleDelete}
           />
-
+-
           <DisplayArea
             title="サイドメニュー"
             orders={orders.filter((o) =>
