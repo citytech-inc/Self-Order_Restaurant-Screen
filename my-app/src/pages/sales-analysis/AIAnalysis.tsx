@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useLocation, useParams, Link } from "react-router-dom";
 import "./SalesAnalysis.scss";
+import DownloadIcon from "../../../src/components/images/download.png";
+import SendIcon from "../../../src/components/images/send.png";
 import SettingBar from "../../header/SettingBar";
 import HeaderComponent from "../../components/sales-analysis/Header";
 
@@ -28,7 +30,7 @@ const AIAnalysis: React.FC = () => {
 
   return (
     <div>
-      <div>
+      <div style={{ height: "100vh" }}>
         <SettingBar focusButton="sales" />
         <HeaderComponent focusButton="AI分析" />
         <div className="sales-analysis-header">
@@ -53,7 +55,26 @@ const AIAnalysis: React.FC = () => {
             レポート
           </div>
         </div>
-        <div>{  }</div>
+        <div className="ai-analysis-wrapper">
+          {focused === "チャット" && (
+            <div className="ai-analysis-container ai-chat-container">
+              <div className="type-box">
+                <div className="type-box__text">質問を入力</div>
+                <img src={SendIcon} alt="Send Question Icon" className="type-box__send-icon" />
+              </div>
+            </div>
+          )}
+          {focused === "レポート" && (
+            <div id="a" className="ai-analysis-container ai-report-container">
+              <img
+                src={DownloadIcon}
+                alt="Download PDF Icon"
+                className="download-pdf-icon"
+                onClick={() => pdfDownloadHandler("a", "report")}
+              />
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
