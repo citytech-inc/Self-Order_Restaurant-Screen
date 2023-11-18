@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, FormEventHandler } from "react";
 import { useNavigate, useLocation, useParams, Link } from "react-router-dom";
 import "./SalesAnalysis.scss";
 import DownloadIcon from "../../../src/components/images/download.png";
@@ -12,7 +12,13 @@ import ReportExample from "../../../src/data/report_example";
 
 const AIAnalysis: React.FC = () => {
   const { restaurantId } = useParams();
+  const [messageInput, setMessageInput] = useState("");
   const [focused, setFocused] = useState("チャット");
+  type messageData = {
+    message: string;
+    isUser: boolean;
+  };
+  const [chatList, setChatList] = useState<messageData[]>([]);
   const changeFocusedButton = (buttonName: string) => {
     setFocused(buttonName);
   };
@@ -34,6 +40,15 @@ const AIAnalysis: React.FC = () => {
       );
       pdf.save(`${fileName}.pdf`);
     });
+  };
+
+  const messageInputHandleSubmit: FormEventHandler<HTMLFormElement> = (
+    event
+  ) => {
+    event.preventDefault();
+    setChatList([...chatList, { message: messageInput, isUser: true }]);
+    setMessageInput("");
+    document.getElementById("type-box__area")!.style.height = "auto";
   };
 
   return (
@@ -66,6 +81,7 @@ const AIAnalysis: React.FC = () => {
         <div className="ai-analysis-wrapper">
           {focused === "チャット" && (
             <div className="ai-analysis-container ai-chat-container">
+              <div className="messages-wrapper"></div>
               <div className="type-box">
                 <form
                   style={{
@@ -74,24 +90,32 @@ const AIAnalysis: React.FC = () => {
                     display: "flex",
                     boxSizing: "border-box",
                   }}
+                  onSubmit={messageInputHandleSubmit}
                 >
                   <textarea
                     rows={1}
+                    id="type-box__area"
                     className="type-box__area"
                     placeholder="質問を入力"
+                    value={messageInput}
                     onChange={(e) => {
+                      setMessageInput(e.target.value);
                       e.target.style.height = "auto";
                       e.target.style.height =
                         Math.min(e.target.scrollHeight, 210) + "px";
                     }}
                   />
-                  <button type="submit">
+                  <button
+                    type="submit"
+                    disabled={messageInput === ""}
+                    className="type-box__send"
+                  >
                     <span>
                       {" "}
                       <img
                         src={SendIcon}
                         alt="Send Question Icon"
-                        className="type-box__send"
+                        className="type-box__send__icon"
                       />
                     </span>
                   </button>
