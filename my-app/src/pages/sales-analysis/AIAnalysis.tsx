@@ -67,12 +67,14 @@ const AIAnalysis: React.FC = () => {
           {focused === "チャット" && (
             <div className="ai-analysis-container ai-chat-container">
               <div className="type-box">
-                <div className="type-box__text">質問を入力</div>
-                <img
-                  src={SendIcon}
-                  alt="Send Question Icon"
-                  className="type-box__send-icon"
-                />
+                <div style={{ position: "relative", width: "100%", display: "flex", boxSizing: "border-box" }}>
+                  <textarea rows={1} className="type-box__area" placeholder="質問を入力"></textarea>
+                  <img
+                    src={SendIcon}
+                    alt="Send Question Icon"
+                    className="type-box__send-icon"
+                  />
+                </div>
               </div>
             </div>
           )}

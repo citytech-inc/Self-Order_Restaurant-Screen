@@ -1,5 +1,15 @@
 @use "../../colors" as *;
 
+button, input, optgroup, select, textarea {
+  color: inherit;
+  font-family: inherit;
+  font-size: 100%;
+  font-weight: inherit;
+  line-height: inherit;
+  margin: 0;
+  padding: 0;
+}
+
 .sales-analysis-header {
   height: 8vh;
   width: 100%;
@@ -317,33 +327,44 @@
   .type-box {
     position: absolute;
     display: flex;
+    overflow-y: hidden;
     margin: 15px;
-    height: 37px;
     width: calc(100% - 30px);
     bottom: 0;
     border-radius: 5px;
     border: 0.5px solid #aaa;
     background: #fff;
     box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.15);
+    box-sizing: border-box;
 
-    &__text {
-      color: #888;
-      font-size: 12px;
-      font-weight: 400;
-      margin-left: 10px;
-      margin-top: 10px;
-    }
     &__send-icon {
+      position: absolute;
       float: right;
       width: 17px;
       height: 17px;
       margin-left: auto;
-      margin-right: 9px;
-      margin-top: 10px;
+      right: 9px;
+      top: 10px;
       &:hover {
         opacity: 0.5;
         cursor: pointer;
       }
+    }
+    &__area {
+      width: 100%;
+      border: none;
+      resize: none;
+      background-color: transparent;
+      box-sizing: border-box;
+      margin: 0;
+      &:focus {
+        border: none;
+        outline: none;
+      }
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 1.5rem;
+      padding: 7px 27px 6px 10px;
     }
   }
 }
