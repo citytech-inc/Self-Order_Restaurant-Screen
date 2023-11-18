@@ -75,7 +75,7 @@ const AIAnalysis: React.FC = () => {
       <div style={{ height: "100vh" }}>
         <SettingBar focusButton="sales" />
         <HeaderComponent focusButton="AI分析" />
-        <div className="sales-analysis-header">
+        <div className="sales-analysis-header sales-analysis-header-sub">
           <div
             className="sub-header-select-button select-button-left"
             onClick={() => changeFocusedButton("チャット")}

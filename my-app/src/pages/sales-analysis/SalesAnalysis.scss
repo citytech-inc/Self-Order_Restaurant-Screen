@@ -33,6 +33,11 @@ textarea {
   align-items: center;
   justify-content: center;
   background-color: #fffefb;
+
+  &-sub {
+    height: 25px;
+    margin-top: 6px;
+  }
 }
 
 .sales-analysis-header .header-select-button {
