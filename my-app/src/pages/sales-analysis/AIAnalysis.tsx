@@ -67,8 +67,25 @@ const AIAnalysis: React.FC = () => {
           {focused === "チャット" && (
             <div className="ai-analysis-container ai-chat-container">
               <div className="type-box">
-                <div style={{ position: "relative", width: "100%", display: "flex", boxSizing: "border-box" }}>
-                  <textarea rows={1} className="type-box__area" placeholder="質問を入力"></textarea>
+                <div
+                  style={{
+                    position: "relative",
+                    width: "100%",
+                    display: "flex",
+                    boxSizing: "border-box",
+                  }}
+                >
+                  <textarea
+                    rows={1}
+                    className="type-box__area"
+                    placeholder="質問を入力"
+                    onChange={(e) => {
+                      // これいれないと動きがおかしい
+                      e.target.style.height = 'auto';
+                      // 改行に合わせて高さを変える
+                      e.target.style.height = Math.min(e.target.scrollHeight, 210) + 'px';
+                    }}
+                  />
                   <img
                     src={SendIcon}
                     alt="Send Question Icon"
@@ -80,7 +97,9 @@ const AIAnalysis: React.FC = () => {
           )}
           {focused === "レポート" && (
             <div className="ai-analysis-container ai-report-container">
-              <div id="download-object"><ReportExample /></div>
+              <div id="download-object">
+                <ReportExample />
+              </div>
               <img
                 src={DownloadIcon}
                 alt="Download PDF Icon"
