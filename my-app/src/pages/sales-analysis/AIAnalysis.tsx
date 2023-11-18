@@ -104,6 +104,7 @@ const AIAnalysis: React.FC = () => {
               id="ai-chat-container"
             >
               <div className="messages-wrapper" id="messages-wrapper">
+                <div style={{ height: "10px" }}/>
                 {chatList.map((chat, _) =>
                   chat.isUser ? (
                     <div className="user-message">{chat.message}</div>
