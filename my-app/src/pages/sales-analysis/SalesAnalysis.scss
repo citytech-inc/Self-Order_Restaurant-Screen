@@ -10,6 +10,21 @@ button, input, optgroup, select, textarea {
   padding: 0;
 }
 
+textarea, button {
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+
+button {
+  appearance: none;
+}
+
+textarea {
+  resize: none;
+}
+
+
 .sales-analysis-header {
   height: 8vh;
   width: 100%;
@@ -337,7 +352,7 @@ button, input, optgroup, select, textarea {
     box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.15);
     box-sizing: border-box;
 
-    &__send-icon {
+    &__send {
       position: absolute;
       float: right;
       width: 17px;
@@ -352,15 +367,7 @@ button, input, optgroup, select, textarea {
     }
     &__area {
       width: 100%;
-      border: none;
-      resize: none;
-      background-color: transparent;
       box-sizing: border-box;
-      margin: 0;
-      &:focus {
-        border: none;
-        outline: none;
-      }
       font-size: 12px;
       font-weight: 400;
       line-height: 1.5rem;

@@ -67,7 +67,7 @@ const AIAnalysis: React.FC = () => {
           {focused === "チャット" && (
             <div className="ai-analysis-container ai-chat-container">
               <div className="type-box">
-                <div
+                <form
                   style={{
                     position: "relative",
                     width: "100%",
@@ -80,18 +80,22 @@ const AIAnalysis: React.FC = () => {
                     className="type-box__area"
                     placeholder="質問を入力"
                     onChange={(e) => {
-                      // これいれないと動きがおかしい
-                      e.target.style.height = 'auto';
-                      // 改行に合わせて高さを変える
-                      e.target.style.height = Math.min(e.target.scrollHeight, 210) + 'px';
+                      e.target.style.height = "auto";
+                      e.target.style.height =
+                        Math.min(e.target.scrollHeight, 210) + "px";
                     }}
                   />
-                  <img
-                    src={SendIcon}
-                    alt="Send Question Icon"
-                    className="type-box__send-icon"
-                  />
-                </div>
+                  <button type="submit">
+                    <span>
+                      {" "}
+                      <img
+                        src={SendIcon}
+                        alt="Send Question Icon"
+                        className="type-box__send"
+                      />
+                    </span>
+                  </button>
+                </form>
               </div>
             </div>
           )}
