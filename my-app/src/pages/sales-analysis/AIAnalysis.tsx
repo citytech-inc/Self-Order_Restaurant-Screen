@@ -6,24 +6,32 @@ import SendIcon from "../../../src/components/images/send.png";
 import SettingBar from "../../header/SettingBar";
 import HeaderComponent from "../../components/sales-analysis/Header";
 
-import html2canvas from 'html2canvas';
-import jsPDF from 'jspdf';
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
+import ReportExample from "../../../src/data/report_example";
 
 const AIAnalysis: React.FC = () => {
   const { restaurantId } = useParams();
   const [focused, setFocused] = useState("チャット");
   const changeFocusedButton = (buttonName: string) => {
     setFocused(buttonName);
-  }
+  };
 
   const pdfDownloadHandler = (elementId: string, fileName: string) => {
     const target = document.getElementById(elementId);
     if (target === null) return;
 
     html2canvas(target, { scale: 2.5 }).then((canvas) => {
-      const imgData = canvas.toDataURL('image/svg', 1.0);
-      let pdf = new jsPDF();
-      pdf.addImage(imgData, 'SVG', 5, 10, canvas.width / 18, canvas.height / 18);
+      const imgData = canvas.toDataURL("image/svg", 1.0);
+      let pdf = new jsPDF("landscape", "pt", "a4");
+      pdf.addImage(
+        imgData,
+        "SVG",
+        pdf.internal.pageSize.width * 0.05,
+        pdf.internal.pageSize.height * 0.05,
+        pdf.internal.pageSize.width * 0.9,
+        0
+      );
       pdf.save(`${fileName}.pdf`);
     });
   };
@@ -60,17 +68,22 @@ const AIAnalysis: React.FC = () => {
             <div className="ai-analysis-container ai-chat-container">
               <div className="type-box">
                 <div className="type-box__text">質問を入力</div>
-                <img src={SendIcon} alt="Send Question Icon" className="type-box__send-icon" />
+                <img
+                  src={SendIcon}
+                  alt="Send Question Icon"
+                  className="type-box__send-icon"
+                />
               </div>
             </div>
           )}
           {focused === "レポート" && (
-            <div id="a" className="ai-analysis-container ai-report-container">
+            <div className="ai-analysis-container ai-report-container">
+              <div id="download-object"><ReportExample /></div>
               <img
                 src={DownloadIcon}
                 alt="Download PDF Icon"
                 className="download-pdf-icon"
-                onClick={() => pdfDownloadHandler("a", "report")}
+                onClick={() => pdfDownloadHandler("download-object", "report")}
               />
             </div>
           )}
