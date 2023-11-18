@@ -42,13 +42,32 @@ const AIAnalysis: React.FC = () => {
     });
   };
 
+  const sendMessage = (message: string) => {
+    /*
+     APIと通信する処理 awaitの間送信ボタンを押せないようにするなどやることは色々
+     */
+    const responseMessage = message;
+    setChatList((chatListOld) => [
+      ...chatListOld,
+      { message: messageInput, isUser: false },
+    ]);
+  };
+
+  const enterMessage = () => {
+    setChatList((chatListOld) => [
+      ...chatListOld,
+      { message: messageInput, isUser: true },
+    ]);
+    sendMessage(messageInput);
+    setMessageInput("");
+    document.getElementById("type-box__area")!.style.height = "auto";
+  };
+
   const messageInputHandleSubmit: FormEventHandler<HTMLFormElement> = (
     event
   ) => {
     event.preventDefault();
-    setChatList([...chatList, { message: messageInput, isUser: true }]);
-    setMessageInput("");
-    document.getElementById("type-box__area")!.style.height = "auto";
+    enterMessage();
   };
 
   return (
@@ -80,8 +99,19 @@ const AIAnalysis: React.FC = () => {
         </div>
         <div className="ai-analysis-wrapper">
           {focused === "チャット" && (
-            <div className="ai-analysis-container ai-chat-container">
-              <div className="messages-wrapper"></div>
+            <div
+              className="ai-analysis-container ai-chat-container"
+              id="ai-chat-container"
+            >
+              <div className="messages-wrapper" id="messages-wrapper">
+                {chatList.map((chat, _) =>
+                  chat.isUser ? (
+                    <div className="user-message">{chat.message}</div>
+                  ) : (
+                    <div className="bot-message">{chat.message}</div>
+                  )
+                )}
+              </div>
               <div className="type-box">
                 <form
                   style={{
@@ -103,11 +133,31 @@ const AIAnalysis: React.FC = () => {
                       e.target.style.height = "auto";
                       e.target.style.height =
                         Math.min(e.target.scrollHeight, 210) + "px";
+                      document.getElementById(
+                        "messages-wrapper"
+                      )!.style.height =
+                        Number(
+                          document.getElementById("ai-chat-container")!.style
+                            .height
+                        ) -
+                        Number(e.target.style.height) +
+                        "px";
+                    }}
+                    onKeyDown={(keyEvent) => {
+                      if (messageInput.trim() === "") {
+                        return;
+                      }
+                      if (
+                        keyEvent.key === "Enter" &&
+                        (keyEvent.ctrlKey || keyEvent.metaKey)
+                      ) {
+                        enterMessage();
+                      }
                     }}
                   />
                   <button
                     type="submit"
-                    disabled={messageInput === ""}
+                    disabled={messageInput.trim() === ""}
                     className="type-box__send"
                   >
                     <span>

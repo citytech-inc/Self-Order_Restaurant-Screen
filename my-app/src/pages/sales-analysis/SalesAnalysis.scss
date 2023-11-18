@@ -338,11 +338,25 @@ textarea {
   position: relative;
   width: 100%;
   height: 100%;
-  display: flex;
-  flex-direction: column;
+  overflow: hidden;
 
   .messages-wrapper {
-    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    max-height: calc(100% - 50px);
+    overflow-y: scroll;
+    
+    .bot-message, .user-message {
+      font-size: 12px;
+      font-weight: 400;
+    }
+    .bot-message {
+      padding: 12px 0 16px 19px;
+    }
+    .user-message {
+      padding: 16px 0 16px 17px;
+      background-color: $theme-yellow;
+    }
   }
 
   .type-box {
@@ -355,6 +369,8 @@ textarea {
     background: #fff;
     box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.15);
     box-sizing: border-box;
+    position: absolute;
+    bottom: 0;
 
     &__send {
       &__icon {
