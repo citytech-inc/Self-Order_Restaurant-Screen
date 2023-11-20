@@ -124,13 +124,18 @@ const MenuTable: React.FC = () => {
   );
 };
 
+<p>a</p>
+
 export const ImageDemo: React.FC = () => {
   return (
-    <div>
-      <h1>画像デモ</h1>
-      <img src={sortedIcon} alt="並び替えアイコン" />
+    <div style={{ display: 'flex', alignItems: 'center' }}>
+      <img src={sortedIcon} alt="並び替えアイコン" className="sorted_Icon" />
+      document.getElementById('text-container').textContent = 'ここに表示したいテキスト';
     </div>
   );
 }
-  
+
+
+
 export default MenuTable;
+
