@@ -1,23 +1,41 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./FromList.css";
 
-const FromList_PriceChange: React.FC = () => {
-  const [options, setOptions] = useState<string[]>([""]);
+type Option = {
+  optionName: string;
+  price: number;
+};
+
+type FromListPriceChangeProps = {
+  onUpdate: (options: Option[], defaultOption: string) => void;
+};
+
+const FromList_PriceChange: React.FC<FromListPriceChangeProps> = ({ onUpdate }) => {
+  const [options, setOptions] = useState<Option[]>([{ optionName: "", price: 0 }]);
   const [dropdownValue, setDropdownValue] = useState<string>("");
 
   const addOption = () => {
-    setOptions([...options, ""]);
+    setOptions([...options, { optionName: "", price: 0 }]);
   };
 
-  const updateOption = (index: number, value: string) => {
-    const updatedOptions = [...options];
-    updatedOptions[index] = value;
+  const updateOptionName = (index: number, value: string) => {
+    const updatedOptions = options.map((item, i) => 
+      i === index ? { ...item, optionName: value } : item
+    );
+    setOptions(updatedOptions);
+  };
+
+  const updatePrice = (index: number, value: string) => {
+    const priceNumber = parseFloat(value);
+    const updatedOptions = options.map((item, i) => 
+      i === index ? { ...item, price: isNaN(priceNumber) ? 0 : priceNumber } : item
+    );
     setOptions(updatedOptions);
   };
 
   const deleteOption = (index: number) => {
     const updatedOptions = [...options];
-    updatedOptions.splice(index, 1); // Remove the option at the specified index
+    updatedOptions.splice(index, 1);
     setOptions(updatedOptions);
   };
 
@@ -26,6 +44,15 @@ const FromList_PriceChange: React.FC = () => {
   ) => {
     setDropdownValue(event.target.value);
   };
+
+  const onUpdateRef = useRef(onUpdate);
+  onUpdateRef.current = onUpdate;
+
+  useEffect(() => {
+    if (onUpdateRef.current) {
+      onUpdateRef.current(options, dropdownValue);
+    }
+  }, [options, dropdownValue]);
 
   return (
     <div className="options__container">
@@ -39,10 +66,16 @@ const FromList_PriceChange: React.FC = () => {
             className="input"
             type="text"
             placeholder={`オプション ${index + 1}`}
-            value={option}
-            onChange={(e) => updateOption(index, e.target.value)}
+            value={option.optionName}
+            onChange={(e) => updateOptionName(index, e.target.value)}
           />
-          <input className="input" type="text" placeholder="¥" />
+          <input
+            className="input"
+            type="text"
+            placeholder="¥"
+            value={option.price || ""}
+            onChange={(e) => updatePrice(index, e.target.value)}
+          />
           <button onClick={() => deleteOption(index)}>削除</button>
         </div>
       ))}
@@ -56,8 +89,8 @@ const FromList_PriceChange: React.FC = () => {
         <select value={dropdownValue} onChange={handleDropdownChange}>
           <option value="">選択してください</option>
           {options.map((option, index) => (
-            <option key={index} value={option}>
-              {option}
+            <option key={index} value={option.optionName}>
+              {option.optionName}
             </option>
           ))}
         </select>

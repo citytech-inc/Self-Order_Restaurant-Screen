@@ -24,36 +24,43 @@ type CustomizeType3 = {
   default: string;
 };
 
-type MenuSettings = {
-  customizations?: (CustomizeType1 | CustomizeType2 | CustomizeType3)[];
+export type CustomizationTypes = {
+  customizationTypes?: (CustomizeType1 | CustomizeType2 | CustomizeType3)[];
 };
 
-type MenuType = {
+export type MenuType = {
   category: string;
   name: string;
   picture: string;
   price: number;
-  settings: MenuSettings[];
+  settings: {
+    [key: string]: {
+      name: string;
+      customizationTypes: {
+        [key: string]: [string, number];
+      }[];
+    };
+  };
 };
 
 type AddMenuProps = {
   menuCategoryList: string[];
   customize: string;
   setCustomize: Dispatch<SetStateAction<string>>;
+  menu: MenuType;
+  setMenu: Dispatch<SetStateAction<MenuType>>;
 };
 
 const AddMenu: React.FC<AddMenuProps> = ({
   menuCategoryList,
   customize,
   setCustomize,
+  menu,
+  setMenu,
 }) => {
-  const [menu, setMenu] = useState<MenuType>({
-    category: "",
-    name: "",
-    picture: "",
-    price: 0,
-    settings: [],
-  });
+  const handleUpdateSettings = (updatedSettings: any) => {
+    setMenu((prev) => ({ ...prev, settings: updatedSettings }));
+  };
 
   return (
     <div className="add-menu__container">
@@ -124,12 +131,24 @@ const AddMenu: React.FC<AddMenuProps> = ({
         <select
           className="select"
           value={customize}
-          onChange={(e) => setCustomize(e.target.value)}
+          onChange={(e) => {
+            if (e.target.value === "あり") {
+              setMenu((prev) => ({ ...prev, settings: prev.settings }));
+            }
+            setCustomize(e.target.value);
+          }}
         >
           <option value="あり">あり</option>
           <option value="なし">なし</option>
         </select>
       </div>
+
+      {customize === "あり" && (
+        <CustomizeSection
+          settings={menu.settings}
+          onUpdateSettings={handleUpdateSettings}
+        />
+      )}
     </div>
   );
 };
