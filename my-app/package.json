@@ -59,6 +59,8 @@
     ]
   },
   "devDependencies": {
+    "@types/html2canvas": "^1.0.0",
+    "@types/jspdf": "^2.0.0",
     "@types/react-datepicker": "^4.19.1",
     "prettier": "^3.0.1"
   }
