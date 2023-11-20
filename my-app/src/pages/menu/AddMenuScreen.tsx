@@ -21,18 +21,20 @@ const AddMenuScreen: React.FC = () => {
   const [menu, setMenu] = useState<MenuType>({
     category: menuCategoryList[0],
     name: "",
-    picture: "",
+    image: "",
     price: 0,
+    description: "",
     settings: {},
   });
 
   const sendToBackend = async () => {
+    console.log("sendToBackend")
     //フロントだけで動作を確認したいときは商品を登録のところのonClickをsendToBackendからresetScreenに変更
     try {
-      const response = await axios.post("http://localhost:3003/api/menu", menu);
+      const response = await axios.post("http://localhost:3003/api/menu", {menuCategories: menuCategoryList, menus: menu, restaurantId: Number(restaurantId)});
       if (response.status === 200) {
-        console.log("Menu data sent successfully!", JSON.stringify(menu));
-        resetScreen();
+        console.log("Menu data sent successfully!", JSON.stringify({menuCategories: menuCategoryList, menus: menu, restaurantId: Number(restaurantId)}));
+        //resetScreen();
       }
     } catch (error) {
       console.error("Failed to send menu data:", error);

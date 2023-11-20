@@ -31,8 +31,9 @@ export type CustomizationTypes = {
 export type MenuType = {
   category: string;
   name: string;
-  picture: string;
+  image: string;
   price: number;
+  description: string;
   settings: {
     [key: string]: {
       name: string;
@@ -111,7 +112,7 @@ const AddMenu: React.FC<AddMenuProps> = ({
           type="text"
           placeholder="Picture Link"
           onChange={(e) =>
-            setMenu((prev) => ({ ...prev, picture: e.target.value }))
+            setMenu((prev) => ({ ...prev, image: e.target.value }))
           }
         />
       </div>
@@ -122,7 +123,7 @@ const AddMenu: React.FC<AddMenuProps> = ({
           type="text"
           placeholder="商品説明を入力してください。"
           onChange={(e) =>
-            setMenu((prev) => ({ ...prev, name: e.target.value }))
+            setMenu((prev) => ({ ...prev, description: e.target.value }))
           }
         />
       </div>

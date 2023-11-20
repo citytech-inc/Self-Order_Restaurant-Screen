@@ -16,8 +16,9 @@ import MenuAnalysis from "./pages/sales-analysis/MenuAnalysis";
 import CustomerAnalysis from "./pages/sales-analysis/CustomerAnalysis";
 import AIAnalysis from "./pages/sales-analysis/AIAnalysis";
 import MenuListScreen from "./pages/menu/MenuListScreen";
-import { initializeApp } from "firebase/app";
+//import { initializeApp } from "firebase/app";
 
+/*{
 // Firebaseの設定
 const firebaseConfig = {
   apiKey: process.env.FIREBASE_API_KEY,
@@ -32,6 +33,7 @@ const firebaseConfig = {
 
 // Firebaseを初期化
 initializeApp(firebaseConfig);
+}*/
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement,
