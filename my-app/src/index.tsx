@@ -14,6 +14,7 @@ import OrderScreen from "./pages/OrderScreen";
 import NormalAnalysis from "./pages/sales-analysis/NormalAnalysis";
 import MenuAnalysis from "./pages/sales-analysis/MenuAnalysis";
 import CustomerAnalysis from "./pages/sales-analysis/CustomerAnalysis";
+import AIAnalysis from "./pages/sales-analysis/AIAnalysis";
 import MenuListScreen from "./pages/menu/MenuListScreen";
 import { initializeApp } from "firebase/app";
 
@@ -69,6 +70,10 @@ root.render(
         <Route
           path=":restaurantId/sales-analysis/customer"
           element={<CustomerAnalysis />}
+        />
+        <Route
+          path=":restaurantId/sales-analysis/ai"
+          element={<AIAnalysis />}
         />
         <Route path="/:restaurantId/order" element={<OrderScreen />} />
       </Routes>
