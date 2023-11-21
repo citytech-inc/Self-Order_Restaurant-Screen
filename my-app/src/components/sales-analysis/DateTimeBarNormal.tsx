@@ -128,7 +128,7 @@ const DateTimeComponent: React.FC<Props> = ({ onSalesTypeChange }) => {
       const dayOfWeek = date.getDay();
       const adjustedDayOfWeek = dayOfWeek === 0 ? 6 : dayOfWeek - 1;
 
-      return `${month}月${day}日 (${DayName[adjustedDayOfWeek]})`;
+      return `${month}/${day} (${DayName[adjustedDayOfWeek]})`;
     }
     return "";
   };
@@ -171,9 +171,9 @@ const DateTimeComponent: React.FC<Props> = ({ onSalesTypeChange }) => {
         ) : selectedSalesSpan === "日別" ? (
           <>
             <div className="display-week-select">
-            <img src={CalendarIcon} alt="Calendar Icon" style={{ width: '18px', height: '18px', lineHeight: '18px', marginRight: '5px' , paddingTop: '0%', textAlign: 'center'}} />
-            {`${selectedDate.getMonth() + 1}/${selectedDate.getDate()} ー 
-              ${(new Date(selectedDate.getTime() + (6 * 24 * 60 * 60 * 1000))).getMonth() + 1}/${(new Date(selectedDate.getTime() + (6 * 24 * 60 * 60 * 1000))).getDate()}`}
+              <img src={CalendarIcon} alt="Calendar Icon" style={{ width: '18px', height: '18px', marginRight: '5px' , paddingTop: '2%', textAlign: 'center'}} />
+              {`${selectedDate.getMonth() + 1}/${selectedDate.getDate()} ー 
+                ${(new Date(selectedDate.getTime() + (6 * 24 * 60 * 60 * 1000))).getMonth() + 1}/${(new Date(selectedDate.getTime() + (6 * 24 * 60 * 60 * 1000))).getDate()}`}
             </div>
 
             <DatePicker

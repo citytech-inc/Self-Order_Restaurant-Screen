@@ -2,6 +2,7 @@ import React, { useState, ChangeEvent } from "react";
 import DatePicker from "react-datepicker";
 import "./DateTimeBar.css";
 import "react-datepicker/dist/react-datepicker.css";
+import CalendarIcon from "../images/calendar_2278049.png"
 
 interface Props {
   onSalesTypeChange?: (selectedSalesType: string) => void;
@@ -125,7 +126,7 @@ const DateTimeComponent: React.FC<Props> = ({ onSalesTypeChange }) => {
       // Adjust for Monday start (Make Monday as 1 and Sunday as 7)
       const adjustedDayOfWeek = dayOfWeek === 0 ? 6 : dayOfWeek - 1;
 
-      return `${month}月${day}日 (${DayName[adjustedDayOfWeek]})`;
+      return `${month}/${day} (${DayName[adjustedDayOfWeek]})`;
     }
     return "";
   };
@@ -168,14 +169,9 @@ const DateTimeComponent: React.FC<Props> = ({ onSalesTypeChange }) => {
         ) : selectedSalesSpan === "日別" ? (
           <>
             <div className="display-week-select">
-              {`${selectedDate.getMonth() + 1}月第${
-                Math.floor(
-                  (selectedDate.getDate() -
-                    (selectedDate.getDay() === 0 ? 7 : selectedDate.getDay()) +
-                    5) /
-                    7,
-                ) + 1
-              }週`}
+              <img src={CalendarIcon} alt="Calendar Icon" style={{ width: '18px', height: '18px', marginRight: '5px' , paddingTop: '2%', textAlign: 'center'}} />
+              {`${selectedDate.getMonth() + 1}/${selectedDate.getDate()} ー 
+                ${(new Date(selectedDate.getTime() + (6 * 24 * 60 * 60 * 1000))).getMonth() + 1}/${(new Date(selectedDate.getTime() + (6 * 24 * 60 * 60 * 1000))).getDate()}`}
             </div>
 
             <DatePicker

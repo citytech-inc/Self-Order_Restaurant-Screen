@@ -1,5 +1,5 @@
 .sales-analysis-header {
-  height: 8vh;
+  height: 7vh;
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -10,8 +10,8 @@
 .sales-analysis-header .header-select-button-1 {
   text-align: center;
   text-decoration: none; /*リンクだとこうしないと下線が入ってしまう*/
-  height: 25px;
-  line-height: 25px;
+  height: 20px;
+  line-height: 20px;
   width: 130px;
   font-size: 15px;
   font-weight: 600;
@@ -21,8 +21,8 @@
 .sales-analysis-header .header-select-button-2 {
   text-align: center;
   text-decoration: none;
-  height: 25px;
-  line-height: 25px;
+  height: 20px;
+  line-height: 20px;
   width: 130px;
   font-size: 15px;
   font-weight: 600;
@@ -32,8 +32,8 @@
 .sales-analysis-header .header-select-button-3 {
   text-align: center;
   text-decoration: none;
-  height: 25px;
-  line-height: 25px;
+  height: 20px;
+  line-height: 20px;
   width: 130px;
   font-size: 15px;
   font-weight: 600;
@@ -230,6 +230,7 @@
 
 .analysis-area {
   display: flex;
+  height: 90vh;
   flex-direction: row;
   margin-left: 9%;
 }
