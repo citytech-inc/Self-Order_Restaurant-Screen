@@ -50,7 +50,13 @@ const MainInfoComponent: React.FC<MainInfoComponentProps> = ({
       <div className="sales-datas">
         <div className="sales-total">
           <p className="sales-type-text">{selectedSalesType}</p>
-          <p className="sales-type-price">¥ 18,000</p>
+          <div style={{ display: 'flex', flexDirection: 'row' }}>
+            <p className="sales-type-priceleft">
+              <span className="part1">¥18,487</span>
+              <span className="part2">（価格変動なし）</span>
+            </p>
+            <p className="sales-type-price">¥19,800</p>
+          </div>
         </div>
         <div className="table-container">
           <h3>{title1}</h3>
