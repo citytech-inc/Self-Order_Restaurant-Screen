@@ -1,10 +1,36 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./ByNumber.css";
 
-const ByNumber_PriceChange: React.FC = () => {
+type ByNumberNoPriceChangeProps = {
+  onUpdate: (mesureword: string, defaultQuantity: number) => void;
+};
+
+const ByNumber_NoPriceChange: React.FC<ByNumberNoPriceChangeProps> = ({ onUpdate }) => {
   const [quantity, setQuantity] = useState(1);
-  const [description, setDescription] = useState("");
-  const [price, setPrice] = useState("");
+  const [measureword, setMeasureword] = useState("");
+  //const [description, setDescription] = useState("");
+  //const [price, setPrice] = useState("");
+
+  const handleQuantityChange = (
+    event: React.ChangeEvent<HTMLSelectElement>,
+  ) => {
+    setQuantity(Number(event.target.value))
+  }
+
+  const onUpdateRef = useRef(onUpdate);
+  onUpdateRef.current = onUpdate;
+
+  useEffect(() => {
+    if (onUpdateRef.current) {
+      onUpdateRef.current(measureword, quantity);
+    }
+  }, [measureword, quantity])
+
+  /*{
+  useEffect(() => {
+    onUpdate(mesureword, quantity);
+  }, [mesureword, quantity, onUpdate]);
+}*/
 
   return (
     <div className="byNumber__container">
@@ -13,7 +39,7 @@ const ByNumber_PriceChange: React.FC = () => {
         <select
           className="box__select"
           value={quantity}
-          onChange={(e) => setQuantity(Number(e.target.value))}
+          onChange={handleQuantityChange}
         >
           <option value="1">1</option>
           <option value="2">2</option>
@@ -34,12 +60,12 @@ const ByNumber_PriceChange: React.FC = () => {
           className="box__input"
           type="text"
           placeholder="単位（枚など）を入力"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
+          value={measureword}
+          onChange={(e) => setMeasureword(e.target.value)}
         />
       </div>
     </div>
   );
 };
 
-export default ByNumber_PriceChange;
+export default ByNumber_NoPriceChange;

@@ -8,14 +8,17 @@ import { BrowserRouter, Router, Routes, Route } from "react-router-dom";
 import PleaseWaitScreen from "./pages/PleaseWaitScreen";
 import PurchasedItemsScreen from "./pages/PurchasedItemsScreen";
 import TableNumberScreen from "./pages/TableNumberScreen";
+import Settings from "./pages/Settings";
 import AddMenuScreen from "./pages/menu/AddMenuScreen";
 import OrderScreen from "./pages/OrderScreen";
 import NormalAnalysis from "./pages/sales-analysis/NormalAnalysis";
 import MenuAnalysis from "./pages/sales-analysis/MenuAnalysis";
 import CustomerAnalysis from "./pages/sales-analysis/CustomerAnalysis";
+import AIAnalysis from "./pages/sales-analysis/AIAnalysis";
 import MenuListScreen from "./pages/menu/MenuListScreen";
-import { initializeApp } from "firebase/app";
+//import { initializeApp } from "firebase/app";
 
+/*{
 // Firebaseの設定
 const firebaseConfig = {
   apiKey: process.env.FIREBASE_API_KEY,
@@ -30,6 +33,7 @@ const firebaseConfig = {
 
 // Firebaseを初期化
 initializeApp(firebaseConfig);
+}*/
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement,
@@ -42,6 +46,10 @@ root.render(
         <Route
           path=":restaurantId/table-number"
           element={<TableNumberScreen />}
+        />
+        <Route
+          path=":restaurantId/settings"
+          element={<Settings />}
         />
         <Route
           path=":restaurantId/please-wait"
@@ -64,6 +72,10 @@ root.render(
         <Route
           path=":restaurantId/sales-analysis/customer"
           element={<CustomerAnalysis />}
+        />
+        <Route
+          path=":restaurantId/sales-analysis/ai"
+          element={<AIAnalysis />}
         />
         <Route path="/:restaurantId/order" element={<OrderScreen />} />
       </Routes>
