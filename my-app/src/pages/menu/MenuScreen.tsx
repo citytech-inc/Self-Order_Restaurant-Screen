@@ -84,8 +84,10 @@ const AddMenuScreen: React.FC = () => {
             </button>
           </div>
         </div>
-        <div>
-            <img src={SmartphoneIcon} alt="Smartphone Icon" className="smartphone__icon" />
+        <div className="icon__area">
+            <div className="icon__circle">
+                <img src={SmartphoneIcon} alt="Smartphone Icon" className="smartphone__icon" />
+            </div>
           </div>
       </div>
     </div>
