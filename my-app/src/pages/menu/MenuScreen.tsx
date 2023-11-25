@@ -5,6 +5,7 @@ import MenuCategory from "../../components/menu/MenuCategory";
 import CustomizeSection from "../../components/menu/CustomizeSection";
 import MenuList from "../../components/menu/MenuList";
 import SettingBar from "../../header/SettingBar";
+import SmartphoneIcon from "../../components/images/smartphone-call.png";
 import "./MenuScreen.css";
 import { useNavigate, useParams } from "react-router-dom";
 
@@ -79,10 +80,13 @@ const AddMenuScreen: React.FC = () => {
           />
           <div className="add-menu__area">
             <button className="add-menu__button" onClick={sendToBackend}>
-              商品を登録
+              商品を編集
             </button>
           </div>
         </div>
+        <div>
+            <img src={SmartphoneIcon} alt="Smartphone Icon" className="smartphone__icon" />
+          </div>
       </div>
     </div>
   );
