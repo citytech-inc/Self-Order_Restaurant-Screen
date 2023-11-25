@@ -1,6 +1,10 @@
 @use "../../colors" as *;
 
-button, input, optgroup, select, textarea {
+button,
+input,
+optgroup,
+select,
+textarea {
   color: inherit;
   font-family: inherit;
   font-size: 100%;
@@ -10,7 +14,8 @@ button, input, optgroup, select, textarea {
   padding: 0;
 }
 
-textarea, button {
+textarea,
+button {
   border: none;
   outline: none;
   background-color: transparent;
@@ -23,7 +28,6 @@ button {
 textarea {
   resize: none;
 }
-
 
 .sales-analysis-header {
   height: 7vh;
@@ -352,8 +356,9 @@ textarea {
     flex-direction: column;
     max-height: calc(100% - 50px);
     overflow-y: scroll;
-    
-    .bot-message, .user-message {
+
+    .bot-message,
+    .user-message {
       font-size: 12px;
       font-weight: 400;
     }

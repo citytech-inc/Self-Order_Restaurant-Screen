@@ -1,36 +1,29 @@
-import React, { useState, SetStateAction, Dispatch } from "react";
+import React, { useState } from "react";
 import "./MenuCategory.css";
 
-type AddMenuProps = {
-  menuCategoryList: string[];
-  setMenuCategoryList: Dispatch<SetStateAction<string[]>>;
-};
+// Define the types for props and state
+type TypeOption = "単品" | "セット" | "食べ放題" | "商品分類" | "その他";
 
-const MenuCategory: React.FC<AddMenuProps> = ({
-  menuCategoryList,
-  setMenuCategoryList,
-}) => {
-  const addCategory = () => {
-    const newCategory = prompt("Enter new category name:");
-    if (newCategory) {
-      const newCategories = [...menuCategoryList, newCategory];
-      setMenuCategoryList(newCategories);
-    }
+const MenuCategory: React.FC = () => {
+  const [selectedType, setSelectedType] = useState<TypeOption>("単品");
+
+  const handleTypeClick = (type: TypeOption) => {
+    setSelectedType(type);
   };
 
   return (
-    <div className="category-container">
-      <h2>メニューカテゴリー</h2>
-      <div>
-        {menuCategoryList.map((category, index) => (
-          <button key={index} className="category-button">
-            {category}
-          </button>
-        ))}
-        <button className="category-button" onClick={addCategory}>
-          追加
+    <div className="type-bar">
+      {(
+        ["単品", "セット", "食べ放題", "商品分類", "その他"] as TypeOption[]
+      ).map((type) => (
+        <button
+          key={type}
+          className={`type-option ${selectedType === type ? "selected" : ""}`}
+          onClick={() => handleTypeClick(type)}
+        >
+          {type}
         </button>
-      </div>
+      ))}
     </div>
   );
 };

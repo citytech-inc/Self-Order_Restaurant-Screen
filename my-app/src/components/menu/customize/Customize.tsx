@@ -54,12 +54,12 @@ type MappedCustomizeType<T extends CustomizationOption> = T extends {
 }
   ? CustomizeType1
   : T extends { option: "fromList"; priceChange: "yes" }
-  ? CustomizeType2
-  : T extends { option: "byNumber"; priceChange: "no" }
-  ? CustomizeType3
-  : T extends { option: "byNumber"; priceChange: "yes" }
-  ? CustomizeType4
-  : any;
+    ? CustomizeType2
+    : T extends { option: "byNumber"; priceChange: "no" }
+      ? CustomizeType3
+      : T extends { option: "byNumber"; priceChange: "yes" }
+        ? CustomizeType4
+        : any;
 
 const Customize: React.FC<CustomizeProps> = ({ types, onUpdateTypes }) => {
   const prevTypesRef = useRef(types);
@@ -155,10 +155,10 @@ const Customize: React.FC<CustomizeProps> = ({ types, onUpdateTypes }) => {
         ...newCustomizationTypes[index],
         options: updateOptions,
         default: newDefaultOption,
-      }
+      };
       setCustomizationTypes(newCustomizationTypes);
     }
-  }
+  };
 
   const handleUpdateFromListPriceChange = (
     index: number,
@@ -189,7 +189,7 @@ const Customize: React.FC<CustomizeProps> = ({ types, onUpdateTypes }) => {
         ...newCustomizationTypes[index],
         measureWord: updatedMeasureWord,
         default: newDefaultOption,
-      }
+      };
       setCustomizationTypes(newCustomizationTypes);
     }
   };
@@ -208,7 +208,7 @@ const Customize: React.FC<CustomizeProps> = ({ types, onUpdateTypes }) => {
         measureWord: updatedMeasureWord,
         price: updatedPrice,
         default: newDefaultOption,
-      }
+      };
       setCustomizationTypes(newCustomizationTypes);
     }
   };
@@ -221,11 +221,14 @@ const Customize: React.FC<CustomizeProps> = ({ types, onUpdateTypes }) => {
 
   useEffect(() => {
     // 前回のpropsと異なる場合のみonUpdateTypesを実行
-    if (JSON.stringify(customizationTypes) !== JSON.stringify(prevTypesRef.current)) {
+    if (
+      JSON.stringify(customizationTypes) !==
+      JSON.stringify(prevTypesRef.current)
+    ) {
       onUpdateTypes(customizationTypes);
       prevTypesRef.current = customizationTypes; // 更新後の値を記録
     }
-  }, [customizationTypes, onUpdateTypes]); 
+  }, [customizationTypes, onUpdateTypes]);
 
   return (
     <div className="customize__container">
@@ -274,31 +277,52 @@ const Customize: React.FC<CustomizeProps> = ({ types, onUpdateTypes }) => {
             customization.priceChange === "yes" && (
               <FromList_PriceChange
                 onUpdate={(updatedOptions, newDefaultOption) =>
-                  handleUpdateFromListPriceChange(index, updatedOptions, newDefaultOption)
+                  handleUpdateFromListPriceChange(
+                    index,
+                    updatedOptions,
+                    newDefaultOption,
+                  )
                 }
               />
-          )}
+            )}
           {customization.option === "fromList" &&
             customization.priceChange === "no" && (
               <FromList_NoPriceChange
                 onUpdate={(updatedOptions, newDefaultOption) =>
-                  handleUpdateFromListNoPriceChange(index, updatedOptions, newDefaultOption)
+                  handleUpdateFromListNoPriceChange(
+                    index,
+                    updatedOptions,
+                    newDefaultOption,
+                  )
                 }
               />
             )}
           {customization.option === "byNumber" &&
             customization.priceChange === "yes" && (
-              <ByNumber_PriceChange 
-                onUpdate={(updatedMeasureWord, updatedPrice, newDefaultOption) =>
-                  handleUpdateByNumberPriceChange(index, updatedMeasureWord, updatedPrice, newDefaultOption)
+              <ByNumber_PriceChange
+                onUpdate={(
+                  updatedMeasureWord,
+                  updatedPrice,
+                  newDefaultOption,
+                ) =>
+                  handleUpdateByNumberPriceChange(
+                    index,
+                    updatedMeasureWord,
+                    updatedPrice,
+                    newDefaultOption,
+                  )
                 }
               />
-            )}  
+            )}
           {customization.option === "byNumber" &&
             customization.priceChange === "no" && (
               <ByNumber_NoPriceChange
                 onUpdate={(updatedMeasureWord, newDefaultOption) =>
-                  handleUpdateByNumberNoPriceChange(index, updatedMeasureWord, newDefaultOption)
+                  handleUpdateByNumberNoPriceChange(
+                    index,
+                    updatedMeasureWord,
+                    newDefaultOption,
+                  )
                 }
               />
             )}

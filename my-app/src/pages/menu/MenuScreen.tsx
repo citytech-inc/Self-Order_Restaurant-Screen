@@ -3,8 +3,9 @@ import axios from "axios";
 import AddMenu, { MenuType } from "../../components/menu/AddMenu";
 import MenuCategory from "../../components/menu/MenuCategory";
 import CustomizeSection from "../../components/menu/CustomizeSection";
+import MenuList from "../../components/menu/MenuList";
 import SettingBar from "../../header/SettingBar";
-import "./AddMenuScreen.css";
+import "./MenuScreen.css";
 import { useNavigate, useParams } from "react-router-dom";
 
 const AddMenuScreen: React.FC = () => {
@@ -65,19 +66,22 @@ const AddMenuScreen: React.FC = () => {
   return (
     <div>
       <SettingBar focusButton="menu" />
+      <MenuCategory />
       <div className="menu__container">
-        <MenuCategory />
-        <AddMenu
-          menuCategoryList={menuCategoryList}
-          customize={customize}
-          setCustomize={setCustomize}
-          menu={menu}
-          setMenu={setMenu}
-        />
-        <div className="add-menu__area">
-          <button className="add-menu__button" onClick={sendToBackend}>
-            商品を登録
-          </button>
+        <MenuList />
+        <div className="menu__container__right">
+          <AddMenu
+            menuCategoryList={menuCategoryList}
+            customize={customize}
+            setCustomize={setCustomize}
+            menu={menu}
+            setMenu={setMenu}
+          />
+          <div className="add-menu__area">
+            <button className="add-menu__button" onClick={sendToBackend}>
+              商品を登録
+            </button>
+          </div>
         </div>
       </div>
     </div>

@@ -10,8 +10,12 @@ type FromListPriceChangeProps = {
   onUpdate: (options: Option[], defaultOption: string) => void;
 };
 
-const FromList_PriceChange: React.FC<FromListPriceChangeProps> = ({ onUpdate }) => {
-  const [options, setOptions] = useState<Option[]>([{ optionName: "", price: 0 }]);
+const FromList_PriceChange: React.FC<FromListPriceChangeProps> = ({
+  onUpdate,
+}) => {
+  const [options, setOptions] = useState<Option[]>([
+    { optionName: "", price: 0 },
+  ]);
   const [dropdownValue, setDropdownValue] = useState<string>("");
 
   const addOption = () => {
@@ -19,16 +23,18 @@ const FromList_PriceChange: React.FC<FromListPriceChangeProps> = ({ onUpdate }) 
   };
 
   const updateOptionName = (index: number, value: string) => {
-    const updatedOptions = options.map((item, i) => 
-      i === index ? { ...item, optionName: value } : item
+    const updatedOptions = options.map((item, i) =>
+      i === index ? { ...item, optionName: value } : item,
     );
     setOptions(updatedOptions);
   };
 
   const updatePrice = (index: number, value: string) => {
     const priceNumber = parseFloat(value);
-    const updatedOptions = options.map((item, i) => 
-      i === index ? { ...item, price: isNaN(priceNumber) ? 0 : priceNumber } : item
+    const updatedOptions = options.map((item, i) =>
+      i === index
+        ? { ...item, price: isNaN(priceNumber) ? 0 : priceNumber }
+        : item,
     );
     setOptions(updatedOptions);
   };
