@@ -6,12 +6,14 @@
 .product-table th,
 .product-table td {
   border: 1px solid #AAAAAA;
-  padding: 3px;
+  padding: 1.2px;
 }
 
 .product-table th {
   background-color: #FFF0B4;
   text-align: middle;
+  white-space: nowrap;
+
 }
 
 .product-table tr:nth-child(even) {
@@ -20,15 +22,6 @@
 
 .product-table tr:hover {
   background-color: #AAAAAA;
-}
-
-.product-table{
-  margin-top: 50px;
-}
-
-img {
-  position: relative;
-  left: -65px; /* 10ピクセル左に移動 */
 }
 
 td, th {

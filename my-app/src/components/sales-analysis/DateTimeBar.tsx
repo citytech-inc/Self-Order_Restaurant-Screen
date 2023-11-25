@@ -244,6 +244,7 @@ const DateTimeComponent: React.FC<Props> = ({ onSalesTypeChange }) => {
         )}
         <div className="sorted-icon-area">
           <img className="sorted-icon" src={sortedIcon} alt="並び替えアイコン" />
+          <p>並び替え</p>
         </div>
       </div>
     </div>

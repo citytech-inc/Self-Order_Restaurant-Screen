@@ -17,7 +17,7 @@
 }
 
 .display-option .display-span-option {
-  padding-top: 5px;
+  padding-top: 1px;
   display: flex;
   flex-direction: row;
   align-items: end;
@@ -52,7 +52,8 @@
   font-size: 15px;
   font-weight: 500;
   width: 120px;
-  margin-right: 10px;
+  margin-right: 5px;
+  margin-bottom: 60px;
   border: 1px #777 solid;
   padding: 3px;
 }
@@ -187,4 +188,20 @@
 .display-option .sorted-icon {
   height: 30px;
   width: 30px;
+}
+
+.sorted-icon{
+  margin-left: -75px; /* 10ピクセル左に移動 */
+  margin-top: 40px; 
+}
+
+p {
+  margin-left:0;
+  margin-top: 37px /* 写真との間に20pxのマージンを追加 */ 
+  
+}
+
+p{
+  font-size: 25px;
+  font-weight: bold;
 }
