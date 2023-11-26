@@ -49,23 +49,23 @@
 .display-option .display-year-select {
   height: 34px;
   text-align: left;
-  font-size: 15px;
+  font-size: 24px;
   font-weight: 500;
   width: 120px;
   margin-right: 5px;
   margin-bottom: 60px;
   border: 1px #777 solid;
-  padding: 3px;
+  padding: 4px;
 }
 .display-option .display-month-select {
   height: 34px;
   text-align: left;
-  font-size: 15px;
+  font-size: 24px;
   font-weight: 500;
   width: 80px;
   margin-right: 10px;
   border: 1px #777 solid;
-  padding: 3px;
+  padding: 4px;
 }
 .display-option .display-day-select {
   height: 34px;
@@ -186,22 +186,17 @@
 }
 
 .display-option .sorted-icon {
-  height: 30px;
-  width: 30px;
+  height: 20px;
+  width: 20px;
 }
 
 .sorted-icon{
-  margin-left: -75px; /* 10ピクセル左に移動 */
-  margin-top: 40px; 
-}
-
-p {
-  margin-left:0;
-  margin-top: 37px /* 写真との間に20pxのマージンを追加 */ 
-  
+  margin-left: -20px; /* 10ピクセル左に移動 */
+  margin-bottom: 50px; 
 }
 
 p{
-  font-size: 25px;
+  font-size: 18px;
   font-weight: bold;
+  margin-top: 0.0000000000000000001px;
 }

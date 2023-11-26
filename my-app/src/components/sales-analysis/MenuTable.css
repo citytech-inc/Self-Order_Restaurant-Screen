@@ -6,13 +6,12 @@
 .product-table th,
 .product-table td {
   border: 1px solid #AAAAAA;
-  padding: 1.2px;
+  padding: 5px;
 }
 
 .product-table th {
   background-color: #FFF0B4;
   text-align: middle;
-  white-space: nowrap;
 
 }
 
