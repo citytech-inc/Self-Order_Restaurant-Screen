@@ -10,7 +10,6 @@ interface Props {
 const DateTimeComponent: React.FC<Props> = ({ onSalesTypeChange }) => {
   const SalesSpanOption = ["時間帯別", "日別", "月別", "曜日別"];
 
-
   const SelectedHourOption = [
     8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23,
   ];
@@ -68,8 +67,6 @@ const DateTimeComponent: React.FC<Props> = ({ onSalesTypeChange }) => {
   }
 
   const [selectedWeek, setSelectedWeek] = useState<Date[]>(dateList);
-
-
 
   const selectedSalesSpanChange = (
     event: React.ChangeEvent<HTMLSelectElement>,
@@ -191,7 +188,7 @@ const DateTimeComponent: React.FC<Props> = ({ onSalesTypeChange }) => {
             <div className="date-picker-container">
               <DatePicker
                 selected={dayStartDate}
-                onChange={(date:any) => setDayStartDate(date)}
+                onChange={(date: any) => setDayStartDate(date)}
                 dateFormat="yyyy年MM月"
                 showMonthYearPicker
                 className="display-date"
@@ -199,7 +196,7 @@ const DateTimeComponent: React.FC<Props> = ({ onSalesTypeChange }) => {
               <div>〜</div>
               <DatePicker
                 selected={dayEndDate}
-                onChange={(date:any) => setDayEndDate(date)}
+                onChange={(date: any) => setDayEndDate(date)}
                 dateFormat="yyyy年MM月"
                 showMonthYearPicker
                 className="display-date"

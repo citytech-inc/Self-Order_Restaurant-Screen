@@ -2,10 +2,16 @@ import React, { useState, useEffect, useRef } from "react";
 import "./ByNumber.css";
 
 type ByNumberPriceChangeProps = {
-  onUpdate: (measureWord: string, price: number, defaultQuantity: number) => void;
+  onUpdate: (
+    measureWord: string,
+    price: number,
+    defaultQuantity: number,
+  ) => void;
 };
 
-const ByNumber_PriceChange: React.FC<ByNumberPriceChangeProps> = ({ onUpdate }) => {
+const ByNumber_PriceChange: React.FC<ByNumberPriceChangeProps> = ({
+  onUpdate,
+}) => {
   const [quantity, setQuantity] = useState(1);
   const [measureWord, setMeasureword] = useState("");
   //const [description, setDescription] = useState("");
@@ -14,8 +20,8 @@ const ByNumber_PriceChange: React.FC<ByNumberPriceChangeProps> = ({ onUpdate }) 
   const handleQuantityChange = (
     event: React.ChangeEvent<HTMLSelectElement>,
   ) => {
-    setQuantity(Number(event.target.value))
-  }
+    setQuantity(Number(event.target.value));
+  };
 
   const onUpdateRef = useRef(onUpdate);
   onUpdateRef.current = onUpdate;
@@ -24,7 +30,7 @@ const ByNumber_PriceChange: React.FC<ByNumberPriceChangeProps> = ({ onUpdate }) 
     if (onUpdateRef.current) {
       onUpdateRef.current(measureWord, price, quantity);
     }
-  }, [measureWord, price, quantity])
+  }, [measureWord, price, quantity]);
 
   return (
     <div className="byNumber__container">

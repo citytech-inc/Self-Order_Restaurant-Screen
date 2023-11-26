@@ -15,7 +15,7 @@ import NormalAnalysis from "./pages/sales-analysis/NormalAnalysis";
 import MenuAnalysis from "./pages/sales-analysis/MenuAnalysis";
 import CustomerAnalysis from "./pages/sales-analysis/CustomerAnalysis";
 import AIAnalysis from "./pages/sales-analysis/AIAnalysis";
-import MenuListScreen from "./pages/menu/MenuListScreen";
+import MenuScreen from "./pages/menu/MenuScreen";
 //import { initializeApp } from "firebase/app";
 
 /*{
@@ -47,10 +47,7 @@ root.render(
           path=":restaurantId/table-number"
           element={<TableNumberScreen />}
         />
-        <Route
-          path=":restaurantId/settings"
-          element={<Settings />}
-        />
+        <Route path=":restaurantId/settings" element={<Settings />} />
         <Route
           path=":restaurantId/please-wait"
           element={<PleaseWaitScreen />}
@@ -59,8 +56,7 @@ root.render(
           path=":restaurantId/purchased-items"
           element={<PurchasedItemsScreen />}
         />
-        <Route path=":restaurantId/menu-list" element={<MenuListScreen />} />
-        <Route path=":restaurantId/add-menu" element={<AddMenuScreen />} />
+        <Route path=":restaurantId/menu-list" element={<MenuScreen />} />
         <Route
           path=":restaurantId/sales-analysis"
           element={<NormalAnalysis />}

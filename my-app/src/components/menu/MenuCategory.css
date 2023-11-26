@@ -1,28 +1,32 @@
-.category-container {
+.type-bar {
   display: flex;
-  flex-direction: column;
-  align-items: left;
+  justify-content: space-around;
+  margin-left: 9%;
+  padding: 0;
+  list-style: none;
+  position: relative;
+  border-bottom: 0.5px solid #aaaaaa;
 }
 
-.category-header {
-  font-size: 24px;
-  margin-bottom: 10px;
-}
-
-.category-button {
-  background-color: #fff4c6;
-  border: none;
-  border-radius: 20px;
+.type-option {
   padding: 10px 20px;
-  margin: 5px;
+  border: none;
+  background: none;
   cursor: pointer;
-  transition: background-color 0.3s;
+  position: relative; /* Add this to ensure the pseudo-element is positioned correctly */
+  flex: 1; /* This will ensure that each type-option takes up equal space */
 }
 
-.category-button:hover {
-  background-color: #fff4c6;
+.type-option::after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  border-bottom: 3px solid transparent;
 }
 
-.category-button:active {
-  background-color: #fff4c6;
+.type-option.selected::after {
+  border-bottom: 3px solid #c05454; /* Only the selected item will have a visible border */
 }

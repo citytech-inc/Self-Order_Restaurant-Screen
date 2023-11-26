@@ -5,7 +5,9 @@ type ByNumberNoPriceChangeProps = {
   onUpdate: (mesureword: string, defaultQuantity: number) => void;
 };
 
-const ByNumber_NoPriceChange: React.FC<ByNumberNoPriceChangeProps> = ({ onUpdate }) => {
+const ByNumber_NoPriceChange: React.FC<ByNumberNoPriceChangeProps> = ({
+  onUpdate,
+}) => {
   const [quantity, setQuantity] = useState(1);
   const [measureword, setMeasureword] = useState("");
   //const [description, setDescription] = useState("");
@@ -14,8 +16,8 @@ const ByNumber_NoPriceChange: React.FC<ByNumberNoPriceChangeProps> = ({ onUpdate
   const handleQuantityChange = (
     event: React.ChangeEvent<HTMLSelectElement>,
   ) => {
-    setQuantity(Number(event.target.value))
-  }
+    setQuantity(Number(event.target.value));
+  };
 
   const onUpdateRef = useRef(onUpdate);
   onUpdateRef.current = onUpdate;
@@ -24,7 +26,7 @@ const ByNumber_NoPriceChange: React.FC<ByNumberNoPriceChangeProps> = ({ onUpdate
     if (onUpdateRef.current) {
       onUpdateRef.current(measureword, quantity);
     }
-  }, [measureword, quantity])
+  }, [measureword, quantity]);
 
   /*{
   useEffect(() => {

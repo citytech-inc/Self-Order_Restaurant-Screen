@@ -36,7 +36,7 @@ const AIAnalysis: React.FC = () => {
         pdf.internal.pageSize.width * 0.05,
         pdf.internal.pageSize.height * 0.05,
         pdf.internal.pageSize.width * 0.9,
-        0
+        0,
       );
       pdf.save(`${fileName}.pdf`);
     });
@@ -64,7 +64,7 @@ const AIAnalysis: React.FC = () => {
   };
 
   const messageInputHandleSubmit: FormEventHandler<HTMLFormElement> = (
-    event
+    event,
   ) => {
     event.preventDefault();
     enterMessage();
@@ -104,13 +104,13 @@ const AIAnalysis: React.FC = () => {
               id="ai-chat-container"
             >
               <div className="messages-wrapper" id="messages-wrapper">
-                <div style={{ height: "10px" }}/>
+                <div style={{ height: "10px" }} />
                 {chatList.map((chat, _) =>
                   chat.isUser ? (
                     <div className="user-message">{chat.message}</div>
                   ) : (
                     <div className="bot-message">{chat.message}</div>
-                  )
+                  ),
                 )}
               </div>
               <div className="type-box">
@@ -135,11 +135,11 @@ const AIAnalysis: React.FC = () => {
                       e.target.style.height =
                         Math.min(e.target.scrollHeight, 210) + "px";
                       document.getElementById(
-                        "messages-wrapper"
+                        "messages-wrapper",
                       )!.style.height =
                         Number(
                           document.getElementById("ai-chat-container")!.style
-                            .height
+                            .height,
                         ) -
                         Number(e.target.style.height) +
                         "px";

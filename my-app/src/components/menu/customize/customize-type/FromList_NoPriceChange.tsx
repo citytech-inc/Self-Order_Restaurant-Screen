@@ -3,9 +3,11 @@ import "./FromList.css";
 
 type FromListNoPriceChangeProps = {
   onUpdate: (options: string[], defaultOption: string) => void;
-}
+};
 
-const FromList_PriceChange: React.FC<FromListNoPriceChangeProps> = ({ onUpdate }) => {
+const FromList_PriceChange: React.FC<FromListNoPriceChangeProps> = ({
+  onUpdate,
+}) => {
   const [options, setOptions] = useState<string[]>([""]);
   const [dropdownValue, setDropdownValue] = useState<string>("");
 
@@ -38,7 +40,7 @@ const FromList_PriceChange: React.FC<FromListNoPriceChangeProps> = ({ onUpdate }
     if (onUpdateRef.current) {
       onUpdateRef.current(options, dropdownValue);
     }
-  }, [options, dropdownValue])
+  }, [options, dropdownValue]);
 
   return (
     <div className="options__container">
