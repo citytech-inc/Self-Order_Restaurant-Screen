@@ -16,6 +16,9 @@ import MenuAnalysis from "./pages/sales-analysis/MenuAnalysis";
 import CustomerAnalysis from "./pages/sales-analysis/CustomerAnalysis";
 import AIAnalysis from "./pages/sales-analysis/AIAnalysis";
 import MenuScreen from "./pages/menu/MenuScreen";
+import SetMenuScreen from "./pages/menu/SetMenuScreen";
+import AYCEScreen from "./pages/menu/AYCEScreen";
+import CustomizeScreen from "./pages/menu/CustomizeScreen";
 //import { initializeApp } from "firebase/app";
 
 /*{
@@ -57,6 +60,9 @@ root.render(
           element={<PurchasedItemsScreen />}
         />
         <Route path=":restaurantId/menu-list" element={<MenuScreen />} />
+        <Route path=":restaurantId/menu-list/set-menu" element={<SetMenuScreen />} />
+        <Route path=":restaurantId/menu-list/AYCE" element={<AYCEScreen />} />
+        <Route path=":restaurantId/menu-list/customize" element={<CustomizeScreen />} />
         <Route
           path=":restaurantId/sales-analysis"
           element={<NormalAnalysis />}
