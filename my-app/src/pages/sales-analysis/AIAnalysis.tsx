@@ -10,6 +10,14 @@ import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 import ReportExample from "../../../src/data/report_example";
 
+import OpenAI from "openai";
+// OpenAI API の設定
+const openai = new OpenAI({
+  apiKey: process.env.REACT_APP_OPENAI_API_KEY,
+  dangerouslyAllowBrowser: true
+});
+
+
 const AIAnalysis: React.FC = () => {
   const { restaurantId } = useParams();
   const [messageInput, setMessageInput] = useState("");
@@ -42,15 +50,30 @@ const AIAnalysis: React.FC = () => {
     });
   };
 
-  const sendMessage = (message: string) => {
-    /*
-     APIと通信する処理 awaitの間送信ボタンを押せないようにするなどやることは色々
-     */
-    const responseMessage = message;
-    setChatList((chatListOld) => [
-      ...chatListOld,
-      { message: messageInput, isUser: false },
-    ]);
+  const sendMessage = async (message: string) => {
+    try {
+      const response = await openai.chat.completions.create({
+        model: "gpt-3.5-turbo",  // 最新のモデルを使用
+        messages: [
+          {
+            role: "user",
+            content: message
+          }
+        ]
+      });
+      console.log(response.choices[0])
+
+      const responseMessage = response.choices[0].message.content;
+      if (responseMessage !== null) {
+        setChatList(chatListOld => [
+          ...chatListOld,
+          { message: responseMessage, isUser: false }
+        ]);
+      }
+    } catch (error) {
+      console.error('ChatGPT API Error:', error);
+      // エラーメッセージをユーザーに表示する
+    }
   };
 
   const enterMessage = () => {
@@ -105,11 +128,11 @@ const AIAnalysis: React.FC = () => {
             >
               <div className="messages-wrapper" id="messages-wrapper">
                 <div style={{ height: "10px" }}/>
-                {chatList.map((chat, _) =>
+                {chatList.map((chat, index) =>
                   chat.isUser ? (
-                    <div className="user-message">{chat.message}</div>
+                    <div key={index} className="user-message">{chat.message}</div>
                   ) : (
-                    <div className="bot-message">{chat.message}</div>
+                    <div key={index} className="bot-message">{chat.message}</div>
                   )
                 )}
               </div>
