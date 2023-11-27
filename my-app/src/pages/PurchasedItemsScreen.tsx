@@ -304,7 +304,7 @@ const PurchasedItemsScreen: React.FC = () => {
                   ></div>
                   <div className="itemTitle__name">{item.items[0].name}</div>
                 </div>
-                <div>
+                <div style={{ width: "15vw" }}>
                   <span className="itemTitle__price">
                     {item.items[0].sellingPrice}円
                     <span className="itemTitle__tax">(税込)</span>
@@ -318,7 +318,7 @@ const PurchasedItemsScreen: React.FC = () => {
                 {item.items.map((element: any, i: number) => (
                   <div key={i} className="optionBox__oneItem">
                     <div className="divider-wrapper">
-                      <div className="divider"></div>
+                      <div className="divider" style={i === 0 ? { width : "97%" } : {}} />
                     </div>
 
                     {(() => {
@@ -413,8 +413,8 @@ const PurchasedItemsScreen: React.FC = () => {
                       style={{
                         display: "flex",
                         alignItems: "flex-start",
-                        paddingBottom: "10px",
-                        paddingTop: "5px",
+                        paddingBottom: "5px",
+                        paddingTop: "0",
                         paddingLeft: "20px",
                       }}
                     >
