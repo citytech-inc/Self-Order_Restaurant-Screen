@@ -53,7 +53,7 @@ const AIAnalysis: React.FC = () => {
   const sendMessage = async (message: string) => {
     try {
       const response = await openai.chat.completions.create({
-        model: "gpt-3.5-turbo",  // 最新のモデルを使用
+        model: "gpt-4",  // 最新のモデルを使用
         messages: [
           {
             role: "user",
