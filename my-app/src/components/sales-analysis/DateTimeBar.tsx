@@ -146,7 +146,7 @@ const DateTimeComponent: React.FC<Props> = ({ onSalesTypeChange }) => {
       </div>
       <div className="display-span-option">
         {selectedSalesSpan === "時間帯別" ? (
-          <div>
+          <div className="display-span-block">
             <DatePicker
               selected={selectedDate}
               onChange={handleDateChange}
@@ -167,7 +167,7 @@ const DateTimeComponent: React.FC<Props> = ({ onSalesTypeChange }) => {
             </select>
           </div>
         ) : selectedSalesSpan === "日別" ? (
-          <div>
+          <div className="display-span-block">
             <div className="display-week-select">
               {`${selectedDate.getMonth() + 1}月第${
                 Math.floor(
@@ -190,7 +190,7 @@ const DateTimeComponent: React.FC<Props> = ({ onSalesTypeChange }) => {
             />
           </div>
         ) : selectedSalesSpan === "月別" ? (
-          <div>
+          <div className="display-span-block">
             <select
               className="display-year-select"
               value={String(selectedYear)}
@@ -211,7 +211,7 @@ const DateTimeComponent: React.FC<Props> = ({ onSalesTypeChange }) => {
             </select>
           </div>
         ) : (
-          <div>
+          <div className="display-span-block">
             <div className="date-picker-container">
               <DatePicker
                 selected={dayStartDate}
@@ -220,7 +220,7 @@ const DateTimeComponent: React.FC<Props> = ({ onSalesTypeChange }) => {
                 showMonthYearPicker
                 className="display-date"
               />
-              <div>〜</div>
+              〜
               <DatePicker
                 selected={dayEndDate}
                 onChange={(date) => setDayEndDate(date)}
