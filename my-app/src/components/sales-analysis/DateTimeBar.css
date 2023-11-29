@@ -201,9 +201,9 @@
 }
 
 .display-option .sorted-icon {
-  height: 30px;
-  width: 30px;
-  transform: translate(-10px,5px)
+  height: 20px;
+  width: 20px;
+  transform: translate(-10px,22px)
 }
 
 .sorted-icon{
@@ -215,4 +215,5 @@ p{
   font-size: 18px;
   font-weight: bold;
   margin-top: 0.0000000000000000001px;
+  transform: translate(-10px,12px)
 }
