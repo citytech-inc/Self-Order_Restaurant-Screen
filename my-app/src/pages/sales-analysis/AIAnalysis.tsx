@@ -10,12 +10,6 @@ import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 import ReportExample from "../../../src/data/report_example";
 
-// import OpenAI from "openai";
-// // OpenAI API の設定
-// const openai = new OpenAI({
-//   apiKey: process.env.REACT_APP_OPENAI_API_KEY,
-//   dangerouslyAllowBrowser: true
-// });
 
 
 const AIAnalysis: React.FC = () => {
