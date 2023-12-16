@@ -24,40 +24,48 @@ type CustomizeType3 = {
   default: string;
 };
 
-type MenuSettings = {
-  customizations?: (CustomizeType1 | CustomizeType2 | CustomizeType3)[];
+export type CustomizationTypes = {
+  customizationTypes?: (CustomizeType1 | CustomizeType2 | CustomizeType3)[];
 };
 
-type MenuType = {
+export type MenuType = {
   category: string;
   name: string;
-  picture: string;
+  image: string;
   price: number;
-  settings: MenuSettings[];
+  description: string;
+  settings: {
+    [key: string]: {
+      name: string;
+      customizationTypes: {
+        [key: string]: [string, number];
+      }[];
+    };
+  };
 };
 
 type AddMenuProps = {
   menuCategoryList: string[];
   customize: string;
   setCustomize: Dispatch<SetStateAction<string>>;
+  menu: MenuType;
+  setMenu: Dispatch<SetStateAction<MenuType>>;
 };
 
 const AddMenu: React.FC<AddMenuProps> = ({
   menuCategoryList,
   customize,
   setCustomize,
+  menu,
+  setMenu,
 }) => {
-  const [menu, setMenu] = useState<MenuType>({
-    category: "",
-    name: "",
-    picture: "",
-    price: 0,
-    settings: [],
-  });
+  const handleUpdateSettings = (updatedSettings: any) => {
+    setMenu((prev) => ({ ...prev, settings: updatedSettings }));
+  };
 
   return (
     <div className="add-menu__container">
-      <h2>メニューを追加</h2>
+      <h2>商品を編集</h2>
       <div className="box">
         <div className="box__text">名前</div>
         <input
@@ -104,7 +112,7 @@ const AddMenu: React.FC<AddMenuProps> = ({
           type="text"
           placeholder="Picture Link"
           onChange={(e) =>
-            setMenu((prev) => ({ ...prev, picture: e.target.value }))
+            setMenu((prev) => ({ ...prev, image: e.target.value }))
           }
         />
       </div>
@@ -115,7 +123,7 @@ const AddMenu: React.FC<AddMenuProps> = ({
           type="text"
           placeholder="商品説明を入力してください。"
           onChange={(e) =>
-            setMenu((prev) => ({ ...prev, name: e.target.value }))
+            setMenu((prev) => ({ ...prev, description: e.target.value }))
           }
         />
       </div>
@@ -124,12 +132,24 @@ const AddMenu: React.FC<AddMenuProps> = ({
         <select
           className="select"
           value={customize}
-          onChange={(e) => setCustomize(e.target.value)}
+          onChange={(e) => {
+            if (e.target.value === "あり") {
+              setMenu((prev) => ({ ...prev, settings: prev.settings }));
+            }
+            setCustomize(e.target.value);
+          }}
         >
           <option value="あり">あり</option>
           <option value="なし">なし</option>
         </select>
       </div>
+
+      {customize === "あり" && (
+        <CustomizeSection
+          settings={menu.settings}
+          onUpdateSettings={handleUpdateSettings}
+        />
+      )}
     </div>
   );
 };

@@ -1,10 +1,36 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./ByNumber.css";
 
-const ByNumber_PriceChange: React.FC = () => {
+type ByNumberPriceChangeProps = {
+  onUpdate: (
+    measureWord: string,
+    price: number,
+    defaultQuantity: number,
+  ) => void;
+};
+
+const ByNumber_PriceChange: React.FC<ByNumberPriceChangeProps> = ({
+  onUpdate,
+}) => {
   const [quantity, setQuantity] = useState(1);
-  const [description, setDescription] = useState("");
-  const [price, setPrice] = useState("");
+  const [measureWord, setMeasureword] = useState("");
+  //const [description, setDescription] = useState("");
+  const [price, setPrice] = useState(0);
+
+  const handleQuantityChange = (
+    event: React.ChangeEvent<HTMLSelectElement>,
+  ) => {
+    setQuantity(Number(event.target.value));
+  };
+
+  const onUpdateRef = useRef(onUpdate);
+  onUpdateRef.current = onUpdate;
+
+  useEffect(() => {
+    if (onUpdateRef.current) {
+      onUpdateRef.current(measureWord, price, quantity);
+    }
+  }, [measureWord, price, quantity]);
 
   return (
     <div className="byNumber__container">
@@ -13,7 +39,7 @@ const ByNumber_PriceChange: React.FC = () => {
         <select
           className="box__select"
           value={quantity}
-          onChange={(e) => setQuantity(Number(e.target.value))}
+          onChange={handleQuantityChange}
         >
           <option value="1">1</option>
           <option value="2">2</option>
@@ -34,8 +60,8 @@ const ByNumber_PriceChange: React.FC = () => {
           className="box__input"
           type="text"
           placeholder="単位（枚など）を入力"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
+          value={measureWord}
+          onChange={(e) => setMeasureword(e.target.value)}
         />
       </div>
 
@@ -43,10 +69,10 @@ const ByNumber_PriceChange: React.FC = () => {
         <div className="box__text">値段</div>
         <input
           className="box__input"
-          type="text"
+          type="number"
           placeholder="Price"
           value={price}
-          onChange={(e) => setPrice(e.target.value)}
+          onChange={(e) => setPrice(Number(e.target.value))}
         />
       </div>
     </div>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useLocation, useParams } from "react-router-dom";
-import "./SalesAnalysis.css";
+import "./SalesAnalysis.scss";
 import SettingBar from "../../header/SettingBar";
 import ArrowIcon from "../../src/components/images/arrowhead-thin-outline-to-the-left.png";
 
@@ -124,8 +124,8 @@ const NormalAnalysis: React.FC = () => {
           Number(key) === selectedHour
             ? "rgba(255, 240, 180, 1)"
             : SalesPerHour[Number(key)].priceClass === "normal"
-            ? "rgba(217, 217, 217, 1)"
-            : "rgba(153, 153, 153, 1)",
+              ? "rgba(217, 217, 217, 1)"
+              : "rgba(153, 153, 153, 1)",
         ),
         borderRadius: 5,
       },
