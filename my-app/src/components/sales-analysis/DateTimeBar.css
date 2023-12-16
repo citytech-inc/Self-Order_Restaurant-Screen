@@ -22,7 +22,7 @@
   display: flex;
   flex-direction: row;
   align-items: end;
-  justify-content: space-between; 
+  /* justify-content: space-between;  */
   /*↑これは違う。これを設定したために「通常分析」の画面が事故ってる*/
   background-color: #fffefb;
 }
@@ -31,7 +31,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   /*↑これは違う。これを設定したために「通常分析」の画面が事故ってる*/
   background-color: #fffefb;
   height: 40px;
@@ -228,6 +228,7 @@
   height: 40px;
   line-height: 40px;
   padding-right: 12px;
+  margin-left: auto;
 }
 
 .display-option .sorted-icon {
