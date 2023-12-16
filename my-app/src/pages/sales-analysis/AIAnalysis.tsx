@@ -10,6 +10,8 @@ import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 import ReportExample from "../../../src/data/report_example";
 
+
+
 const AIAnalysis: React.FC = () => {
   const { restaurantId } = useParams();
   const [messageInput, setMessageInput] = useState("");
@@ -42,15 +44,33 @@ const AIAnalysis: React.FC = () => {
     });
   };
 
-  const sendMessage = (message: string) => {
-    /*
-     APIと通信する処理 awaitの間送信ボタンを押せないようにするなどやることは色々
-     */
-    const responseMessage = message;
-    setChatList((chatListOld) => [
-      ...chatListOld,
-      { message: messageInput, isUser: false },
-    ]);
+  const sendMessage = async (message: string) => {
+    try {
+      const response = await fetch("http://localhost:3003/api/sales-analysis/ai", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ message }),
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    const analysisResult = await response.json();
+    
+    if (analysisResult !== null) {
+      setChatList(chatListOld => [
+        ...chatListOld,
+        { message: analysisResult, isUser: false }
+      ]);
+    }
+    
+    } catch (error) {
+      console.error('ChatGPT API Error:', error);
+      // エラーメッセージをユーザーに表示する
+    }
   };
 
   const enterMessage = () => {
@@ -104,13 +124,13 @@ const AIAnalysis: React.FC = () => {
               id="ai-chat-container"
             >
               <div className="messages-wrapper" id="messages-wrapper">
-                <div style={{ height: "10px" }} />
-                {chatList.map((chat, _) =>
+                <div style={{ height: "10px" }}/>
+                {chatList.map((chat, index) =>
                   chat.isUser ? (
-                    <div className="user-message">{chat.message}</div>
+                    <div key={index} className="user-message">{chat.message}</div>
                   ) : (
-                    <div className="bot-message">{chat.message}</div>
-                  ),
+                    <div key={index} className="bot-message">{chat.message}</div>
+                  )
                 )}
               </div>
               <div className="type-box">
