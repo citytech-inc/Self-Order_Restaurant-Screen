@@ -15,8 +15,8 @@
     "@types/react-chartjs-2": "^2.5.7",
     "@types/react-dom": "^18.2.6",
     "@types/react-router-dom": "^5.3.3",
-    "chart.js": "^4.4.0",
     "axios": "^1.6.2",
+    "chart.js": "^4.4.0",
     "date-fns": "^2.30.0",
     "firebase": "^10.5.2",
     "html-react-parser": "^5.0.6",
@@ -60,9 +60,9 @@
     ]
   },
   "devDependencies": {
+    "@types/axios": "^0.14.0",
     "@types/html2canvas": "^1.0.0",
     "@types/jspdf": "^2.0.0",
-    "@types/axios": "^0.14.0",
     "@types/react-datepicker": "^4.19.1",
     "prettier": "^3.0.1"
   }

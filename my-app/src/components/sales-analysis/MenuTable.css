@@ -11,6 +11,11 @@
   height: 794px;
 }
 
+.product-table td {
+  overflow: auto; /* オーバーフローしたテキストに対してスクロールバーを表示 */
+  white-space: nowrap; /* テキストを折り返さない */
+}
+
 .product-table tbody {
   display: block;
   height: calc(100%); /* ヘッダー分の高さを引く */
