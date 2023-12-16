@@ -286,11 +286,142 @@ const PurchasedItemsScreen: React.FC = () => {
         </button>
         <h1 className="title">商品内容をお確かめください（税込）</h1>
         <div className="payment__itemBox">
+          <div style={{ height: "15px" }} />
           {currentOrders.map((item, index) => (
-            <div key={index} className="item">
-              <p className="item-name">{item.items[0].name}</p>
-              <p className="item-settings">{extractToppingsFromOrder(item)}</p>
-              <p className="item-price">{item.items[0].sellingPrice}</p>
+            <div className="itemBox">
+              <div
+                key={index}
+                className="itemTitle"
+                style={{ display: "flex", flexDirection: "row" }}
+              >
+                <div style={{ display: "flex" }}>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "stretch",
+                    }}
+                  ></div>
+                  <div className="itemTitle__name">{item.items[0].name}</div>
+                </div>
+                <div style={{ width: "15vw" }}>
+                  <span className="itemTitle__price">
+                    {item.items[0].sellingPrice}円
+                    <span className="itemTitle__tax">(税込)</span>
+                    <span className="itemTitle__number">
+                      ×&ensp;{item.items.length}
+                    </span>
+                  </span>
+                </div>
+              </div>
+              <div className="optionBox">
+                {item.items.map((element: any, i: number) => (
+                  <div key={i} className="optionBox__oneItem">
+                    <div className="divider-wrapper">
+                      <div className="divider" style={i === 0 ? { width : "97%" } : {}} />
+                    </div>
+
+                    {(() => {
+                      const options = Object.keys(element.settings).map((idx) =>
+                        (element.settings[idx]?.options || []).map(
+                          (value: any, index: number) => {
+                            if (value.selected === value.default) {
+                              return null;
+                            }
+                            if (value.type === 1) {
+                              return (
+                                <div
+                                  key={index}
+                                  className="optionBox__oneOption"
+                                >
+                                  <p className="optionBox__name">
+                                    {value.name}：{value.values[value.selected]}
+                                  </p>
+                                  <div className="optionBox__details">
+                                    <span className="optionBox__price">
+                                      0円
+                                      <span className="optionBox__tax">
+                                        (税込)
+                                      </span>
+                                    </span>
+                                  </div>
+                                </div>
+                              );
+                            } else if (value.type === 2) {
+                              return (
+                                <div
+                                  key={index}
+                                  className="optionBox__oneOption"
+                                >
+                                  <p className="optionBox__name">
+                                    {value.name}：
+                                    {value.values[value.selected][0]}
+                                  </p>
+                                  <div className="optionBox__details">
+                                    <span className="optionBox__price">
+                                      {value.values[value.selected][1]}円
+                                      <span className="optionBox__tax">
+                                        (税込)
+                                      </span>
+                                    </span>
+                                  </div>
+                                </div>
+                              );
+                            } else if (value.type === 3) {
+                              return (
+                                <div
+                                  key={index}
+                                  className="optionBox__oneOption"
+                                >
+                                  <p className="optionBox__name">
+                                    {value.name}
+                                  </p>
+                                  <div className="optionBox__details">
+                                    <span className="optionBox__price">
+                                      {value.price}円
+                                      <span className="optionBox__tax">
+                                        (税込)
+                                      </span>
+                                    </span>
+                                    <span className="optionBox__number">
+                                      ×&ensp;{value.selected}
+                                    </span>
+                                  </div>
+                                </div>
+                              );
+                            } else {
+                              return null;
+                            }
+                          },
+                        ),
+                      );
+                      if (
+                        [...options].every((option) => {
+                          return option.every((value: any) => value === null);
+                        })
+                      ) {
+                        return (
+                          <div className="optionBox__oneOption">
+                            <p className="optionBox__name">カスタマイズなし</p>
+                          </div>
+                        );
+                      } else {
+                        return options;
+                      }
+                    })()}
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "flex-start",
+                        paddingBottom: "5px",
+                        paddingTop: "0",
+                        paddingLeft: "20px",
+                      }}
+                    >
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           ))}
         </div>
