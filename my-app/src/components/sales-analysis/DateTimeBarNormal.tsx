@@ -2,7 +2,7 @@ import React, { useState, ChangeEvent } from "react";
 import DatePicker from "react-datepicker";
 import "./DateTimeBar.css";
 import "react-datepicker/dist/react-datepicker.css";
-import CalendarIcon from "../images/calendar_2278049.png"
+import CalendarIcon from "../images/calendar_2278049.png";
 
 interface Props {
   onSalesTypeChange?: (selectedSalesType: string) => void;
@@ -171,9 +171,25 @@ const DateTimeComponent: React.FC<Props> = ({ onSalesTypeChange }) => {
         ) : selectedSalesSpan === "日別" ? (
           <>
             <div className="display-week-select">
-              <img src={CalendarIcon} alt="Calendar Icon" style={{ width: '18px', height: '18px', marginRight: '5px' , paddingTop: '2%', textAlign: 'center'}} />
+              <img
+                src={CalendarIcon}
+                alt="Calendar Icon"
+                style={{
+                  width: "18px",
+                  height: "18px",
+                  marginRight: "5px",
+                  paddingTop: "2%",
+                  textAlign: "center",
+                }}
+              />
               {`${selectedDate.getMonth() + 1}/${selectedDate.getDate()} ー 
-                ${(new Date(selectedDate.getTime() + (6 * 24 * 60 * 60 * 1000))).getMonth() + 1}/${(new Date(selectedDate.getTime() + (6 * 24 * 60 * 60 * 1000))).getDate()}`}
+                ${
+                  new Date(
+                    selectedDate.getTime() + 6 * 24 * 60 * 60 * 1000,
+                  ).getMonth() + 1
+                }/${new Date(
+                  selectedDate.getTime() + 6 * 24 * 60 * 60 * 1000,
+                ).getDate()}`}
             </div>
 
             <DatePicker
@@ -212,7 +228,7 @@ const DateTimeComponent: React.FC<Props> = ({ onSalesTypeChange }) => {
             <div className="date-picker-container">
               <DatePicker
                 selected={dayStartDate}
-                onChange={(date:any) => setDayStartDate(date)}
+                onChange={(date: any) => setDayStartDate(date)}
                 dateFormat="yyyy年MM月"
                 showMonthYearPicker
                 className="display-date"
@@ -220,7 +236,7 @@ const DateTimeComponent: React.FC<Props> = ({ onSalesTypeChange }) => {
               <div>〜</div>
               <DatePicker
                 selected={dayEndDate}
-                onChange={(date:any) => setDayEndDate(date)}
+                onChange={(date: any) => setDayEndDate(date)}
                 dateFormat="yyyy年MM月"
                 showMonthYearPicker
                 className="display-date"
@@ -240,7 +256,7 @@ const DateTimeComponent: React.FC<Props> = ({ onSalesTypeChange }) => {
         <div style={{ fontSize: "16px", width: "30px", textAlign: "center" }}>
           の
         </div>
-        <div style={{ display: 'flex', flexDirection: 'column' }}>
+        <div style={{ display: "flex", flexDirection: "column" }}>
           <div className="new-sales-type-select">カテゴリー</div>
           <select
             className="sales-type-select2"

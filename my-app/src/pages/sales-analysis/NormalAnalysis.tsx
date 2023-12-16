@@ -123,8 +123,8 @@ const NormalAnalysis: React.FC = () => {
           Number(key) === selectedHour
             ? "rgba(255, 240, 180, 1)"
             : SalesPerHour[Number(key)].priceClass === "normal"
-            ? "rgba(217, 217, 217, 1)"
-            : "rgba(153, 153, 153, 1)",
+              ? "rgba(217, 217, 217, 1)"
+              : "rgba(153, 153, 153, 1)",
         ),
         borderRadius: 5,
       },

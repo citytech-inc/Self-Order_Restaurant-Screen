@@ -3,8 +3,10 @@ import axios from "axios";
 import AddMenu, { MenuType } from "../../components/menu/AddMenu";
 import MenuCategory from "../../components/menu/MenuCategory";
 import CustomizeSection from "../../components/menu/CustomizeSection";
+import MenuList from "../../components/menu/MenuList";
 import SettingBar from "../../header/SettingBar";
-import "./AddMenuScreen.css";
+import SmartphoneIcon from "../../components/images/smartphone-call.png";
+import "./MenuScreen.css";
 import { useNavigate, useParams } from "react-router-dom";
 
 const AddMenuScreen: React.FC = () => {
@@ -65,20 +67,28 @@ const AddMenuScreen: React.FC = () => {
   return (
     <div>
       <SettingBar focusButton="menu" />
+      <MenuCategory defaultType="単品" />
       <div className="menu__container">
-        <MenuCategory />
-        <AddMenu
-          menuCategoryList={menuCategoryList}
-          customize={customize}
-          setCustomize={setCustomize}
-          menu={menu}
-          setMenu={setMenu}
-        />
-        <div className="add-menu__area">
-          <button className="add-menu__button" onClick={sendToBackend}>
-            商品を登録
-          </button>
+        <MenuList />
+        <div className="menu__container__right">
+          <AddMenu
+            menuCategoryList={menuCategoryList}
+            customize={customize}
+            setCustomize={setCustomize}
+            menu={menu}
+            setMenu={setMenu}
+          />
+          <div className="add-menu__area">
+            <button className="add-menu__button" onClick={sendToBackend}>
+              編集を保存
+            </button>
+          </div>
         </div>
+        <div className="icon__area">
+            <div className="icon__circle">
+                <img src={SmartphoneIcon} alt="Smartphone Icon" className="smartphone__icon" />
+            </div>
+          </div>
       </div>
     </div>
   );
