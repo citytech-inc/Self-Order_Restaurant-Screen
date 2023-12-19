@@ -3,7 +3,7 @@ import axios from "axios";
 import AddMenu, { MenuType } from "../../components/menu/AddMenu";
 import MenuCategory from "../../components/menu/MenuCategory";
 import CustomizeSection from "../../components/menu/CustomizeSection";
-import MenuList from "../../components/menu/MenuList";
+import MenuList from "../../components/menu/MenuList_SetMenu";
 import SettingBar from "../../header/SettingBar";
 import SmartphoneIcon from "../../components/images/smartphone-call.png";
 import "./MenuScreen.css";

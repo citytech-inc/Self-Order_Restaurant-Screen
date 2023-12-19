@@ -24,7 +24,7 @@ const MenuCategory: React.FC<MenuCategoryProps> = ({
     } else if (type === "食べ放題") {
       navigate(`/${restaurantId}/menu-list/AYCE`);
     } else if (type === "商品分類") {
-      navigate(`/${restaurantId}/menu-list/classification`);
+      navigate(`/${restaurantId}/menu-list/section`);
     } else if (type === "カスタマイズ") {
       navigate(`/${restaurantId}/menu-list/customize`);
     } else {

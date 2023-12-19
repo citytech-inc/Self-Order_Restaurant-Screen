@@ -9,7 +9,7 @@ import SmartphoneIcon from "../../components/images/smartphone-call.png";
 import "./MenuScreen.css";
 import { useNavigate, useParams } from "react-router-dom";
 
-const CustomizeScreen: React.FC = () => {
+const MenuScreen_Customize: React.FC = () => {
   const { restaurantId } = useParams();
   const navigate = useNavigate();
 
@@ -56,12 +56,20 @@ const CustomizeScreen: React.FC = () => {
 
   const [customize, setCustomize] = useState<string>("なし");
 
+  const [selectedMenuItem, setSelectedMenuItem] = useState("");
+
   return (
     <div>
       <SettingBar focusButton="menu" />
       <MenuCategory defaultType="カスタマイズ" />
       <div className="menu__container">
-        <MenuList />
+        <MenuList
+          selectedMenuItem={selectedMenuItem}
+          onMenuItemSelect={(item: string) => {
+            setSelectedMenuItem(item);
+            setMenu({ ...menu, name: item }); 
+          }}
+        />
         <div className="menu__container__right">
           <AddMenu
             menuCategoryList={menuCategoryList}
@@ -90,4 +98,4 @@ const CustomizeScreen: React.FC = () => {
   );
 };
 
-export default CustomizeScreen;
+export default MenuScreen_Customize;
