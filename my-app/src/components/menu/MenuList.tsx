@@ -23,7 +23,11 @@ const MenuList: React.FC<MenuListProps> = ({
     <div className="list-screen">
       <div className="list-container">
         {items.map((item, index) => (
-          <div key={index} className="list-item">
+          <div
+            key={index}
+            className={`list-item ${item === selectedMenuItem ? 'selected' : ''}`}
+            onClick={() => onMenuItemSelect(item)}
+          >
             {item} {/* Replace with your actual content */}
           </div>
         ))}
