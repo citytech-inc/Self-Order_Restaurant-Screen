@@ -3,7 +3,7 @@ import axios from "axios";
 import AYCEAddMenu, { MenuType } from "../../components/menu/AYCEAddMenu";
 import MenuCategory from "../../components/menu/MenuCategory";
 import CustomizeSection from "../../components/menu/CustomizeSection";
-import AYCEMenuList from "../../components/menu/AYCEMenuList";
+import AYCEMenuList from "../../components/menu/MenuList_AYCE";
 import SettingBar from "../../header/SettingBar";
 import SmartphoneIcon from "../../components/images/smartphone-call.png";
 import "./MenuScreen.css";
@@ -53,6 +53,8 @@ const MenuScreen_AYCE: React.FC = () => {
     }
   };
 
+  const [selectedMenuItem, setSelectedMenuItem] = useState("");
+
   const [customize, setCustomize] = useState<string>("なし");
 
   return (
@@ -60,7 +62,13 @@ const MenuScreen_AYCE: React.FC = () => {
       <SettingBar focusButton="menu" />
       <MenuCategory defaultType="食べ放題" />
       <div className="menu__container">
-        <AYCEMenuList />
+        <AYCEMenuList 
+        selectedMenuItem={selectedMenuItem}
+          onMenuItemSelect={(item: string) => {
+            setSelectedMenuItem(item);
+            setMenu({ ...menu, name: item }); // Update the AddMenu component with the selected item
+          }}
+        />
         <div className="menu__container__right">
           <AYCEAddMenu
             menuCategoryList={menuCategoryList}

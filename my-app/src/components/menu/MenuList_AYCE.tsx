@@ -1,7 +1,15 @@
 import React from "react";
 import "./MenuList.css";
 
-const AYCEMenuList: React.FC = () => {
+interface MenuListProps {
+  selectedMenuItem: string;
+  onMenuItemSelect: (item: string) => void;
+}
+
+const MenuList_AYCE: React.FC<MenuListProps> = ({
+  selectedMenuItem,
+  onMenuItemSelect,
+}) => {
   // List of items to display - replace these with your actual data
   const items = ["食べ放題Aコース", "食べ放題Bコース", "食べ放題Cコース"];
 
@@ -9,8 +17,12 @@ const AYCEMenuList: React.FC = () => {
     <div className="list-screen">
       <div className="list-container">
         {items.map((item, index) => (
-          <div key={index} className="list-item">
-            {item} {/* Replace with your actual content */}
+          <div
+            key={index}
+            className={`list-item ${item === selectedMenuItem ? 'selected' : ''}`}
+            onClick={() => onMenuItemSelect(item)}
+          >
+            {item} 
           </div>
         ))}
       </div>
@@ -19,4 +31,4 @@ const AYCEMenuList: React.FC = () => {
   );
 };
 
-export default AYCEMenuList;
+export default MenuList_AYCE;
