@@ -52,7 +52,7 @@ type AddMenuProps = {
   setMenu: Dispatch<SetStateAction<MenuType>>;
 };
 
-const AYCEAddMenu: React.FC<AddMenuProps> = ({
+const AddMenu_AYCE: React.FC<AddMenuProps> = ({
   menuCategoryList,
   customize,
   setCustomize,
@@ -127,4 +127,4 @@ const AYCEAddMenu: React.FC<AddMenuProps> = ({
   );
 };
 
-export default AYCEAddMenu;
+export default AddMenu_AYCE;
