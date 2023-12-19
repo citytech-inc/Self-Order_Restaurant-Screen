@@ -9,7 +9,7 @@ import SmartphoneIcon from "../../components/images/smartphone-call.png";
 import "./MenuScreen.css";
 import { useNavigate, useParams } from "react-router-dom";
 
-const SetMenuScreen: React.FC = () => {
+const MenuScreen_SetMenu: React.FC = () => {
   const { restaurantId } = useParams();
   const navigate = useNavigate();
 
@@ -67,7 +67,7 @@ const SetMenuScreen: React.FC = () => {
           selectedMenuItem={selectedMenuItem}
           onMenuItemSelect={(item: string) => {
             setSelectedMenuItem(item);
-            setMenu({ ...menu, name: item }); // Update the AddMenu component with the selected item
+            setMenu({ ...menu, name: item }); 
           }}
         />
         <div className="menu__container__right">
@@ -98,4 +98,4 @@ const SetMenuScreen: React.FC = () => {
   );
 };
 
-export default SetMenuScreen;
+export default MenuScreen_SetMenu;

@@ -28,7 +28,7 @@ const MenuList: React.FC<MenuListProps> = ({
             className={`list-item ${item === selectedMenuItem ? 'selected' : ''}`}
             onClick={() => onMenuItemSelect(item)}
           >
-            {item} {/* Replace with your actual content */}
+            {item} 
           </div>
         ))}
       </div>

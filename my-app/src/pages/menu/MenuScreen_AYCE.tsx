@@ -9,7 +9,7 @@ import SmartphoneIcon from "../../components/images/smartphone-call.png";
 import "./MenuScreen.css";
 import { useNavigate, useParams } from "react-router-dom";
 
-const AYCEScreen: React.FC = () => {
+const MenuScreen_AYCE: React.FC = () => {
   const { restaurantId } = useParams();
   const navigate = useNavigate();
 
@@ -89,4 +89,4 @@ const AYCEScreen: React.FC = () => {
   );
 };
 
-export default AYCEScreen;
+export default MenuScreen_AYCE;

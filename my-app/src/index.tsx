@@ -16,8 +16,8 @@ import MenuAnalysis from "./pages/sales-analysis/MenuAnalysis";
 import CustomerAnalysis from "./pages/sales-analysis/CustomerAnalysis";
 import AIAnalysis from "./pages/sales-analysis/AIAnalysis";
 import MenuScreen from "./pages/menu/MenuScreen";
-import SetMenuScreen from "./pages/menu/SetMenuScreen";
-import AYCEScreen from "./pages/menu/AYCEScreen";
+import SetMenuScreen from "./pages/menu/MenuScreen_SetMenu";
+import AYCEScreen from "./pages/menu/MenuScreen_AYCE";
 import CustomizeScreen from "./pages/menu/CustomizeScreen";
 //import { initializeApp } from "firebase/app";
 
