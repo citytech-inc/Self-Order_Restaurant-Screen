@@ -6,18 +6,12 @@ interface MenuListProps {
   onMenuItemSelect: (item: string) => void;
 }
 
-const MenuList: React.FC<MenuListProps> = ({
+const MenuList_AYCE: React.FC<MenuListProps> = ({
   selectedMenuItem,
   onMenuItemSelect,
 }) => {
   // List of items to display - replace these with your actual data
-  const items = [
-    "醤油ラーメン",
-    "塩ラーメン",
-    "味噌ラーメン",
-    "半ライス",
-    "烏龍茶",
-  ];
+  const items = ["食べ放題Aコース", "食べ放題Bコース", "食べ放題Cコース"];
 
   return (
     <div className="list-screen">
@@ -32,9 +26,9 @@ const MenuList: React.FC<MenuListProps> = ({
           </div>
         ))}
       </div>
-      <button className="fixed-button">+ 商品を追加</button>
+      <button className="fixed-button">+ 食べ放題コースを追加</button>
     </div>
   );
 };
 
-export default MenuList;
+export default MenuList_AYCE;

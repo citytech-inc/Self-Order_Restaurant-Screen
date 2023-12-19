@@ -318,7 +318,10 @@ const PurchasedItemsScreen: React.FC = () => {
                 {item.items.map((element: any, i: number) => (
                   <div key={i} className="optionBox__oneItem">
                     <div className="divider-wrapper">
-                      <div className="divider" style={i === 0 ? { width : "97%" } : {}} />
+                      <div
+                        className="divider"
+                        style={i === 0 ? { width: "97%" } : {}}
+                      />
                     </div>
 
                     {(() => {
@@ -417,8 +420,7 @@ const PurchasedItemsScreen: React.FC = () => {
                         paddingTop: "0",
                         paddingLeft: "20px",
                       }}
-                    >
-                    </div>
+                    ></div>
                   </div>
                 ))}
               </div>

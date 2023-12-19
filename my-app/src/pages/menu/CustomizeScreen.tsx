@@ -77,10 +77,14 @@ const CustomizeScreen: React.FC = () => {
           </div>
         </div>
         <div className="icon__area">
-            <div className="icon__circle">
-                <img src={SmartphoneIcon} alt="Smartphone Icon" className="smartphone__icon" />
-            </div>
+          <div className="icon__circle">
+            <img
+              src={SmartphoneIcon}
+              alt="Smartphone Icon"
+              className="smartphone__icon"
+            />
           </div>
+        </div>
       </div>
     </div>
   );

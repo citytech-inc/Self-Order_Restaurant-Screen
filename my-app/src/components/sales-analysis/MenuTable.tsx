@@ -1,6 +1,6 @@
 import React from "react";
 import "./MenuTable.css";
-import sortingIcon from '../../src/components/images/filter_3839020.png'
+import sortingIcon from "../../src/components/images/filter_3839020.png";
 type Product = {
   name: string;
   category: string;
@@ -47,45 +47,46 @@ const products: Product[] = [
 
 const MenuTable: React.FC = () => {
   return (
-  <div>
     <div>
-    <img src={sortingIcon} alt="A" />
-    <p>並び替え</p>
-    </div>
-    <table className="product-table">
-      <thead>
-        <tr>
-          <th>商品名</th>
-          <th>カテゴリー</th>
-          <th>単価</th>
-          <th>構成比</th>
-          <th>販売数</th>
-          <th>返品数</th>
-          <th>純売上</th>
-          <th>総売上</th>
-          <th>原価</th>
-          <th>粗利益</th>
-          <th>ABC</th>
-        </tr>
-      </thead>
-      <tbody>
-        {products.map((product, index) => (
-          <tr key={index}>
-            <td>{product.name}</td>
-            <td>{product.category}</td>
-            <td>{product.price}円</td>
-            <td>{product.percentage}%</td>
-            <td>{product.numSales}</td>
-            <td>{product.numReturned}</td>
-            <td>{product.netSales}円</td>
-            <td>{product.totalSales}円</td>
-            <td>{product.costPrice}円</td>
-            <td>{product.grossProfit}円</td>
-            <td>{product.ABC}</td>
+      <div>
+        <img src={sortingIcon} alt="A" />
+        <p>並び替え</p>
+      </div>
+      <table className="product-table">
+        <thead>
+          <tr>
+            <th>商品名</th>
+            <th>カテゴリー</th>
+            <th>単価</th>
+            <th>構成比</th>
+            <th>販売数</th>
+            <th>返品数</th>
+            <th>純売上</th>
+            <th>総売上</th>
+            <th>原価</th>
+            <th>粗利益</th>
+            <th>ABC</th>
           </tr>
-        ))}
-      </tbody>
-    </table>
-  </div>
-  )};
+        </thead>
+        <tbody>
+          {products.map((product, index) => (
+            <tr key={index}>
+              <td>{product.name}</td>
+              <td>{product.category}</td>
+              <td>{product.price}円</td>
+              <td>{product.percentage}%</td>
+              <td>{product.numSales}</td>
+              <td>{product.numReturned}</td>
+              <td>{product.netSales}円</td>
+              <td>{product.totalSales}円</td>
+              <td>{product.costPrice}円</td>
+              <td>{product.grossProfit}円</td>
+              <td>{product.ABC}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+};
 export default MenuTable;

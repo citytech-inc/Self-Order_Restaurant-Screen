@@ -56,6 +56,8 @@ const AddMenuScreen: React.FC = () => {
 
   const [customize, setCustomize] = useState<string>("なし");
 
+  const [selectedMenuItem, setSelectedMenuItem] = useState("");
+
   const resetScreen = () => {
     // Resetting the state to initial values
     console.log(JSON.stringify(menu));
@@ -69,7 +71,13 @@ const AddMenuScreen: React.FC = () => {
       <SettingBar focusButton="menu" />
       <MenuCategory defaultType="単品" />
       <div className="menu__container">
-        <MenuList />
+        <MenuList
+          selectedMenuItem={selectedMenuItem}
+          onMenuItemSelect={(item: string) => {
+            setSelectedMenuItem(item);
+            setMenu({ ...menu, name: item }); // Update the AddMenu component with the selected item
+          }}
+        />
         <div className="menu__container__right">
           <AddMenu
             menuCategoryList={menuCategoryList}
@@ -85,10 +93,14 @@ const AddMenuScreen: React.FC = () => {
           </div>
         </div>
         <div className="icon__area">
-            <div className="icon__circle">
-                <img src={SmartphoneIcon} alt="Smartphone Icon" className="smartphone__icon" />
-            </div>
+          <div className="icon__circle">
+            <img
+              src={SmartphoneIcon}
+              alt="Smartphone Icon"
+              className="smartphone__icon"
+            />
           </div>
+        </div>
       </div>
     </div>
   );
