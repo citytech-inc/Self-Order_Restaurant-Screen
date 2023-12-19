@@ -60,9 +60,15 @@ root.render(
           element={<PurchasedItemsScreen />}
         />
         <Route path=":restaurantId/menu-list" element={<MenuScreen />} />
-        <Route path=":restaurantId/menu-list/set-menu" element={<SetMenuScreen />} />
+        <Route
+          path=":restaurantId/menu-list/set-menu"
+          element={<SetMenuScreen />}
+        />
         <Route path=":restaurantId/menu-list/AYCE" element={<AYCEScreen />} />
-        <Route path=":restaurantId/menu-list/customize" element={<CustomizeScreen />} />
+        <Route
+          path=":restaurantId/menu-list/customize"
+          element={<CustomizeScreen />}
+        />
         <Route
           path=":restaurantId/sales-analysis"
           element={<NormalAnalysis />}

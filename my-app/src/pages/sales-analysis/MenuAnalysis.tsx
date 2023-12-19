@@ -218,8 +218,7 @@ const NormalAnalysis: React.FC = () => {
         <SettingBar focusButton="sales" />
         <HeaderComponent focusButton="商品別分析" />
         <DateTimeComponent onSalesTypeChange={handleSalesTypeChange} />
-        <div className="analysis-area menu-table">
-        </div>
+        <div className="analysis-area menu-table"></div>
       </div>
     </div>
   );

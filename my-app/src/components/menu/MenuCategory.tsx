@@ -6,11 +6,12 @@ import "./MenuCategory.css";
 type TypeOption = "単品" | "セット" | "食べ放題" | "商品分類" | "カスタマイズ";
 
 type MenuCategoryProps = {
-  defaultType?: TypeOption; 
+  defaultType?: TypeOption;
 };
 
-
-const MenuCategory: React.FC<MenuCategoryProps> = ({ defaultType = "単品" }) => { 
+const MenuCategory: React.FC<MenuCategoryProps> = ({
+  defaultType = "単品",
+}) => {
   const { restaurantId } = useParams();
   const [selectedType, setSelectedType] = useState<TypeOption>(defaultType);
   const navigate = useNavigate();
@@ -34,7 +35,13 @@ const MenuCategory: React.FC<MenuCategoryProps> = ({ defaultType = "単品" }) =
   return (
     <div className="type-bar">
       {(
-        ["単品", "セット", "食べ放題", "商品分類", "カスタマイズ"] as TypeOption[]
+        [
+          "単品",
+          "セット",
+          "食べ放題",
+          "商品分類",
+          "カスタマイズ",
+        ] as TypeOption[]
       ).map((type) => (
         <button
           key={type}

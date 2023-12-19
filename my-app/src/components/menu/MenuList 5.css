@@ -3,7 +3,7 @@
   flex-direction: column;
   border-right: 1px solid #ccc; /* Top border for the list */
   width: 45%;
-  height: 94vh; 
+  height: 94vh;
 }
 
 .list-container {

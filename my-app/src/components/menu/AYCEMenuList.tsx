@@ -3,11 +3,7 @@ import "./MenuList.css";
 
 const AYCEMenuList: React.FC = () => {
   // List of items to display - replace these with your actual data
-  const items = [
-    "食べ放題Aコース",
-    "食べ放題Bコース",
-    "食べ放題Cコース",
-  ];
+  const items = ["食べ放題Aコース", "食べ放題Bコース", "食べ放題Cコース"];
 
   return (
     <div className="list-screen">
