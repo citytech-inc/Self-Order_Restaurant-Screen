@@ -9,11 +9,16 @@
 .list-container {
   flex-grow: 1;
   height: 100%;
+  overflow-y: auto;
 }
 
 .list-item {
   padding: 15px;
   border-bottom: 1px solid #eee; /* Separator for items */
+}
+
+.list-item.selected {
+  background-color: #fff4c6; /* Separator for items */
 }
 
 .fixed-button {
@@ -23,10 +28,10 @@
   margin: 10px;
   border: none;
   border-radius: 20px; /* Rounded corners */
-  background-color: #ffd700; /* Gold background color */
+  background-color: #fff4c6; /* Gold background color */
   color: #000; /* Black text color */
   font-size: 16px; /* Adjust as needed */
-  cursor: pointer;
+  cursor: default;
 }
 
 /* Additional styling for the scrollbar, if needed */
