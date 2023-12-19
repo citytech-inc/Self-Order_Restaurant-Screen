@@ -203,6 +203,7 @@ function OrderScreen() {
                 : !o.isDeleted && o.type === "main",
             )}
             onDelete={handleDelete}
+            isChecked={isChecked}
           />
 
           <DisplayArea
@@ -213,6 +214,7 @@ function OrderScreen() {
                 : !o.isDeleted && o.type === "side",
             )}
             onDelete={handleDelete}
+            isChecked={isChecked}
           />
           <DisplayArea
             title="ドリンク"
@@ -222,6 +224,7 @@ function OrderScreen() {
                 : !o.isDeleted && o.type === "drink",
             )}
             onDelete={handleDelete}
+            isChecked={isChecked}
           />
           <DisplayArea
             title="食後提供"
@@ -231,6 +234,7 @@ function OrderScreen() {
                 : !o.isDeleted && o.type === "afterMeal",
             )}
             onDelete={handleDelete}
+            isChecked={isChecked}
           />
         </div>
       </div>

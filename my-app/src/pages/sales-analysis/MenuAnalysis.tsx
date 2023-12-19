@@ -14,7 +14,6 @@ import { Chart, registerables } from "chart.js";
 import { Bar } from "react-chartjs-2";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import MenuTable from "../../components/sales-analysis/MenuTable";
 
 Chart.register(...registerables);
 
@@ -220,7 +219,6 @@ const NormalAnalysis: React.FC = () => {
         <HeaderComponent focusButton="商品別分析" />
         <DateTimeComponent onSalesTypeChange={handleSalesTypeChange} />
         <div className="analysis-area menu-table">
-          <MenuTable />
         </div>
       </div>
     </div>

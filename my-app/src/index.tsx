@@ -21,7 +21,7 @@ import AYCEScreen from "./pages/menu/AYCEScreen";
 import CustomizeScreen from "./pages/menu/CustomizeScreen";
 //import { initializeApp } from "firebase/app";
 
-/*{
+/*{}
 // Firebaseの設定
 const firebaseConfig = {
   apiKey: process.env.FIREBASE_API_KEY,
