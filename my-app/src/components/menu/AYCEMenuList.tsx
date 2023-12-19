@@ -1,14 +1,12 @@
 import React from "react";
 import "./MenuList.css";
 
-const MenuList: React.FC = () => {
+const AYCEMenuList: React.FC = () => {
   // List of items to display - replace these with your actual data
   const items = [
-    "醤油ラーメン",
-    "塩ラーメン",
-    "味噌ラーメン",
-    "半ライス",
-    "烏龍茶",
+    "食べ放題Aコース",
+    "食べ放題Bコース",
+    "食べ放題Cコース",
   ];
 
   return (
@@ -20,9 +18,9 @@ const MenuList: React.FC = () => {
           </div>
         ))}
       </div>
-      <button className="fixed-button">+ 商品を追加</button>
+      <button className="fixed-button">+ 食べ放題コースを追加</button>
     </div>
   );
 };
 
-export default MenuList;
+export default AYCEMenuList;

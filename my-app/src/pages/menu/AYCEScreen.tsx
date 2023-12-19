@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
-import AddMenu, { MenuType } from "../../components/menu/AddMenu";
+import AYCEAddMenu, { MenuType } from "../../components/menu/AYCEAddMenu";
 import MenuCategory from "../../components/menu/MenuCategory";
 import CustomizeSection from "../../components/menu/CustomizeSection";
-import MenuList from "../../components/menu/MenuList";
+import AYCEMenuList from "../../components/menu/AYCEMenuList";
 import SettingBar from "../../header/SettingBar";
 import SmartphoneIcon from "../../components/images/smartphone-call.png";
 import "./MenuScreen.css";
@@ -14,10 +14,9 @@ const AYCEScreen: React.FC = () => {
   const navigate = useNavigate();
 
   const [menuCategoryList, setMenuCategoryList] = useState<string[]>([
-    "ラーメン",
-    "セットメニュー",
-    "飲み物",
-    "デザート",
+    "食べ放題Aコース",
+    "食べ放題Bコース",
+    "食べ放題Cコース",
   ]);
 
   const [menu, setMenu] = useState<MenuType>({
@@ -61,9 +60,9 @@ const AYCEScreen: React.FC = () => {
       <SettingBar focusButton="menu" />
       <MenuCategory defaultType="食べ放題" />
       <div className="menu__container">
-        <MenuList />
+        <AYCEMenuList />
         <div className="menu__container__right">
-          <AddMenu
+          <AYCEAddMenu
             menuCategoryList={menuCategoryList}
             customize={customize}
             setCustomize={setCustomize}
