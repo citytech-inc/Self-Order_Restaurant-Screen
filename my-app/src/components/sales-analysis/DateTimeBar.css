@@ -21,7 +21,7 @@
   padding-bottom: 8px;
   display: flex;
   flex-direction: row;
-  align-items: end;
+  align-items: flex-end;
   /* justify-content: space-between;  */
   /*↑これは違う。これを設定したために「通常分析」の画面が事故ってる*/
   background-color: #fffefb;
