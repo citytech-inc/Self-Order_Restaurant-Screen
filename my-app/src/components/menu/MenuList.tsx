@@ -1,15 +1,7 @@
 import React from "react";
 import "./MenuList.css";
 
-interface MenuListProps {
-  selectedMenuItem: string;
-  onMenuItemSelect: (item: string) => void;
-}
-
-const MenuList: React.FC<MenuListProps> = ({
-  selectedMenuItem,
-  onMenuItemSelect,
-}) => {
+const MenuList: React.FC = () => {
   // List of items to display - replace these with your actual data
   const items = [
     "醤油ラーメン",
@@ -23,12 +15,8 @@ const MenuList: React.FC<MenuListProps> = ({
     <div className="list-screen">
       <div className="list-container">
         {items.map((item, index) => (
-          <div
-            key={index}
-            className={`list-item ${item === selectedMenuItem ? 'selected' : ''}`}
-            onClick={() => onMenuItemSelect(item)}
-          >
-            {item} 
+          <div key={index} className="list-item">
+            {item} {/* Replace with your actual content */}
           </div>
         ))}
       </div>

@@ -12,17 +12,15 @@ interface DisplayAreaProps {
     minuteTime: number;
   }>;
   onDelete: (id: string) => void;
-  isChecked: boolean;
 }
 
 export const DisplayArea: React.FC<DisplayAreaProps> = ({
   title,
   orders,
   onDelete,
-  isChecked,
 }) => {
   return (
-    <div className={`displayArea ${isChecked ? "displayArea_changed" : ""}`}>
+    <div className="displayArea">
       <div className="title">{title}</div>
       <div className="area__line"></div>
       <div className="orderContainer">

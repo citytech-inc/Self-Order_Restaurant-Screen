@@ -2,6 +2,7 @@ import React, { useState, ChangeEvent } from "react";
 import DatePicker from "react-datepicker";
 import "./DateTimeBar.css";
 import "react-datepicker/dist/react-datepicker.css";
+import sortedIcon from '../images/filter_3839020.png';
 import CalendarIcon from "../images/calendar_2278049.png";
 
 interface Props {
@@ -119,7 +120,7 @@ const DateTimeComponent: React.FC<Props> = ({ onSalesTypeChange }) => {
       </div>
       <div className="display-span-option">
         {selectedSalesSpan === "時間帯別" ? (
-          <>
+          <div className="display-span-block">
             <DatePicker
               selected={selectedDate}
               onChange={handleDateChange}
@@ -138,9 +139,9 @@ const DateTimeComponent: React.FC<Props> = ({ onSalesTypeChange }) => {
                 </option>
               ))}
             </select>
-          </>
+          </div>
         ) : selectedSalesSpan === "日別" ? (
-          <>
+          <div className="display-span-block">
             <div className="display-week-select">
               <img
                 src={CalendarIcon}
@@ -172,9 +173,9 @@ const DateTimeComponent: React.FC<Props> = ({ onSalesTypeChange }) => {
               highlightDates={selectedWeek}
               dayClassName={highlightCustomDates}
             />
-          </>
+          </div>
         ) : selectedSalesSpan === "月別" ? (
-          <>
+          <div className="display-span-block">
             <select
               className="display-year-select"
               value={String(selectedYear)}
@@ -193,9 +194,9 @@ const DateTimeComponent: React.FC<Props> = ({ onSalesTypeChange }) => {
                 <option value={value}>{value}月</option>
               ))}
             </select>
-          </>
+          </div>
         ) : (
-          <>
+          <div className="display-span-block">
             <div className="date-picker-container">
               <DatePicker
                 selected={dayStartDate}
@@ -204,7 +205,7 @@ const DateTimeComponent: React.FC<Props> = ({ onSalesTypeChange }) => {
                 showMonthYearPicker
                 className="display-date"
               />
-              <div>〜</div>
+              〜
               <DatePicker
                 selected={dayEndDate}
                 onChange={(date: any) => setDayEndDate(date)}
@@ -224,8 +225,12 @@ const DateTimeComponent: React.FC<Props> = ({ onSalesTypeChange }) => {
                 <option value={value}>{value}曜日</option>
               ))}
             </select>
-          </>
+          </div>
         )}
+        <div className="sorted-icon-area">
+          <img className="sorted-icon" src={sortedIcon} alt="並び替えアイコン" />
+          <p>並び替え</p>
+        </div>
       </div>
     </div>
   );

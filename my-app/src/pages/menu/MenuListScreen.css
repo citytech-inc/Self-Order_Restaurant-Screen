@@ -1,0 +1,90 @@
+.menuList__container {
+  padding-right: 2%;
+  padding-top: 2%;
+  border-radius: 5px;
+  overflow: auto;
+  padding-left: 11%;
+}
+
+.menuList__container .menuList__header {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+}
+
+.menuList__container .add-menu__button {
+  background-color: #fff4c6;
+  align-items: center;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  padding: 10px;
+  padding-right: 20px;
+  padding-left: 20px;
+  border-radius: 50px;
+  border: 0.5px solid #aaaaaa;
+}
+.menuList__container table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.menuList__container thead {
+  background-color: #fff4c6;
+}
+
+.menuList__container th {
+  padding: 6px;
+  text-align: center;
+  border-top: 1px solid #e0e0e0;
+  border-bottom: 1px solid #e0e0e0;
+  border-right: 1px solid #e0e0e0;
+  border-left: 1px solid #e0e0e0;
+}
+
+.menuList__container td:nth-child(1) {
+  padding: 6px;
+  text-align: left;
+  border-bottom: 1px solid #e0e0e0;
+  border-right: 1px solid #e0e0e0;
+  border-left: 1px solid #e0e0e0;
+}
+.menuList__container td:nth-child(2), /* テーブルデータの各列のテキストの位置 */
+.menuList__container td:nth-child(5),
+.menuList__container td:nth-child(6) {
+  padding: 6px;
+  text-align: center;
+  border-bottom: 1px solid #e0e0e0;
+  border-right: 1px solid #e0e0e0;
+  border-left: 1px solid #e0e0e0;
+}
+.menuList__container td:nth-child(3),
+.menuList__container td:nth-child(4) {
+  padding: 6px;
+  text-align: right;
+  border-bottom: 1px solid #e0e0e0;
+  border-right: 1px solid #e0e0e0;
+  border-left: 1px solid #e0e0e0;
+}
+
+/* 左上の角 */
+.menuList__container thead th:first-child {
+  border-top-left-radius: 5px;
+}
+/* 右上の角 */
+.menuList__container thead th:last-child {
+  border-top-right-radius: 5px;
+}
+/* 左下の角 */
+.menuList__container tr:last-child td:first-child {
+  border-bottom-left-radius: 5px;
+}
+/* 右下の角 */
+.menuList__container tr:last-child td:last-child {
+  border-bottom-right-radius: 5px;
+}
+
+.menuList__container tr:hover {
+  background-color: #f5f9fc;
+}
+
+/* You can also add more specific styles or utility classes as needed */

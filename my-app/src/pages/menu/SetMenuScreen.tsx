@@ -1,22 +1,23 @@
 import React, { useState } from "react";
 import axios from "axios";
-import AYCEAddMenu, { MenuType } from "../../components/menu/AddMenu_AYCE";
+import AddMenu, { MenuType } from "../../components/menu/AddMenu";
 import MenuCategory from "../../components/menu/MenuCategory";
 import CustomizeSection from "../../components/menu/CustomizeSection";
-import AYCEMenuList from "../../components/menu/MenuList_AYCE";
+import MenuList from "../../components/menu/MenuList";
 import SettingBar from "../../header/SettingBar";
 import SmartphoneIcon from "../../components/images/smartphone-call.png";
 import "./MenuScreen.css";
 import { useNavigate, useParams } from "react-router-dom";
 
-const MenuScreen_AYCE: React.FC = () => {
+const SetMenuScreen: React.FC = () => {
   const { restaurantId } = useParams();
   const navigate = useNavigate();
 
   const [menuCategoryList, setMenuCategoryList] = useState<string[]>([
-    "食べ放題Aコース",
-    "食べ放題Bコース",
-    "食べ放題Cコース",
+    "ラーメン",
+    "セットメニュー",
+    "飲み物",
+    "デザート",
   ]);
 
   const [menu, setMenu] = useState<MenuType>({
@@ -53,24 +54,16 @@ const MenuScreen_AYCE: React.FC = () => {
     }
   };
 
-  const [selectedMenuItem, setSelectedMenuItem] = useState("");
-
   const [customize, setCustomize] = useState<string>("なし");
 
   return (
     <div>
       <SettingBar focusButton="menu" />
-      <MenuCategory defaultType="食べ放題" />
+      <MenuCategory defaultType="セット" />
       <div className="menu__container">
-        <AYCEMenuList 
-        selectedMenuItem={selectedMenuItem}
-          onMenuItemSelect={(item: string) => {
-            setSelectedMenuItem(item);
-            setMenu({ ...menu, name: item }); // Update the AddMenu component with the selected item
-          }}
-        />
+        <MenuList />
         <div className="menu__container__right">
-          <AYCEAddMenu
+          <AddMenu
             menuCategoryList={menuCategoryList}
             customize={customize}
             setCustomize={setCustomize}
@@ -84,17 +77,13 @@ const MenuScreen_AYCE: React.FC = () => {
           </div>
         </div>
         <div className="icon__area">
-          <div className="icon__circle">
-            <img
-              src={SmartphoneIcon}
-              alt="Smartphone Icon"
-              className="smartphone__icon"
-            />
+            <div className="icon__circle">
+                <img src={SmartphoneIcon} alt="Smartphone Icon" className="smartphone__icon" />
+            </div>
           </div>
-        </div>
       </div>
     </div>
   );
 };
 
-export default MenuScreen_AYCE;
+export default SetMenuScreen;

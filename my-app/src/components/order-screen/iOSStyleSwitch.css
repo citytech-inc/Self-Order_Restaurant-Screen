@@ -4,9 +4,8 @@
   background-color: #fff0b4;
   border-radius: 15px;
   position: relative;
-  cursor: default; /*ここがpointerだと四角が表示された*/
+  cursor: pointer;
   transition: background-color 0.2s;
-  outline: none;
 }
 
 .switch.on {

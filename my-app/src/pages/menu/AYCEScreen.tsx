@@ -3,13 +3,13 @@ import axios from "axios";
 import AddMenu, { MenuType } from "../../components/menu/AddMenu";
 import MenuCategory from "../../components/menu/MenuCategory";
 import CustomizeSection from "../../components/menu/CustomizeSection";
-import MenuList from "../../components/menu/MenuList_Customize";
+import MenuList from "../../components/menu/MenuList";
 import SettingBar from "../../header/SettingBar";
 import SmartphoneIcon from "../../components/images/smartphone-call.png";
 import "./MenuScreen.css";
 import { useNavigate, useParams } from "react-router-dom";
 
-const MenuScreen_Customize: React.FC = () => {
+const AYCEScreen: React.FC = () => {
   const { restaurantId } = useParams();
   const navigate = useNavigate();
 
@@ -56,20 +56,12 @@ const MenuScreen_Customize: React.FC = () => {
 
   const [customize, setCustomize] = useState<string>("なし");
 
-  const [selectedMenuItem, setSelectedMenuItem] = useState("");
-
   return (
     <div>
       <SettingBar focusButton="menu" />
-      <MenuCategory defaultType="カスタマイズ" />
+      <MenuCategory defaultType="食べ放題" />
       <div className="menu__container">
-        <MenuList
-          selectedMenuItem={selectedMenuItem}
-          onMenuItemSelect={(item: string) => {
-            setSelectedMenuItem(item);
-            setMenu({ ...menu, name: item }); 
-          }}
-        />
+        <MenuList />
         <div className="menu__container__right">
           <AddMenu
             menuCategoryList={menuCategoryList}
@@ -85,17 +77,13 @@ const MenuScreen_Customize: React.FC = () => {
           </div>
         </div>
         <div className="icon__area">
-          <div className="icon__circle">
-            <img
-              src={SmartphoneIcon}
-              alt="Smartphone Icon"
-              className="smartphone__icon"
-            />
+            <div className="icon__circle">
+                <img src={SmartphoneIcon} alt="Smartphone Icon" className="smartphone__icon" />
+            </div>
           </div>
-        </div>
       </div>
     </div>
   );
 };
 
-export default MenuScreen_Customize;
+export default AYCEScreen;
