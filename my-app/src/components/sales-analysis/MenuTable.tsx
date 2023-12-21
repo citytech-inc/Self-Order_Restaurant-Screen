@@ -1,6 +1,6 @@
 import React from "react";
 import "./MenuTable.css";
-import sortingIcon from "../../src/components/images/filter_3839020.png";
+import sortingIcon from "../images/filter_3839020 2.png";
 type Product = {
   name: string;
   category: string;
