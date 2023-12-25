@@ -3,12 +3,13 @@
   flex-direction: column;
   border-right: 1px solid #ccc; /* Top border for the list */
   width: 45%;
-  height: 94vh;
+  height: 94vh; 
 }
 
 .list-container {
   flex-grow: 1;
   height: 100%;
+  overflow-y: auto;
 }
 
 .list-item {
@@ -17,7 +18,7 @@
 }
 
 .list-item.selected {
-  background-color: yellow;
+  background-color: #fff4c6; /* Separator for items */
 }
 
 .fixed-button {
@@ -27,10 +28,10 @@
   margin: 10px;
   border: none;
   border-radius: 20px; /* Rounded corners */
-  background-color: #ffd700; /* Gold background color */
+  background-color: #fff4c6; /* Gold background color */
   color: #000; /* Black text color */
   font-size: 16px; /* Adjust as needed */
-  cursor: pointer;
+  cursor: default;
 }
 
 /* Additional styling for the scrollbar, if needed */
@@ -46,3 +47,4 @@
 .list-container::-webkit-scrollbar-track {
   background: #f1f1f1;
 }
+
