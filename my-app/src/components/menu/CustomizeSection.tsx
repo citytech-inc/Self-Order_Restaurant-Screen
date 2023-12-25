@@ -33,14 +33,16 @@ const SectionComponent: React.FC<{
 
   return (
     <div className="section-box">
-      <div className="section-title">セクション名</div>
-      <input
-        className="input__name"
-        type="text"
-        placeholder="詳細情報"
-        value={sectionValue}
-        onChange={handleSectionNameChange}
-      />
+      <div className="section-row">
+        <div className="section-title">セクション名</div>
+        <input
+          className="input__name"
+          type="text"
+          placeholder="詳細情報"
+          value={sectionValue}
+          onChange={handleSectionNameChange}
+        />
+      </div>
       <button className="delete-button" onClick={onDelete}>
         セクションを削除
       </button>
@@ -97,7 +99,7 @@ const CustomizeSection: React.FC<CustomizeSectionProps> = ({
 
   return (
     <div className="section-container">
-      <h3>カスタマイズ設定</h3>
+      <div className="customize-title">カスタマイズ設定</div>
       {sections.map((_, index) => (
         <>
           <SectionComponent
@@ -122,3 +124,4 @@ const CustomizeSection: React.FC<CustomizeSectionProps> = ({
 };
 
 export default CustomizeSection;
+
