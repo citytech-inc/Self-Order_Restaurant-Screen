@@ -31,7 +31,7 @@
   background-color: #fff4c6; /* Gold background color */
   color: #000; /* Black text color */
   font-size: 16px; /* Adjust as needed */
-  cursor: default;
+  cursor: pointer;
 }
 
 /* Additional styling for the scrollbar, if needed */
