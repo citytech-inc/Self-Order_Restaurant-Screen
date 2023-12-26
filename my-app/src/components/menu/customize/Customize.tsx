@@ -64,6 +64,14 @@ type MappedCustomizeType<T extends CustomizationOption> = T extends {
 const Customize: React.FC<CustomizeProps> = ({ types, onUpdateTypes }) => {
   const prevTypesRef = useRef(types);
 
+  // 各カスタマイズ項目の開閉状態を追跡する状態変数
+  const [openStates, setOpenStates] = useState<boolean[]>(new Array(types.length).fill(false));
+
+  // カスタマイズ項目の開閉状態を切り替える関数
+  const toggleOpenState = (index: number) => {
+    setOpenStates(prev => prev.map((state, idx) => idx === index ? !state : state));
+  };
+
   const determineCustomizeType = (
     option: string,
     priceChange: string,
@@ -212,6 +220,8 @@ const Customize: React.FC<CustomizeProps> = ({ types, onUpdateTypes }) => {
       setCustomizationTypes(newCustomizationTypes);
     }
   };
+  
+  
 
   /*{
   useEffect(() => {
@@ -233,18 +243,19 @@ const Customize: React.FC<CustomizeProps> = ({ types, onUpdateTypes }) => {
   return (
     <div className="customize__container">
       {customizations.map((customization, index) => (
-        <div key={index}>
-          <div className="box">
-            <div className="box__text">カスタマイズ名 </div>
+        <div className="one-customize" key={index}>
+          <div className="box-name"  onClick={() => toggleOpenState(index)}>
+            <div className="box__text-name">カスタマイズ名 </div>
             <input
-              type="text"
+              type="text-name"
               placeholder="カスタマイズ名を入力してください"
               onChange={(e) =>
                 updateCustomizations(index, "name", e.target.value)
               }
             />
           </div>
-
+          
+          
           <div className="box">
             <div className="box__text">オプション選択方式</div>
             <select
@@ -335,6 +346,7 @@ const Customize: React.FC<CustomizeProps> = ({ types, onUpdateTypes }) => {
               カスタマイズを削除
             </button>
           </div>
+          
         </div>
       ))}
 

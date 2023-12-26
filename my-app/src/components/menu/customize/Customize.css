@@ -1,13 +1,16 @@
 .customize__container {
-  padding-left: 5%;
+  padding-left: 0%;
+  /* border: 0.5px solid #aaaaaa; */
 }
 
 .customize__container .add-customization {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 8px;
-  margin: 5px;
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border: 1px solid #aaaaaa;
   border-radius: 5px;
   background-color: #fff4c6;
 }
@@ -25,10 +28,16 @@
 
 .customize__container .delete-button {
   display: flex;
-  justify-content: right;
+  justify-content: center;
   align-items: center;
   margin: 4px;
   border: 0.5px solid #aaaaaa;
+}
+
+.customize__container .one-customize {
+  border: 1px solid #aaaaaa;
+  border-radius: 5px;
+  margin-bottom: 15px;
 }
 
 .customize__container .text {
@@ -41,8 +50,30 @@
   flex-direction: row;
   align-items: center;
   padding: 4px;
+  margin-top: 10px;
 }
 
 .customize__container .box__text {
+  min-width: 160px;
+}
+
+.customize__container .text-name {
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.customize__container .box-name {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 6px;
+  padding-right: 200px;
+  background-color: #fff4c6;;
+  border-bottom: 1px solid #aaaaaa;
+  border-radius: 5px 5px 0 0;
+  cursor: pointer;
+}
+
+.customize__container .box__text-name {
   min-width: 160px;
 }

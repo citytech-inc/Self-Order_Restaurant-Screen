@@ -7,14 +7,16 @@
   display: flex;
   flex-direction: column;
   justify-content: left;
-  align-items: center;
   padding-bottom: 5px;
   padding-top: 5px;
 }
 
 .section-row {
+  position: relative;
+  width: 37%;
   display: flex;
   flex-direction: column;
+  align-self: center;
   align-items: flex-start;
 }
 
@@ -22,32 +24,35 @@
   font-size: 12px;
   font-weight: 600;
   padding-bottom: 2px;
+  padding-left: 5px;
 }
 
 
 .section-row .input__name {
-  position: relative;
   align-self: center;
   height: 12px;
   width: 260px;
+  margin-bottom: 10px;
 }
 
-.section-row .input__name::before,
-.section-row .input__name::after {
-  content: ''; /* 必須: 疑似要素に何かしらのコンテンツを設定する */
-  top: 50%; /* 縦方向の中心位置 */
-  width: 1000px; /* 線の長さを指定 */
-  height: 4px; /* 線の太さを指定 */
-  background: black; /* 線の色を指定 */
-  position: relative;
+.section-row ::before,
+.section-row ::after {
+  content: ''; /* 必須: 疑似要素に何かしらのコンテンツを設定 */
+  position: absolute; /* 絶対位置指定 */
+  top: 60%; /* 縦方向の中心位置 */
+  width: 203px; /* 線の長さを指定 */
+  height: 1px; /* 線の太さを指定 */
+  background: #aaaaaa; /* 線の色を指定 */
 }
 
-.section-row .input__name::before {
-  left: -15px; /* 入力フィールドの左側に配置 */
+.section-row ::before {
+  left: 110%; /* ボタンの右側に配置 */
+  transform: translateY(-50%); /* 縦方向の中心位置に調整 */
 }
 
-.section-row .input__name::after {
-  right: 15px; /* 入力フィールドの右側に配置 */
+.section-row ::after {
+  right: 110%; /* ボタンの左側に配置 */
+  transform: translateY(-50%); /* 縦方向の中心位置に調整 */
 }
 
 input {
@@ -60,30 +65,57 @@ input {
 }
 
 .add-button {
+  position: relative;
   padding: 5px;
-  background-color: #f5f5f5;
-  border: none;
+  background-color: #fff4c6;
+  border: 1px solid #aaaaaa;
   border-radius: 5px;
-  cursor: pointer;
+  cursor: default;
   font-size: 14px;
   margin: 5px;
+  width: 25%;
+  align-self: center;
+}
+
+.add-button::before,
+.add-button::after {
+  content: ''; /* 必須: 疑似要素に何かしらのコンテンツを設定 */
+  position: absolute; /* 絶対位置指定 */
+  top: 50%; /* 縦方向の中心位置 */
+  width: 258px; /* 線の長さを指定 */
+  height: 1px; /* 線の太さを指定 */
+  background: #aaaaaa; /* 線の色を指定 */
+}
+
+.add-button::before {
+  left: 110%; /* ボタンの右側に配置 */
+  transform: translateY(-50%); /* 縦方向の中心位置に調整 */
+}
+
+.add-button::after {
+  right: 110%; /* ボタンの左側に配置 */
+  transform: translateY(-50%); /* 縦方向の中心位置に調整 */
 }
 
 .add-button:hover {
-  background-color: #e0e0e0;
+  background-color: #fff4c6;
 }
 
 .section-container .delete-button {
-  margin-right: 0%;
+  margin-left: 75%;
   height: 30px;
+  width: 25%;
+  margin-top: 10px;
+  margin-bottom: 10px;
   border-radius: 5px;
   border: 0.5px solid #aaaaaa;
+  background-color: #e0e0e0;
+  align-self: right;
 }
 
 .section-container .add-button {
-  height: 40px;
-  border-radius: 5px;
-  border-color: #e0e0e0;
+  height: 35px;
+  border-radius: 20px;
 }
 
 .section-container .customize-title {

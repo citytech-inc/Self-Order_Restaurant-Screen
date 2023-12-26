@@ -82,7 +82,7 @@ const FromList_PriceChange: React.FC<FromListPriceChangeProps> = ({
             value={option.price || ""}
             onChange={(e) => updatePrice(index, e.target.value)}
           />
-          <button onClick={() => deleteOption(index)}>削除</button>
+          <button className="delete" onClick={() => deleteOption(index)}>削除</button>
         </div>
       ))}
 

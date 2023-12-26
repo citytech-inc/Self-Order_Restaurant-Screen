@@ -88,7 +88,7 @@ const AddMenuScreen: React.FC = () => {
           />
           <div className="add-menu__area">
             <button className="add-menu__button" onClick={sendToBackend}>
-              編集を保存
+              変更を保存
             </button>
           </div>
         </div>

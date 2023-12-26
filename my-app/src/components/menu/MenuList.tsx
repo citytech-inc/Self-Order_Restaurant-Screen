@@ -19,6 +19,10 @@ const MenuList: React.FC<MenuListProps> = ({
     "烏龍茶",
   ];
 
+  const handleAddButtonClick = () => {
+    onMenuItemSelect(""); // 選択をリセット
+  };
+
   return (
     <div className="list-screen">
       <div className="list-container">
@@ -32,7 +36,7 @@ const MenuList: React.FC<MenuListProps> = ({
           </div>
         ))}
       </div>
-      <button className="fixed-button">+ 商品を追加</button>
+      <button className="fixed-button" onClick={handleAddButtonClick}>+ 商品を追加</button>
     </div>
   );
 };

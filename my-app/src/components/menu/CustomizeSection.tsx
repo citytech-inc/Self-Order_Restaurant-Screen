@@ -22,8 +22,9 @@ type Type = {
 const SectionComponent: React.FC<{
   onDelete: () => void;
   onSectionNameUpdate: (value: string, index: number) => void;
+  children: React.ReactNode; // 子要素を受け取るためのプロパティ
   index: number;
-}> = ({ onDelete, onSectionNameUpdate, index }) => {
+}> = ({ onDelete, onSectionNameUpdate, children, index }) => {
   const [sectionValue, setSectionValue] = useState("");
 
   const handleSectionNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -43,6 +44,7 @@ const SectionComponent: React.FC<{
           onChange={handleSectionNameChange}
         />
       </div>
+      {children} {/* <Customize> コンポーネントを表示 */}
       <button className="delete-button" onClick={onDelete}>
         セクションを削除
       </button>
@@ -100,22 +102,27 @@ const CustomizeSection: React.FC<CustomizeSectionProps> = ({
   return (
     <div className="section-container">
       <div className="customize-title">カスタマイズ設定</div>
-      {sections.map((_, index) => (
-        <>
+      {sections.map((_, index) => {
+        // 設定から該当するセクションのカスタマイズタイプを取得
+        const sectionSettings = initialSettings[index];
+        const types = sectionSettings ? sectionSettings.customizationTypes : [];
+
+        return (
           <SectionComponent
             key={index}
             onDelete={() => handleDelete(index)}
             onSectionNameUpdate={handleSectionNameUpdate}
             index={index}
-          />
-          <Customize
-            types={settings[index]?.customizationTypes}
-            onUpdateTypes={(updatedTypes) =>
-              handleUpdateTypes(updatedTypes, index)
-            }
-          />
-        </>
-      ))}
+          >
+            <Customize
+              types={types}
+              onUpdateTypes={(updatedTypes) =>
+                handleUpdateTypes(updatedTypes, index)
+              }
+            />
+          </SectionComponent>
+        );
+      })}
       <button className="add-button" onClick={handleAdd}>
         セクションを追加
       </button>
