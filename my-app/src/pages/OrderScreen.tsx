@@ -181,9 +181,9 @@ function OrderScreen() {
     <div>
       <SettingBar focusButton="order" />
 
-      <div className="OrderScreen">
-        <div className="order__button">
-          <text className="order__buttonText">
+      <div className="order-screen-container">
+        <div className="button">
+          <text className="button__text">
             {isChecked ? "削除済み" : "提供待ち"}
           </text>
           <IOSStyleSwitch
@@ -194,7 +194,7 @@ function OrderScreen() {
           />
         </div>
 
-        <div className="order__areas">
+        <div className="areas">
           <DisplayArea
             title="メインメニュー"
             orders={orders.filter((o) =>

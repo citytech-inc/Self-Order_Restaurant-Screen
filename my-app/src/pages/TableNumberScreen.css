@@ -15,13 +15,13 @@
   font-size: 25px;
 }
 
-.table-number-container .container__form {
+.table-number-container .table-number-form {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
 
-.table-number-container .table-number-input {
+.table-number-container .table-number-form__input {
   padding: 1rem;
   margin-right: 10px;
   font-size: 1.2rem;
@@ -29,7 +29,7 @@
   border-radius: 5px;
 }
 
-.table-number-container .submit-button {
+.table-number-container .table-number-form__submit-button {
   width: 98px;
   height: 55px;
   padding: 1rem;
@@ -44,6 +44,6 @@
   justify-content: center;
 }
 
-.table-number-input:focus {
+.table-number-form__input:focus {
   outline: none;
 }

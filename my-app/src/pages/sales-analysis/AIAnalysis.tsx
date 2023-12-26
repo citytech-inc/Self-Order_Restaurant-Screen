@@ -183,14 +183,14 @@ const AIAnalysis: React.FC = () => {
                   <button
                     type="submit"
                     disabled={messageInput.trim() === ""}
-                    className="type-box__send"
+                    className="type-box-send"
                   >
                     <span>
                       {" "}
                       <img
                         src={SendIcon}
                         alt="Send Question Icon"
-                        className="type-box__send__icon"
+                        className="type-box-send__icon"
                       />
                     </span>
                   </button>

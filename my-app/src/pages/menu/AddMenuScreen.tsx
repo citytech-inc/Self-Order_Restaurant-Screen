@@ -65,7 +65,7 @@ const AddMenuScreen: React.FC = () => {
   return (
     <div>
       <SettingBar focusButton="menu" />
-      <div className="menu__container">
+      <div className="menu-container">
         <MenuCategory />
         <AddMenu
           menuCategoryList={menuCategoryList}
@@ -74,7 +74,7 @@ const AddMenuScreen: React.FC = () => {
           menu={menu}
           setMenu={setMenu}
         />
-        <div className="add-menu__area">
+        <div className="add-menu">
           <button className="add-menu__button" onClick={sendToBackend}>
             商品を登録
           </button>

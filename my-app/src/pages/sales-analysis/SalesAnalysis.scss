@@ -1,5 +1,7 @@
 @use "../../colors" as *;
 
+
+
 button,
 input,
 optgroup,
@@ -166,7 +168,7 @@ textarea {
   align-items: right;
   justify-content: space-around;
 }
-.sales-analysis-container .sales-menu-headline-text-1 {
+.sales-analysis-container .sales-menu-headline__text--1 {
   font-size: 18px;
   width: 60%;
   vertical-align: bottom;
@@ -175,7 +177,7 @@ textarea {
   border-radius: 15px 0 0 0;
   border-bottom: solid #aaaaaa 1px;
 }
-.sales-analysis-container .sales-menu-headline-text-2 {
+.sales-analysis-container .sales-menu-headline__text--2 {
   text-align: center;
   font-size: 18px;
   width: 15%;
@@ -183,7 +185,7 @@ textarea {
   background-color: #e6e6e6;
   border-bottom: solid #aaaaaa 1px;
 }
-.sales-analysis-container .sales-menu-headline-text-3 {
+.sales-analysis-container .sales-menu-headline__text--3 {
   font-size: 18px;
   width: 25%;
   vertical-align: bottom;
@@ -384,7 +386,7 @@ textarea {
     position: absolute;
     bottom: 0;
 
-    &__send {
+    &-send {
       &__icon {
         position: absolute;
         float: right;

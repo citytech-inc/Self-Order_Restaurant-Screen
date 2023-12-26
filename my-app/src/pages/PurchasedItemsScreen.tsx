@@ -281,17 +281,17 @@ const PurchasedItemsScreen: React.FC = () => {
       <SettingBar focusButton="payment" />
       <div className="purchased-items-container">
         <button onClick={handleReturn} className="return-button">
-          <img src={ArrowIcon} alt="Arrow Icon" className="payment__icon" />
+          <img src={ArrowIcon} alt="Arrow Icon" className="return-button__icon" />
           QRコード番号: {tableNumber}
         </button>
         <h1 className="title">商品内容をお確かめください（税込）</h1>
-        <div className="payment__itemBox">
+        <div className="payment__item-box">
           <div style={{ height: "15px" }} />
           {currentOrders.map((item, index) => (
-            <div className="itemBox">
+            <div className="item-box">
               <div
                 key={index}
-                className="itemTitle"
+                className="item-title"
                 style={{ display: "flex", flexDirection: "row" }}
               >
                 <div style={{ display: "flex" }}>
@@ -302,21 +302,21 @@ const PurchasedItemsScreen: React.FC = () => {
                       alignItems: "stretch",
                     }}
                   ></div>
-                  <div className="itemTitle__name">{item.items[0].name}</div>
+                  <div className="item-title__name">{item.items[0].name}</div>
                 </div>
                 <div style={{ width: "15vw" }}>
-                  <span className="itemTitle__price">
+                  <span className="item-title__price">
                     {item.items[0].sellingPrice}円
-                    <span className="itemTitle__tax">(税込)</span>
-                    <span className="itemTitle__number">
+                    <span className="item-title__tax">(税込)</span>
+                    <span className="item-title__number">
                       ×&ensp;{item.items.length}
                     </span>
                   </span>
                 </div>
               </div>
-              <div className="optionBox">
+              <div className="option-box">
                 {item.items.map((element: any, i: number) => (
-                  <div key={i} className="optionBox__oneItem">
+                  <div key={i} className="option-box__one-item">
                     <div className="divider-wrapper">
                       <div
                         className="divider"
@@ -335,15 +335,15 @@ const PurchasedItemsScreen: React.FC = () => {
                               return (
                                 <div
                                   key={index}
-                                  className="optionBox__oneOption"
+                                  className="option-box__one-option"
                                 >
-                                  <p className="optionBox__name">
+                                  <p className="option-box__name">
                                     {value.name}：{value.values[value.selected]}
                                   </p>
-                                  <div className="optionBox__details">
-                                    <span className="optionBox__price">
+                                  <div className="option-box__details">
+                                    <span className="option-box__price">
                                       0円
-                                      <span className="optionBox__tax">
+                                      <span className="option-box__tax">
                                         (税込)
                                       </span>
                                     </span>
@@ -354,16 +354,16 @@ const PurchasedItemsScreen: React.FC = () => {
                               return (
                                 <div
                                   key={index}
-                                  className="optionBox__oneOption"
+                                  className="option-box__one-option"
                                 >
-                                  <p className="optionBox__name">
+                                  <p className="option-box__name">
                                     {value.name}：
                                     {value.values[value.selected][0]}
                                   </p>
-                                  <div className="optionBox__details">
-                                    <span className="optionBox__price">
+                                  <div className="option-box__details">
+                                    <span className="option-box__price">
                                       {value.values[value.selected][1]}円
-                                      <span className="optionBox__tax">
+                                      <span className="option-box__tax">
                                         (税込)
                                       </span>
                                     </span>
@@ -374,19 +374,19 @@ const PurchasedItemsScreen: React.FC = () => {
                               return (
                                 <div
                                   key={index}
-                                  className="optionBox__oneOption"
+                                  className="option-box__one-option"
                                 >
-                                  <p className="optionBox__name">
+                                  <p className="option-box__name">
                                     {value.name}
                                   </p>
-                                  <div className="optionBox__details">
-                                    <span className="optionBox__price">
+                                  <div className="option-box__details">
+                                    <span className="option-box__price">
                                       {value.price}円
-                                      <span className="optionBox__tax">
+                                      <span className="option-box__tax">
                                         (税込)
                                       </span>
                                     </span>
-                                    <span className="optionBox__number">
+                                    <span className="option-box__number">
                                       ×&ensp;{value.selected}
                                     </span>
                                   </div>
@@ -404,8 +404,8 @@ const PurchasedItemsScreen: React.FC = () => {
                         })
                       ) {
                         return (
-                          <div className="optionBox__oneOption">
-                            <p className="optionBox__name">カスタマイズなし</p>
+                          <div className="option-box__one-option">
+                            <p className="option-box__name">カスタマイズなし</p>
                           </div>
                         );
                       } else {
@@ -427,12 +427,12 @@ const PurchasedItemsScreen: React.FC = () => {
             </div>
           ))}
         </div>
-
-        <div className="payment__priceArea">
+        <div className="payment">
+        <div className="payment__price-area">
           <span>
-            <span className="payment__tax">合計金額</span>
-            <span className="payment__totalPrice">{totalPrice}円</span>
-            <span className="payment__tax">(税込)</span>
+            <span className="payment__text">合計金額</span>
+            <span className="payment__total-price">{totalPrice}円</span>
+            <span className="payment__text">(税込)</span>
           </span>
         </div>
         <div className="payment__buttons">
@@ -442,6 +442,7 @@ const PurchasedItemsScreen: React.FC = () => {
           <button onClick={handleConfirm} className="confirm-button">
             次へ
           </button>
+        </div>
         </div>
       </div>
     </div>

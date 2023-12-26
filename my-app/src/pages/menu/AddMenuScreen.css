@@ -1,16 +1,16 @@
-.menu__container {
+.menu-container {
   margin-right: 35%;
   padding-left: 12%;
 }
 
-.menu__container .add-menu__area {
+.menu-container .add-menu {
   display: flex;
   justify-content: right;
   padding: 4px;
   padding-bottom: 20px;
 }
 
-.menu__container .add-menu__button {
+.menu-container .add-menu__button {
   display: flex;
   justify-content: right;
   background-color: #fff4c6;
