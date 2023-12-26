@@ -9,6 +9,7 @@ import GraphComponent from "../../components/sales-analysis/Graph";
 import SubGraphComponent from "../../components/sales-analysis/SubGraph";
 import HeaderComponent from "../../components/sales-analysis/Header";
 import MainInfoComponent from "../../components/sales-analysis/MainInfo";
+import MenuTable from "../../components/sales-analysis/MenuTable"
 
 import { Chart, registerables } from "chart.js";
 import { Bar } from "react-chartjs-2";
@@ -218,7 +219,8 @@ const NormalAnalysis: React.FC = () => {
         <SettingBar focusButton="sales" />
         <HeaderComponent focusButton="商品別分析" />
         <DateTimeComponent onSalesTypeChange={handleSalesTypeChange} />
-        <div className="analysis-area menu-table"></div>
+        {/* <div className="analysis-area menu-table"></div> */}
+        <MenuTable/>
       </div>
     </div>
   );

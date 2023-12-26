@@ -1,6 +1,6 @@
 import React from "react";
 import "./MenuTable.css";
-import sortingIcon from "../../src/components/images/filter_3839020.png";
+import sortingIcon from "../images/filter_3839020 2.png";
 type Product = {
   name: string;
   category: string;
@@ -49,8 +49,8 @@ const MenuTable: React.FC = () => {
   return (
     <div>
       <div>
-        <img src={sortingIcon} alt="A" />
-        <p>並び替え</p>
+        <img className="sorted-icon" src={sortingIcon} alt="A" />
+        <div className="sorted-name">並び替え</div>
       </div>
       <table className="product-table">
         <thead>
