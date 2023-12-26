@@ -3,14 +3,14 @@
   padding-left: 12%;
 }
 
-.menu-container .add-menu {
+.add-menu {
   display: flex;
   justify-content: right;
   padding: 4px;
   padding-bottom: 20px;
 }
 
-.menu-container .add-menu__button {
+.add-menu__button {
   display: flex;
   justify-content: right;
   background-color: #fff4c6;

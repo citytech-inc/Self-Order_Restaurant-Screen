@@ -64,7 +64,7 @@ const AddMenu_AYCE: React.FC<AddMenuProps> = ({
   };
 
   return (
-    <div className="add-menu__container">
+    <div className="add-menu-container">
       <h2>食べ放題コースを編集</h2>
       <div className="box">
         <div className="box__text">コース名</div>
