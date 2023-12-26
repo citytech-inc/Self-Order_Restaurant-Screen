@@ -62,7 +62,7 @@ const MenuScreen_Customize: React.FC = () => {
     <div>
       <SettingBar focusButton="menu" />
       <MenuCategory defaultType="カスタマイズ" />
-      <div className="menu__container">
+      <div className="menu-container">
         <MenuList
           selectedMenuItem={selectedMenuItem}
           onMenuItemSelect={(item: string) => {
@@ -70,7 +70,7 @@ const MenuScreen_Customize: React.FC = () => {
             setMenu({ ...menu, name: item }); 
           }}
         />
-        <div className="menu__container__right">
+        <div className="edit-container">
           <AddMenu
             menuCategoryList={menuCategoryList}
             customize={customize}
@@ -78,18 +78,18 @@ const MenuScreen_Customize: React.FC = () => {
             menu={menu}
             setMenu={setMenu}
           />
-          <div className="add-menu__area">
+          <div className="add-menu">
             <button className="add-menu__button" onClick={sendToBackend}>
               編集を保存
             </button>
           </div>
         </div>
-        <div className="icon__area">
-          <div className="icon__circle">
+        <div className="smartphone-icon">
+          <div className="smartphone-icon__cicle">
             <img
               src={SmartphoneIcon}
               alt="Smartphone Icon"
-              className="smartphone__icon"
+              className="smartphone-icon__img"
             />
           </div>
         </div>

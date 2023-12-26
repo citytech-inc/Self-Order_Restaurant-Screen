@@ -64,7 +64,7 @@ const AddMenu: React.FC<AddMenuProps> = ({
   };
 
   return (
-    <div className="add-menu__container">
+    <div className="add-menu-container">
       <h2>商品を編集</h2>
       <div className="box">
         <div className="box__text">名前</div>

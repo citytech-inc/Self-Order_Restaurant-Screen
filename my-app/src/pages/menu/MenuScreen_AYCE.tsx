@@ -61,7 +61,7 @@ const MenuScreen_AYCE: React.FC = () => {
     <div>
       <SettingBar focusButton="menu" />
       <MenuCategory defaultType="食べ放題" />
-      <div className="menu__container">
+      <div className="menu-container">
         <AYCEMenuList 
         selectedMenuItem={selectedMenuItem}
           onMenuItemSelect={(item: string) => {
@@ -69,7 +69,7 @@ const MenuScreen_AYCE: React.FC = () => {
             setMenu({ ...menu, name: item }); // Update the AddMenu component with the selected item
           }}
         />
-        <div className="menu__container__right">
+        <div className="edit-container">
           <AYCEAddMenu
             menuCategoryList={menuCategoryList}
             customize={customize}
@@ -77,18 +77,18 @@ const MenuScreen_AYCE: React.FC = () => {
             menu={menu}
             setMenu={setMenu}
           />
-          <div className="add-menu__area">
+          <div className="add-menu">
             <button className="add-menu__button" onClick={sendToBackend}>
               編集を保存
             </button>
           </div>
         </div>
-        <div className="icon__area">
-          <div className="icon__circle">
+        <div className="smartphone-icon">
+          <div className="smartphone-icon__cicle">
             <img
               src={SmartphoneIcon}
               alt="Smartphone Icon"
-              className="smartphone__icon"
+              className="smartphone-icon__img"
             />
           </div>
         </div>

@@ -1,22 +1,22 @@
-.menu__container {
+.menu-container {
   padding-left: 9%;
   display: flex;
   flex-direction: row;
 }
 
-.menu__container .menu__container__right {
+.edit-container {
   padding-left: 3%;
   width: 100%;
 }
 
-.menu__container .add-menu__area {
+.add-menu {
   display: flex;
   justify-content: right;
   padding: 4px;
   padding-bottom: 20px;
 }
 
-.menu__container .add-menu__button {
+.add-menu__button {
   display: flex;
   justify-content: right;
   background-color: #fff4c6;
@@ -29,7 +29,7 @@
   border: 0.5px solid #aaaaaa;
 }
 
-.menu__container .icon__area {
+.smartphone-icon {
   width: 10%;
   height: auto;
   padding-right: 2%;
@@ -40,7 +40,7 @@
   justify-content: center;
 }
 
-.menu__container .icon__circle {
+.smartphone-icon__cicle {
   width: 70%;
   height: fit-content;
   border: 0.5px solid #aaaaaa;
@@ -51,7 +51,7 @@
   justify-content: center;
 }
 
-.menu__container .smartphone__icon {
+.smartphone-icon__img {
   width: 60%;
   height: fit-content;
   padding: 20%;
