@@ -1,5 +1,6 @@
 .mainInfo__container {
   /*売り上げの部分*/
+  position: relative;
   display: flex;
   flex-direction: row;
   align-items: center;
