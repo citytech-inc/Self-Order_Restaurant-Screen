@@ -32,14 +32,14 @@
   align-self: center;
   height: 12px;
   width: 260px;
-  margin-bottom: 10px;
+  margin-bottom: 0px;
 }
 
 .section-row ::before,
 .section-row ::after {
   content: ''; /* 必須: 疑似要素に何かしらのコンテンツを設定 */
   position: absolute; /* 絶対位置指定 */
-  top: 60%; /* 縦方向の中心位置 */
+  top: 70%; /* 縦方向の中心位置 */
   width: 203px; /* 線の長さを指定 */
   height: 1px; /* 線の太さを指定 */
   background: #aaaaaa; /* 線の色を指定 */

@@ -221,13 +221,7 @@ const Customize: React.FC<CustomizeProps> = ({ types, onUpdateTypes }) => {
     }
   };
   
-  
 
-  /*{
-  useEffect(() => {
-    onUpdateTypes(customizationTypes);
-  }, [customizationTypes, onUpdateTypes]);
-}*/
 
   useEffect(() => {
     // 前回のpropsと異なる場合のみonUpdateTypesを実行

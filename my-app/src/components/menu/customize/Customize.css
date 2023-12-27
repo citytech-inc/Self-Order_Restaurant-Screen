@@ -8,7 +8,7 @@
   flex-direction: row;
   justify-content: space-between;
   padding: 10px;
-  margin-top: 5px;
+  margin-top: 15px;
   margin-bottom: 5px;
   border: 1px solid #aaaaaa;
   border-radius: 5px;
@@ -38,6 +38,7 @@
   border: 1px solid #aaaaaa;
   border-radius: 5px;
   margin-bottom: 15px;
+  margin-top: 15px;
 }
 
 .customize__container .text {
@@ -71,6 +72,17 @@
   background-color: #fff4c6;;
   border-bottom: 1px solid #aaaaaa;
   border-radius: 5px 5px 0 0;
+  cursor: pointer;
+}
+
+.customize__container .box-name-hide {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 6px;
+  padding-right: 200px;
+  background-color: #fff4c6;;
+  border-radius: 5px;
   cursor: pointer;
 }
 
